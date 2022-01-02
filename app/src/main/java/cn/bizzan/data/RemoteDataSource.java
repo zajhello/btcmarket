@@ -3006,8 +3006,8 @@ public class RemoteDataSource implements DataSource {
                 WonderfulLogUtils.logi("前台udun获取回执：", "前台udun获取回执：" + response.toString());
                 try {
                     JSONObject object = new JSONObject(response);
-                    if (object.optInt("code") == 0) {
-                        Message obj = gson.fromJson(object.getJSONObject("data").toString(), Message.class);
+                    if (object.optInt("code") == 0 || object.optInt("code") == 200) {
+                        boolean obj = object.getBoolean("data");
                         dataCallback.onDataLoaded(obj);
                     } else {
                         dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
