@@ -1,0 +1,1084 @@
+<resources>
+    <!--土耳其语-->
+    <string name="app_name">BIZZAN</string>
+    <string name="cancle"> iptal</string>
+    <string name="confirm"> Tamam</string>
+    <string name="back"> dönüş</string>
+    <string name="unknown_error"> bilinmeyen hata</string>
+    <string name="no_network"> şu anda ağ yok</string>
+    <string name="parse_error"> istisnayı ayrıştırma</string>
+    <string name="login_invalid"> Giriş geçersiz, lütfen tekrar giriş yapın! </string>
+    <string name="no_data"> geçici olarak veri yok</string>
+    <string name="submit"> Gönder</string>
+    <string name="exit_again"> çıkmak için tekrar basın </string>
+    <string name="name">Ad</string>
+    <string name="new_pwd"> yeni şifre</string>
+    <string name="new_pwd_shuru_signup"> lütfen bir şifre girin (6 basamaktan büyük sayılar ve harflerden oluşan bir kombinasyon) </string>
+    <string name="new_pwd2_shuru"> Lütfen şifreyi tekrar girin</string>
+    <string name="photograph"> fotoğraf çek</string>
+    <string name="success"> başarı</string>
+    <string name="save"> kaydet</string>
+
+
+    <string name="Start_downloading"> indirmeye başla... lütfen bekleyin</string>
+    <string name="more">Diğer</string>
+    <string name="index"> göstergeler</string>
+    <string name="hide"> gizle </string>
+    <string name="main">Ana resim</string>
+    <string name="child"> Vice resmi</string>
+    <string name="delete"> sil </string>
+
+    <!--İzin-->
+    <string name="camera_permission"> izni mevcut değil, lütfen kamera iznini etkinleştirin</string>
+    <string name="storage_permission"> izinleri mevcut değil, lütfen depolama izinlerini etkinleştirin</string>
+    <string name="password_realname"> Lütfen önce fon parolasını ve gerçek ad doğrulamasını ayarlayın </string>
+    <string name="binding_phone_first"> Lütfen önce telefon numarasını girin</string>
+    <string name="realname"> lütfen gerçek ad doğrulamaya gidin</string>
+    <string name="shangjia"> lütfen sertifika için satıcıya gidin</string>
+    <string name="tishi">Lütfen bilgileri tamamlayın veya resmi yeniden seçin</string>
+
+    <!--İstisna-->
+    <string name="library_file_exception"> Galeri dosyası anormal döndürüyor </string>
+    <string name="Incomplete_information"> bilgileri doldurun, tamamlanmadı</string>
+    <string name="xieyi"> Kullanıcı sözleşmesini kabul etmek için işaretlenmemiş </string>
+    <string name="empty_address"> Veri yanlış, adres boş</string>
+    <string name="order_details_failed"> sipariş ayrıntılarını alamadı, </string> yeniden alındı
+    <string name="No_qrcode"> QR kodu adresi ayarlanmadı</string>
+    <string name="No_ads"> Reklam bilgileri alınamadı, yeniden alınıyor! </string>
+    <!--<string name="pwd_no_standard_tip"> en az bir harf ve 6-20 rakam arası </string>-->
+
+
+    <!--Cep telefonu numarasını bağlayın-->
+    <string name="nationality"> Milliyet</string>
+    <string name="china">Çin</string>
+    <string name="start_bind"> bağlamayı başlat </string>
+
+    <!--Bölge Seçimi-->
+    <string name="egional_selection"> alan seçimi</string>
+
+    <!--Cep telefonu numarasını değiştirin-->
+    <string name="change_phone_num"> telefon numarasını değiştirin</string>
+    <string name="changeBindPhoneNum"> bağlayıcı cep telefonu numarasını değiştirin</string>
+    <string name="changeBindPhoneNumTip"> hesaba bağlı cep telefonu numarasını değiştiriyorsunuz, lütfen kimlik doğrulaması yapın</string>
+    <string name="receivePhoneCode"> Orijinal cep telefonu doğrulama kodunu kabul edebilir</string>
+    <string name="unReceivePhoneCode"> Orijinal cep telefonu doğrulama kodunu kabul edemiyor</string>
+    <string name="unReceivePhoneCodeTip"> Orijinal cep telefonu numarası doğrulama kodunu alamıyor, lütfen değiştirmek ve bağlamak için müşteri hizmetleri ile iletişime geçin</string>
+    <string name="handsetTailNumber"> cep telefonu kuyruk numarası</string>
+    <string name="receiveMessageCode"> SMS doğrulama kodu aldı</string>
+
+
+    <!--Giriş şifresini değiştir-->
+    <string name="changeLoginPassword"> oturum açma parolasını değiştir</string>
+    <string name="changeLoginPasswordTip1">Cep telefonu numaranızı bağladınız</string>
+    <string name="changeLoginPasswordTip2"> başarıyla değiştirin, lütfen tekrar giriş yapın</string>
+    <string name="oldLoginPassword"> eski giriş şifresi</string>
+    <string name="newLoginPassword"> yeni oturum açma parolası</string>
+    <string name="certainPassword"> parolayı onaylayın</string>
+
+    <!--Ayarlar Fon Parolasını Değiştir-->
+    <string name="setMoneyPassword"> fon parolası belirleyin</string>
+    <string name="setMoneyPasswordTip"> fon şifresini değiştiriyorsunuz </string>
+    <string name="changeMoneyPassword"> fon şifresini değiştir</string>
+    <string name="oldMoneyPassword"> eski para şifresi</string>
+    <string name="newMoneyPassword"> yeni fon şifresi</string>
+    <string name="certainMoneyPassword"> fon şifresini onaylayın</string>
+
+    <!--Kimlik Doğrulama-->
+    <string name="IdCardNumber"> Kimlik kartı numarası</string>
+    <string name="Upload_success"> başarıyla yükle </string>
+
+
+    <!--Anasayfa-->
+    <string name="home">Ana Sayfa </string>
+    <string name="market"> Alıntılar</string>
+    <string name="transaction"> işlem</string>
+
+    <string name="fabi2"> Yasal para birimi işlemleri</string>
+    <string name="account">Benim</string>
+    <string name="four_danjia"> birim fiyatı</string>
+
+    <string name="dz_time"> varış zamanı</string>
+    <string name="star_time"> başlangıç ​​zamanı</string>
+    <string name="end_time"> bitiş zamanı</string>
+    <string name="jiaoyi_dui"> işlem çifti</string>
+    <string name="jiaoyi_fangxiang"> yön</string>
+    <string name="jiaoyi_weituoliang"> emanet edilen miktar</string>
+    <string name="jiaoyi_yichengjiao"> takas edildi</string>
+    <string name="jiaoyi_shouxufei"> işlem ücreti</string>
+    <string name="login_view">, oturum açıldıktan sonra görüntülenebilir</string>
+    <string name="login_assets"> toplam varlık (USDT\'ye eşdeğer)</string>
+
+    <!--Alıntılar-->
+    <string name="input_search">Lütfen bir anahtar kelime araması girin</string>
+
+    <!--Benim-->
+    <string name="not_logged_in"> giriş yapılmadı</string>
+    <string name="welcome_to"> bizzan.com\'a hoş geldiniz</string>
+    <string name="my_order"> Siparişim</string>
+    <string name="my_ads"> reklamlarım</string>
+    <string name="my_message"> platform mesajı </string>
+    <string name="my_entrust"> yetkilendirmem</string>
+    <string name="history_trust"> geçmiş komisyonu </string>
+    <string name="my_credit"> kimlik doğrulaması</string>
+
+    <string name="my_version"> sürüm güncellemesi</string>
+    <string name="has_new_version"> yeni bir sürüm buldu</string>
+    <string name="my_language"> dil anahtarı</string>
+    <string name="my_setting">Ayarlar Merkezi</string>
+    <string name="balance">(USDT) ile ilgili toplam varlık</string>
+    <string name="balance_1">Varlık yönetimi</string>
+    <string name="balance_2">Varlıklarım</string>
+    <string name="balance_3"> Varlık akışı </string>
+    <string name="my_fabi"> Yasal para birimi yönetimi</string>
+    <string name="logout_confirm">Çıkış yapmak istediğinizden emin misiniz? </string>
+    <string name="logout_current_account"> Mevcut hesaptan çıkın</string>
+
+    <!-- C2C işlemi (Alıcı sürüm) -->
+    <string name="ctc_title"> yasal para birimi işlemleri</string>
+    <string name="ctc_buy_amount_tips"> Lütfen satın alma sayısını girin</string>
+    <string name="ctc_amount_tips"> Lütfen 50~50000 arasında bir sayı girin </string>
+    <string name="ctc_sell_amount_tips"> lütfen satılan miktarı girin</string>
+
+    <!-- Platform Haberleri-->
+    <string name="message_details"> duyuru</string>
+
+
+    <!-- Promosyonum-->
+    <string name="remark"> Açıklamalar (Not)</string>
+
+
+    <!-- Sipariş İtirazı-->
+    <string name="order_appeal"> sipariş itirazı </string>
+    <string name="appealTip"> İtiraz isteğinizi mümkün olan en kısa sürede işleme alacağız, lütfen sabırlı olun</string>
+    <string name="appealTip2"> Lütfen itirazınızın nedenini kısaca açıklayın (300 karakter içinde) </string>
+
+    <!-- Sohbet-->
+    <string name="chat"> sohbet ediyor</string>
+    <string name="send_chat"> gönder </string>
+    <string name="recently"> az önce</string>
+
+    <!-- Komisyon-->
+    <string name="item_buy"> satın al</string>
+    <string name="item_sell"> sat </string>
+    <string name="lishi">Geçmiş</string>
+    <string name="current_trust"> geçerli yetkilendirme</string>
+
+    <string name="undone"> geri çekildi</string>
+    <string name="traded_trade"> takas edildi</string>
+    <string name="trading"> işlemde</string>
+    <string name="trust_detail"> işlem ayrıntıları</string>
+    <string name="item_time"> saat </string>
+    <string name="item_cost"> işlem fiyatı</string>
+    <string name="item_number"> emanet edilen miktar</string>
+    <string name="item_charge"> işlem ücreti</string>
+    <string name="all"> tümü</string>
+    <string name="text_buy"> satın al </string>
+    <string name="text_buy_one"> satın alma</string>
+    <string name="text_sale"> sat </string>
+    <string name="text_price"> fiyat</string>
+    <string name="text_number"> miktar</string>
+    <string name="text_number2"> Miktar:</string>
+    <string name="text_entrust"> emanet edilen miktar</string>
+    <string name="text_xian_login"> Lütfen önce oturum açın</string>
+    <string name="text_login_disabled"> Oturum açma bilgileri geçersiz, lütfen tekrar oturum açın! </string>
+    <string name="text_pan"> Engel</string>
+    <string name="login_entity"> lütfen önce giriş yapın/kaydolun</string>
+    <string name="text_entity"> Geçici olarak veri yok</string>
+    <string name="text_enter_price"> lütfen fiyatı girin</string>
+
+    <string name="text_best_price"> en iyi fiyata satın alın</string>
+    <string name="text_best_sale"> en iyi fiyata satış yapın</string>
+    <string name="text_best_prices"> en iyi fiyat</string>
+    <string name="text_used"> mevcut</string>
+    <string name="text_sell_one"> satılık</string>
+    <string name="text_sell_two"> sat </string>
+    <string name="text_volume"> birim</string>
+    <string name="text_average_price"> ortalama işlem fiyatı</string>
+    <string name="text_entrust_num"> emanet edilen miktar</string>
+    <string name="text_total_deal"> toplam işlem tutarı</string>
+    <string name="text_total_entrust"> toplam komisyon tutarı</string>
+    <string name="text_turnover"> işlem miktarı</string>
+    <string name="text_24_change"> 24 saatlik hacim</string>
+    <string name="text_actual_deal"> takas edildi</string>
+    <string name="marketPrice"> piyasa fiyatı</string>
+
+    <string-array name="text_type">
+        <item>Fiyat Siparişini Sınırla</item>
+        <item>Piyasa fiyatı emri</item>
+    </string-array>
+    <string-array name="text_type_array">
+        <item>Seçimi iptal et</item>
+        <item>Fiyat Siparişini Sınırla</item>
+        <item>Piyasa fiyatı emri</item>
+    </string-array>
+    <string-array name="text_type_param">
+        <item>Seçimi iptal et</item>
+        <item>LIMIT_PRICE</item>
+        <item>MARKET_PRICE</item>
+    </string-array>
+    <string-array name="text_direction">
+        <item>Seçimi iptal et</item>
+        <item>Satın al</item>
+        <item>Sat</item>
+    </string-array>
+    <string name="bhb_deduct"> komisyonu kesmek için BHB kullanın </string>
+    <string name="dialog_cancel"> </string> kullanmayın
+    <string name="dialog_confirm"> </string> kullanın
+
+    <!-- İptal-->
+    <string name="text_repeal"> geri çek </string>
+    <string name="text_wei_price"> emanet edilen fiyat</string>
+    <string name="dialog_one_title"> Sipariş onayını iptal etme yetkisi verildi</string>
+    <string name="dialog_one_one"> Siparişin iptalini onaylıyor musunuz?</string>
+    <string name="dialog_one_two"> siparişi iptal et</string>
+    <string name="dialog_one_cancel"> iptal </string>
+    <string name="dialog_msg_one"> emanet edilen fiyat: </string>
+    <string name="dialog_msg_two"> toplam devreye alınan: </string>
+    <string name="dialog_msg_three"> emanet edilen miktar: </string>
+    <string name="dialog_msg_four"> Kategori: </string>
+    <string name="dialog_sure"> Tamam</string>
+    <string name="dialog_two_title_buy"> satın alma komisyonu</string>
+    <string name="dialog_two_title_sell"> satış için emanet</string>
+    <string name="dialog_three_title"> sipariş onayı</string>
+    <string name="dialog_three_one"> satın alma fiyatı</string>
+    <string name="dialog_three_two"> satın alma miktarı</string>
+    <string name="dialog_three_three"> toplam satın alma tutarı</string>
+    <string name="dialog_three_ones"> satış fiyatı</string>
+    <string name="dialog_three_twos"> satılan miktar</string>
+    <string name="dialog_three_threes"> toplam satış tutarı</string>
+    <string name="dialog_three_msg"> Hatırlatma: Lütfen sipariş vermeden önce fiyatı onaylayın.Sipariş verdikten sonra, bu işlem için para kilitlenecektir, lütfen satın aldığınızdan emin olun. </string>
+    <!--K-line grafik koleksiyonu -->
+    <string name="text_add_favorite"> isteğe bağlı olarak ekleyin</string>
+    <string name="text_add_fail"> eklenemedi</string>
+    <string name="text_add_success"> başarıyla eklendi</string>
+    <string name="text_collected"> toplandı</string>
+    <string name="text_cancel_fail"> İptal başarısız oldu</string>
+    <string name="text_cancel_success"> başarıyla iptal edildi</string>
+
+    <!--Siparişim-->
+    <string name="order_done"> tamamlandı</string>
+
+    <!--Sipariş detayları-->
+    <string name="orderdetail"> sipariş ayrıntıları</string>
+    <string name="contact_with_me"> bana ulaşın</string>
+    <string name="order_status"> sipariş durumu</string>
+    <string name="Payment_countdown"> Ödeme geri sayımıZaman</string>
+    <string name="order_information"> sipariş bilgisi</string>
+    <string name="Transaction_object"> işlem nesnesi</string>
+    <string name="Order_number"> sipariş numarası</string>
+    <string name="transaction_price"> işlem fiyatı</string>
+    <string name="transactions_Number"> işlem sayısı</string>
+    <string name="Trading_time"> işlem süresi</string>
+    <string name="Transaction_amount"> işlem tutarı</string>
+    <string name="payment_information"> ödeme bilgileri</string>
+    <string name="paymentTip"> Kullanıcı henüz bir Alipay hesabı eklemedi</string>
+    <string name="paymentTip2"> Kullanıcı henüz bir WeChat hesabı eklemedi</string>
+    <string name="paymentTip3"> Kullanıcı henüz bir banka kartı hesabı eklemedi</string>
+    <string name="order_release"> sipariş onayı</string>
+    <string name="Payment_done"> ödeme tamamlandı</string>
+    <string name="Cancel_order"> siparişi iptal edin</string>
+    <string name="paymentTip4"> Bu siparişle ilgili sorularınız mı var? </string>
+    <string name="paymentTip5"> itiraz etmem için beni yönlendir</string>
+    <string name="Download_failed"> indirme başarısız oldu</string>
+    <string name="paymentTip6">Lütfen işlem şifresini girin</string>
+    <string name="Warm_prompt"> Sıcak hatırlatma</string>
+    <string name="paymentTip7">Siparişi iptal etmek üzeresiniz, devam etmek istiyor musunuz? </string>
+    <string name="paymentTip8"> Ödeme yaptığınızdan emin misiniz? </string>
+    <string name="paymentTip9">Siparişi temyiz etmek üzeresiniz, devam etmek istiyor musunuz? </string>
+    <string name="paymentTip10"> devam edin</string>
+
+    <!--C2c-->
+    <string name="text_buy_coin"> satın al</string>
+    <string name="text_sale_coin"> sat </string>
+    <string name="text_no_order"> Geçici olarak veri yok&#8230;</string>
+    <string name="text_chu_sho"> satılık</string>
+    <string name="text_gou_mai"> satın alma</string>
+    <string name="text_much_buy"> ne kadar satın almanız gerekiyor?</string>
+    <string name="text_much_sale"> ne kadar satmanız gerekiyor?</string>
+    <string name="text_to_login"> oturum açmak için</string>
+    <string name="text_deal_num"> işlem sayısı </string>
+    <string name="text_surplus_num"> kalan miktar </string>
+    <string name="text_quota"> kota</string>
+    <string name="text_quota2"> Kota:</string>
+    <string name="text_app_rate"> övgü oranı</string>
+
+    <string name="text_deal_his"> geçmiş işlemler</string>
+    <string name="text_ad_mes"> Reklam mesajı:</string>
+    <string name="text_warn"> işlem hatırlatıcısı</string>
+    <string name="text_warn_one"> 1. Lütfen işlem yapmadan önce satıcının işlem bilgileri hakkında daha fazla bilgi edinin. </string>
+    <string name="text_warn_two"> 2. Lütfen platform üzerinden iletişim kurun ve ilgili sohbet kayıtlarını saklayın. </string>
+    <string name="text_warn_three">3. Bir işlem anlaşmazlığıyla karşılaşırsanız, lütfen platformun sağ üst köşesinden sorunu çözmeye yardımcı olun. </string>
+
+    <!--Satın alma reklamı sonrası-->
+    <string name="text_ad_change"> reklamı değiştirin </string>
+    <string name="text_change"> değiştir </string>
+    <string name="text_ad_title"> Satın alma reklamı yayınlayın</string>
+    <string name="text_ad_titles"> reklam yayınlayın ve satın</string>
+    <string name="text_ad_select"> lütfen seçin</string>
+    <string name="text_ad_bi"> para birimini seçin </string>
+    <string name="text_ad_place"> konum</string>
+    <string name="text_ad_type"> para birimi türü</string>
+    <string name="text_ad_guo"> Ülkeye göre otomatik seçim</string>
+    <string name="text_ad_price_type"> fiyat türü</string>
+    <string name="text_ad_price_one"> sabit fiyat</string>
+    <string name="text_ad_price_two"> gerçek zamanlı fiyat</string>
+    <string name="text_ad_yi_jia"> premium </string>
+    <string name="text_ad_yi_one"> Sabit bir fiyata, prim girmenize gerek yok</string>
+    <string name="text_ad_yi_two"> Piyasa fiyatının taşma oranına göre </string>
+    <string name="text_ad_jiao_yi"> işlem fiyatı</string>
+    <string name="text_ad_jiao_one"> Lütfen işlem fiyatını girin</string>
+    <string name="text_ad_jiao_two">, piyasa fiyatına ve prime göre otomatik olarak hesaplanır </string>
+    <string name="text_ad_min"> minimum miktar</string>
+    <string name="text_ad_min_msg"> her işlemin minimum limiti</string>
+    <string name="text_ad_max"> maksimum miktar</string>
+    <string name="text_ad_max_msg"> her işlemin maksimum limiti</string>
+    <string name="text_ad_buy_num"> satın alma miktarı</string>
+    <string name="text_ad_sell_num"> satılan miktar</string>
+    <string name="text_ad_buy_num_msg"> işlem sayısı</string>
+    <string name="text_ad_shou"> Toplama yöntemi</string>
+    <string name="text_ad_fu_time"> son ödeme tarihi</string>
+    <string name="text_ad_fu_hint"> Lütfen ödeme süresini seçin</string>
+    <string name="text_ad_minu"> dakika</string>
+    <string name="text_ad_money"> fon şifresi</string>
+    <string name="text_ad_money_hint"> lütfen fon şifresini girin</string>
+    <string name="text_ad_hui_fu"> Otomatik olarak yanıtlanıp yanıtlanmayacağı </string>
+    <string name="text_ad_y"> Evet</string>
+    <string name="text_ad_n"> Hayır</string>
+    <string name="text_ad_zi_dong"> otomatik yanıt içeriği</string>
+    <string name="text_ad_zi_dong_hint"> Lütfen otomatik yanıt içeriğini girin</string>
+    <string name="text_ad"> reklam mesajı</string>
+    <string name="text_ad_hint"> lütfen reklam mesajını girin</string>
+    <string name="text_fa_bu"> yayın</string>
+    <string name="text_ad_fu_kuan"> Lütfen ödeme yöntemini seçin</string>
+
+    <string name="text_ad_entity"> Eksik reklam bilgileri! </string>
+    <string name="minLimitTip"> Minimum miktar 100 CNY\'den az olamaz</string>
+    <string name="maxLimitTip"> Maksimum miktar </string> değerinden yüksek olmamalıdır
+    <!--Güvenlik Merkezi-->
+    <string name="gesturesPassword"> hareket şifresi</string>
+    <string name="gesturesPassThirdPartTip6"> en az dört noktayı bağlayın, lütfen tekrar girin</string>
+    <string name="gesturesPassThirdPartTip7"> Lütfen hareket şifresini tekrar çizin</string>
+    <string name="set_up_success"> başarıyla kuruldu</string>
+    <string name="Abolish_success"> başarıyla iptal edildi</string>
+    <string name="Password_error"> şifre hatası</string>
+
+    <!--Ayarlar-->
+    <string name="language"> dil ayarları</string>
+    <string name="feed_back">Geri bildirim</string>
+    <string name="about_us">Hakkımızda</string>
+    <string name="simplifiedChinese"> Basitleştirilmiş Çince</string>
+    <string name="Japanese">Japonca</string>
+    <string name="versionUpdateTip"> En son sürüm yok, güncellemeye gerek yok</string>
+    <string name="versionUpdateTip2"> Güncellemenin hemen başlatılıp başlatılmayacağı? </string>
+    <string name="versionUpdateTip3"> indirme adresi mevcut değil!</string>
+    <string name="versionUpdateTip4"> indiriliyor</string>
+    <string name="versionUpdateTip5"> İndiriliyor...</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <!--Hakkımızda-->
+    <string name="gongsijianjie">Şirket profili</string>
+    <string name="weixinkefu"> WeChat müşteri hizmetleri</string>
+
+    <string name="kefu"> müşteri hizmetleri</string>
+
+    <!--Kullanıcı değiştir-->
+
+    <!--Geri bildirim-->
+    <string name="feed_message"> Fikriniz bizim için çok önemli! </string>
+    <string name="feed_et_hint"> Daha iyisini yapmamıza yardımcı olmak için değerli yorumlarınızı bırakın! </string>
+    <string name="feed_et_number_email"> cep telefonu numarası/e-posta adresi (gerekli değil)</string>
+
+    <!--Cüzdan Yönetimi-->
+    <string name="detail"> ayrıntılar</string>
+    <string name="searchAssets"> arama varlıkları </string>
+    <string name="hidden0Currency"> 0 olarak gizli para birimi</string>
+    <string name="notRaiseMoneyTip"> Platform, madeni para yatırma ve çekmeyi desteklemiyor </string>
+    <string name="availableCoin"> mevcut</string>
+    <string name="freezeCoin"> dondur </string>
+    <string name="suocang"> yayınlanacak</string>
+    <string name="mentionMoney"> Para Çekme </string>
+    <string name="chargeMoney"> jetonları doldur</string>
+    <string name="matchMoney"> eşleştirme</string>
+    <string name="activityexchange"> etkinlik değişimi </string>
+    <string name="ctcbuy">C2C satın alma </string>
+    <string name="ctcsell"> C2C satışı </string>
+    <string name="noAddAddressTip"> Şimdilik para yatırma adresi yok, lütfen bilgisayar tarafına ekleyin</string>
+    <string name="type"> tipi</string>
+    <string name="amount"> miktar</string>
+    <string name="poundage"> işlem ücreti</string>
+    <string name="detailTableViewTip"> geçici olarak işlem geçmişi yok </string>
+    <string name="MatchAmount"> çift sayısı</string>
+    <string name="MaxMatchAmount"> maksimum çift sayısı </string>
+    <string name="mentionMoneyAddress"> Para çekme adresi</string>
+    <string name="top_up"> şarj edin</string>
+    <string name="withdrawal"> Nakit çekme</string>
+    <string name="transfer"> aktar </string>
+    <string name="coinCurrencyTrading"> döviz ticareti </string>
+    <string name="FiatMoneyBuy"> yasal para birimi satın alma</string>
+    <string name="FiatMoneySell"> Fiat parası satıldı </string>
+    <string name="activitiesReward"> etkinlik ödülleri</string>
+    <string name="promotionRewards"> promosyon ödülleri</string>
+    <string name="shareOutBonus"> kâr payı </string>
+    <string name="vote"> oy</string>
+    <string name="ArtificialTop_up"> Manuel şarj </string>
+
+
+    <!--Para Yatırma-->
+    <string name="savePhoto"> QR kodunu albüme kaydedin</string>
+    <string name="copyAddress"> adresi kopyala</string>
+    <string name="unChargeMoneyTip1"> şu anda para yatırma adresi yok</string>
+    <string name="inputAddAdress"> lütfen adresi girin veya seçin</string>
+    <string name="accountNum"> alınan hesap sayısı</string>
+    <string name="addMoneyTip"> İşlem ücreti </string> cinsinden olmalıdır
+    <string name="addMoneyTip2"> çekilen minimum jeton sayısı </string>
+
+
+    <!--Reklamım-->
+    <string name="grounding"> rafta</string>
+    <string name="shelved"> raftan kaldırıldı</string>
+    <string name="limit">Sınır</string>
+
+
+    <!--Bilgilerim-->
+    <string name="account_settings"> hesap ayarları</string>
+    <string name="photo"> kişisel avatar</string>
+    <string name="binding_phone"> Bağlayıcı telefon numarası</string>
+    <string name="binding_email"> bağlayıcı posta kutusu</string>
+    <string name="binding_account"> Hesap alma</string>
+    <string name="login_password"> oturum açma parolası</string>
+    <string name="capital_password"> Fon şifresi</string>
+    <string name="capital_passwordTip"> Lütfen fon şifresini girin</string>
+    <string name="id_credit"> gerçek ad doğrulaması</string>
+    <string name="bound"> ​​​​değiştir</string>
+    <string name="bound2"> ayarlandı</string>
+    <string name="unbound"> ​​​​bağlı değil</string>
+    <string name="had_set"> değiştir </string>
+    <string name="not_set"> ayarlanmadı</string>
+    <string name="verification"> sertifikalı</string>
+    <string name="unverified"> sertifikalı değil </string>
+    <string name="creditting"> inceleniyor</string>
+    <string name="creditfail"> denetim hatası </string>
+    <string name="ali_account"> Alipay hesap numarası</string>
+    <string name="weichat_account"> WeChat hesabı</string>
+    <string name="unionpay_account"> banka kartı hesap numarası</string>
+    <string name="unionpay_accountTip"> lütfen banka kartı numarasını girin</string>
+    <string name="unionpay_accountTip2"> Lütfen banka kartı numarasını tekrar girin</string>
+    <string name="QRcode_for_receivables"> Ödeme QR kodu </string>
+    <string name="alipay_binding"> Alipay bağlaması </string>
+    <string name="bank_card_binding"> banka kartı bağlama</string>
+    <string name="bank"> Açılış bankası</string>
+    <string name="account_opening_branch"> hesap açma şubesi</string>
+    <string name="account_opening_branchTip"> Lütfen hesap açılış şubesini girin</string>
+    <string name="confirm_cardnumber"> kart numarasını onaylayın</string>
+    <string name="diff_cardnumber"> banka kartı numaraları tutarsız</string>
+    <string name="weChat_binding"> WeChat bağlaması</string>
+    <string name="binding"> bağlama</string>
+
+
+    <!--Giriş-->
+    <string name="login"> oturum açma</string>
+    <string name="regist"> kayıt</string>
+    <string name="username"> hesap numarası</string>
+    <string name="username_shuru"> lütfen telefon numarasını/e-posta adresini girin</string>
+
+    <string name="password"> şifre</string>
+    <string name="password_shuru"> lütfen şifreyi girin</string>
+    <string name="forgot_password"> Parolanızı mı unuttunuz? </string>
+    <string name="goto_regist"> Şimdi kaydolun</string>
+    <string name="goto_login"> Şimdi giriş yapın </string>
+    <string name="no_zhanghao"> BIZZAN hesabınız yok mu? </string>
+    <string name="yes_zhanghao"> Mevcut BIZZAN hesabı</string>
+
+    <!--Kayıt Ol-->
+    <string name="email_sign_up"> posta kutusu kaydı</string>
+
+    <string name="phone_sign_up"> cep telefonu numarası kaydı</string>
+    <string name="phone_number"> cep telefonu numarası</string>
+    <string name="send_code"> doğrulama kodu gönder</string>
+    <string name="re_send"> yeniden </string>
+    <string name="phone_code"> SMS doğrulama kodu</string>
+    <string name="email_code"> posta kutusu doğrulama kodu</string>
+    <string name="repeat_password"> Şifreyi tekrarla</string>
+    <string name="phone_not_correct"> cep telefonu numarası yanlış</string>
+    <string name="phone_not_correct_email"> posta kutusu yanlış</string>
+    <string name="pwd_diff"> İki parola tutarsız! </string>
+    <string name="code">Doğrulama kodu</string>
+    <string name="code_shuru"> Lütfen telefon doğrulama kodunu girin</string>
+    <string name="code_shuru_email"> Lütfen e-posta doğrulama kodunu girin</string>
+    <string name="code1_shuru"> Lütfen davetiye kodunu girin</string>
+
+
+    <!--Şifremi unuttum-->
+    <string name="email"> posta kutusu</string>
+    <string name="email_retrieve"> posta kutusu doğrulaması </string>
+    <string name="phone_retrieve"> şifremi unuttum</string>
+    <string name="email_diff"> Yanlış posta kutusu biçimi</string>
+
+
+    <!--Şarj edin-->
+    <string name="copy_success"> panoya kopyalandı!</string>
+    <!--Hakkımızda-->
+    <string name="about_1">
+BIZZAN uluslararası dijital şifreli varlık alım satım platformu kapsamlı bir dijital varlık alım satım platformudur.Dijital para meraklılarının çoğu için ücretsiz bir çevrimiçi değişim platformu sağlayan lider teknik güce, yüksek kaliteli müşteri hizmetlerine ve iyi bir kullanıcı deneyimine sahibiz. \n\n
+BIZZAN uluslararası dijital şifreli varlık alım satım platformu ayrıca dijital para birimi teknik incelemesi planlama, şifreleme algoritması ayarlama, dijital para birimi araştırma ve geliştirme ve ticaret platformu başlatma dahil olmak üzere tek noktadan blok zinciri hizmetleri sunmaktadır. \n\n
+BIZZAN uluslararası dijital kriptolu varlık ticaret platformunun yurtdışı operasyon merkezleri Singapur, Kamboçya ve Marshall\'da kuruldu. Pekin, Zhengzhou ve Shenzhen\'de üç yerel ofis var; Çin genel merkezi Hainan Lingshui Qingshuiwan Uluslararası Bilgi Endüstrisi Parkı\'nda kuruldu. \n
+    </string>
+    <string name="about_2">Dijital varlıkların mevcut gelişimi, iyi ve kötünün karışımıyla tüm hızıyla devam ediyor. BİZZAN, yüksek kaliteli dijital varlıkları tarayacak, kendi derecelendirme sisteminin oluşturduğu seçim kriterlerine göre projenin şeffaflığına ve yönetişim yapısına dikkat edecek, piyasa yatırımcılarının kararlarına atıfta bulunacak ve yüksek kalitenin değerini ortaklaşa keşfedecek. dijital varlıklar. \nFelsefemiz şudur: Burada özgürce toplanan her üye ile değer dolaşımı ve ortak yetiştirme için yüksek kaliteli bir ekolojik toprak yaratmak. \n</string>
+    <string name="about_3">BIZZAN\'ın amacı, nispeten merkezi olmayan bir ticaret platformu oluşturmaktır. Platformun çalışma ortamı, güvenli, adil ve sağlam, yenilikçi ve tekrarlanabilir bir şekilde ve sosyal ilerleme ve gelişme trendine uygun olarak gelişiyor. </string>
+
+    <string-array name="home_two_top_tab">
+        <item>İsteğe bağlı</item>
+        <item>USDT</item>
+        <item>BTC</item>
+        <item>ETH</item>
+    </string-array>
+
+    <string-array name="home_six_top_tab">
+        <item>Konum aç</item>
+        <item>Konumu kapat</item>
+    </string-array>
+
+    <string-array name="home_seven_top_tab">
+        <item>Geçmiş sonuçlar</item>
+        <item>Gerçek zamanlı piyasa fiyatı</item>
+    </string-array>
+
+    <string-array name="k_line_tab">
+        <item>Zaman paylaşımı</item>
+        <item>1 dakika</item>
+        <item>5 dakika</item>
+        <item>1 saat</item>
+        <item>1 gün</item>
+        <item>30 dakika</item>
+        <item>1 hafta</item>
+        <item>Ocak</item>
+    </string-array>
+
+    <string-array name="k_line_tab_option">
+        <item>Zaman paylaşımı</item>
+        <item>1 dakika</item>
+        <item>5 dakika</item>
+        <item>30 dakika</item>
+        <item>1 saat</item>
+        <item>1 gün</item>
+    </string-array>
+
+
+    <string-array name="order_status">
+        <item>Ödenmemiş</item>
+        <item>ödendi</item>
+        <item>tamamlandı</item>
+        <item>İptal edildi</item>
+        <item>Çekici</item>
+    </string-array>
+
+    <string-array name="ctc_payType">
+        <item>Banka kartı</item>
+        <item>Alipay</item>
+        <item>WeChat Ödeme</item>
+    </string-array>
+
+    <string-array name="ctc_payTypeBank">
+        <item>Banka kartı</item>
+    </string-array>
+
+    <string-array name="bank_name">
+
+        <item>Çin Sanayi ve Ticaret Bankası</item>
+        <item>Çin Tarım Bankası</item>
+        <item>Çin İnşaat Bankası</item>
+        <item>Çin Posta Tasarruf Bankası</item>
+        <item>Çin Tüccarlar Bankası</item>
+        <item>Çin Bankası</item>
+        <item>İletişim Bankası</item>
+        <item>Çin CITIC Bankası</item>
+        <item>Hua Xia Bankası</item>
+        <item>Çin Minsheng Bankası</item>
+        <item>Çin Guangfa Bankası</item>
+        <item>Bir Bankaya Ping Gönderme</item>
+        <item>Sanayi Bankası</item>
+        <item>Shanghai Pudong Kalkınma Bankası</item>
+        <item>Zheshang Bankası</item>
+        <item>Bohai Bankası</item>
+        <item>Hengfeng Bankası</item>
+        <item>Citibank</item>
+        <item>Standart Chartered Bank</item>
+        <item>HSBC Bank</item>
+        <item>Çin Everbright Bankası</item>
+        <item>Şanghay Bankası</item>
+        <item>Jiangsu Bankası</item>
+        <item>Chongqing Bankası</item>
+        <item>Tianjin Bankası</item>
+        <item>Xiamen Bankası</item>
+        <item>Şehir Ticaret Bankası</item>
+        <item>Kırsal Ticaret Bankası</item>
+        <item>Huishang Bankası</item>
+    </string-array>
+
+    <string-array name="timeLimit">
+
+        <item>15 dakika</item>
+        <item>30 dakika</item>
+        <item>45 dakika</item>
+        <item>60 dakika</item>
+
+    </string-array>
+
+
+    <string name="bid"> satın alma siparişi</string>
+    <string name="number">sayı</string>
+    <string name="number2"> Miktar:</string>
+    <string name="price"> fiyat</string>
+    <string name="selling"> satış emri</string>
+    <string name="time"> zaman</string>
+    <string name="direction"> yön</string>
+
+
+    <string-array name="k_line_depth">
+        <item name="depth">derinlik</item>
+        <item name="font_kline_volume">İşlem</item>
+    </string-array>
+    <string-array name="exchange_type">
+        <item name="no_select">Seçimi iptal et</item>
+        <item name="top_up">Şarj edin</item>
+        <item name="withdrawal">Çekilme</item>
+        <item name="transfer">aktarım</item>
+        <item name="coinCurrencyTrading">jeton para birimi ticareti</item>
+        <item name="FiatMoneyBuy">OTC satın al</item>
+        <item name="FiatMoneySell">OTC satışı</item>
+        <item name="activitiesReward">Etkinlik Ödülü</item>
+        <item name="promotionRewards">Promosyon Ödülleri</item>
+        <item name="shareOutBonus">Temettüler</item>
+        <item name="vote">Oy ver</item>
+        <item name="ArtificialTop_up">Manuel doldurma</item>
+        <item name="match">Airdrop</item>
+        <item name="Activity_buy">Etkinlik kullanımı</item>
+        <item name="ctc_buy">CTC satın al</item>
+        <item name="ctc_sell">CTC satışı</item>
+
+        <item name="red_out">Kırmızı zarf verildi</item>
+        <item name="red_in">Kırmızı zarf koleksiyonu</item>
+        <item name="withdrawcode_out">Kodu geri çekme</item>
+        <item name="withdrawcode_in">Kod yüklemesini geri çek</item>
+        <item name="contract_fee">Sürekli sözleşme işleme ücreti</item>
+        <item name="contract_proit">Sürekli sözleşme karı</item>
+        <item name="contract_loss">Sürekli sözleşme kaybı</item>
+        <item name="option_fail">Öngörü sözleşmesi hatası</item>
+        <item name="option_fee">Öngörü sözleşmesi prosedürleriÜcret</item>
+        <item name="option_reward">Öngörü sözleşmesi bonusu</item>
+
+    </string-array>
+    <!-- YAPILACAKLAR: Aşağıdakiler yeni eklendi -->
+
+    <!-- Giriş Yap-->
+    <string name="input_account_password"> Lütfen hesap parolasını girin! </string>
+    <string name="login_register"> giriş/kayıt</string>
+    <!-- Hareketle Doğrulama-->
+    <string name="hint"> istemi </string>
+    <string name="forget_pwd"> Hareket parolasını unuttum, tekrar oturum açmanız gerekiyor! </string>
+    <string name="go_login"> oturum açmak için</string>
+    <string name="least_four_dot"> en az 4 nokta bağlayın, lütfen tekrar girin</string>
+    <string name="pwd_ok"> Parola doğru </string>
+    <string name="input_gesture_pwd"> lütfen hareket şifresini girin</string>
+    <string name="forget_gesture_pwd"> Hareket parolasını mı unuttunuz? </string>
+    <string name="open_gesture">Paranızın güvenliği için, hareket şifresi işlevini açmak için [My]->[Güvenlik Ayarları]->[Hareket Şifresi]\'ne gitmenizi öneririm! </string>
+    <string name="no_hint"> artık </string> istemi yok
+    <string name="photo_album"> fotoğraf albümü</string>
+
+    <!-- Ana sayfa-->
+    <string name="Professional_contract">Profesyonel sözleşme</string>
+    <string name="Option_contract"> Seçenek sözleşmesi</string>
+    <string name="input_direction"> lütfen yönü girin</string>
+    <string name="input_trading"> lütfen işlem çiftini girin</string>
+    <string name="input_type"> lütfen türü girin</string>
+    <string name="start_stop_time"> başlangıç ​​ve bitiş zamanı </string>
+    <string name="reset"> sıfırla </string>
+    <string name="questions_guides_information"> sorular/kılavuzlar/bilgi</string>
+    <string name="news_events_information"> haberler/olaylar/bilgi </string>
+    <string name="announcement_center"> duyuru</string>
+    <string name="money_in_out"> RMB yatırma/çekme </string>
+    <string name="up_announcement"> listeyi artır</string>
+    <string name="down_announcement"> Azalan liste</string>
+    <string name="FiatMoney"> yasal para birimi</string>
+    <string name="input_coin"> lütfen para birimini girin</string>
+    <string name="stop_time_create_time"> başlangıç ​​ve bitiş zamanı, komisyonun oluşturulduğu zamandır</string>
+    <string name="receiving_set"> koleksiyon ayarları </string>
+
+    <!-- Benim-->
+    <string name="my_input_name"> Lütfen gerçek adınızı girin</string>
+    <string name="my_input_id"> Lütfen kimlik numarasını girin</string>
+    <string name="my_no_uploading"> Kimlik fotoğrafı </string>
+    <string name="my_no_pass"> nedeni gözden geçiremedi: </string>
+    <string name="tv_coins"> para birimi hesabı</string>
+    <string name="tv_constract"> Kalıcı hesap</string>
+
+    <string name="autonym1">Lütfen incelemeyi bekleyin! </string>
+    <string name="autonym2">Gerçek ad kimliği doğrulandı! </string>
+    <string name="autonym3">Kullanıcının süresi doldu, lütfen tekrar giriş yapın</string>
+    <string name="help_centre"> yardım</string>
+    <string name="often_issue"> genel sorunlar</string>
+    <string name="new_guide"> Acemi Rehberi</string>
+    <string name="deal_guide"> Ticaret Rehberi</string>
+    <string name="currency_data"> para birimi verileri</string>
+    <string name="market_technology"> pazar teknolojisi </string>
+    <string name="clause_protocol"> sözleşme şartları</string>
+    <string name="tv_else"> diğer </string>
+    <string name="bank_card_name"> banka kartı adı</string>
+    <string name="bank_card_phone"> banka kartı numarası</string>
+
+    <string name="my_invite"> davetiyem</string>
+    <string name="my_invite_link"> davet bağlantım</string>
+    <string name="one_friend"> birinci sınıf arkadaş</string>
+    <string name="two_friend"> iki seviyeli arkadaşlar</string>
+    <string name="commission_revenue"> komisyon geliri</string>
+    <string name="partnership_level"> ortaklık düzeyi</string>
+    <string name="legal_coin_money"> yasal para birimini altına çevir</string>
+    <string name="one_message"> kişisel bilgiler</string>
+
+    <string name="copylink"> bağlantıyı kopyala</string>
+    <string name="saveImage"> resmi kaydedin</string>
+    <string name="savelocally"> yerel olarak kaydedildi </string>
+
+
+    <!-- C2C -->
+    <string name="tv_wait_order"> bekleyen sipariş</string>
+    <string name="tv_already_order"> bir sipariş aldı</string>
+    <string name="tv_now_payment">Hemen ödeyin</string>
+    <string name="tv_payment"> ödendi</string>
+    <string name="tv_succee"> tamamlandı</string>
+    <string name="tv_cancel"> iptal edildi</string>
+    <string name="text_good"> övgü</string>
+    <string name="buy_usdt"> USDT satın al</string>
+    <string name="sell_usdt"> USDT sat</string>
+    <string name="buy_price"> satın alma fiyatı:</string>
+    <string name="buy_number"> satın alma sayısı:</string>
+    <string name="buy_type"> ödeme yöntemi:</string>
+    <string name="buy_money"> Ödeme tutarı: </string>
+    <string name="already_buy"> Siparişi verdikten sonra, lütfen 30 dakika içinde ödemeyi tamamlayın ve siparişi "ödendi" olarak işaretleyin</string>
+    <string name="sell_price"> satış fiyatı:</string>
+    <string name="sell_number"> satılan miktar: </string>
+    <string name="sell_type"> Toplama yöntemi:</string>
+    <string name="deal_notice"> işlem notları</string>
+
+    <!-- Sipariş-->
+    <string name="order_time"> sipariş zamanı </string>
+    <string name="settlement_amount"> toplam ödeme tutarı</string>
+    <string name="Payment_receipt_account"> ödeme/alıcı hesap numarası</string>
+    <string name="gather_code"> Koleksiyon kodu</string>
+    <string name="account_paid_tab"> işareti ödendi</string>
+    <string name="remove_order"> emri geri çekme </string>
+
+    <!--Sözleşme-->
+    <string name="contract"> sözleşme</string>
+    <string name="text_open_many"> birden çok açın </string>
+    <string name="text_open_null"> boş aç</string>
+    <string name="text_flatmore"> düz daha fazla</string>
+    <string name="text_flatnull"> düz hava</string>
+    <string name="text_all_model"> tam depo modu</string>
+    <string name="text_chase_model"> ambar moduna göre ambar</string>
+    <string name="text_limit_entrust"> fiyat sınırı komisyonu </string>
+    <string name="text_Market_entrust"> piyasa komisyonu </string>
+    <string name="text_plan_entrust"> plan komisyonu </string>
+    <string name="text_hold"> mevcut konum </string>
+    <string name="text_current_entrust"> geçerli yetkilendirme</string>
+    <string name="text_history_entrust"> geçmiş komisyonu </string>
+    <string name="text_entrust_details"> ayrıntıları emanet edin</string>
+    <string name="text_clear"> siparişi iptal et</string>
+    <string name="text_entrust_type"> temsilci türü</string><string name="text_enter_price_constract"> emanet edilen fiyat</string>
+    <string name="text_trigger_price_constract"> fiyatı tetikle</string>
+    <string name="text_transaction_price"> işlem fiyatı</string>
+    <string name="text_guarantee_money"> kenar boşluğu </string>
+    <string name="text_entrust_number"> emanet edilen miktar</string>
+    <string name="text_leverage"> birden çok </string> kaldıraç
+    <string name="text_earnings"> gelir </string>
+    <string name="text_earnings_rate"> getiri oranı </string>
+    <string name="text_inventory"> açık ilgi alanı </string>
+    <string name="text_Amount"> miktarı seviyelendirilebilir</string>
+    <string name="text_average_open"> Açılış pozisyonlarının ortalama fiyatı</string>
+    <string name="text_Current_margin"> mevcut kenar boşluğu </string>
+    <string name="text_margin_rate"> marj oranı </string>
+    <string name="text_compute"> Anlaşma kâr ve zararı</string>
+    <string name="ent_status1"> emanet edildi</string>
+    <string name="ent_status2"> geri çekildi</string>
+    <string name="ent_status3"> yetkilendirme başarısız oldu</string>
+    <string name="ent_status4"> Komisyon başarılı </string>
+    <string name="ent_statusblast"> Patlama </string>
+    <string name="text_open_flat"> bir pozisyonu aç/kapat</string>
+    <string name="text_open"> açık pozisyon</string>
+    <string name="text_flat"> tasfiye </string>
+    <string name="buyOpenmore"> daha fazla satın al</string>
+    <string name="sellOpennull"> açık kısa sat </string>
+    <string name="buyflatnull"> flatnull satın al</string>
+    <string name="sellflatmore"> flatmore satmak</string>
+    <string name="Openmore"> daha fazlasını açabilir:</string>
+    <string name="Opennull"> boş açılabilir:</string>
+    <string name="flatnull"> Kısa pozisyonlar kapatılabilir:</string>
+    <string name="flatmore">Birden çok konum düzleştirilebilir:</string>
+    <string name="zhang"> Zhang</string>
+    <string name="text_limit"> fiyat sınırı komisyonu</string>
+    <string name="text_Market"> piyasa komisyonu </string>
+    <string name="tv_select_condition"> Lütfen filtre koşulunu seçin</string>
+    <string name="tv_select_start_time"> Lütfen başlangıç ​​saatini seçin</string>
+    <string name="tv_select_finish_time"> Lütfen bitiş zamanını seçin</string>
+
+    <string name="input_big_buy"> Girilen miktar satın alınabilecek miktardan fazla! </string>
+    <string name="find_error"> Anormal bir hata oluştu! </string>
+    <string name="put_list_ok"> sipariş başarısı bekleniyor </string>
+    <string name="more_head"> uzun kafa</string>
+    <string name="null_head"> boş kafa</string>
+    <string name="remove_entrust"> başarıyla geri çekilmekle görevlendirildi </string>
+    <string name="default_market"> Varsayılan komisyon fiyatı piyasa fiyatıdır</string>
+    <string name="input_price_number"> lütfen fiyatı ve miktarı girin</string>
+    <string name="input_ok_buy_number"> Lütfen satın alma sayısını doğru girin</string>
+    <string name="input_ok_buy_price"> Lütfen doğru satın alma fiyatını girin</string>
+    <string name="input_ok_buy_sum"> Lütfen toplam satın alma tutarını doğru girin</string>
+    <string name="input_ok_sell_number"> lütfen satılan doğru miktarı girin</string>
+    <string name="input_ok_sell_price"> lütfen doğru satış fiyatını girin</string>
+
+
+    <string name="input_entrust_price_number"> lütfen komisyon fiyatını ve miktarını girin</string>
+    <string name="number_big_zero"> sipariş sayısı 0\'dan büyük olmalıdır</string>
+    <string name="input_ok_entrust_price"> Lütfen doğru komisyon fiyatını girin</string>
+    <string name="input_number"> lütfen numarayı girin</string>
+    <string name="entrust_num_btc"> emanet edilen miktar (BTC)</string>
+    <string name="entrust_ok_btc"> Hacim (BTC)</string>
+    <string name="price_btc"> Fiyat (BTC)</string>
+    <string name="number_btc"> numara (BTC)</string>
+    <string name="entrust_money"> emanet edilen miktar</string>
+    <string name="entrust_price"> emanet edilen fiyat:</string>
+    <string name="usdt_account"> USDT hesabı</string>
+    <string name="usable">Kullanılabilir:</string>
+    <string name="vendibility"> satılabilir:</string>
+    <string name="one_zhang"> 1 parça = </string>
+    <string name="select_multiple"> katları seçin</string>
+
+
+    <!--Cüzdan Yönetimi-->
+    <string name="tv_bi"> Para birimini seçin</string>
+    <string name="notChargeMoneyTip"> Platform şu anda para yatırmayı desteklemiyor </string>
+    <string name="notMentionMoneyTip"> Platform şu anda para çekme işlemlerini desteklemiyor </string>
+
+    <string name="red_out"> kırmızı zarf verildi</string>
+    <string name="red_in"> Kırmızı zarf koleksiyonu</string>
+    <string name="withdrawcode_out"> para çekme kodu çekme </string>
+    <string name="withdrawcode_in"> para çekme kodu yeniden yükleme </string>
+    <string name="contract_fee"> daimi sözleşme işleme ücreti</string>
+    <string name="contract_proit"> sürekli sözleşme karı </string>
+    <string name="contract_loss"> sürekli sözleşme kaybı</string>
+    <string name="option_fail"> tahmin sözleşmesi başarısızlığı </string>
+    <string name="option_fee"> sözleşme ücretlerini tahmin edin</string>
+    <string name="option_reward"> tahmini sözleşme bonusu</string>
+
+    <!--Para Yatırma-->
+    <string name="charge_record"> Madeni para yükleme kaydı</string>
+    <string name="no_remark"> açıklama yok</string>
+    <string name="now_link"> bağlanıyor</string>
+    <string name="node"> düğüm</string>
+    <string name="rush1">Minimum şarj miktarı</string>
+    <string name="rush2"> Minimum tutardan daha az yüklemeler hesaba yansıtılmayacaktır. </string>
+    <string name="rush3">Para birimi olmayan varlıkları yukarıdaki adrese şarj etmeyin, aksi takdirde varlıklar alınmayacaktır. </string>
+    <string name="rush4">Yukarıdaki adrese yeniden yükleme yaptıktan sonra, tüm blok zinciri ağ düğümünün onayına ihtiyacınız var.Genellikle, blok zinciri ana ağı 3 ağ onayından sonra kredilendirilecektir. </string>
+    <string name="rush5">Şarj adresiniz sık sık değişmeyecektir, şarj edebilirsiniz; herhangi bir değişiklik olursa, web sitesi duyurusu veya e-posta yoluyla sizi bilgilendirmek için elimizden gelenin en iyisini yapacağız. </string>
+    <string name="rush6"> Bilgilerin kurcalanmasını veya sızdırılmasını önlemek için lütfen çalışma ortamının güvenli olduğundan emin olun. </string>
+    <string name="no_rush"> Şarj adresi yok, lütfen şarj etmeyin! </string>
+    <string name="save_ok"> başarıyla kaydedildi </string>
+    <string name="create_rush"> Blok zinciri adres üretiyor, lütfen Varlıklarım arayüzünden çıkmak ve tekrar girmek için biraz bekleyin. </string>
+    <string name="rush_address"> yatırma adresi</string>
+    <string name="rush_number"> yeniden yükleme miktarı</string>
+    <string name="Waiting_money"> Para biriminin serbest bırakılması bekleniyor</string>
+    <string name="fail"> başarısız oldu</string>
+    <string name="mention_money_record"> Para çekme kaydı</string>
+    <string name="charge_money_attention"> Şarj ederken lütfen açıklamaları girin (Not)</string>
+    <string name="charge_money_notification">• Lütfen yukarıdaki adrese para birimi olmayan varlıkları yeniden yüklemeyin, aksi takdirde varlıklar alınmayacaktır. \n• Yukarıdaki adrese yeniden yükleme yaptıktan sonra, tüm blok zinciri ağ düğümünü onaylamanız gerekir. Genellikle, blok zinciri ana ağı, 3 ağ onayından sonra kredilendirilir. \n• Şarj adresiniz sık sık değişmeyecektir, şarj edebilirsiniz; herhangi bir değişiklik olursa, web sitesi duyuruları veya e-postalar aracılığıyla sizi bilgilendirmek için elimizden gelenin en iyisini yapacağız. \n• Bilgilerin kurcalanmasını veya sızdırılmasını önlemek için lütfen çalışma ortamının güvenli olduğundan emin olun. </string>
+    <string name="mention_money_time"> çekilme zamanı</string>
+    <string name="mention_money_number"> para çekme miktarı</string>
+
+
+    <!--Bilgilerim-->
+    <string name="input_Alipay"> Lütfen Alipay numarasını girin</string>
+    <string name="input_fund_pwd"> lütfen doğru fon şifresini girin</string>
+    <string name="input_code">Lütfen doğrulama kodunu girin</string>
+    <string name="input_wechat_account"> Lütfen WeChat hesabını girin</string>
+    <string name="input_qq_account"> Lütfen QQ hesap numarasını girin</string>
+    <!--Giriş-->
+    <string name="username_shuru_regist"> lütfen telefon numarasını girin</string>
+    <string name="setting_gather_type"> lütfen ödeme yönteminizi ayarlayın, lütfen gerçek ad hesabımı kullandığınızdan emin olun</string>
+    <!--Kayıt Ol-->
+    <string name="email_shuru"> Lütfen posta kutusunu girin</string>
+    <!-- Yasal para birimi-->
+    <string name="status_1">Alıcının siparişi alması bekleniyor...</string>
+    <string name="status_2"> Alıcı siparişi aldı, lütfen mümkün olan en kısa sürede ödeme yapın</string>
+    <string name="status_3">Alıcının para birimini serbest bırakması bekleniyor...</string>
+    <string name="status_4"> Tebrikler! Sipariş tamamlandı! </string>
+    <string name="status_5"> Alıcı siparişi aldı ve ödeme yapıyor...</string>
+    <string name="status_6"> Alıcı ödeme yaptı, para biriminin serbest bırakıldığını onaylayın...</string>
+    <string name="transfer_to_account"> Lütfen aşağıdaki alıcı hesaba aktarın</string>
+    <string name="receive"> aşağıdaki hesaplarınız alıcılardan havale alacak</string>
+    <string name="timed_out"> Sipariş zaman aşımına uğradı</string>
+    <string name="time_remaining"> kalan süre</string>
+    <string name="fen"> puan</string>
+    <string name="miao"> saniye</string>
+    <string name="up_appeal"> Lütfen ödemeden yarım saat sonra itirazda bulunun</string>
+    <string name="replicated"> kopyalandı</string>
+    <string name="merchants_certification"> Satıcı sertifikası</string>
+    <string name="apply_merchant"> tüccar olmak için başvurun</string>
+    <string name="publish_advertising"> reklam yayınlayın</string>
+    <string name="recheck"> tekrar gözden geçirin</string>
+    <string name="legal_agreement1"> Okudum ve kabul ediyorum</string>
+    <string name="legal_agreement2"> "Sertifikalı Satıcı Sözleşmesi" </string>
+    <string name="legal_agreement3"> Kullanıcı Sözleşmesi</string>
+    <string name="apply_immediately"> şimdi uygula</string>
+    <string name="phone"> cep telefonu</string>
+    <string name="input_phone">Lütfen telefon numarasını girin</string>
+    <string name="Currency_deposit"> Marj para birimi </string>
+    <string name="deposit_number"> marj miktarı </string>
+    <string name="my_asset_attest"> kişisel dijital varlık sertifikası </string>
+    <string name="number_asset_attest"> dijital varlık işlem sertifikası</string>
+    <string name="no_upload"> yüklenmedi</string>
+
+    <!-- web-->
+    <string name="help">Yardım</string>
+    <string name="details"> ayrıntılar</string>
+    <string name="web_url">bizzan.com</string>
+    <string name="web_tv1"> Küresel Bitcoin ticaret platformu</string>
+    <string name="web_tv2">Küresel dijital varlık alım satım platformu</string>
+    <string name="web_share"> paylaş</string>
+
+
+    <!--Reklamım-->
+    <string name="up_shelf"> rafta</string>
+    <string name="down_shelf"> kullanıma hazır</string>
+    <string name="Alipay"> Alipay</string>
+    <string name="wechat"> WeChat</string>
+    <string name="unionpay"> UnionPay</string>
+    <string name="cause"> sebep</string>
+    <string name="up_picture"> Lütfen tüm bilgilerin doldurulduğunu ve tüm resimlerin yüklendiğini onaylayın</string>
+    <string name="read_agreement"> Lütfen önce sözleşmeyi okuyun ve oku\'yu seçin </string>
+    <string name="message_list"> mesaj listesi</string>
+
+    <!--uygulama yükseltme istemi-->
+    <string name="up_app">\nAh! APP yükseltildi! \nMümkün olan en kısa sürede en son sürüme yükseltmeniz önerilir. Yükseltme yapmamanız, deneyiminizi ve finansal güvenliğinizi etkileyebilir! </string>
+
+    <!--Hakkımızda-->
+    <string name="about_title1">\nBIZZAN Hakkında\n</string>
+    <string name="about_title2">\nBIZZAN konsepti\n</string>
+    <string name="about_title3">\nBIZZAN hedefi\n</string>
+    <string name="about_title4">\nBize ulaşın\n</string>
+    <string name="about_email"> E-posta: service@bizzan.com</string>
+    <string name="about_gang">BIZZAN resmi topluluğu</string>
+
+    <!-- Kimlik Doğrulama-->
+    <string name="up_you_picture"> kimlik fotoğrafınızı çekin ve yükleyin</string>
+    <string name="look_sample_graph"> Örnek grafiği görüntülemek için tıklayın</string>
+
+    <!-- k satırı-->
+    <string name="high">yüksek</string>
+    <string name="low">düşük</string>
+
+    <string name="username_login"> hesap numarası</string>
+    <string name="username_shuru_login"> lütfen telefon numarasını/e-posta adresini girin</string>
+
+
+    <string-array name="k_line_data">
+        <item>zaman</item>
+        <item>Aç</item>
+        <item>Yüksek</item>
+        <item>düşük</item>
+        <item>al</item>
+        <item>Tutarı değiştir</item>
+        <item>Yükselt ve düş</item>
+        <item>Hacim</item>
+    </string-array>
+
+    <!-- Seçenek -->
+    <string name="option"> seçenekler</string>
+    <string name="text_use_balance"> Kullanılabilir bakiye</string>
+    <string name="text_current_delivery"> mevcut teslimat </string>
+    <string name="text_history_delivery"> geçmiş teslim </string>
+    <string name="text_buy_up_total"> toplam satın alma fiyatı artışı</string>
+    <string name="text_buy_down_total"> toplam satın alma miktarı </string>
+    <string name="text_my_storehouse"> açık pozisyonum</string>
+    <string name="text_look_up"> yükseliş </string>
+    <string name="text_look_down"> düşüş </string>
+    <string name="text_open_price"> açılış fiyatı</string>
+    <string name="text_now_price"> geçerli fiyat</string>
+    <string name="text_open_money"> açık pozisyon miktarı</string>
+    <string name="text_forecast_direction"> tahmin yönü</string>
+    <string name="text_forecast_result"> tahmin sonucu</string>
+    <string name="text_bonuses"> bonus miktarı</string>
+    <string name="text_open_fee"> açık pozisyon işleme ücreti</string>
+    <string name="text_reward_fee"> pompalama </string>
+    <string name="please_select_number"> Lütfen bahis sayısını seçin</string>
+    <string name="use_money_dissatisfy"> mevcut bakiye yetersiz! </string>
+    <string name="nos">第</string>
+    <string name="expect"> nokta</string>
+    <string name="forecast_cycle"> mevcut tahmin döngüsü: </string>
+    <string name="underway"> devam ediyor</string>
+    <string name="tv_open_time"> açılış saati:</string>
+    <string name="tv_open_price"> açılış fiyatı:</string>
+    <string name="tv_buy_up_total"> toplam satın alma artışı:</string>
+    <string name="tv_receive_time"> kapanış saati:</string>
+    <string name="tv_receive_price"> kapanış fiyatı:</string>
+    <string name="tv_buy_down_total"> toplam satın alma:</string>
+
+
+    <string name="submit_ok"> başarıyla gönderildi </string>
+    <string name="Account_rights"> hesap varlığı </string>
+    <string name="may_money"> kullanılabilir marj </string>
+    <string name="use_money"> marj kullandı </string>
+    <string name="freeze_money"> donmuş kenar boşluğu </string>
+    <string name="Wallet_Overturn"> Varlık aktarımı </string>
+    <string name="tv_record"> kayıt </string>
+    <string name="tv_from">Kimden</string>
+    <string name="tv_to"> için</string>
+    <string name="tv_constract_account"> kalıcı sözleşme hesabı</string>
+    <string name="tv_balance"> bakiye</string>
+    <string name="tv_currency"> para birimi türü</string>
+    <string name="tv_overturn_number"> aktarım sayısı</string>
+    <string name="tv_input_overturn_number"> Lütfen aktarım sayısını girin</string>
+    <string name="tv_overturn"> aktar </string>
+    <string name="tv_select_account"> hesap seçin</string>
+    <string name="tv_select_coin"> para birimini seçin</string>
+    <string name="tv_no_more"> artık yok </string>
+    <string name="tv_switch_more"> Lütfen ağı değiştirip tekrar deneyin veya sistem yükseltiliyor ve bakımı yapılıyor (yükseltme ilerlemesi için PC resmi web sitesine bakın). </string>
+    <string name="tv_no_network"> Cep telefonu şebekesi bağlı değil, lütfen cep telefonu şebekesini kontrol edin veya şebekeyi değiştirin. </string>
+    <string name="tv_examine_network"> Lütfen cep telefonu ağını kontrol edin</string>
+    <string name="tv_quit"> Çık</string>
+    <string name="tv_visit1"> LIFE\'ın adres defteri yetkilisine erişmesine izin verin, daha iyi bir deneyim elde edebilirsiniz. </string>
+    <string name="tv_visit2"> LIFE\'ın kamera izinlerini açmasına izin verin, daha iyi bir deneyim elde edebilirsiniz. </string>
+    <string name="tv_fill_number"> Lütfen sayıyı girin</string>
+    <string name="tv_uploading"> yüklendi</string>
+    <string name="tv_affirm_uploading_picture"> Lütfen tüm resimlerin yüklenip yüklenmediğini onaylayın</string>
+    <string name="text_clear_fu_kuan"> Lütfen ödeme yöntemini seçin</string>
+    <string name="no_select"> seçimi iptal et</string>
+    <string name="tv_affirm"> onayla </string>
+    <string name="tv_send_ok"> başarıyla gönderildi </string>
+    <string name="tv_send_fail"> gönderilemedi </string>
+    <string name="tv_need_address"> Para biriminin transfer adresini girmesi gerekiyor Not, lütfen onaylayın! </string>
+    <string name="tv_message_deficiency"> Bilgiler eksik! </string>
+    <string name="Parse_error"> ayrıştırma hatası</string>
+    <string name="no_choice"> geçici olarak seçmeyin</string>
+    <string name="constract"> Sürdürülebilir </string>
+    <string name="input_remark"> Lütfen geri çekme açıklamasını/Notu girin</string>
+    <string name="security_settings"> güvenlik ayarları </string>
+    <string name="my_safety"> Hesabınızın güvenliğini korumak için, lütfen alım satım işlemlerinden önce gerçek ad doğrulamasını tamamlayın! </string>
+    <string name="open_access"> talimatları açma izni</string>
+    <string name="open_address_access"> Kişilerde cep telefonu adres defteri yetkisi nasıl açılır? </string>
+    <string name="shouldfee"> ödenmesi gereken işlem ücreti</string>
+    <string name="discountfee"> işlem ücreti kesintisi</string>
+    <string name="realfee"> gerçekte ödenen işlem ücreti</string>
+    <string name="select_currency"> lütfen para birimini seçin</string>
+    <string name="discharged"> yayın</string>
+    <string name="affirm_submit"> gönderimi onaylayın</string>
+    <string name="no_free"> şu anda isteğe bağlı değil</string>
+    <string name="now_loading"> yükleniyor...</string>
+    <string name="loading_bottom"> Bir alt satırım var </string>
+    <string name="qr_code"> iki boyutlu kod</string>
+    <string name="save_qr_code"> QR kodunu doğrudan albüme kaydetmek için uzun basın</string>
+    <string name="now_loading_center"> yükleniyor</string>
+    <string name="Permission_not_open"> izni açık değil </string>
+    <string name="Permission_ok"> LIFE\'ın adres defteri izinlerine erişmesine izin verin, daha iyi bir deneyim elde edebilirsiniz. </string>
+    <string name="look_setting"> ayar yöntemini görüntüle</string>
+    <string name="share_posters"> poster paylaşma</string>
+    <string name="posters">Lütfen bir poster seçin</string>
+</resources>

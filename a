@@ -1,0 +1,125 @@
+[33mcommit 74bf98c5089bd2e7b6a209e60bc0c2f008be54a9[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Fri Oct 9 14:31:32 2020 +0800
+
+    k
+
+[33mcommit 9b778d5e5a96723f0f053b61de68f5a5014382c0[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Wed Sep 30 16:55:38 2020 +0800
+
+    修复k线
+
+[33mcommit dd5e504621ff11569adb495d53fb85df9d4d2610[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Wed Sep 30 14:28:55 2020 +0800
+
+    修复k线bug和增加k线加载功能
+
+[33mcommit ead6e096569576116f063d342c56fc9cd799bf39[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Tue Sep 29 14:03:14 2020 +0800
+
+    修复翻译
+
+[33mcommit b8f3d8b83a0cfc8b537fd3d785349bbc78beb6de[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Tue Sep 29 13:44:56 2020 +0800
+
+    修复保存后图片效果
+
+[33mcommit 4540d4928ec01bd7716d5e82b95f19cc45751fe5[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Mon Sep 28 18:58:09 2020 +0800
+
+    修复断网颜色和修改分享海报
+
+[33mcommit 8c22f1a35d194045e12b39f6a8ebc1cf6f85bd73[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Mon Sep 28 18:56:58 2020 +0800
+
+    修复手机断网提示颜色和修改分享海报
+
+[33mcommit bf349b88ec07bdc36fa9c55b0d67e3e61e4a2612[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Fri Sep 25 15:56:59 2020 +0800
+
+    修复一些问题
+
+[33mcommit d832df4aed29c765bb75fa8df92b1943fd39870b[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Fri Sep 25 15:11:38 2020 +0800
+
+    修复资产流水
+
+[33mcommit 365759466ddbe1b6eddd2985c9310ccc56e7b087[m[33m ([m[1;33mtag: 2.2[m[33m)[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Fri Sep 25 11:56:33 2020 +0800
+
+    法币问题
+
+[33mcommit 8455f7cb2a39d87c5e52fdf99901fec0ff32ac1d[m[33m ([m[1;33mtag: 2.1[m[33m)[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Thu Sep 24 18:20:47 2020 +0800
+
+    修复进入帮助出错问题
+
+[33mcommit 691d6e740071aba3552d21d2ea949f4f8c26a472[m[33m ([m[1;33mtag: 2.0[m[33m)[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Wed Sep 23 15:28:53 2020 +0800
+
+    多语言完成
+
+[33mcommit 5dbbd99bc51cfea64af7ffb8ef9a15b849d5afaf[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Fri Sep 18 16:49:56 2020 +0800
+
+    修复合约和我的资产、资产流水怎么新类型、等待翻译
+
+[33mcommit 68a5c8af11d9c5ee73aa5e83cf49a57502911224[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Fri Sep 11 15:55:48 2020 +0800
+
+    合约当前委托刷新完成
+
+[33mcommit ac1e02e70c165f8ce799afae2473f3caf601c7e0[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Fri Sep 11 11:31:15 2020 +0800
+
+    资产划转基本完成
+
+[33mcommit d31119793e0d0056487e2dee5979d4a937f22779[m[33m ([m[1;33mtag: v1.0[m[33m)[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Thu Sep 10 15:03:05 2020 +0800
+
+    合约完成 划转正在写
+
+[33mcommit 42bb452eb7bd5289a9dcf2831ca4ac7c45c63c80[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Tue Sep 8 15:54:39 2020 +0800
+
+    修复合约bug
+
+[33mcommit e6cc402f7d2498c5a2e5d24bb8807367ed19b927[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Tue Sep 8 13:36:44 2020 +0800
+
+    修复合约中撤单
+
+[33mcommit 13689bbc6c87fe4456159b6f1f6528751609139d[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Mon Sep 7 16:27:36 2020 +0800
+
+    合约部分完成
+
+[33mcommit 74b8ea83b591332a0d51ec89e4e39dc503f16265[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Fri Aug 28 18:19:07 2020 +0800
+
+    8.28 正在处理k线
+
+[33mcommit 50810ad76c09355d915e10b5bbdfeeb195da60d8[m
+Author: 仇翔 <2974037894@qq.com>
+Date:   Wed Aug 12 16:48:21 2020 +0800
+
+    第一次提交

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/btcmarket.iml" filepath="$PROJECT_DIR$/.idea/modules/btcmarket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MPChartLib/btcmarket.MPChartLib.iml" filepath="$PROJECT_DIR$/.idea/modules/MPChartLib/btcmarket.MPChartLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/btcmarket.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/btcmarket.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib-zxing/btcmarket.lib-zxing.iml" filepath="$PROJECT_DIR$/.idea/modules/lib-zxing/btcmarket.lib-zxing.iml" />
+    </modules>
+  </component>
+</project>
