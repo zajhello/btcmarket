@@ -44,4 +44,6 @@ public class GlobalConstant {
 
     // C2C交易须知
     public static final String CTC_TRADEARTICLE_ID="40";
+
+    public static final String UDUN_KEY = "isUdun";
 }

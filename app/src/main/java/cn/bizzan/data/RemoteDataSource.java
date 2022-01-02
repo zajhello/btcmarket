@@ -158,7 +158,7 @@ public class RemoteDataSource implements DataSource {
                 .addParams("password", password)
                 .addParams("country", country)
                 .addParams("superPartner", "")
-                .addParams("code",code).build().execute(new StringCallback() {
+                .addParams("code", code).build().execute(new StringCallback() {
             @Override
             public void onError(Request request, Exception e) {
                 super.onError(request, e);
@@ -225,17 +225,17 @@ public class RemoteDataSource implements DataSource {
             @Override
             public void onResponse(String response) {
                 ThreeTextInfo info = gson.fromJson(response, ThreeTextInfo.class);
-                if(info.getRobotType().equals("1")){
-                    KSelf_DataGet(symbol,from,to,resolution,dataCallback);
-                }else{
-                    KHuoBi_DataGet(symbol,from,to,resolution,dataCallback);
+                if (info.getRobotType().equals("1")) {
+                    KSelf_DataGet(symbol, from, to, resolution, dataCallback);
+                } else {
+                    KHuoBi_DataGet(symbol, from, to, resolution, dataCallback);
                 }
             }
         });
 //        KSelf_DataGet(symbol,from,to,resolution,dataCallback);
     }
 
-    public void KSelf_DataGet(String symbol, Long from, Long to, String resolution, final DataCallback dataCallback){
+    public void KSelf_DataGet(String symbol, Long from, Long to, String resolution, final DataCallback dataCallback) {
         post().url(UrlFactory.getKDataUrl())
                 .addParams("symbol", symbol).addParams("from", from + "").addParams("to", to + "").addParams("resolution", resolution + "").build().execute(new StringCallback() {
             @Override
@@ -252,7 +252,7 @@ public class RemoteDataSource implements DataSource {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     dataCallback.onDataLoaded(jsonArray);
-                    WonderfulLogUtils.logi("响应：", "响应jsonArray：" +jsonArray);
+                    WonderfulLogUtils.logi("响应：", "响应jsonArray：" + jsonArray);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     dataCallback.onDataNotAvailable(JSON_ERROR, null);
@@ -262,9 +262,9 @@ public class RemoteDataSource implements DataSource {
         });
     }
 
-    public void KHuoBi_DataGet(String symbol, Long from, Long to, String resolution, final DataCallback dataCallback){
+    public void KHuoBi_DataGet(String symbol, Long from, Long to, String resolution, final DataCallback dataCallback) {
         String period = "1min";
-        switch (resolution){
+        switch (resolution) {
             case "1":
                 period = "1min";
                 break;
@@ -292,7 +292,7 @@ public class RemoteDataSource implements DataSource {
         }
         String newSymbol0 = symbol.split("/")[0];
         String newSymbol1 = symbol.split("/")[1];
-        String newSymbol = newSymbol0.toLowerCase(Locale.ROOT)+newSymbol1.toLowerCase(Locale.ROOT);
+        String newSymbol = newSymbol0.toLowerCase(Locale.ROOT) + newSymbol1.toLowerCase(Locale.ROOT);
         WonderfulOkhttpUtils.get().url(UrlFactory.getHuoKlineData())
                 .addParams("size", "720").addParams("symbol", newSymbol).addParams("period", period).build().execute(new StringCallback() {
             @Override
@@ -308,11 +308,11 @@ public class RemoteDataSource implements DataSource {
 //                LogUtils.e("miao历史",response.toString());
                 try {
                     JSONArray jsonArrayAll = new JSONArray();
-                    KHuoBiLineBean kHuoBiLineBean = new Gson().fromJson(response,KHuoBiLineBean.class);
+                    KHuoBiLineBean kHuoBiLineBean = new Gson().fromJson(response, KHuoBiLineBean.class);
                     for (int i = kHuoBiLineBean.getData().size() - 1; i >= 0; i--) {
                         KLineBean datum = kHuoBiLineBean.getData().get(i);
                         JSONArray jsonArray = new JSONArray();
-                        jsonArray.put(datum.getId()+"000");
+                        jsonArray.put(datum.getId() + "000");
                         jsonArray.put(datum.getOpen());
                         jsonArray.put(datum.getHigh());
                         jsonArray.put(datum.getLow());
@@ -321,7 +321,7 @@ public class RemoteDataSource implements DataSource {
                         jsonArrayAll.put(jsonArray);
                     }
                     dataCallback.onDataLoaded(jsonArrayAll);
-                    WonderfulLogUtils.logi("响应：", "响应jsonArray：" +jsonArrayAll);
+                    WonderfulLogUtils.logi("响应：", "响应jsonArray：" + jsonArrayAll);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     dataCallback.onDataNotAvailable(JSON_ERROR, null);
@@ -333,7 +333,7 @@ public class RemoteDataSource implements DataSource {
 
     @Override
     public void KData_Constract(String symbol, Long from, Long to, String resolution, final DataCallback dataCallback) {
-        WonderfulLogUtils.loge("INFO", from + "   " + to+"     "+symbol+"     "+resolution);
+        WonderfulLogUtils.loge("INFO", from + "   " + to + "     " + symbol + "     " + resolution);
         post().url(UrlFactory.getKDataUrl_Constract())
                 .addParams("symbol", symbol)
                 .addParams("from", from + "")
@@ -2990,7 +2990,7 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getUdunConf(String token,final DataCallback dataCallback) {
+    public void getUdunConf(String token, final DataCallback dataCallback) {
         WonderfulOkhttpUtils.get().url(UrlFactory.getUdunConf())
                 .addParams("x-auth-token", token)
                 .build().execute(new StringCallback() {
@@ -3009,6 +3009,38 @@ public class RemoteDataSource implements DataSource {
                     if (object.optInt("code") == 0 || object.optInt("code") == 200) {
                         boolean obj = object.getBoolean("data");
                         dataCallback.onDataLoaded(obj);
+                    } else {
+                        dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getSupportCoins(String token, final DataCallback dataCallback) {
+        WonderfulOkhttpUtils.get().url(UrlFactory.getSupportCoins())
+                .addParams("x-auth-token", token)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("supportCoins获取出错", "supportCoins获取出错：" + e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("supportCoins获取回执：", "supportCoins获取回执：" + response.toString());
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 0 || object.optInt("code") == 200) {
+                        List<SupportCoin> objs = gson.fromJson(object.getJSONArray("data").toString(), new TypeToken<List<SupportCoin>>() {
+                        }.getType());
+                        dataCallback.onDataLoaded(objs);
                     } else {
                         dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
                     }

@@ -12,8 +12,13 @@ public class UrlFactory {
     public static final String host_huo_bi = UrlConfig.HUO_BI_URL;
 
     // 前台udun获取开启配置
-    public static String getUdunConf(){
+    public static String getUdunConf() {
         return host + "payment/systemConfig/udun/conf/show";
+    }
+
+    // 獲取商戶支持的幣種信息
+    public static String getSupportCoins() {
+        return host + "payment/mch/support-coins";
     }
 
     //获取充币地址
@@ -100,7 +105,6 @@ public class UrlFactory {
     public static String getAllCurrency() {
         return host + "/market/symbol-thumb";
     }
-
 
 
     /**
@@ -430,131 +434,170 @@ public class UrlFactory {
     } // 获取深度图数据
 
 
-
     public static String getVolume() {
         return host + "/market/latest-trade";
     } // 获取成交数据
-
 
 
     // C2C交易接口（承兑商版）
     public static String getCtcOrderList() {
         return host + "/uc/ctc/page-query";
     }
+
     public static String getCtcOrderDetail() {
         return host + "/uc/ctc/detail";
     }
+
     public static String getCtcOrderCancel() {
         return host + "/uc/ctc/cancel-ctc-order";
     }
+
     public static String getCtcOrderPay() {
         return host + "/uc/ctc/pay-ctc-order";
     }
-    public static String getCtcPrice() { return host + "/market/ctc-usdt"; }
+
+    public static String getCtcPrice() {
+        return host + "/market/ctc-usdt";
+    }
+
     public static String getCtcNewOrder() {
         return host + "/uc/ctc/new-ctc-order";
     }
+
     public static String getCtcSendNewOrderPhoneCode() {
         return host + "/uc/mobile/ctc/code";
     }
 
-    public static String getMyPromotion(){ return host + "/uc/promotion/mypromotion"; }
+    public static String getMyPromotion() {
+        return host + "/uc/promotion/mypromotion";
+    }
 
 
     //--------------合约---------------
     public static String getAllCurrency_Constract() {
         return host + "/swap/symbol-thumb";
     }
-    //切换仓位
-    public static String getSwitchPattern(){ return host + "swap/order/switch-pattern"; }
 
-    public static String getDetail(){ return host + "swap/wallet/detail"; }
+    //切换仓位
+    public static String getSwitchPattern() {
+        return host + "swap/order/switch-pattern";
+    }
+
+    public static String getDetail() {
+        return host + "swap/wallet/detail";
+    }
+
     //修改倍数
-    public static String getModifyLeverage(){ return host + "swap/order/modify-leverage"; }
+    public static String getModifyLeverage() {
+        return host + "swap/order/modify-leverage";
+    }
+
     //买卖  开仓
     public static String getOpen() {
         return host + "swap/order/open";
     }
+
     //买卖  平仓
     public static String getClone() {
         return host + "swap/order/close";
     }
+
     //当前委托
     public static String getEntrust() {
         return host + "swap/order/current";
     }
+
     //获取历史委托记录
     public static String getHistoryEntrus_Constract() {
         return host + "swap/order/history";
     }
+
     //撤销委托
     public static String getCancleEntrusConstracttUrl() {
         return host + "swap/order/cancel";
     }
+
     // 获取合约成交数据
     public static String getVolume_Constract() {
         return host + "/swap/latest-trade";
     }
+
     //合约账户
     public static String getWalletUrl_Constract() {
         return host + "/swap/wallet/list";
     }
+
     //查询盘口
     public static String getPlate_sixUrl() {
         return host + "/swap/exchange-plate-mini";
     }
+
     /**
      * 得到信息，来设置输入小数点位数的限制  合约
      */
     public static String getSymbolInfo_Constract() {
         return host + "/swap/symbol-info";
     }
+
     // 获取合约深度图数据
     public static String getDepth_Constract() {
         return host + "/swap/exchange-plate-full";
     }
+
     //k线
     public static String getKDataUrl_Constract() {
         return host + "/swap/history";
     }
+
     //----------资产划转-----------
     //币币账户
     public static String getWalleUsdttUrl() {
         return host + "/uc/asset/wallet/usdt";
     }
+
     //划转
     public static String getTransUrl() {
         return host + "/swap/wallet/trans";
     }
+
     //----------期权--------------
     //期权币种
     public static String getAllCurrency_Option() {
         return host + "/option/coin/coin-list";
     }
+
     //往期结果数据
     public static String getOption_History() {
         return host + "option/option/history";
     }
+
     //获取历史交割数据
     public static String getOrder_History() {
         return host + "option/order/history";
     }
+
     //要开始的预测
     public static String getOption_Starting() {
         return host + "option/option/starting";
     }
+
     //正在进行中的预测
     public static String getOption_Opening() {
         return host + "option/option/opening";
     }
+
     //获取我的开仓
     public static String getOption_Current() {
         return host + "option/order/current";
     }
+
     //看涨或者看跌
     public static String getAdd() {
         return host + "option/order/add";
     }
+
     //火币
-    public static String getHuoKlineData(){return host_huo_bi + "market/history/kline";}
+    public static String getHuoKlineData() {
+        return host_huo_bi + "market/history/kline";
+    }
 }

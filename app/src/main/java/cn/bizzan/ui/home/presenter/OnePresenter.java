@@ -68,4 +68,20 @@ public class OnePresenter implements MainContract.OnePresenter {
             }
         });
     }
+
+    @Override
+    public void getUdunConf(String token) {
+        dataRepository.getUdunConf(token,new DataSource.DataCallback() {
+            @Override
+            public void onDataLoaded(Object obj) {
+                boolean isUdun = (boolean) obj;
+                view.myUdunConfSuccess(isUdun);
+            }
+
+            @Override
+            public void onDataNotAvailable(Integer code, String toastMessage) {
+                view.myUdunConfFail();
+            }
+        });
+    }
 }

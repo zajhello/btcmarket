@@ -643,6 +643,12 @@ public class DataRepository implements DataSource {
     }
 
     @Override
+    public void getSupportCoins(String token, DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.getSupportCoins(token,dataCallback);
+        else mRemoteDataSource.getSupportCoins(token,dataCallback);
+    }
+
+    @Override
     public void myPromotion(String token, DataCallback dataCallback) {
         if (isLocal) mLocalDataSource.myPromotion(token, dataCallback);
         else mRemoteDataSource.myPromotion(token, dataCallback);

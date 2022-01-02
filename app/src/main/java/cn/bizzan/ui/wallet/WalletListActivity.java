@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -22,9 +23,12 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bizzan.R;
 import cn.bizzan.adapter.WalletListAdapter;
+import cn.bizzan.app.GlobalConstant;
+import cn.bizzan.app.Injection;
 import cn.bizzan.app.UrlFactory;
 import cn.bizzan.base.BaseActivity;
 import cn.bizzan.entity.Coin;
+import cn.bizzan.entity.SupportCoin;
 import cn.bizzan.ui.extract.ExtractActivity;
 import cn.bizzan.ui.recharge.RechargeActivity;
 import cn.bizzan.utils.SharedPreferenceInstance;
@@ -35,7 +39,7 @@ import cn.bizzan.utils.okhttp.StringCallback;
 import cn.bizzan.utils.okhttp.WonderfulOkhttpUtils;
 import okhttp3.Request;
 
-public class WalletListActivity extends BaseActivity {
+public class WalletListActivity extends BaseActivity implements WalletListContract.View {
 
     @BindView(R.id.ibBack)
     ImageButton ibBack;
@@ -48,11 +52,17 @@ public class WalletListActivity extends BaseActivity {
     private List<Coin> list;
     private WalletListAdapter adapter;
     private int type; // 1 充币  2 提币
+    private boolean isUdun;
 
-    public static void actionStart(Context context, List<Coin> coins, int type) {
+    private List<SupportCoin> supportCoins;
+
+    private WalletListContract.Presenter presenter;
+
+    public static void actionStart(Context context, List<Coin> coins, int type, boolean isUdun) {
         Intent intent = new Intent(context, WalletListActivity.class);
         Bundle mBundle = new Bundle();
         mBundle.putInt("type", type);
+        mBundle.putBoolean(GlobalConstant.UDUN_KEY, isUdun);
         mBundle.putSerializable("coins", (Serializable) coins);
         intent.putExtras(mBundle);
         context.startActivity(intent);
@@ -70,7 +80,10 @@ public class WalletListActivity extends BaseActivity {
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
+        new WalletListPresenter(Injection.provideTasksRepository(getApplicationContext()), this);
+
         Intent intent = getIntent();
+        isUdun = intent.getBooleanExtra(GlobalConstant.UDUN_KEY, false);
         list = (List<Coin>) intent.getSerializableExtra("coins");
         type = intent.getIntExtra("type", 0);
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -81,9 +94,30 @@ public class WalletListActivity extends BaseActivity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+
+                String coinName = list.get(position).getCoin().getName();
+                boolean isComprise = false;
+
+                if (supportCoins != null)
+                    for (SupportCoin coin : supportCoins) {
+                        if (TextUtils.equals(coin.getCoinName(), coinName)) {
+                            isComprise = true;
+                            break;
+                        }
+                    }
+
+                if (isUdun && !isComprise) {
+                    if (type == 1) {//充币
+                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(WalletListActivity.this, R.string.notChargeMoneyTip));
+                    } else if (type == 2) {//提币
+                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(WalletListActivity.this, R.string.notMentionMoneyTip));
+                    }
+                    return;
+                }
+
                 if (type == 1) {//充币
                     if (list.get(position).getCoin().getCanRecharge() == 0) {
-                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(WalletListActivity.this,R.string.notChargeMoneyTip));
+                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(WalletListActivity.this, R.string.notChargeMoneyTip));
                     } else {
                         if (WonderfulStringUtils.isEmpty(list.get(position).getAddress())) {
                             huoQu(list.get(position));
@@ -93,7 +127,7 @@ public class WalletListActivity extends BaseActivity {
                     }
                 } else if (type == 2) {//提币
                     if (list.get(position).getCoin().getCanWithdraw() == 0) {
-                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(WalletListActivity.this,R.string.notMentionMoneyTip));
+                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(WalletListActivity.this, R.string.notMentionMoneyTip));
                     } else {
                         ExtractActivity.actionStart(WalletListActivity.this, list.get(position));
                     }
@@ -115,7 +149,9 @@ public class WalletListActivity extends BaseActivity {
 
     @Override
     protected void loadData() {
-
+        if (isUdun) {
+            presenter.mySupportCoins(getToken());
+        }
     }
 
     @Override
@@ -172,5 +208,20 @@ public class WalletListActivity extends BaseActivity {
                 finish();
                 break;
         }
+    }
+
+    @Override
+    public void setPresenter(WalletListContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
+
+    @Override
+    public void mySupportCoinsSuccess(List<SupportCoin> obj) {
+        supportCoins = obj;
+    }
+
+    @Override
+    public void mySupportCoinsFailed() {
+
     }
 }

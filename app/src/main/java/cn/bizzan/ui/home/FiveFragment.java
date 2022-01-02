@@ -138,6 +138,8 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
     private shareApkImageAdapter adapter;
     private ArrayList<Integer> imagebitmap;
 
+    private boolean isUdun;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_five;
@@ -217,7 +219,7 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
             public void onClick(View v) {
                 if (MyApplication.getApp().isLogin()) {
                     displayLoadingPopup();
-                    WalletActivity.actionStart(getActivity());
+                    WalletActivity.actionStart(getActivity(), isUdun);
                 } else {
                     startActivityForResult(new Intent(getActivity(), LoginActivity.class), LoginActivity.RETURN_LOGIN);
                 }
@@ -493,13 +495,13 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
     }
 
     @Override
-    public void myUdunConfSuccess() {
-
+    public void myUdunConfSuccess(boolean isUdun) {
+        this.isUdun = isUdun;
     }
 
     @Override
     public void myUdunConfFail() {
-
+        isUdun = false;
     }
 
     @Override
@@ -606,7 +608,8 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
         super.onDestroyView();
         unbinder.unbind();
     }
-//user.getPromotionCode(), user.getPromotionPrefix()
+
+    //user.getPromotionCode(), user.getPromotionPrefix()
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -614,7 +617,7 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
                 if (MyApplication.getApp().isLogin()) {
                     User user = MyApplication.getApp().getCurrentUser();
                     adapter = new shareApkImageAdapter(R.layout.item_pop_five_invite, imagebitmap, user.getPromotionCode(), user.getPromotionPrefix());
-                    fivePopInvite = new FivePopInvite(getActivity(),adapter , this);
+                    fivePopInvite = new FivePopInvite(getActivity(), adapter, this);
                     fivePopInvite.showAtLocation(getActivity().findViewById(R.id.llRoot), Gravity.BOTTOM, 0, 0);
 
                 } else {
@@ -678,7 +681,7 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
         RelativeLayout rl_img = inflate.findViewById(R.id.rl_img);
         ImageView img = inflate.findViewById(R.id.img);
         ImageView iv_code_address = inflate.findViewById(R.id.iv_code_address);
-        iv_code_address.setImageBitmap(createQRCodeBitmap(user.getPromotionPrefix()+user.getPromotionCode(), 150, 150, "UTF-8", "H", "1", Color.BLACK, Color.WHITE));
+        iv_code_address.setImageBitmap(createQRCodeBitmap(user.getPromotionPrefix() + user.getPromotionCode(), 150, 150, "UTF-8", "H", "1", Color.BLACK, Color.WHITE));
         switch (index) {
             case 0:
                 img.setImageResource(R.drawable.invite1);

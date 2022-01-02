@@ -39,6 +39,7 @@ import cn.bizzan.adapter.TextWatcher;
 import cn.bizzan.adapter.WalletAdapter;
 import cn.bizzan.adapter.WalletContractAdapter;
 import cn.bizzan.adapter.WalletListAdapter;
+import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.app.Injection;
 import cn.bizzan.app.MyApplication;
 import cn.bizzan.base.BaseActivity;
@@ -129,8 +130,11 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
     private List<String> lists_chong = new ArrayList<>();
     private List<String> lists_ti = new ArrayList<>();
 
-    public static void actionStart(Context context) {
+    private boolean isUdun;
+
+    public static void actionStart(Context context, boolean isUdun) {
         Intent intent = new Intent(context, WalletActivity.class);
+        intent.putExtra(GlobalConstant.UDUN_KEY, isUdun);
         context.startActivity(intent);
     }
 
@@ -154,6 +158,7 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
+        isUdun = getIntent().getBooleanExtra(GlobalConstant.UDUN_KEY, false);
         new WalletPresenter(Injection.provideTasksRepository(getApplicationContext()), this);
         ibBack.setOnClickListener(this);
         view_back.setOnClickListener(this);
@@ -202,7 +207,7 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
             ivSee.setImageDrawable(drawable);
             SharedPreferenceInstance.getInstance().saveMoneyShowtype(2);
         } else {
-            tvAmount.setText(WonderfulMathUtils.getRundNumber(sumUsd+ sumUsd_c, 4, null));
+            tvAmount.setText(WonderfulMathUtils.getRundNumber(sumUsd + sumUsd_c, 4, null));
             tvCnyAmount.setText("≈" + WonderfulMathUtils.getRundNumber(sumCny + sumCny_c, 2, null) + "CNY");
             Drawable drawable = getResources().getDrawable(R.drawable.icon_eye_open);
             ivSee.setImageDrawable(drawable);
@@ -256,7 +261,7 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 if (coins.get(position).getCoin().getCanRecharge() == 0 && coins.get(position).getCoin().getCanWithdraw() == 0) {
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(WalletActivity.this,R.string.notRaiseMoneyTip));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(WalletActivity.this, R.string.notRaiseMoneyTip));
                 } else {
                     walletDialogFragment = WalletDialogFragment.getInstance(coins.get(position), false, WalletActivity.this);
                     walletDialogFragment.show(getSupportFragmentManager(), "WDF");
@@ -388,8 +393,8 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
                         + constract.getUsdtSellPrincipalAmount() + constract.getUsdtTotalProfitAndLoss()) * constract.getContractCoin().getUsdtRate();
             }
             if (SharedPreferenceInstance.getInstance().getMoneyShowType() == 1) {
-                tvAmount.setText(WonderfulMathUtils.getRundNumber(sumUsd+sumUsd_c, 4, null));
-                tvCnyAmount.setText("≈" + WonderfulMathUtils.getRundNumber(sumCny+sumCny_c, 2, null) + " CNY");
+                tvAmount.setText(WonderfulMathUtils.getRundNumber(sumUsd + sumUsd_c, 4, null));
+                tvCnyAmount.setText("≈" + WonderfulMathUtils.getRundNumber(sumCny + sumCny_c, 2, null) + " CNY");
             } else if (SharedPreferenceInstance.getInstance().getMoneyShowType() == 2) {
                 tvAmount.setText("********");
                 tvCnyAmount.setText("*****");
@@ -561,11 +566,11 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
                 break;
             case R.id.tv_charge://充币
 //                coins;
-                WalletListActivity.actionStart(this, coins, 1);
+                WalletListActivity.actionStart(this, coins, 1,isUdun);
 
                 break;
             case R.id.tv_Mention://提币
-                WalletListActivity.actionStart(this, coins, 2);
+                WalletListActivity.actionStart(this, coins, 2,isUdun);
                 break;
             case R.id.tx_right_bt://划转
                 OverturnActivity.actionStart(this);

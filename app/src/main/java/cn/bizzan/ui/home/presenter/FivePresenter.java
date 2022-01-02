@@ -74,7 +74,8 @@ public class FivePresenter implements MainContract.FivePresenter {
         dataRepository.getUdunConf(token,new DataSource.DataCallback() {
             @Override
             public void onDataLoaded(Object obj) {
-                view.myUdunConfSuccess();
+                boolean isUdun = (boolean) obj;
+                view.myUdunConfSuccess(isUdun);
             }
 
             @Override

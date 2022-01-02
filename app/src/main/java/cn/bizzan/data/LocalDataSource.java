@@ -504,6 +504,11 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
+    public void getSupportCoins(String token, DataCallback dataCallback) {
+
+    }
+
+    @Override
     public void myPromotion(String token, DataCallback dataCallback) {
 
     }

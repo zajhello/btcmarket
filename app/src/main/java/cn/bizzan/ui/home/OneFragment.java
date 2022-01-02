@@ -164,6 +164,8 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
     // 加载框
     private PopupWindow loadingPopup;
 
+    private boolean isUdun;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         unbinder = ButterKnife.bind(this, super.onCreateView(inflater, container, savedInstanceState));
@@ -311,7 +313,7 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
             @Override
             public void onClick(View v) {
                 if (MyApplication.getApp().isLogin()) {
-                    WalletActivity.actionStart(getActivity());
+                    WalletActivity.actionStart(getActivity(), isUdun);
                 } else {
                     startActivityForResult(new Intent(getActivity(), LoginActivity.class), LoginActivity.RETURN_LOGIN);
                 }
@@ -575,6 +577,7 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
         if (MyApplication.getApp().isLogin()) {
             presenter.myWallet(getmActivity().getToken());
             presenter.myWallet_Constract(getmActivity().getToken());
+            presenter.getUdunConf(getmActivity().getToken());
         } else {
             notLoginViewText();
         }
@@ -599,6 +602,16 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
     @Override
     public void myWalletFail(Integer code, String toastMessage) {
         WonderfulCodeUtils.checkedErrorCode(this, code, toastMessage);
+    }
+
+    @Override
+    public void myUdunConfSuccess(boolean isUdun) {
+        this.isUdun = isUdun;
+    }
+
+    @Override
+    public void myUdunConfFail() {
+        isUdun = false;
     }
 
     private void calcuTotal() {
@@ -645,16 +658,16 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
 
     private MyAdapter adapter2;
 
-    public void dataLoadedall(List<Currency> currenciesall){
+    public void dataLoadedall(List<Currency> currenciesall) {
         this.currenciesall = currenciesall;
         Collections.sort(currenciesall, new Comparator<Currency>() {
             @Override
             public int compare(Currency o1, Currency o2) {
-                if (o1.getChg() > o2.getChg()){
+                if (o1.getChg() > o2.getChg()) {
                     return -1;
-                }else if (o1.getChg() < o2.getChg()){
+                } else if (o1.getChg() < o2.getChg()) {
                     return 1;
-                }else {
+                } else {
                     return 0;
                 }
             }
@@ -662,30 +675,30 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
         List<Currency> top = new ArrayList<>();
         List<Currency> down = new ArrayList<>();
         for (int i = 0; i < currenciesall.size(); i++) {
-            if (currenciesall.get(i).getChg() > 0){
+            if (currenciesall.get(i).getChg() > 0) {
                 top.add(currenciesall.get(i));
             }
-            if (currenciesall.get(i).getChg() < 0){
+            if (currenciesall.get(i).getChg() < 0) {
                 down.add(currenciesall.get(i));
             }
         }
         this.currencies.clear();
         this.currenciesdown.clear();
-        if (top.size() > 10){
-            this.currencies.addAll(top.subList(0,10));
-        }else {
+        if (top.size() > 10) {
+            this.currencies.addAll(top.subList(0, 10));
+        } else {
             this.currencies.addAll(top);
         }
         Collections.reverse(down);
-        if (down.size() > 10){
-            this.currenciesdown.addAll(down.subList(0,10));
-        }else {
+        if (down.size() > 10) {
+            this.currenciesdown.addAll(down.subList(0, 10));
+        } else {
             this.currenciesdown.addAll(down);
         }
         top = null;
         down = null;
-        WonderfulLogUtils.logi("获取所有币种回执：top", this.currencies.size()+":" + this.currencies.toString());
-        WonderfulLogUtils.logi("获取所有币种回执：down", this.currenciesdown.size()+":" + this.currenciesdown.toString());
+        WonderfulLogUtils.logi("获取所有币种回执：top", this.currencies.size() + ":" + this.currencies.toString());
+        WonderfulLogUtils.logi("获取所有币种回执：down", this.currenciesdown.size() + ":" + this.currenciesdown.toString());
         mHomeAdapter.notifyDataSetChanged();
         mHomeAdapterdown.notifyDataSetChanged();
     }

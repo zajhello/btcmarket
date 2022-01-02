@@ -200,6 +200,8 @@ public interface DataSource {
 
     void getUdunConf(String token,final DataCallback dataCallback);
 
+    void getSupportCoins(String token,final DataCallback dataCallback);
+
     interface DataCallback {
 
         void onDataLoaded(Object obj);

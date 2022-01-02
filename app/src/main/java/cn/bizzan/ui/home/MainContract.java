@@ -12,7 +12,9 @@ import cn.bizzan.entity.SafeSetting;
 import cn.bizzan.entity.WalletConstract;
 
 import java.util.List;
+
 import org.json.JSONObject;
+
 /**
  * Created by Administrator on 2018/2/24.
  */
@@ -21,6 +23,7 @@ public interface MainContract {
     interface View extends Contract.BaseView<Presenter> {
 
         void allCurrencySuccess(Object obj);
+
         void allCurrencySuccessall(Object obj);
 
         void allCurrencyFail(Integer code, String toastMessage);
@@ -43,7 +46,11 @@ public interface MainContract {
 
     interface OnePresenter extends Contract.BasePresenter {
         void myWallet(String token);
+
         void myWallet_Constract(String token);
+
+        void getUdunConf(String token);
+
         void banners(String sysAdvertiseLocation);
     }
 
@@ -58,6 +65,10 @@ public interface MainContract {
         void myWalletSuccess_Constract(List<WalletConstract> obj);
 
         void myWalletFail(Integer code, String toastMessage);
+
+        void myUdunConfSuccess(boolean isUdun);
+
+        void myUdunConfFail();
     }
 
     interface TwoPresenter extends Contract.BasePresenter {
@@ -112,7 +123,7 @@ public interface MainContract {
 
         void myPromotionFail(Integer code, String toastMessage);
 
-        void myUdunConfSuccess();
+        void myUdunConfSuccess(boolean isUdun);
 
         void myUdunConfFail();
     }
