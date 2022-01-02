@@ -38,12 +38,12 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
-    public void signUpByPhone(String phone, String username, String password, String country, String code,String tuijianma,String challenge, String validate, String seccode, DataCallback dataCallback) {
+    public void signUpByPhone(String phone, String username, String password, String country, String code, String tuijianma, String challenge, String validate, String seccode, DataCallback dataCallback) {
 
     }
 
     @Override
-    public void signUpByEmail(String email, String password, String tuijian2,String country, String challenge, String validate, String seccode, DataCallback dataCallback) {
+    public void signUpByEmail(String email, String password, String tuijian2, String country, String challenge, String validate, String seccode, DataCallback dataCallback) {
 
     }
 
@@ -173,12 +173,12 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
-    public void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark,String mode, DataCallback dataCallback) {
+    public void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, DataCallback dataCallback) {
 
     }
 
     @Override
-    public void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark,String mode, DataCallback dataCallback) {
+    public void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, DataCallback dataCallback) {
 
     }
 
@@ -208,12 +208,12 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
-    public void extract(String token, String unit, String amount, String fee, String remark, String jyPassword, String address,String code, DataCallback dataCallback) {
+    public void extract(String token, String unit, String amount, String fee, String remark, String jyPassword, String address, String code, DataCallback dataCallback) {
 
     }
 
     @Override
-    public void allTransaction(String token, int pageNo, int pageSize,int memberId,String startTime,String endTime,String symbol,String type, DataCallback dataCallback) {
+    public void allTransaction(String token, int pageNo, int pageSize, int memberId, String startTime, String endTime, String symbol, String type, DataCallback dataCallback) {
 
     }
 
@@ -369,12 +369,12 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
-    public void getHistoryMessage(String token, String orderId, int pageNo, int pageSize,DataCallback dataCallback) {
+    public void getHistoryMessage(String token, String orderId, int pageNo, int pageSize, DataCallback dataCallback) {
 
     }
 
     @Override
-    public void getEntrustHistory(String token, String symbol,int pageNo, int pageSize, DataCallback dataCallback) {
+    public void getEntrustHistory(String token, String symbol, int pageNo, int pageSize, DataCallback dataCallback) {
 
     }
 
@@ -498,7 +498,10 @@ public class LocalDataSource implements DataSource {
 
     }
 
+    @Override
+    public void getUdunConf(String token,final DataCallback dataCallback) {
 
+    }
 
     @Override
     public void myPromotion(String token, DataCallback dataCallback) {

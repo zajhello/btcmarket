@@ -94,6 +94,8 @@ public interface MainContract {
         void safeSetting(String token);
 
         void myPromotion(String token);
+
+        void getUdunConf(String token);
     }
 
     interface FiveView extends Contract.BaseView<FivePresenter> {
@@ -109,6 +111,10 @@ public interface MainContract {
         void myPromotionSuccess(JSONObject obj);
 
         void myPromotionFail(Integer code, String toastMessage);
+
+        void myUdunConfSuccess();
+
+        void myUdunConfFail();
     }
 
     interface SixPresenter extends Contract.BasePresenter {

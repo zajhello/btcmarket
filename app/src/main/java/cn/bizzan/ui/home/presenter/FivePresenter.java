@@ -6,7 +6,9 @@ import cn.bizzan.entity.Coin;
 import cn.bizzan.entity.SafeSetting;
 
 import java.util.List;
+
 import org.json.JSONObject;
+
 /**
  * Created by Administrator on 2018/2/24.
  */
@@ -57,12 +59,27 @@ public class FivePresenter implements MainContract.FivePresenter {
         dataRepository.myPromotion(token, new DataSource.DataCallback() {
             @Override
             public void onDataLoaded(Object obj) {
-                view.myPromotionSuccess((JSONObject)obj);
+                view.myPromotionSuccess((JSONObject) obj);
             }
 
             @Override
             public void onDataNotAvailable(Integer code, String toastMessage) {
                 view.myPromotionFail(code, toastMessage);
+            }
+        });
+    }
+
+    @Override
+    public void getUdunConf(String token) {
+        dataRepository.getUdunConf(token,new DataSource.DataCallback() {
+            @Override
+            public void onDataLoaded(Object obj) {
+                view.myUdunConfSuccess();
+            }
+
+            @Override
+            public void onDataNotAvailable(Integer code, String toastMessage) {
+                view.myUdunConfFail();
             }
         });
     }

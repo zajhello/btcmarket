@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/btcmarket/app/src/main/res/layout/activity_main.xml" value="0.22735507246376813" />
+        <entry key="..\:/GitHub/btcmarket/app/src/main/res/layout/adapter_ads.xml" value="0.3140625" />
+        <entry key="..\:/GitHub/btcmarket/app/src/main/res/layout/fragment_five.xml" value="0.2857789855072464" />
         <entry key="app/src/main/res/layout-land/loading_view.xml" value="0.32135416666666666" />
         <entry key="app/src/main/res/layout/activity_language.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />

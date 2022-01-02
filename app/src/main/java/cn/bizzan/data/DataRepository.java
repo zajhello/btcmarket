@@ -28,30 +28,34 @@ public class DataRepository implements DataSource {
     }
 
     @Override
-    public void emailCode(String email,  DataCallback dataCallback) {
+    public void emailCode(String email, DataCallback dataCallback) {
         if (isLocal) mLocalDataSource.emailCode(email, dataCallback);
         else mRemoteDataSource.emailCode(email, dataCallback);
     }
 
     @Override
-    public void signUpByPhone(String phone, String username, String password, String country, String code,String tuijianma,String challenge, String validate, String seccode, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.signUpByPhone(phone, username, password, country, code,tuijianma,challenge,validate,seccode, dataCallback);
-        else mRemoteDataSource.signUpByPhone(phone, username, password, country, code,tuijianma, challenge,validate,seccode,dataCallback);
+    public void signUpByPhone(String phone, String username, String password, String country, String code, String tuijianma, String challenge, String validate, String seccode, DataCallback dataCallback) {
+        if (isLocal)
+            mLocalDataSource.signUpByPhone(phone, username, password, country, code, tuijianma, challenge, validate, seccode, dataCallback);
+        else
+            mRemoteDataSource.signUpByPhone(phone, username, password, country, code, tuijianma, challenge, validate, seccode, dataCallback);
     }
 
     @Override
-    public void signUpByEmail(String email,String password,String tuijian2, String country, String challenge, String validate, String seccode, DataCallback dataCallback) {
+    public void signUpByEmail(String email, String password, String tuijian2, String country, String challenge, String validate, String seccode, DataCallback dataCallback) {
         if (isLocal)
-            mLocalDataSource.signUpByEmail(email, password, tuijian2,country, challenge, validate, seccode, dataCallback);
-        else mRemoteDataSource.signUpByEmail(email, password, tuijian2,country, challenge, validate, seccode, dataCallback);
+            mLocalDataSource.signUpByEmail(email, password, tuijian2, country, challenge, validate, seccode, dataCallback);
+        else
+            mRemoteDataSource.signUpByEmail(email, password, tuijian2, country, challenge, validate, seccode, dataCallback);
     }
 
     @Override
     public void login(String username, String password, String challenge, String validate, String seccode, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.login(username, password, challenge, validate, seccode, dataCallback);
-        else mRemoteDataSource.login(username, password, challenge, validate, seccode, dataCallback);
+        if (isLocal)
+            mLocalDataSource.login(username, password, challenge, validate, seccode, dataCallback);
+        else
+            mRemoteDataSource.login(username, password, challenge, validate, seccode, dataCallback);
     }
-
 
 
     @Override
@@ -245,8 +249,10 @@ public class DataRepository implements DataSource {
 
     @Override
     public void RequesTrans(String token, String unit, String from, String to, String fromWalletId, String toWalletId, String amount, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.RequesTrans(token, unit,from,to,fromWalletId,toWalletId,amount,dataCallback);
-        else mRemoteDataSource.RequesTrans(token, unit,from,to,fromWalletId,toWalletId,amount, dataCallback);
+        if (isLocal)
+            mLocalDataSource.RequesTrans(token, unit, from, to, fromWalletId, toWalletId, amount, dataCallback);
+        else
+            mRemoteDataSource.RequesTrans(token, unit, from, to, fromWalletId, toWalletId, amount, dataCallback);
     }
 
     @Override
@@ -256,17 +262,19 @@ public class DataRepository implements DataSource {
     }
 
     @Override
-    public void extract(String token, String unit, String amount, String fee, String remark, String jyPassword, String address, String code,DataCallback dataCallback) {
+    public void extract(String token, String unit, String amount, String fee, String remark, String jyPassword, String address, String code, DataCallback dataCallback) {
         if (isLocal)
-            mLocalDataSource.extract(token, unit, amount, fee, remark, jyPassword, address,code, dataCallback);
+            mLocalDataSource.extract(token, unit, amount, fee, remark, jyPassword, address, code, dataCallback);
         else
-            mRemoteDataSource.extract(token, unit, amount, fee, remark, jyPassword, address,code, dataCallback);
+            mRemoteDataSource.extract(token, unit, amount, fee, remark, jyPassword, address, code, dataCallback);
     }
 
     @Override
-    public void allTransaction(String token, int pageNo, int limit,int memberId,String startTime,String endTime,String symbol,String type, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.allTransaction(token, pageNo, limit, memberId,startTime,endTime,symbol,type,dataCallback);
-        else mRemoteDataSource.allTransaction(token, pageNo, limit,memberId,startTime,endTime,symbol,type, dataCallback);
+    public void allTransaction(String token, int pageNo, int limit, int memberId, String startTime, String endTime, String symbol, String type, DataCallback dataCallback) {
+        if (isLocal)
+            mLocalDataSource.allTransaction(token, pageNo, limit, memberId, startTime, endTime, symbol, type, dataCallback);
+        else
+            mRemoteDataSource.allTransaction(token, pageNo, limit, memberId, startTime, endTime, symbol, type, dataCallback);
     }
 
     @Override
@@ -454,9 +462,10 @@ public class DataRepository implements DataSource {
     }
 
     @Override
-    public void getHistoryMessage(String token, String orderId, int pageNo, int pageSize,DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getHistoryMessage(token,orderId, pageNo,pageSize,dataCallback);
-        else mRemoteDataSource.getHistoryMessage(token,orderId,pageNo,pageSize,dataCallback);
+    public void getHistoryMessage(String token, String orderId, int pageNo, int pageSize, DataCallback dataCallback) {
+        if (isLocal)
+            mLocalDataSource.getHistoryMessage(token, orderId, pageNo, pageSize, dataCallback);
+        else mRemoteDataSource.getHistoryMessage(token, orderId, pageNo, pageSize, dataCallback);
     }
 
     @Override
@@ -486,68 +495,80 @@ public class DataRepository implements DataSource {
 
     @Override
     public void getAccountSetting(String token, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getAccountSetting(token,dataCallback);
-        else mRemoteDataSource.getAccountSetting(token,dataCallback);
+        if (isLocal) mLocalDataSource.getAccountSetting(token, dataCallback);
+        else mRemoteDataSource.getAccountSetting(token, dataCallback);
     }
 
     @Override
     public void getBindBank(String token, String bank, String branch, String jyPassword, String realName, String cardNo, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getBindBank(token,bank,branch,jyPassword,realName,cardNo,dataCallback);
-        else mRemoteDataSource.getBindBank(token,bank,branch,jyPassword,realName,cardNo,dataCallback);
+        if (isLocal)
+            mLocalDataSource.getBindBank(token, bank, branch, jyPassword, realName, cardNo, dataCallback);
+        else
+            mRemoteDataSource.getBindBank(token, bank, branch, jyPassword, realName, cardNo, dataCallback);
     }
 
     @Override
     public void getUpdateBank(String token, String bank, String branch, String jyPassword, String realName, String cardNo, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getUpdateBank(token,bank,branch,jyPassword,realName,cardNo,dataCallback);
-        else mRemoteDataSource.getUpdateBank(token,bank,branch,jyPassword,realName,cardNo,dataCallback);
+        if (isLocal)
+            mLocalDataSource.getUpdateBank(token, bank, branch, jyPassword, realName, cardNo, dataCallback);
+        else
+            mRemoteDataSource.getUpdateBank(token, bank, branch, jyPassword, realName, cardNo, dataCallback);
     }
 
     @Override
     public void getBindWeiChat(String token, String wechat, String jyPassword, String realName, String qrCodeUrl, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getBindWeiChat(token,wechat,jyPassword,realName,qrCodeUrl,dataCallback);
-        else mRemoteDataSource.getBindWeiChat(token,wechat,jyPassword,realName,qrCodeUrl,dataCallback);
+        if (isLocal)
+            mLocalDataSource.getBindWeiChat(token, wechat, jyPassword, realName, qrCodeUrl, dataCallback);
+        else
+            mRemoteDataSource.getBindWeiChat(token, wechat, jyPassword, realName, qrCodeUrl, dataCallback);
     }
 
     @Override
     public void getUpdateWeiChat(String token, String wechat, String jyPassword, String realName, String qrCodeUrl, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getUpdateWeiChat(token,wechat,jyPassword,realName,qrCodeUrl,dataCallback);
-        else mRemoteDataSource.getUpdateWeiChat(token,wechat,jyPassword,realName,qrCodeUrl,dataCallback);
+        if (isLocal)
+            mLocalDataSource.getUpdateWeiChat(token, wechat, jyPassword, realName, qrCodeUrl, dataCallback);
+        else
+            mRemoteDataSource.getUpdateWeiChat(token, wechat, jyPassword, realName, qrCodeUrl, dataCallback);
     }
 
     @Override
     public void getBindAli(String token, String ali, String jyPassword, String realName, String qrCodeUrl, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getBindAli(token,ali,jyPassword,realName,qrCodeUrl,dataCallback);
-        else mRemoteDataSource.getBindAli(token,ali,jyPassword,realName,qrCodeUrl,dataCallback);
+        if (isLocal)
+            mLocalDataSource.getBindAli(token, ali, jyPassword, realName, qrCodeUrl, dataCallback);
+        else
+            mRemoteDataSource.getBindAli(token, ali, jyPassword, realName, qrCodeUrl, dataCallback);
     }
 
     @Override
     public void getUpdateAli(String token, String ali, String jyPassword, String realName, String qrCodeUrl, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getUpdateAli(token,ali,jyPassword,realName,qrCodeUrl,dataCallback);
-        else mRemoteDataSource.getUpdateAli(token,ali,jyPassword,realName,qrCodeUrl,dataCallback);
+        if (isLocal)
+            mLocalDataSource.getUpdateAli(token, ali, jyPassword, realName, qrCodeUrl, dataCallback);
+        else
+            mRemoteDataSource.getUpdateAli(token, ali, jyPassword, realName, qrCodeUrl, dataCallback);
     }
 
     @Override
     public void getCheckMatch(String token, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getCheckMatch(token,dataCallback);
-        else mRemoteDataSource.getCheckMatch(token,dataCallback);
+        if (isLocal) mLocalDataSource.getCheckMatch(token, dataCallback);
+        else mRemoteDataSource.getCheckMatch(token, dataCallback);
     }
 
     @Override
     public void getStartMatch(String token, String amount, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getStartMatch(token,amount,dataCallback);
-        else mRemoteDataSource.getStartMatch(token,amount,dataCallback);
+        if (isLocal) mLocalDataSource.getStartMatch(token, amount, dataCallback);
+        else mRemoteDataSource.getStartMatch(token, amount, dataCallback);
     }
 
     @Override
-    public void getPromotion(String token,String page,String number, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getPromotion(token,page,number,dataCallback);
-        else mRemoteDataSource.getPromotion(token,page,number,dataCallback);
+    public void getPromotion(String token, String page, String number, DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.getPromotion(token, page, number, dataCallback);
+        else mRemoteDataSource.getPromotion(token, page, number, dataCallback);
     }
 
     @Override
-    public void getPromotionReward(String token,String page,String number, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getPromotionReward(token,page,number,dataCallback);
-        else mRemoteDataSource.getPromotionReward(token,page,number,dataCallback);
+    public void getPromotionReward(String token, String page, String number, DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.getPromotionReward(token, page, number, dataCallback);
+        else mRemoteDataSource.getPromotionReward(token, page, number, dataCallback);
     }
 
     // C2C交易处理接口（承兑商版）
@@ -583,8 +604,10 @@ public class DataRepository implements DataSource {
 
     @Override
     public void ctcNewOrder(String token, BigDecimal price, BigDecimal amount, String payType, int direction, String unit, String fundpwd, String code, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.ctcNewOrder(token, price, amount, payType, direction, unit, fundpwd, code, dataCallback);
-        else mRemoteDataSource.ctcNewOrder(token, price, amount, payType, direction, unit, fundpwd, code, dataCallback);
+        if (isLocal)
+            mLocalDataSource.ctcNewOrder(token, price, amount, payType, direction, unit, fundpwd, code, dataCallback);
+        else
+            mRemoteDataSource.ctcNewOrder(token, price, amount, payType, direction, unit, fundpwd, code, dataCallback);
     }
 
     @Override
@@ -595,8 +618,8 @@ public class DataRepository implements DataSource {
 
     @Override
     public void getDepositList(String token, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getDepositList(token,  dataCallback);
-        else mRemoteDataSource.getDepositList(token,  dataCallback);
+        if (isLocal) mLocalDataSource.getDepositList(token, dataCallback);
+        else mRemoteDataSource.getDepositList(token, dataCallback);
     }
 
     @Override
@@ -611,8 +634,16 @@ public class DataRepository implements DataSource {
         else mRemoteDataSource.myWalletUsdt(token, dataCallback);
     }
 
+
+
     @Override
-    public void myPromotion(String token, DataCallback dataCallback){
+    public void getUdunConf(String token,DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.getUdunConf(token,dataCallback);
+        else mRemoteDataSource.getUdunConf(token,dataCallback);
+    }
+
+    @Override
+    public void myPromotion(String token, DataCallback dataCallback) {
         if (isLocal) mLocalDataSource.myPromotion(token, dataCallback);
         else mRemoteDataSource.myPromotion(token, dataCallback);
     }

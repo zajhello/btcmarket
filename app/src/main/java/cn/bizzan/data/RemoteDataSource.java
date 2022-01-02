@@ -2990,6 +2990,37 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
+    public void getUdunConf(String token,final DataCallback dataCallback) {
+        WonderfulOkhttpUtils.get().url(UrlFactory.getUdunConf())
+                .addParams("x-auth-token", token)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("前台udun获取出错", "前台udun获取出错：" + e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("前台udun获取回执：", "前台udun获取回执：" + response.toString());
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 0) {
+                        Message obj = gson.fromJson(object.getJSONObject("data").toString(), Message.class);
+                        dataCallback.onDataLoaded(obj);
+                    } else {
+                        dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
     public void myPromotion(String token, final DataCallback dataCallback) {
         WonderfulOkhttpUtils.post().url(UrlFactory.getMyPromotion())
                 .addHeader("x-auth-token", token)

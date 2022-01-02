@@ -11,6 +11,11 @@ public class UrlFactory {
     public static final String host = UrlConfig.BASE_URL;
     public static final String host_huo_bi = UrlConfig.HUO_BI_URL;
 
+    // 前台udun获取开启配置
+    public static String getUdunConf(){
+        return host + "payment/systemConfig/udun/conf/show";
+    }
+
     //获取充币地址
     public static String getChongbi() {
         return host + "/uc/asset/wallet/reset-address";

@@ -192,13 +192,13 @@ public interface DataSource {
 
     void myPromotion(String token, DataCallback dataCallback);
 
-
     void getDepositList(String token, DataCallback dataCallback);
 
     void commitSellerApply(String token, String coinId, String json, DataCallback dataCallback);
 
     void myWalletUsdt(String token, DataCallback dataCallback);
 
+    void getUdunConf(String token,final DataCallback dataCallback);
 
     interface DataCallback {
 

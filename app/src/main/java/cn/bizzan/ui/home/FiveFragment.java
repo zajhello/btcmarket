@@ -423,6 +423,8 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
 
     private void loginingViewText() {
         try {
+
+            presenter.getUdunConf(getmActivity().getToken());
             presenter.myWallet(getmActivity().getToken());
             presenter.safeSetting(getmActivity().getToken());
             User user = MyApplication.getApp().getCurrentUser();
@@ -488,6 +490,16 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
     @Override
     public void myPromotionFail(Integer code, String toastMessage) {
         tvEstimatedReward.setText("-");
+    }
+
+    @Override
+    public void myUdunConfSuccess() {
+
+    }
+
+    @Override
+    public void myUdunConfFail() {
+
     }
 
     @Override
