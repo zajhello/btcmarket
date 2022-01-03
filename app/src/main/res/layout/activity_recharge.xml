@@ -84,6 +84,33 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp" />
 
+            <LinearLayout
+                android:id="@+id/usdt_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/usdt_erc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/text_orange"
+                    android:padding="10dp"
+                    android:text="ERC20"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/usdt_trc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="TRC20"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
 
             <ImageView
                 android:id="@+id/ivAddress"

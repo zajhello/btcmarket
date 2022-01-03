@@ -149,6 +149,9 @@ public class UrlFactory {
         return host + "/uc/asset/wallet/";
     }
 
+    public static String createAddress(){
+        return host + "payment/mch/address/create";
+    }
 
     public static String getAllUrl() {
         return host + "/otc/coin/all";

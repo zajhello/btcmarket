@@ -21,6 +21,7 @@ public class SharedPreferenceInstance {
     public static final String SP_KEY_MONEY_SHOW_TYPE = "SP_KEY_MONEY_SHOW_TYPE";
     private static final String SP_KEY_LOCK_PWD = "SP_KEY_LOCK_PWD";
     private static final String SP_KEY_IS_NEED_SHOW_LOCK = "SP_KEY_IS_NEED_SHOW_LOCK";
+    private static final String SP_KEY_IS_UDUN = "SP_KEY_IS_UDUN";
     private static final String SP_KEY_TOKEN = "SP_KEY_TOKEN";
     private static final String HAS_NEW_MESSAGE = "HAS_NEW_MESSAGE";
     private static final String VERSION_CODE = "VERSION_CODE";
@@ -47,6 +48,7 @@ public class SharedPreferenceInstance {
         if (mPreferences == null) return;
         mPreferences.edit().putBoolean(SP_KEY_ISFIRSTUSE, isFirstUse).apply();
     }
+
     /**
      * 保存是否是提示
      */
@@ -56,7 +58,7 @@ public class SharedPreferenceInstance {
     }
 
     public boolean getTishi() {
-        return mPreferences == null ? false : mPreferences.getBoolean("tishi",false);
+        return mPreferences == null ? false : mPreferences.getBoolean("tishi", false);
     }
 
     /**
@@ -76,7 +78,7 @@ public class SharedPreferenceInstance {
      */
     public int getLanguageCode() {
         //if (mPreferences == null) return 1;
-        return  mPreferences.getInt(SP_KEY_LANGUAGE, 1);
+        return mPreferences.getInt(SP_KEY_LANGUAGE, 1);
     }
 
 
@@ -127,6 +129,7 @@ public class SharedPreferenceInstance {
     public int getID() {
         return mPreferences == null ? 0 : mPreferences.getInt("id", 0);
     }
+
     /**
      * 保存用户token
      */
@@ -140,6 +143,21 @@ public class SharedPreferenceInstance {
      */
     public String getTOKEN() {
         return mPreferences == null ? "null" : mPreferences.getString("token", "null");
+    }
+
+    /**
+     * 获取用户token
+     */
+    public boolean getUdun() {
+        return mPreferences == null ? false : mPreferences.getBoolean(SP_KEY_IS_UDUN, false);
+    }
+
+    /**
+     * 获取用户token
+     */
+    public void setUdun(boolean isUdun) {
+        if (mPreferences == null) return;
+        mPreferences.edit().putBoolean(SP_KEY_IS_UDUN, isUdun).apply();
     }
 
     /**
@@ -190,7 +208,7 @@ public class SharedPreferenceInstance {
     /**
      * 保存新消息提示
      */
-    public void saveHasNew(boolean b){
+    public void saveHasNew(boolean b) {
         if (mPreferences == null) return;
         mPreferences.edit().putBoolean(HAS_NEW_MESSAGE, b).apply();
     }
@@ -198,14 +216,14 @@ public class SharedPreferenceInstance {
     /**
      * 获取新消息提示
      */
-    public boolean getHasNew(){
+    public boolean getHasNew() {
         return mPreferences == null ? false : mPreferences.getBoolean(HAS_NEW_MESSAGE, false);
     }
 
     /**
      * 保存版本号
      */
-    public void saveVersion(String code){
+    public void saveVersion(String code) {
         if (mPreferences == null) return;
         mPreferences.edit().putString(VERSION_CODE, code).apply();
     }
@@ -213,7 +231,7 @@ public class SharedPreferenceInstance {
     /**
      * 获取版本号
      */
-    public String getVersion(){
+    public String getVersion() {
         return mPreferences == null ? "" : mPreferences.getString(VERSION_CODE, "V1.0.0");
     }
 }

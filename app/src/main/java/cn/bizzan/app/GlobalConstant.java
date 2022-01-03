@@ -1,5 +1,7 @@
 package cn.bizzan.app;
 
+import cn.bizzan.utils.SharedPreferenceInstance;
+
 /**
  * Created by Administrator on 2017/5/5.
  */
@@ -27,7 +29,7 @@ public class GlobalConstant {
     /**
      * k线图对应tag值
      */
-    public static final int  TAG_DIVIDE_TIME = 0; // 分时图
+    public static final int TAG_DIVIDE_TIME = 0; // 分时图
     public static final int TAG_ONE_MINUTE = 1; // 1分钟
     public static final int TAG_FIVE_MINUTE = 2; // 5分钟
     public static final int TAG_AN_HOUR = 3; // 1小时
@@ -38,12 +40,16 @@ public class GlobalConstant {
 
 
     //用户注册协议
-    public static final String USER_AGREEMENT_ID="5";
+    public static final String USER_AGREEMENT_ID = "5";
     //商家认证协议
-    public static final String SELLER_AGREEMENT_ID="11";
+    public static final String SELLER_AGREEMENT_ID = "11";
 
     // C2C交易须知
-    public static final String CTC_TRADEARTICLE_ID="40";
+    public static final String CTC_TRADEARTICLE_ID = "40";
 
-    public static final String UDUN_KEY = "isUdun";
+
+    public static boolean isUdun() {
+        return SharedPreferenceInstance.getInstance().getUdun();
+    }
+
 }

@@ -52,17 +52,15 @@ public class WalletListActivity extends BaseActivity implements WalletListContra
     private List<Coin> list;
     private WalletListAdapter adapter;
     private int type; // 1 充币  2 提币
-    private boolean isUdun;
 
     private List<SupportCoin> supportCoins;
 
     private WalletListContract.Presenter presenter;
 
-    public static void actionStart(Context context, List<Coin> coins, int type, boolean isUdun) {
+    public static void actionStart(Context context, List<Coin> coins, int type) {
         Intent intent = new Intent(context, WalletListActivity.class);
         Bundle mBundle = new Bundle();
         mBundle.putInt("type", type);
-        mBundle.putBoolean(GlobalConstant.UDUN_KEY, isUdun);
         mBundle.putSerializable("coins", (Serializable) coins);
         intent.putExtras(mBundle);
         context.startActivity(intent);
@@ -83,7 +81,6 @@ public class WalletListActivity extends BaseActivity implements WalletListContra
         new WalletListPresenter(Injection.provideTasksRepository(getApplicationContext()), this);
 
         Intent intent = getIntent();
-        isUdun = intent.getBooleanExtra(GlobalConstant.UDUN_KEY, false);
         list = (List<Coin>) intent.getSerializableExtra("coins");
         type = intent.getIntExtra("type", 0);
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -106,7 +103,7 @@ public class WalletListActivity extends BaseActivity implements WalletListContra
                         }
                     }
 
-                if (isUdun && !isComprise) {
+                if (GlobalConstant.isUdun() && !isComprise) {
                     if (type == 1) {//充币
                         WonderfulToastUtils.showToast(WonderfulToastUtils.getString(WalletListActivity.this, R.string.notChargeMoneyTip));
                     } else if (type == 2) {//提币
@@ -149,7 +146,7 @@ public class WalletListActivity extends BaseActivity implements WalletListContra
 
     @Override
     protected void loadData() {
-        if (isUdun) {
+        if (GlobalConstant.isUdun()) {
             presenter.mySupportCoins(getToken());
         }
     }

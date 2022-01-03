@@ -164,7 +164,6 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
     // 加载框
     private PopupWindow loadingPopup;
 
-    private boolean isUdun;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -313,7 +312,7 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
             @Override
             public void onClick(View v) {
                 if (MyApplication.getApp().isLogin()) {
-                    WalletActivity.actionStart(getActivity(), isUdun);
+                    WalletActivity.actionStart(getActivity());
                 } else {
                     startActivityForResult(new Intent(getActivity(), LoginActivity.class), LoginActivity.RETURN_LOGIN);
                 }
@@ -606,12 +605,12 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
 
     @Override
     public void myUdunConfSuccess(boolean isUdun) {
-        this.isUdun = isUdun;
+        SharedPreferenceInstance.getInstance().setUdun(isUdun);
     }
 
     @Override
     public void myUdunConfFail() {
-        isUdun = false;
+
     }
 
     private void calcuTotal() {

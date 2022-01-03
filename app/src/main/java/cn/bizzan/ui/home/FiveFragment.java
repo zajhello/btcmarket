@@ -138,8 +138,6 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
     private shareApkImageAdapter adapter;
     private ArrayList<Integer> imagebitmap;
 
-    private boolean isUdun;
-
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_five;
@@ -219,7 +217,7 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
             public void onClick(View v) {
                 if (MyApplication.getApp().isLogin()) {
                     displayLoadingPopup();
-                    WalletActivity.actionStart(getActivity(), isUdun);
+                    WalletActivity.actionStart(getActivity());
                 } else {
                     startActivityForResult(new Intent(getActivity(), LoginActivity.class), LoginActivity.RETURN_LOGIN);
                 }
@@ -496,12 +494,12 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
 
     @Override
     public void myUdunConfSuccess(boolean isUdun) {
-        this.isUdun = isUdun;
+        SharedPreferenceInstance.getInstance().setUdun(isUdun);
     }
 
     @Override
     public void myUdunConfFail() {
-        isUdun = false;
+
     }
 
     @Override

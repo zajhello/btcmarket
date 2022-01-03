@@ -130,11 +130,9 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
     private List<String> lists_chong = new ArrayList<>();
     private List<String> lists_ti = new ArrayList<>();
 
-    private boolean isUdun;
 
-    public static void actionStart(Context context, boolean isUdun) {
+    public static void actionStart(Context context) {
         Intent intent = new Intent(context, WalletActivity.class);
-        intent.putExtra(GlobalConstant.UDUN_KEY, isUdun);
         context.startActivity(intent);
     }
 
@@ -158,7 +156,6 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        isUdun = getIntent().getBooleanExtra(GlobalConstant.UDUN_KEY, false);
         new WalletPresenter(Injection.provideTasksRepository(getApplicationContext()), this);
         ibBack.setOnClickListener(this);
         view_back.setOnClickListener(this);
@@ -566,11 +563,11 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
                 break;
             case R.id.tv_charge://充币
 //                coins;
-                WalletListActivity.actionStart(this, coins, 1,isUdun);
+                WalletListActivity.actionStart(this, coins, 1);
 
                 break;
             case R.id.tv_Mention://提币
-                WalletListActivity.actionStart(this, coins, 2,isUdun);
+                WalletListActivity.actionStart(this, coins, 2);
                 break;
             case R.id.tx_right_bt://划转
                 OverturnActivity.actionStart(this);
