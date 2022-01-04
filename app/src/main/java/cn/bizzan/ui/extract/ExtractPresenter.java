@@ -56,4 +56,23 @@ public class ExtractPresenter implements ExtractContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void extractViaUdun(String token, String symbol, String address, String amount, String memberId, String memberName, String memo) {
+        view.displayLoadingPopup();
+        dataRepository.extractViaUdun(token, symbol, address, amount, memberId, memberName,memo,new DataSource.DataCallback() {
+            @Override
+            public void onDataLoaded(Object obj) {
+                view.hideLoadingPopup();
+                view.extractSuccess((String) obj);
+            }
+
+            @Override
+            public void onDataNotAvailable(Integer code, String toastMessage) {
+                view.hideLoadingPopup();
+                view.extractFail(code, toastMessage);
+
+            }
+        });
+    }
 }

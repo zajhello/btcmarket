@@ -21,10 +21,12 @@ public interface ExtractContract {
 
         void extractFail(Integer code, String toastMessage);
     }
-        
+
     interface Presenter extends Contract.BasePresenter {
         void extractinfo(String token);
 
-        void extract(String token, String unit, String amount, String fee, String remark, String jyPassword, String address,String code);
+        void extract(String token, String unit, String amount, String fee, String remark, String jyPassword, String address, String code);
+
+        void extractViaUdun(String token, String symbol, String address, String amount, String memberId, String memberName, String memo);
     }
 }

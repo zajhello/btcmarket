@@ -213,6 +213,11 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
+    public void extractViaUdun(String token, String symbol, String address, String amount, String memberId, String memberName, String memo,DataCallback dataCallback) {
+
+    }
+
+    @Override
     public void allTransaction(String token, int pageNo, int pageSize, int memberId, String startTime, String endTime, String symbol, String type, DataCallback dataCallback) {
 
     }

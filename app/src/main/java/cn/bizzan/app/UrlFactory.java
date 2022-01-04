@@ -41,6 +41,10 @@ public class UrlFactory {
         return host + "/uc/withdraw/apply/code";
     }
 
+    public static String getTIBiViaUdun() {
+        return host + "payment/mch/withdraw";
+    }
+
     //获取保证金币种列表
     public static String getDepositList() {
         return host + "/uc/approve/business-auth-deposit/list";
@@ -149,7 +153,7 @@ public class UrlFactory {
         return host + "/uc/asset/wallet/";
     }
 
-    public static String createAddress(){
+    public static String createAddress() {
         return host + "payment/mch/address/create";
     }
 

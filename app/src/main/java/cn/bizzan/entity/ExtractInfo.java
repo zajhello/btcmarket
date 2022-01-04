@@ -1,5 +1,7 @@
 package cn.bizzan.entity;
 
+import android.text.TextUtils;
+
 import java.util.ArrayList;
 
 /**
@@ -20,6 +22,22 @@ public class ExtractInfo {
     private double balance;
     private ArrayList<Address> addresses;
     private int accountType;
+    private String infolink;
+
+
+    public int fee() {
+        if (TextUtils.isEmpty(infolink)) {
+            return 0;
+        }
+
+        int lastIndex = infolink.lastIndexOf("fee=");
+        if (lastIndex != -1) {
+            lastIndex += "fee=".length();
+        }
+
+        int fee = Integer.valueOf(infolink.substring(lastIndex));
+        return fee;
+    }
 
     public String getUnit() {
         return unit;
@@ -109,7 +127,9 @@ public class ExtractInfo {
         this.addresses = addresses;
     }
 
-    public int getAccountType(){ return accountType; }
+    public int getAccountType() {
+        return accountType;
+    }
 
     public void setAccountType(int accountType) {
         this.accountType = accountType;

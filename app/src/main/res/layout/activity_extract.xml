@@ -63,9 +63,9 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_marginTop="1dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -146,8 +146,8 @@
                     android:hint="@string/inputAddAdress"
                     android:maxLines="2"
                     android:text=""
-                    android:textColorHint="@color/primaryTextGray"
                     android:textColor="@color/primaryText"
+                    android:textColorHint="@color/primaryTextGray"
                     android:textSize="13sp" />
 
                 <ImageView
@@ -166,7 +166,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/primaryBackNormal"/>
+                android:background="@color/primaryBackNormal" />
 
             <TextView
                 android:id="@+id/text_remark"
@@ -208,7 +208,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/primaryBackNormal"/>
+                android:background="@color/primaryBackNormal" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -237,8 +238,8 @@
                     android:hint="@string/addMoneyTip2"
                     android:inputType="numberDecimal"
                     android:text=""
-                    android:textColorHint="@color/primaryTextGray"
                     android:textColor="@color/primaryText"
+                    android:textColorHint="@color/primaryTextGray"
                     android:textSize="14sp" />
 
                 <TextView
@@ -276,7 +277,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/primaryBackNormal"/>
+                android:background="@color/primaryBackNormal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -301,12 +302,13 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:background="@null"
+                    android:enabled="false"
                     android:gravity="center|left"
                     android:hint="0.0001"
                     android:inputType="numberDecimal"
                     android:text=""
-                    android:textColorHint="@color/primaryTextGray"
                     android:textColor="@color/primaryText"
+                    android:textColorHint="@color/primaryTextGray"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -314,7 +316,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/primaryBackNormal"/>
+                android:background="@color/primaryBackNormal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -359,7 +361,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/primaryBackNormal"/>
+                android:background="@color/primaryBackNormal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -405,14 +407,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/primaryBackNormal"/>
+                android:background="@color/primaryBackNormal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="16dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -471,7 +473,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/primaryBackNormal"/>
+                android:background="@color/primaryBackNormal" />
 
             <TextView
                 android:id="@+id/tvExtract"

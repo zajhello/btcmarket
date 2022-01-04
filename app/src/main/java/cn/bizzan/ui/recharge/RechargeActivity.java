@@ -23,6 +23,7 @@ import com.gyf.barlibrary.ImmersionBar;
 
 import cn.bizzan.R;
 import cn.bizzan.app.GlobalConstant;
+import cn.bizzan.app.MyApplication;
 import cn.bizzan.base.BaseActivity;
 import cn.bizzan.entity.CTCOrderDetail;
 import cn.bizzan.entity.Coin;
@@ -312,7 +313,7 @@ public class RechargeActivity extends BaseActivity {
         WonderfulOkhttpUtils.get().url(UrlFactory.createAddress())
                 .addParams("x-auth-token", SharedPreferenceInstance.getInstance().getTOKEN())
                 .addParams("symbol", symbol)
-                .addParams("memberId", "" + coin.getMemberId())
+                .addParams("memberId", ""+ MyApplication.getApp().getCurrentUser().getId())
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Request request, Exception e) {

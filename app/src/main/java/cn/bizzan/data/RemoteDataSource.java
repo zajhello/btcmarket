@@ -294,7 +294,10 @@ public class RemoteDataSource implements DataSource {
         String newSymbol1 = symbol.split("/")[1];
         String newSymbol = newSymbol0.toLowerCase(Locale.ROOT) + newSymbol1.toLowerCase(Locale.ROOT);
         WonderfulOkhttpUtils.get().url(UrlFactory.getHuoKlineData())
-                .addParams("size", "720").addParams("symbol", newSymbol).addParams("period", period).build().execute(new StringCallback() {
+                .addParams("size", "720")
+                .addParams("symbol", newSymbol)
+                .addParams("period", period)
+                .build().execute(new StringCallback() {
             @Override
             public void onError(Request request, Exception e) {
                 super.onError(request, e);
@@ -1243,6 +1246,43 @@ public class RemoteDataSource implements DataSource {
                 try {
                     JSONObject object = new JSONObject(response);
                     if (object.optInt("code") == 0) {
+                        dataCallback.onDataLoaded("提币成功");
+                    } else {
+                        dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void extractViaUdun(String token, String symbol, String address, String amount, String memberId, String memberName, String memo, final DataCallback dataCallback) {
+        WonderfulOkhttpUtils.get().url(UrlFactory.getTIBiViaUdun())
+                .addParams("x-auth-token", token)
+                .addParams("symbol", symbol)
+                .addParams("address", address)
+                .addParams("amount", amount)
+                .addParams("memberId", memberId)
+                .addParams("address", address)
+                .addParams("memberName", memberName)
+                .addParams("memo", memo)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("提币出错", "提币出错：" + e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("提币回执：", "提币回执：" + response.toString());
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 200) {
                         dataCallback.onDataLoaded("提币成功");
                     } else {
                         dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));

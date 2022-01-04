@@ -82,6 +82,8 @@ public interface DataSource {
 
     void extract(String token, String unit, String amount, String fee, String remark, String jyPassword, String address, String code, DataCallback dataCallback);
 
+    void extractViaUdun(String token, String symbol, String address, String amount, String memberId, String memberName, String memo,DataCallback dataCallback);
+
     void allTransaction(String token, int pageNo, int limit, int memberId, String startTime, String endTime, String symbol, String type, DataCallback dataCallback);
 
     void safeSetting(String token, DataCallback dataCallback);

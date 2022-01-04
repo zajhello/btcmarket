@@ -270,6 +270,14 @@ public class DataRepository implements DataSource {
     }
 
     @Override
+    public void extractViaUdun(String token, String symbol, String address, String amount, String memberId, String memberName, String memo, DataCallback dataCallback) {
+        if (isLocal)
+            mLocalDataSource.extractViaUdun(token, symbol, address, amount, memberId, memberName, memo, dataCallback);
+        else
+            mRemoteDataSource.extractViaUdun(token, symbol, address, amount, memberId, memberName, memo, dataCallback);
+    }
+
+    @Override
     public void allTransaction(String token, int pageNo, int limit, int memberId, String startTime, String endTime, String symbol, String type, DataCallback dataCallback) {
         if (isLocal)
             mLocalDataSource.allTransaction(token, pageNo, limit, memberId, startTime, endTime, symbol, type, dataCallback);

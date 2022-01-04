@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -19,6 +20,8 @@ import com.gyf.barlibrary.ImmersionBar;
 
 import cn.bizzan.R;
 import cn.bizzan.adapter.TextWatcher;
+import cn.bizzan.app.GlobalConstant;
+import cn.bizzan.app.MyApplication;
 import cn.bizzan.base.BaseActivity;
 import cn.bizzan.entity.Address;
 import cn.bizzan.entity.Coin;
@@ -139,6 +142,8 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
     @Override
     protected void initViews(Bundle savedInstanceState) {
         new ExtractPresenter(Injection.provideTasksRepository(getApplicationContext()), this);
+
+        etServiceFee.setEnabled(!GlobalConstant.isUdun());
         ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,19 +162,25 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
                 if (extractInfo != null)
                     AddressActivity.actionStart(ExtractActivity.this, extractInfo.getAddresses());
                 else
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(ExtractActivity.this,R.string.noAddAddressTip));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(ExtractActivity.this, R.string.noAddAddressTip));
             }
         });
         etCount.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
-                calcuFinalCount();
+                if (GlobalConstant.isUdun()) {
+                    calcuFinalCountViaUdun();
+                } else {
+                    calcuFinalCount();
+                }
             }
         });
         etServiceFee.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
-                calcuFinalCount();
+                if (!GlobalConstant.isUdun()) {
+                    calcuFinalCount();
+                }
             }
         });
         tvExtract.setOnClickListener(new View.OnClickListener() {
@@ -226,10 +237,10 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
                 try {
                     JSONObject object = new JSONObject(response);
                     if (object.optInt("code") == 0) {
-                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(ExtractActivity.this,R.string.tv_send_ok));
+                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(ExtractActivity.this, R.string.tv_send_ok));
                         fillCodeView(90 * 1000);
                     } else {
-                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(ExtractActivity.this,R.string.tv_send_fail));
+                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(ExtractActivity.this, R.string.tv_send_fail));
                         tvGetCode.setEnabled(true);
                     }
                 } catch (JSONException e) {
@@ -242,6 +253,8 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
 
     private void extract() {
         if (extractInfo == null) return;
+
+
         String address = etAddress.getText().toString();
         String unit = extractInfo.getUnit();
         String amount = etCount.getText().toString();
@@ -254,29 +267,60 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
             return;
         } else {
             if (Double.valueOf(fee) < extractInfo.getMinTxFee() || Double.valueOf(fee) > extractInfo.getMaxTxFee()) {
-                WonderfulToastUtils.showMyViewToast(WonderfulToastUtils.getString(this,R.string.addMoneyTip) + extractInfo.getMinTxFee() + "~" + extractInfo.getMaxTxFee());
+                WonderfulToastUtils.showMyViewToast(WonderfulToastUtils.getString(this, R.string.addMoneyTip) + extractInfo.getMinTxFee() + "~" + extractInfo.getMaxTxFee());
                 return;
             }
             if (extractInfo.getAccountType() == 1 && WonderfulStringUtils.isEmpty(remark)) {
-                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.tv_need_address));
+                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.tv_need_address));
                 return;
             }
             String jyPassword = etPassword.getText().toString();
-            presenter.extract(SharedPreferenceInstance.getInstance().getTOKEN(), unit, amount, fee, remark, jyPassword, address, code);
+
+            if (GlobalConstant.isUdun()) {
+                String memo = "";
+                if (TextUtils.equals(coin.getCoin().getUnit(), "XRP")) {
+                    memo = "XRP";
+                } else if (TextUtils.equals(coin.getCoin().getUnit(), "EOS")) {
+                    memo = "EOS  ";
+                }
+                presenter.extractViaUdun(SharedPreferenceInstance.getInstance().getTOKEN(), unit, address, amount, "" + MyApplication.getApp().getCurrentUser().getId(), MyApplication.getApp().getCurrentUser().getUsername(),memo);
+            } else {
+                presenter.extract(SharedPreferenceInstance.getInstance().getTOKEN(), unit, amount, fee, remark, jyPassword, address, code);
+            }
         }
     }
 
     private void calcuFinalCount() {
         if (extractInfo == null) return;
         String countStr = etCount.getText().toString();
+        double count = Double.parseDouble(countStr);
+
         String serviceStr = etServiceFee.getText().toString();
         if (WonderfulStringUtils.isEmpty(countStr, serviceStr)) return;
-        double count = Double.parseDouble(countStr);
+
         double service = Double.parseDouble(serviceStr);
         double finalCount = count - service;
         if (finalCount < 0) finalCount = 0;
         tvFinalCount.setText(WonderfulMathUtils.getRundNumber(finalCount, 4, null));
     }
+
+    private void calcuFinalCountViaUdun() {
+        if (extractInfo == null) return;
+        String countStr = etCount.getText().toString();
+        double count = Double.parseDouble(countStr);
+
+        double fee = count * extractInfo.fee() / 10000;
+        BigDecimal feeDecimal = new BigDecimal(fee);
+        double service = feeDecimal.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
+        etServiceFee.setText("" + service);
+
+        if (WonderfulStringUtils.isEmpty(countStr, "" + service)) return;
+
+        double finalCount = count - service;
+        if (finalCount < 0) finalCount = 0;
+        tvFinalCount.setText(WonderfulMathUtils.getRundNumber(finalCount, 4, null));
+    }
+
 
     @Override
     protected void obtainData() {
@@ -285,7 +329,7 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
 
     @Override
     protected void fillWidget() {
-        tvTitle.setText(coin.getCoin().getUnit() + WonderfulToastUtils.getString(this,R.string.mentionMoney));
+        tvTitle.setText(coin.getCoin().getUnit() + WonderfulToastUtils.getString(this, R.string.mentionMoney));
         tvUnit1.setText(coin.getCoin().getUnit());
         tvUnit2.setText(coin.getCoin().getUnit());
         tvUnit3.setText(coin.getCoin().getUnit());
@@ -351,7 +395,7 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
 
     private void fillView() {
         tvCanUse.setText(new BigDecimal(extractInfo.getBalance()).setScale(8, BigDecimal.ROUND_DOWN).stripTrailingZeros().toPlainString() + "");
-        etCount.setHint(WonderfulToastUtils.getString(this,R.string.addMoneyTip2) + new BigDecimal(String.valueOf(extractInfo.getMinAmount())).toPlainString());
+        etCount.setHint(WonderfulToastUtils.getString(this, R.string.addMoneyTip2) + new BigDecimal(String.valueOf(extractInfo.getMinAmount())).toPlainString());
         if (extractInfo.getAccountType() == 1) {
             text_remark.setVisibility(View.VISIBLE);
             layout_memo.setVisibility(View.VISIBLE);
