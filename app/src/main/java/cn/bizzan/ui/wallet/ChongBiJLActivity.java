@@ -11,8 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.gyf.barlibrary.ImmersionBar;
+
 import cn.bizzan.R;
+import cn.bizzan.app.GlobalConstant;
+import cn.bizzan.app.MyApplication;
+import cn.bizzan.entity.EntrustHistory;
 import cn.bizzan.ui.entrust.DropdownLayout;
 import cn.bizzan.adapter.ChongBiAdapter;
 import cn.bizzan.adapter.ShaiXuanAdapter;
@@ -54,10 +59,10 @@ public class ChongBiJLActivity extends BaseActivity {
     @BindView(R.id.view_xianshi)
     View view_xianshi;
 
-    private List<String> lists=new ArrayList<>();
-    private List<ChongBiBean.ContentBean> beans=new ArrayList<>();
-    private int page=1;
-    private String bizhong="";
+    private List<String> lists = new ArrayList<>();
+    private List<ChongBiBean.ContentBean> beans = new ArrayList<>();
+    private int page = 1;
+    private String bizhong = "";
 
     private ChongBiAdapter adapter;
 
@@ -67,7 +72,7 @@ public class ChongBiJLActivity extends BaseActivity {
     }
 
 
-    public static void actionStart(Context context,List<String> list) {
+    public static void actionStart(Context context, List<String> list) {
         Intent intent = new Intent(context, ChongBiJLActivity.class);
         intent.putStringArrayListExtra("list", (ArrayList<String>) list);
         context.startActivity(intent);
@@ -81,14 +86,20 @@ public class ChongBiJLActivity extends BaseActivity {
             isSetTitle = true;
         }
     }
+
     @Override
     protected void initViews(Bundle savedInstanceState) {
         view_xianshi.setVisibility(View.GONE);
         ArrayList<String> list = getIntent().getStringArrayListExtra("list");
-        lists=list;
-        for (int i=0;i<lists.size();i++){
-            WonderfulLogUtils.logi("miao",lists.get(i));
+        // 自己添加
+        list.add("TRCUSDT");
+
+        lists = list;
+        for (int i = 0; i < lists.size(); i++) {
+            WonderfulLogUtils.logi("miao", lists.get(i));
         }
+
+
         ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,13 +119,13 @@ public class ChongBiJLActivity extends BaseActivity {
         ibCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( dropdownLayout.isOpen()) {
+                if (dropdownLayout.isOpen()) {
                     dropdownLayout.hide();
                     Drawable drawable = getResources().getDrawable(R.drawable.icon_filter_no);
                     ibCalendar.setBackgroundDrawable(drawable);
                     listview.setVisibility(View.GONE);
                     view_xianshi.setVisibility(View.GONE);
-                }else {
+                } else {
                     dropdownLayout.show();
                     Drawable drawable = getResources().getDrawable(R.drawable.icon_filter_orange);
                     ibCalendar.setBackgroundDrawable(drawable);
@@ -124,21 +135,21 @@ public class ChongBiJLActivity extends BaseActivity {
 
             }
         });
-        listview.setAdapter(new ShaiXuanAdapter(ChongBiJLActivity.this,lists));
-      listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-          @Override
-          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              String s = lists.get(position);
-              bizhong=s;
-              dropdownLayout.hide();
-              Drawable drawable = getResources().getDrawable(R.drawable.icon_filter_no);
-              ibCalendar.setBackgroundDrawable(drawable);
-              listview.setVisibility(View.GONE);
-              view_xianshi.setVisibility(View.GONE);
-              page=1;
-              qingQiu(s);
-          }
-      });
+        listview.setAdapter(new ShaiXuanAdapter(ChongBiJLActivity.this, lists));
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s = lists.get(position);
+                bizhong = s;
+                dropdownLayout.hide();
+                Drawable drawable = getResources().getDrawable(R.drawable.icon_filter_no);
+                ibCalendar.setBackgroundDrawable(drawable);
+                listview.setVisibility(View.GONE);
+                view_xianshi.setVisibility(View.GONE);
+                page = 1;
+                qingQiu(s);
+            }
+        });
 
     }
 
@@ -154,44 +165,50 @@ public class ChongBiJLActivity extends BaseActivity {
 
     @Override
     protected void loadData() {
-        qingQiu("");
+        if (GlobalConstant.isUdun()) {
+            getQueryI("");
+        } else {
+            qingQiu("");
+        }
     }
 
-    private void qingQiu(String symbol){
+    private void qingQiu(String symbol) {
         int id1 = SharedPreferenceInstance.getInstance().getID();
-        WonderfulLogUtils.logi("miao",id1+"id");
+        WonderfulLogUtils.logi("miao", id1 + "id");
+
         WonderfulOkhttpUtils.post().url(UrlFactory.getCha())
                 .addHeader("x-auth-token", SharedPreferenceInstance.getInstance().getTOKEN())
-                .addParams("memberId",id1+"")
-                .addParams("pageNo",page+"")
-                .addParams("pageSize","40")
-                .addParams("type","0")
-                .addParams("symbol",""+symbol)
+                .addParams("memberId", id1 + "")
+                .addParams("pageNo", page + "")
+                .addParams("pageSize", "40")
+                .addParams("type", "0")
+                .addParams("symbol", "" + symbol)
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Request request, Exception e) {
-                super.onError(request,e);
+                super.onError(request, e);
                 hideLoadingPopup();
                 listview_1.stopFreshing();
                 listview_1.setVisibility(View.GONE);
                 tvMessage.setVisibility(View.VISIBLE);
             }
+
             @Override
             public void onResponse(String response) {
-                WonderfulLogUtils.logi("miao","充币记录："+response);
-                if (page==1){
+                WonderfulLogUtils.logi("miao", "充币记录：" + response);
+                if (page == 1) {
                     beans.clear();
                 }
-                if (listview_1==null){
+                if (listview_1 == null) {
                     return;
                 }
                 listview_1.stopFreshing();
                 try {
-                    JSONObject jsonObject=new JSONObject(response);
-                    Gson gson=new Gson();
-                    ChongBiBean chongBiBean = gson.fromJson(jsonObject.optString("data"),ChongBiBean.class);
+                    JSONObject jsonObject = new JSONObject(response);
+                    Gson gson = new Gson();
+                    ChongBiBean chongBiBean = gson.fromJson(jsonObject.optString("data"), ChongBiBean.class);
                     List<ChongBiBean.ContentBean> contentBeanList = chongBiBean.getContent();
-                    if (contentBeanList.size()==0&&page==1){
+                    if (contentBeanList.size() == 0 && page == 1) {
                         listview_1.setVisibility(View.GONE);
                         tvMessage.setVisibility(View.VISIBLE);
                         return;
@@ -199,20 +216,20 @@ public class ChongBiJLActivity extends BaseActivity {
                     beans.addAll(contentBeanList);
                     tvMessage.setVisibility(View.GONE);
                     listview_1.setVisibility(View.VISIBLE);
-                    adapter=new ChongBiAdapter(ChongBiJLActivity.this,beans);
+                    adapter = new ChongBiAdapter(ChongBiJLActivity.this, beans);
                     listview_1.setEveryPageItemCount(40);
                     listview_1.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                     listview_1.setOnRefreshListener(new LinListView.OnRefreshListener() {
                         @Override
                         public void onLoadMore() {
-                            page=page+1;
+                            page = page + 1;
                             qingQiu(bizhong);
                         }
 
                         @Override
                         public void onRefresh() {
-                            page=1;
+                            page = 1;
                             beans.clear();
                             qingQiu(bizhong);
                         }
@@ -224,6 +241,80 @@ public class ChongBiJLActivity extends BaseActivity {
                     e.printStackTrace();
                 }
 
+            }
+        });
+    }
+
+    private void getQueryI(String symbol) {
+        int id1 = SharedPreferenceInstance.getInstance().getID();
+        WonderfulOkhttpUtils.get().url(UrlFactory.getQueryI())
+                .addParams("x-auth-token", SharedPreferenceInstance.getInstance().getTOKEN())
+                .addParams("memberId", id1 + "")
+                .addParams("pageNo", page + "")
+                .addParams("pageSize", "40")
+                .addParams("symbol", "" + symbol)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                hideLoadingPopup();
+                listview_1.stopFreshing();
+                listview_1.setVisibility(View.GONE);
+                tvMessage.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("miao", "充币记录：" + response);
+
+                if (page == 1) {
+                    beans.clear();
+                }
+                if (listview_1 == null) {
+                    return;
+                }
+                listview_1.stopFreshing();
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (jsonObject.optInt("code") == 200) {
+                        Gson gson = new Gson();
+                        List<ChongBiBean.ContentBean> contentBeanList = gson.fromJson(jsonObject.getJSONObject("data").optString("data"), new TypeToken<List<ChongBiBean.ContentBean>>() {
+                        }.getType());
+
+                        if (contentBeanList.size() == 0 && page == 1) {
+                            listview_1.setVisibility(View.GONE);
+                            tvMessage.setVisibility(View.VISIBLE);
+                            return;
+                        }
+                        beans.addAll(contentBeanList);
+                        tvMessage.setVisibility(View.GONE);
+                        listview_1.setVisibility(View.VISIBLE);
+                        adapter = new ChongBiAdapter(ChongBiJLActivity.this, beans);
+                        listview_1.setEveryPageItemCount(40);
+                        listview_1.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                        listview_1.setOnRefreshListener(new LinListView.OnRefreshListener() {
+                            @Override
+                            public void onLoadMore() {
+                                page = page + 1;
+                                getQueryI(bizhong);
+                            }
+
+                            @Override
+                            public void onRefresh() {
+                                page = 1;
+                                beans.clear();
+                                getQueryI(bizhong);
+                            }
+                        });
+                    }
+
+                } catch (Exception e) {
+                    listview_1.setVisibility(View.GONE);
+                    tvMessage.setVisibility(View.VISIBLE);
+                    e.printStackTrace();
+                }
             }
         });
     }

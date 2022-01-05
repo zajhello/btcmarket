@@ -46,6 +46,7 @@ public class ChongBiAdapter extends LinAdapter<ChongBiBean.ContentBean> {
         TextView text_number=ViewHolders.get(convertView,R.id.text_number);
         text_number.setText(bean.getAmount()+"");
 
+
         return convertView;
     }
 }

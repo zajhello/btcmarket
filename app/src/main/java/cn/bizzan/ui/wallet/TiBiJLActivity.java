@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -11,7 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.gyf.barlibrary.ImmersionBar;
+
 import cn.bizzan.R;
+import cn.bizzan.app.GlobalConstant;
+import cn.bizzan.base.ActivityManage;
 import cn.bizzan.ui.entrust.DropdownLayout;
 import cn.bizzan.adapter.ShaiXuanAdapter;
 import cn.bizzan.adapter.TiBiAdapter;
@@ -59,6 +63,7 @@ public class TiBiJLActivity extends BaseActivity {
     private List<String> lists = new ArrayList<>();
     private List<TiBiBean> beans = new ArrayList<>();
     private int page = 0;
+    private int page2 = 1;
     private String bizhong = "";
 
     private TiBiAdapter adapter;
@@ -130,6 +135,7 @@ public class TiBiJLActivity extends BaseActivity {
                 listview.setVisibility(View.GONE);
                 view_xianshi.setVisibility(View.GONE);
                 page = 0;
+                page2 = 1;
                 qingQiu(s);
             }
         });
@@ -148,7 +154,13 @@ public class TiBiJLActivity extends BaseActivity {
 
     @Override
     protected void loadData() {
-        qingQiu("");
+        if (GlobalConstant.isUdun()) {
+            queryOut("");
+        } else {
+            qingQiu("");
+        }
+
+
     }
 
     private void qingQiu(String symbol) {
@@ -200,13 +212,13 @@ public class TiBiJLActivity extends BaseActivity {
                         int status = jsonObject3.optInt("status");
 
                         if (status == 0) {
-                            bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this,R.string.creditting) ;
+                            bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this, R.string.creditting);
                         } else if (status == 1) {
-                            bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this,R.string.Waiting_money);
+                            bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this, R.string.Waiting_money);
                         } else if (status == 2) {
-                            bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this,R.string.fail);
+                            bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this, R.string.fail);
                         } else if (status == 3) {
-                            bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this,R.string.success);
+                            bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this, R.string.success);
                         }
 
                         beans.add(bean);
@@ -239,6 +251,116 @@ public class TiBiJLActivity extends BaseActivity {
                     e.printStackTrace();
                 }
 
+            }
+        });
+    }
+
+
+    private void queryOut(String symbol) {
+
+
+        int id1 = SharedPreferenceInstance.getInstance().getID();
+        WonderfulOkhttpUtils.get().url(UrlFactory.getqueryO())
+                .addParams("x-auth-token", SharedPreferenceInstance.getInstance().getTOKEN())
+                .addParams("pageNo", page2 + "")
+                .addParams("pageSize", "40")
+                .addParams("memberId", id1 + "")
+//                .addParams("symbol", "" + symbol)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                hideLoadingPopup();
+                listview_1.stopFreshing();
+                listview_1.setVisibility(View.GONE);
+                tvMessage.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("miao", "提币记录：" + response);
+                if (page2 == 1) {
+                    beans.clear();
+                }
+                if (listview_1 == null) {
+
+                    return;
+                }
+                listview_1.stopFreshing();
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.optInt("code") == 200) {
+
+                        JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                        JSONArray content = jsonObject1.optJSONArray("data");
+
+                        if (content.length() == 0 && page2 == 1) {
+                            listview_1.setVisibility(View.GONE);
+                            tvMessage.setVisibility(View.VISIBLE);
+                            return;
+                        }
+                        for (int i = 0; i < content.length(); i++) {
+                            JSONObject jsonObject3 = content.optJSONObject(i);
+
+                            TiBiBean bean = new TiBiBean();
+                            bean.name = jsonObject3.optString("symbol");
+                            bean.dizhi = jsonObject3.optString("address");
+                            bean.time = jsonObject3.optString("createTime");
+
+
+                            String amount = jsonObject3.getString("actualAmount");
+                            if (TextUtils.isEmpty(amount) || TextUtils.equals("null", amount)) {
+                                amount = "0";
+                            }
+                            bean.number = new BigDecimal(amount).setScale(8, BigDecimal.ROUND_DOWN).stripTrailingZeros().toPlainString();
+
+                            String fee = jsonObject3.getString("myFee");
+                            if (TextUtils.isEmpty(fee) || TextUtils.equals("null", fee)) {
+                                fee = "0";
+                            }
+                            bean.shouxufei = new BigDecimal(fee).setScale(8, BigDecimal.ROUND_DOWN).stripTrailingZeros().toPlainString();
+                            int status = jsonObject3.optInt("payStatus");
+
+                            if (status == 0) {
+                                bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this, R.string.creditting);
+                            } else if (status == 1) {
+                                bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this, R.string.Waiting_money);
+                            } else if (status == 2) {
+                                bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this, R.string.fail);
+                            } else if (status == 3) {
+                                bean.zhuangtai = WonderfulToastUtils.getString(TiBiJLActivity.this, R.string.success);
+                            }
+
+                            beans.add(bean);
+                        }
+
+                        tvMessage.setVisibility(View.GONE);
+                        listview_1.setVisibility(View.VISIBLE);
+                        adapter = new TiBiAdapter(TiBiJLActivity.this, beans);
+                        listview_1.setEveryPageItemCount(40);
+                        listview_1.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                        listview_1.setOnRefreshListener(new LinListView.OnRefreshListener() {
+                            @Override
+                            public void onLoadMore() {
+                                page2 = page2 + 1;
+                                queryOut(bizhong);
+                            }
+
+                            @Override
+                            public void onRefresh() {
+                                page2 = 1;
+                                beans.clear();
+                                queryOut(bizhong);
+                            }
+                        });
+                    }
+
+                } catch (Exception e) {
+                    listview_1.setVisibility(View.GONE);
+                    tvMessage.setVisibility(View.VISIBLE);
+                    e.printStackTrace();
+                }
             }
         });
     }

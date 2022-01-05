@@ -103,6 +103,15 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
     @BindView(R.id.view_back)
     View view_back;
 
+    @BindView(R.id.usdt_group)
+    LinearLayout ll_usdt;
+    @BindView(R.id.usdt_erc)
+    TextView etc_usdt;
+    @BindView(R.id.usdt_trc)
+    TextView trc_usdt;
+
+    private boolean isTRC = false;
+
     public static void actionStart(Context context, Coin coin) {
         Intent intent = new Intent(context, ExtractActivity.class);
         intent.putExtra("coin", coin);
@@ -144,6 +153,27 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
         new ExtractPresenter(Injection.provideTasksRepository(getApplicationContext()), this);
 
         etServiceFee.setEnabled(!GlobalConstant.isUdun());
+
+
+        etc_usdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isTRC = false;
+                etc_usdt.setBackgroundResource(R.color.text_orange);
+                trc_usdt.setBackgroundResource(R.color.transparent);
+            }
+        });
+
+        trc_usdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isTRC = true;
+                trc_usdt.setBackgroundResource(R.color.text_orange);
+                etc_usdt.setBackgroundResource(R.color.transparent);
+            }
+        });
+
+
         ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -253,8 +283,6 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
 
     private void extract() {
         if (extractInfo == null) return;
-
-
         String address = etAddress.getText().toString();
         String unit = extractInfo.getUnit();
         String amount = etCount.getText().toString();
@@ -283,7 +311,14 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
                 } else if (TextUtils.equals(coin.getCoin().getUnit(), "EOS")) {
                     memo = "EOS  ";
                 }
-                presenter.extractViaUdun(SharedPreferenceInstance.getInstance().getTOKEN(), unit, address, amount, "" + MyApplication.getApp().getCurrentUser().getId(), MyApplication.getApp().getCurrentUser().getUsername(),memo);
+
+                if (TextUtils.equals(unit, "USDT")) {
+                    if (isTRC) {
+                        unit = "TRCUSDT";
+                    }
+                }
+
+                presenter.extractViaUdun(SharedPreferenceInstance.getInstance().getTOKEN(), unit, address, amount, "" + MyApplication.getApp().getCurrentUser().getId(), MyApplication.getApp().getCurrentUser().getUsername(), memo);
             } else {
                 presenter.extract(SharedPreferenceInstance.getInstance().getTOKEN(), unit, amount, fee, remark, jyPassword, address, code);
             }
@@ -325,6 +360,9 @@ public class ExtractActivity extends BaseActivity implements ExtractContract.Vie
     @Override
     protected void obtainData() {
         this.coin = (Coin) getIntent().getSerializableExtra("coin");
+        if (TextUtils.equals(this.coin.getCoin().getUnit(), "USDT")) {
+            ll_usdt.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

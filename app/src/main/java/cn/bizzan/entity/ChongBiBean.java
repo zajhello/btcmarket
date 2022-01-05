@@ -118,7 +118,7 @@ public class ChongBiBean implements Serializable {
          * discountFee : 0
          */
 
-        private int id;
+        private long id;
         private int memberId;
         private double amount;
         private String createTime;
@@ -130,11 +130,11 @@ public class ChongBiBean implements Serializable {
         private String realFee;
         private String discountFee;
 
-        public int getId() {
+        public long getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(long id) {
             this.id = id;
         }
 

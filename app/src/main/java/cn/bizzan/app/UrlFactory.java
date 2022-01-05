@@ -65,9 +65,19 @@ public class UrlFactory {
         return host + "/uc/asset/transaction/all";
     }
 
+    // 充币列表查询
+    public static String getQueryI() {
+        return host + "payment/udun/queryIn";
+    }
+
     //提币明细
     public static String getChaTiBi() {
         return host + "/uc/withdraw/record";
+    }
+
+    //提币明细
+    public static String getqueryO() {
+        return host + "payment/udun/queryOut";
     }
 
     //

@@ -97,7 +97,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/text_orange"
-                    android:padding="10dp"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingTop="3dp"
+                    android:paddingRight="@dimen/dp10"
+                    android:paddingBottom="3dp"
                     android:text="ERC20"
                     android:textColor="@color/white" />
 
@@ -105,7 +108,10 @@
                     android:id="@+id/usdt_trc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingTop="3dp"
+                    android:paddingRight="@dimen/dp10"
+                    android:paddingBottom="3dp"
                     android:text="TRC20"
                     android:textColor="@color/white" />
 
