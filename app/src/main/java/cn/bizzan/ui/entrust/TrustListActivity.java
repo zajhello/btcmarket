@@ -119,6 +119,7 @@ public class TrustListActivity extends BaseActivity implements View.OnClickListe
         mPresenter.onDetach();
     }
 
+
     @Override
     protected int getActivityLayoutId() {
         return R.layout.activity_current_trust;

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gyf.barlibrary.ImmersionBar;
+
 import cn.bizzan.R;
 import cn.bizzan.ui.aboutus.AboutUsActivity;
 import cn.bizzan.ui.feed.FeedbackActivity;
@@ -35,6 +36,7 @@ import cn.bizzan.utils.WonderfulPermissionUtils;
 import cn.bizzan.utils.WonderfulToastUtils;
 import cn.bizzan.utils.okhttp.FileCallback;
 import cn.bizzan.utils.okhttp.WonderfulOkhttpUtils;
+
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 import com.yanzhenjie.permission.PermissionListener;
@@ -87,17 +89,19 @@ public class SettingActivity extends BaseActivity implements SettingContact.View
     protected int getActivityLayoutId() {
         return R.layout.activity_setting;
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             displayLoadingPopup();
             finish();
             return false;
-        }else {
+        } else {
             return super.onKeyDown(keyCode, event);
         }
 
     }
+
     @Override
     protected void initViews(Bundle savedInstanceState) {
         initProgressDialog();
@@ -162,7 +166,7 @@ public class SettingActivity extends BaseActivity implements SettingContact.View
         line_bangzhu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            HelpActivity.actionStart(SettingActivity.this);
+                HelpActivity.actionStart(SettingActivity.this);
             }
         });
 
@@ -177,6 +181,8 @@ public class SettingActivity extends BaseActivity implements SettingContact.View
                         MyApplication.getApp().loginAgain(SettingActivity.this);
                         SharedPreferenceInstance.getInstance().saveaToken("");
                         SharedPreferenceInstance.getInstance().saveTOKEN("");
+                        SharedPreferenceInstance.getInstance().setSymbol("");
+                        SharedPreferenceInstance.getInstance().setUdun(false);
                     }
                 });
        /* new AlertDialog.Builder(SettingActivity.this,R.style.custom_dialog).setMessage(R.string.logout_confirm)
@@ -198,9 +204,9 @@ public class SettingActivity extends BaseActivity implements SettingContact.View
         //创建进度条对话框
         progressDialog = new ProgressDialog(this);
         //设置标题
-        progressDialog.setTitle(WonderfulToastUtils.getString(this,R.string.versionUpdateTip4));
+        progressDialog.setTitle(WonderfulToastUtils.getString(this, R.string.versionUpdateTip4));
         //设置信息
-        progressDialog.setMessage(WonderfulToastUtils.getString(this,R.string.versionUpdateTip5));
+        progressDialog.setMessage(WonderfulToastUtils.getString(this, R.string.versionUpdateTip5));
         progressDialog.setProgress(0);
         //设置显示的格式
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -217,7 +223,7 @@ public class SettingActivity extends BaseActivity implements SettingContact.View
                 case GlobalConstant.PERMISSION_STORAGE:
                     presenter.getNewVision(getToken());
                     break;
-                    default:
+                default:
             }
         }
 
@@ -225,9 +231,9 @@ public class SettingActivity extends BaseActivity implements SettingContact.View
         public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
             switch (requestCode) {
                 case GlobalConstant.PERMISSION_STORAGE:
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(SettingActivity.this,R.string.storage_permission));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(SettingActivity.this, R.string.storage_permission));
                     break;
-                    default:
+                default:
             }
         }
     };
@@ -279,23 +285,23 @@ public class SettingActivity extends BaseActivity implements SettingContact.View
 
     @Override
     public void getNewVisionSuccess(final Vision obj) {
-        if (obj.getData() == null){
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.versionUpdateTip));
+        if (obj.getData() == null) {
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.versionUpdateTip));
             return;
         }
         if (versionName.equals(obj.getData().getVersion())) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.versionUpdateTip));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.versionUpdateTip));
         } else {
-            new AlertDialog.Builder(SettingActivity.this,R.style.custom_dialog)
+            new AlertDialog.Builder(SettingActivity.this, R.style.custom_dialog)
                     .setIcon(null)
                     .setTitle(getString(R.string.has_new_version) + "(" + obj.getData().getVersion() + ")")
-                    .setMessage(WonderfulToastUtils.getString(this,R.string.versionUpdateTip2))
-                    .setPositiveButton(WonderfulToastUtils.getString(this,R.string.yes), new DialogInterface.OnClickListener() {
+                    .setMessage(WonderfulToastUtils.getString(this, R.string.versionUpdateTip2))
+                    .setPositiveButton(WonderfulToastUtils.getString(this, R.string.yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (obj.getData().getDownloadUrl() == null || "".equals(obj.getData().getDownloadUrl())) {
-                                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(SettingActivity.this,R.string.versionUpdateTip3));
-                            }else{
+                                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(SettingActivity.this, R.string.versionUpdateTip3));
+                            } else {
                                 Intent intent = new Intent();
                                 intent.setData(Uri.parse(obj.getData().getDownloadUrl()));//Url 就是你要打开的网址
                                 intent.setAction(Intent.ACTION_VIEW);
@@ -303,7 +309,7 @@ public class SettingActivity extends BaseActivity implements SettingContact.View
                             }
                         }
                     })
-                    .setNegativeButton(WonderfulToastUtils.getString(this,R.string.no), null)
+                    .setNegativeButton(WonderfulToastUtils.getString(this, R.string.no), null)
                     .show();
         }
     }

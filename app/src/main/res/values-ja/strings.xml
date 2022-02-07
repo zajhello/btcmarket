@@ -1,5 +1,5 @@
 <resources>
-<!--日语-->
+    <!--日语-->
     <string name="app_name">BIZZAN</string>
     <string name="cancle">キャンセル</string>
     <string name="confirm">決定する</string>
@@ -92,7 +92,7 @@
     <string name="home">ホーム</string>
     <string name="market">引用</string>
     <string name="transaction">トランザクション</string>
-    <string name="fiat">フィアット通貨</string>
+    <!--    <string name="fiat">フィアット通貨</string>-->
 
     <string name="fabi2">フィアット通貨取引</string>
     <string name="account">私の</string>
@@ -110,15 +110,15 @@
     <string name="login_assets">総資産（USDT相当）</string>
 
     <!--行情-->
-    <string name="market_Change">見積もり変更</string>
-    <string name="market_name">名前</string>
-    <string name="market_price">最新価格</string>
-    <string name="input_search">検索するキーワードを入力してください</string>
-    <string name="favorites">オプション</string>
-    <string name="exchanges">スポット</string>
-    <string name="futures">契約する</string>
-    <!--我的-->
-    <string name="Wallets">資産</string>
+    <!--    <string name="market_Change">見積もり変更</string>-->
+    <!--    <string name="market_name">名前</string>-->
+    <!--    <string name="market_price">最新価格</string>-->
+    <!--    <string name="input_search">検索するキーワードを入力してください</string>-->
+    <!--    <string name="favorites">オプション</string>-->
+    <!--    <string name="exchanges">スポット</string>-->
+    <!--    <string name="futures">契約する</string>-->
+    <!--    &lt;!&ndash;我的&ndash;&gt;-->
+    <!--    <string name="Wallets">資産</string>-->
     <string name="not_logged_in">ログインしていない</string>
     <string name="welcome_to">bizzan.com へようこそ</string>
     <string name="my_order">私の注文</string>
@@ -131,20 +131,20 @@
     <string name="my_version">新しいバージョンの更新</string>
     <string name="has_new_version">新しいバージョンが見つかりました</string>
     <string name="my_language">言語</string>
-    <string name="my_exchange_rate">為替レート</string>
+    <!--    <string name="my_exchange_rate">為替レート</string>-->
     <string name="my_setting">中心を設定</string>
     <string name="balance">総資産（USDT）</string>
-    <string name="balance_value">資産評価（USDT）</string>
+    <!--    <string name="balance_value">資産評価（USDT）</string>-->
     <string name="balance_1">資産運用管理</string>
     <string name="balance_2">私の資産</string>
     <string name="balance_3">資産回転率</string>
     <string name="my_fabi">法定通貨管理</string>
     <string name="logout_confirm">ログアウトしますか?</string>
     <string name="logout_current_account">現在のアカウントからログアウトする</string>
-    <string name="share_app">アプリを共有する</string>
-    <string name="appearance">テーマモード</string>
-    <string name="darkmode">ナイトモード</string>
-    <string name="lightmode">デイモード</string>
+    <!--    <string name="share_app">アプリを共有する</string>-->
+    <!--    <string name="appearance">テーマモード</string>-->
+    <!--    <string name="darkmode">ナイトモード</string>-->
+    <!--    <string name="lightmode">デイモード</string>-->
 
     <!-- C2C交易(承兑商版) -->
     <string name="ctc_title">フィアット通貨取引</string>
@@ -365,7 +365,7 @@
     <string name="text_ad_fu_kuan">お支払い方法を選択してください</string>
 
     <string name="text_ad_entity">広告情報が不完全！</string>
-    <string name="minLimitTip">最低額は100CNY以上でなければなりません</string>
+    <string name="minLimitTip">最低額は%s以上でなければなりません</string>
     <string name="maxLimitTip">上限額は以下を超えてはなりません</string>
     <!--安全中心-->
     <string name="gesturesPassword">ジェスチャーパスワード</string>
@@ -379,7 +379,7 @@
     <string name="language">言語設定</string>
     <string name="feed_back">フィードバック</string>
     <string name="about_us">私たちに関しては</string>
-    <string name="setting">セットアップ</string>
+    <!--    <string name="setting">セットアップ</string>-->
     <string name="simplifiedChinese">簡体字中国語</string>
     <string name="Japanese">日本語</string>
     <string name="versionUpdateTip">最新バージョンなし、更新不要</string>
@@ -449,11 +449,11 @@
     <string name="grounding">棚にある</string>
     <string name="shelved">削除されました</string>
     <string name="limit">限界</string>
-    <string name="notpaied">未払い</string>
-    <string name="paied">有料</string>
-    <string name="done">完了</string>
-    <string name="canceled">キャンセル</string>
-    <string name="inappeal">訴える</string>
+    <!--    <string name="notpaied">未払い</string>-->
+    <!--    <string name="paied">有料</string>-->
+    <!--    <string name="done">完了</string>-->
+    <!--    <string name="canceled">キャンセル</string>-->
+    <!--    <string name="inappeal">訴える</string>-->
 
 
     <!--我的信息-->
@@ -499,7 +499,7 @@
     <string name="username_shuru">電話番号/メールアドレスを入力してください</string>
 
     <string name="password">パスワード</string>
-    <string name="reset_password">パスワードを再設定する</string>
+    <!--    <string name="reset_password">パスワードを再設定する</string>-->
     <string name="password_shuru">パスワードを入力してください</string>
     <string name="forgot_password">パスワードをお忘れですか？</string>
     <string name="goto_regist">登録された</string>
@@ -560,11 +560,11 @@
         <item>ETH</item>
     </string-array>
 
-    <string-array name="home_two_title_tab">
-        <item>USDT</item>
-        <item>BTC</item>
-        <item>ETH</item>
-    </string-array>
+    <!--    <string-array name="home_two_title_tab">-->
+    <!--        <item>USDT</item>-->
+    <!--        <item>BTC</item>-->
+    <!--        <item>ETH</item>-->
+    <!--    </string-array>-->
 
     <string-array name="home_six_top_tab">
         <item>ポジションを開く</item>
@@ -705,8 +705,8 @@
     <!--    登录-->
     <string name="input_account_password">アカウントのパスワードを入力してください。</string>
     <string name="login_register">ログイン 登録</string>
-    <string name="login_fail1">パスワードの長さは 6 桁未満にすることはできません</string>
-    <string name="login_fail2">電子メールの形式が正しくありません。再入力してください</string><!--    手势验证-->
+    <!--    <string name="login_fail1">パスワードの長さは 6 桁未満にすることはできません</string>-->
+    <!--    <string name="login_fail2">電子メールの形式が正しくありません。再入力してください</string>&lt;!&ndash;    手势验证&ndash;&gt;-->
     <string name="hint">促す</string>
     <string name="forget_pwd">ジェスチャー パスワードを忘れた場合は、再度ログインする必要があります。</string>
     <string name="go_login">ログインに移動</string>
@@ -774,7 +774,7 @@
 
     <!-- C2C -->
     <string name="tv_wait_order">保留中の注文</string>
-    <string name="tv_one">シングル</string>
+    <!--    <string name="tv_one">シングル</string>-->
     <string name="tv_already_order">ご注文承りました</string>
     <string name="tv_now_payment">即時支払い</string>
     <string name="tv_payment">有料</string>
@@ -945,49 +945,49 @@
     <string name="input_qq_account">QQ アカウントを入力してください</string><!--登录-->
     <string name="username_shuru_regist">電話番号を入力してください</string>
     <string name="setting_gather_type">お支払い方法を設定してください。必ず本名のアカウントを使用してください。</string>
-    <string name="emaillogin">メールログイン</string>
-    <string name="phonelogin">電話でログイン</string><!--注册-->
+    <!--    <string name="emaillogin">メールログイン</string>-->
+    <!--    <string name="phonelogin">電話でログイン</string>&lt;!&ndash;注册&ndash;&gt;-->
     <string name="email_shuru">メールアドレスを入力してください</string>
-    <string name="input_referrer">リファラー ID (オプション)</string>
-    <string name="safetyverification">安全確認</string>
-    <string name="send_your_code">あなたの******に確認コードを送信します</string><!--    法币-->
-    <string name="fiat_otc">自己選択エリア</string>
-    <string name="fiat_buy">私が購入したい</string>
-    <string name="fiat_sell">売りたい</string>
-    <string name="my_want">が欲しいです</string>
-    <string name="sell_online">オンライン販売</string>
-    <string name="buy_online">インターネットで買う</string>
-    <string name="become_merchant">ビジネスになる</string>
+    <!--    <string name="input_referrer">リファラー ID (オプション)</string>-->
+    <!--    <string name="safetyverification">安全確認</string>-->
+    <!--    <string name="send_your_code">あなたの******に確認コードを送信します</string>&lt;!&ndash;    法币&ndash;&gt;-->
+    <!--    <string name="fiat_otc">自己選択エリア</string>-->
+    <!--    <string name="fiat_buy">私が購入したい</string>-->
+    <!--    <string name="fiat_sell">売りたい</string>-->
+    <!--    <string name="my_want">が欲しいです</string>-->
+    <!--    <string name="sell_online">オンライン販売</string>-->
+    <!--    <string name="buy_online">インターネットで買う</string>-->
+    <!--    <string name="become_merchant">ビジネスになる</string>-->
     <string name="publish_advertising">広告を掲載</string>
-    <string name="my_advertising">私の広告</string>
-    <string name="my_Orders">私の注文</string>
+    <!--    <string name="my_advertising">私の広告</string>-->
+    <!--    <string name="my_Orders">私の注文</string>-->
 
-    <string name="buy_amount">金額で購入</string>
-    <string name="buy_quantity">数量で購入</string>
-    <string name="enter_money">金額を入力してください</string>
-    <string name="enter_quantity">数量を入力してください</string>
-    <string name="total_price">合計金額</string>
-    <string name="trading_information">取引情報</string>
-    <string name="payment_time_limit">支払期限</string>
-    <string name="buyer_nickname">購入者のニックネーム</string>
-    <string name="buyer_deposit">買い手保証金</string>
-    <string name="buyer_payment_method">購入者の支払い方法</string>
-    <string name="apply_for_loan">降伏を申請する</string>
+    <!--    <string name="buy_amount">金額で購入</string>-->
+    <!--    <string name="buy_quantity">数量で購入</string>-->
+    <!--    <string name="enter_money">金額を入力してください</string>-->
+    <!--    <string name="enter_quantity">数量を入力してください</string>-->
+    <!--    <string name="total_price">合計金額</string>-->
+    <!--    <string name="trading_information">取引情報</string>-->
+    <!--    <string name="payment_time_limit">支払期限</string>-->
+    <!--    <string name="buyer_nickname">購入者のニックネーム</string>-->
+    <!--    <string name="buyer_deposit">買い手保証金</string>-->
+    <!--    <string name="buyer_payment_method">購入者の支払い方法</string>-->
+    <!--    <string name="apply_for_loan">降伏を申請する</string>-->
 
 
-    <string name="to_logout">現在、お取引キャンセル処理を行っておりますので、お申し込み確認後のキャンセルはできません。
+    <!--    <string name="to_logout">現在、お取引キャンセル処理を行っておりますので、お申し込み確認後のキャンセルはできません。-->
 
-        この操作を実行しますか?
-    </string>
-    <string name="reason">キャンセル理由をご記入ください</string>
+    <!--        この操作を実行しますか?-->
+    <!--    </string>-->
+    <!--    <string name="reason">キャンセル理由をご記入ください</string>-->
 
-    <string name="exclusive_booth">専用ブース</string>
-    <string name="exclusive_booth2">商人は、取引の成功率を高めるために専用の広告ブースを楽しみます</string>
-    <string name="one_to_one">VIPマンツーマンサービス</string>
-    <string name="one_to_one2">プラットフォームは、マーチャントが迅速な取引を行うのに役立つ 1 対 1 のタイムリーな応答サービスをマーチャントに提供します。</string>
-    <string name="lower_fees">手数料が安い</string>
-    <string name="submitted">アプリケーションが送信され、処理されています
-\n結果をお待ちください</string>
+    <!--    <string name="exclusive_booth">専用ブース</string>-->
+    <!--    <string name="exclusive_booth2">商人は、取引の成功率を高めるために専用の広告ブースを楽しみます</string>-->
+    <!--    <string name="one_to_one">VIPマンツーマンサービス</string>-->
+    <!--    <string name="one_to_one2">プラットフォームは、マーチャントが迅速な取引を行うのに役立つ 1 対 1 のタイムリーな応答サービスをマーチャントに提供します。</string>-->
+    <!--    <string name="lower_fees">手数料が安い</string>-->
+    <!--    <string name="submitted">アプリケーションが送信され、処理されています-->
+    <!--\n結果をお待ちください</string>-->
 
 
     <string name="status_1">アクセプターが注文を受け取るのを待っています...</string>
@@ -1009,21 +1009,21 @@
     <string name="replicated">コピーした</string>
     <string name="merchants_certification">加盟店認証</string>
     <string name="apply_merchant">ビジネスになるために申し込む</string>
-    <string name="apply_merchant2">あなたのビジネス レビューが送信されました</string>
-    <string name="apply_merchant3">おめでとう！
+    <!--    <string name="apply_merchant2">あなたのビジネス レビューが送信されました</string>-->
+    <!--    <string name="apply_merchant3">おめでとう！-->
 
-        ビジネス認証審査に合格しました
-    </string>
-    <string name="apply_merchant4">ごめんなさい！
+    <!--        ビジネス認証審査に合格しました-->
+    <!--    </string>-->
+    <!--    <string name="apply_merchant4">ごめんなさい！-->
 
-        ビジネス認証の確認に失敗しました
-    </string>
-    <string name="apply_merchant5">廃業申請書が提出されました</string>
-    <string name="apply_merchant6">事業キャンセル申請の審査に失敗しました</string>
-    <string name="apply_merchant7">あなたのビジネスキャンセル申請の審査は通過しました</string>
+    <!--        ビジネス認証の確認に失敗しました-->
+    <!--    </string>-->
+    <!--    <string name="apply_merchant5">廃業申請書が提出されました</string>-->
+    <!--    <string name="apply_merchant6">事業キャンセル申請の審査に失敗しました</string>-->
+    <!--    <string name="apply_merchant7">あなたのビジネスキャンセル申請の審査は通過しました</string>-->
     <string name="recheck">再審査</string>
-    <string name="reapply">再申請</string>
-    <string name="legal_agreement0">引き続きログインして同意する</string>
+    <!--    <string name="reapply">再申請</string>-->
+    <!--    <string name="legal_agreement0">引き続きログインして同意する</string>-->
     <string name="legal_agreement1">読んで同意します</string>
     <string name="legal_agreement2">「認定販売契約書」</string>
     <string name="legal_agreement3">ユーザー規約</string>
@@ -1035,17 +1035,17 @@
     <string name="my_asset_attest">個人のデジタル資産の証明</string>
     <string name="number_asset_attest">デジタル資産取引の証明</string>
     <string name="no_upload">アップロードされていません</string>
-    <string name="put_in_cancel">提出に失敗しました</string>
-    <string name="progress">材料を準備する</string>
-    <string name="progress2">レビュー送信</string>
-    <string name="progress3">モデレート</string>
-    <string name="progress4">確認済み</string>
-    <string name="progress5">監査の失敗</string>
-    <string name="progress6">加盟店のキャンセル</string>
-    <string name="progress7">試験に合格しました</string>
-    <string name="progress8">審査保留中の停止</string>
-    <string name="progress9">キャンセルの審査に失敗しました</string>
-    <string name="progress10">キャンセル審査通過</string>
+    <!--    <string name="put_in_cancel">提出に失敗しました</string>-->
+    <!--    <string name="progress">材料を準備する</string>-->
+    <!--    <string name="progress2">レビュー送信</string>-->
+    <!--    <string name="progress3">モデレート</string>-->
+    <!--    <string name="progress4">確認済み</string>-->
+    <!--    <string name="progress5">監査の失敗</string>-->
+    <!--    <string name="progress6">加盟店のキャンセル</string>-->
+    <!--    <string name="progress7">試験に合格しました</string>-->
+    <!--    <string name="progress8">審査保留中の停止</string>-->
+    <!--    <string name="progress9">キャンセルの審査に失敗しました</string>-->
+    <!--    <string name="progress10">キャンセル審査通過</string>-->
 
     <!--    web-->
     <string name="help">助けて</string>
@@ -1059,9 +1059,9 @@
     <!--我的广告-->
     <string name="up_shelf">棚に置く</string>
     <string name="down_shelf">既製</string>
-    <string name="Alipay">アリペイ</string>
-    <string name="wechat">微信</string>
-    <string name="unionpay">銀聯</string>
+    <string name="Alipay">Alipay</string>
+    <string name="wechat">WeChat</string>
+    <string name="unionpay">BankCard</string>
     <string name="cause">理由</string>
     <string name="up_picture">すべての情報が入力され、すべての写真がアップロードされていることを確認してください</string>
     <string name="read_agreement">最初に契約書を読み、「読む」を選択してください</string>
@@ -1103,18 +1103,18 @@
         <item>見積もり変更</item>
         <item>ボリューム</item>
     </string-array><!--    账户-->
-    <string-array name="my_account">
-        <item>スポット口座</item>
-        <item>永久口座</item>
-    </string-array>
+    <!--    <string-array name="my_account">-->
+    <!--        <item>スポット口座</item>-->
+    <!--        <item>永久口座</item>-->
+    <!--    </string-array>-->
 
     <!--   期权 -->
     <string name="option">オプション</string>
     <string name="text_use_balance">利用可能残高</string>
     <string name="text_current_delivery">現在の配信</string>
     <string name="text_history_delivery">歴史的集落</string>
-    <string name="text_buy_up_total">購入総額</string>
-    <string name="text_buy_down_total">合計バイダウン</string>
+    <string name="text_buy_up_total">オッズを買う</string>
+    <string name="text_buy_down_total">オッズを売買する</string>
     <string name="text_my_storehouse">私のオープンポジション</string>
     <string name="text_look_up">強気</string>
     <string name="text_look_down">弱気</string>
@@ -1145,9 +1145,9 @@
     <string name="may_money">利用可能証拠金</string>
     <string name="use_money">使用証拠金</string>
     <string name="freeze_money">フリーズマージン</string>
-    <string name="may_money_all">利用可能証拠金合計</string>
-    <string name="use_money_all">総使用証拠金</string>
-    <string name="freeze_money_all">合計凍結証拠金</string>
+    <!--    <string name="may_money_all">利用可能証拠金合計</string>-->
+    <!--    <string name="use_money_all">総使用証拠金</string>-->
+    <!--    <string name="freeze_money_all">合計凍結証拠金</string>-->
     <string name="Wallet_Overturn">資産譲渡</string>
     <string name="tv_record">録音</string>
     <string name="tv_from">から</string>
@@ -1201,10 +1201,84 @@
     <string name="Permission_ok">LIFE がアドレス帳のアクセス許可にアクセスできるようにすると、より良いエクスペリエンスが得られます。</string>
     <string name="look_setting">設定方法を見る</string>
     <string name="share_posters">ポスターを共有する</string>
-    <string name="history_result">過去の実績</string>
+    <!--    <string name="history_result">過去の実績</string>-->
 
 
     <string name="posters">ポスターを選択してください</string>
 
+    <!--    ====================================================================================   -->
+
+    <string-array name="home_laboratory_tab">
+        <item>全て</item>
+        <item>始めよう</item>
+        <item>進行中</item>
+        <item>配布</item>
+        <item>完了</item>
+    </string-array>
+
+    <string-array name="laboratory_tab">
+        <item>始めよう</item>
+        <item>進行中</item>
+        <item>配布</item>
+        <item>完了</item>
+    </string-array>
+
+    <string name="lab_title">イノベーションラボ</string>
+    <string name="lab_process">スケジュール</string>
+    <string name="lab_total">総活動</string>
+    <string name="lab_start_time">開始時間:</string>
+    <string name="lab_end_time">終了時間:</string>
+    <string name="lab_check_detail">詳細を見る</string>
+    <string name="lab_type1">初回起動（スナップ購入）</string>
+    <string name="lab_type2">最初のオンライン（均等に分割）</string>
+    <string name="lab_type3">ポジションを共有する</string>
+    <string name="lab_type4">無料サブスクリプション</string>
+    <string name="lab_type5">クラウドマイニングマシンのサブスクリプション</string>
+    <string name="lab_type6">ロック解除</string>
+    <string name="lab_type_unknow">わからない</string>
+    <string name="lab_detail_baseinfo">基本情報</string>
+    <string name="lab_detail_status">州</string>
+    <string name="lab_detail_type">サブスクリプションタイプ</string>
+    <string name="lab_detail_release_type">リリースタイプ</string>
+    <string name="lab_detail_release_detail">リリースの詳細</string>
+    <string name="lab_detail_lock_cost">ロックアップしきい値</string>
+    <string name="lab_detail_release_times">複数リリース</string>
+    <string name="lab_detail_my_amount">私の現在の位置は分割することができます：</string>
+    <string name="lab_detail_tpis">*[持ち株と共有]の種類のアクティビティに参加するには、アクティビティが終了するまでポジションをロックする必要があります</string>
+    <string name="lab_detail_input_amount">ロックアップ金額を入力してください</string>
+    <string name="lab_detail_available_amount">私の利用可能な残高</string>
+    <string name="lab_detail_type_instruction">タイプの説明</string>
+    <string name="lab_detail_cost">サブスクリプション価格</string>
+    <string name="lab_detail_activity_currency">有効通貨</string>
+    <string name="lab_detail_accept_currency">受け入れられる通貨</string>
+    <string name="lab_detail_limit_num">個人購入制限</string>
+    <string name="lab_detail_limit_amount">個人購入制限</string>
+    <string name="lab_detail_join">今すぐ参加する</string>
+    <string name="lab_detail_bought">購入数量</string>
+    <string name="lab_detail_remaining">残額</string>
+    <string name="lab_detail_cc">私の参加ポジション</string>
+    <string name="lab_detail_tcc">活動参加合計ポジション</string>
+    <string name="lab_detail_equal_release">等リリース</string>
+    <string name="lab_detail_proportional_release">比例リリース</string>
+    <string name="lab_detail_min_limit_tip">交換金額は最低交換金額より少なくすることはできません</string>
+    <string name="lab_detail_max_limit_tip">交換金額は最大購入金額を超えることはできません</string>
+    <string name="lab_detail_period_release">期間リリース</string>
+    <string name="lab_detail_release_multiple">%sタイムズ</string>
+    <string name="symbol">タイムズ</string>
+
+    <string name="lab_submit_title">安全性の検証</string>
+    <string name="lab_submit_phone">携帯電話番号</string>
+    <string name="lab_submit_phone_code">モバイル確認コード</string>
+    <string name="lab_submit">クリックして取得</string>
+    <string name="lab_submit2">参加する</string>
+    <string name="lab_dialog_cancel">閉鎖</string>
+
+    <string name="recharge_amount">充電量</string>
+    <string name="recharge_amount_hint">数量を入力してください</string>
+    <string name="recharge_my_address">私の転送先住所</string>
+    <string name="recharge_input_my_address">私の転送先住所</string>
+    <string name="recharge_min_limits">入力した金額が最小リチャージ金額より少ない</string>
+    <string name="recharge_upload_failed">画像のアップロードに失敗しました</string>
+    <string name="recharge_success">正常な再充電</string>
 
 </resources>

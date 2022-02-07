@@ -10,7 +10,9 @@ import android.widget.TextView;
 import cn.bizzan.R;
 import cn.bizzan.app.MyApplication;
 import cn.bizzan.base.BaseDialogFragment;
+import cn.bizzan.ui.home.MainActivity;
 import cn.bizzan.utils.WonderfulDpPxUtils;
+import cn.bizzan.utils.WonderfulMathUtils;
 import cn.bizzan.utils.WonderfulToastUtils;
 
 import java.io.Serializable;
@@ -47,12 +49,12 @@ public class OrderConfirmDialogFragment extends BaseDialogFragment {
     private double total;
     private Serializable unit;
 
-    public static OrderConfirmDialogFragment getInstance(String type,String unit, double price, double count, double total) {
+    public static OrderConfirmDialogFragment getInstance(String type, String unit, double price, double count, double total) {
         OrderConfirmDialogFragment fragment = new OrderConfirmDialogFragment();
         Bundle bundle = new Bundle();
         bundle.putString("type", type);
         bundle.putDouble("price", price);
-        bundle.putString("unit",unit);
+        bundle.putString("unit", unit);
         bundle.putDouble("count", count);
         bundle.putDouble("total", total);
         fragment.setArguments(bundle);
@@ -86,7 +88,7 @@ public class OrderConfirmDialogFragment extends BaseDialogFragment {
         price = getArguments().getDouble("price");
         count = getArguments().getDouble("count");
         total = getArguments().getDouble("total");
-        unit=getArguments().getSerializable("unit");
+        unit = getArguments().getSerializable("unit");
         tvCancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,17 +107,17 @@ public class OrderConfirmDialogFragment extends BaseDialogFragment {
     @Override
     protected void fillWidget() {
         if ("0".equals(type)) {
-            tvPriceText.setText(WonderfulToastUtils.getString(getActivity(),R.string.dialog_three_ones));
-            tvCountText.setText(WonderfulToastUtils.getString(getActivity(),R.string.dialog_three_twos));
-            tvTotalText.setText(WonderfulToastUtils.getString(getActivity(),R.string.dialog_three_threes));
+            tvPriceText.setText(WonderfulToastUtils.getString(getActivity(), R.string.dialog_three_ones));
+            tvCountText.setText(WonderfulToastUtils.getString(getActivity(), R.string.dialog_three_twos));
+            tvTotalText.setText(WonderfulToastUtils.getString(getActivity(), R.string.dialog_three_threes));
         } else {
-            tvPriceText.setText(WonderfulToastUtils.getString(getActivity(),R.string.dialog_three_one));
-            tvCountText.setText(WonderfulToastUtils.getString(getActivity(),R.string.dialog_three_two));
-            tvTotalText.setText(WonderfulToastUtils.getString(getActivity(),R.string.dialog_three_three));
+            tvPriceText.setText(WonderfulToastUtils.getString(getActivity(), R.string.dialog_three_one));
+            tvCountText.setText(WonderfulToastUtils.getString(getActivity(), R.string.dialog_three_two));
+            tvTotalText.setText(WonderfulToastUtils.getString(getActivity(), R.string.dialog_three_three));
         }
-        tvPrice.setText( price + " CNY");
-        tvCount.setText(  count+" "+ unit);
-        tvTotal.setText( total + " CNY");
+        tvPrice.setText(price + " " + MainActivity.symbol);
+        tvCount.setText(WonderfulMathUtils.getRundNumber(count, 8, null) + " " + unit);
+        tvTotal.setText(total + " " + MainActivity.symbol);
     }
 
     @Override

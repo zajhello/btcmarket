@@ -1,5 +1,6 @@
 package cn.bizzan.data;
 
+import java.io.File;
 import java.math.BigDecimal;
 
 /**
@@ -44,9 +45,15 @@ public interface DataSource {
 
     void country(DataCallback dataCallback);
 
-    void create(String token, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, DataCallback dataCallback);
+    void currency(DataCallback dataCallback);
+
+    void currencyRate(String key,DataCallback dataCallback);
+
+    void create(String token, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword,String currency, double rate, DataCallback dataCallback);
 
     void uploadBase64Pic(String token, String base64Data, DataCallback dataCallback);
+
+    void uploadBase64Pic(String token, String name, String filename, File file, DataCallback dataCallback);
 
     void name(String token, String realName, String idCard, String idCardFront, String idCardBack, String handHeldIdCard, DataCallback dataCallback);
 
@@ -62,13 +69,13 @@ public interface DataSource {
 
     void adDetail(String token, int id, DataCallback dataCallback);
 
-    void updateAd(String token, int id, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, DataCallback dataCallback);
+    void updateAd(String token, int id, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword,String currency, double rate, DataCallback dataCallback);
 
     void c2cInfo(int id, DataCallback dataCallback);
 
-    void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, DataCallback dataCallback);
+    void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, String currency,double rate,DataCallback dataCallback);
 
-    void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, DataCallback dataCallback);
+    void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, String currency,double rate,DataCallback dataCallback);
 
     void myOrder(String token, int status, int pageNo, int pageSize, DataCallback dataCallback);
 
@@ -203,6 +210,12 @@ public interface DataSource {
     void getUdunConf(String token,final DataCallback dataCallback);
 
     void getSupportCoins(String token,final DataCallback dataCallback);
+
+    void labList(String token,int step ,int pageNo,int pageSize,final DataCallback dataCallback);
+
+    void activityDetail(String token,int id ,final DataCallback dataCallback);
+
+    void activityAttend(String token, String amount, int activityId, String aims, String code,final DataCallback dataCallback);
 
     interface DataCallback {
 

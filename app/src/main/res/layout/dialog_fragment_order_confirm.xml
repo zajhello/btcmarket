@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryBackDark"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <LinearLayout
@@ -74,7 +75,7 @@
                     android:id="@+id/tvPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="134156461CNY"
+                    tools:text="134156461CNY"
                     android:textColor="@color/typeRed"
                     android:textSize="14sp"/>
 
@@ -106,7 +107,7 @@
                     android:id="@+id/tvCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0.32131BTC"
+                    tools:text="0.32131BTC"
                     android:textColor="@color/typeRed"
                     android:textSize="14sp"/>
 
@@ -136,7 +137,7 @@
                     android:id="@+id/tvTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="115156456CNY"
+                    tools:text="115156456CNY"
                     android:textColor="@color/typeRed"
                     android:textSize="14sp"/>
 
@@ -166,7 +167,7 @@
         android:gravity="center"
         android:text="@string/dialog_sure"
         android:textColor="#fff"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
 
 </RelativeLayout>

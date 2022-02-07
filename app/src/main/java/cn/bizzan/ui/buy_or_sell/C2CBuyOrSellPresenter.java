@@ -38,9 +38,9 @@ public class C2CBuyOrSellPresenter implements C2CBuyOrSellContract.Presenter {
     }
 
     @Override
-    public void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark,String mode) {
+    public void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, String currency, double rate) {
         view.displayLoadingPopup();
-        dataRepository.c2cBuy(token, id, coinId, price, money, amount, remark, mode,new DataSource.DataCallback() {
+        dataRepository.c2cBuy(token, id, coinId, price, money, amount, remark, mode, currency, rate, new DataSource.DataCallback() {
             @Override
             public void onDataLoaded(Object obj) {
                 view.hideLoadingPopup();
@@ -57,9 +57,9 @@ public class C2CBuyOrSellPresenter implements C2CBuyOrSellContract.Presenter {
     }
 
     @Override
-    public void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark,String mode) {
+    public void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, String currency, double rate) {
         view.displayLoadingPopup();
-        dataRepository.c2cSell(token, id, coinId, price, money, amount, remark, mode,new DataSource.DataCallback() {
+        dataRepository.c2cSell(token, id, coinId, price, money, amount, remark, mode, currency, rate, new DataSource.DataCallback() {
             @Override
             public void onDataLoaded(Object obj) {
                 view.hideLoadingPopup();

@@ -48,7 +48,7 @@ public class HomeAdapter extends BaseQuickAdapter<Currency, BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, Currency item) {
         if (isLoad) {
-            helper.setText(R.id.item_home_money, "≈" + WonderfulMathUtils.getRundNumber(item.getClose()*item.getBaseUsdRate() * MainActivity.rate ,2,null)+" CNY");
+            helper.setText(R.id.item_home_money, "≈" + WonderfulMathUtils.getRundNumber(item.getClose()*item.getBaseUsdRate() * MainActivity.rate ,2,null)+" "+MainActivity.symbol);
         } else {
             helper.setText(R.id.item_home_money, "$" + WonderfulMathUtils.getRundNumber(item.getUsdRate(),2,null));
         }

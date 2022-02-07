@@ -47,6 +47,7 @@ import cn.bizzan.entity.Coin;
 import cn.bizzan.entity.CurrentEntrust;
 import cn.bizzan.entity.GccMatch;
 import cn.bizzan.entity.WalletConstract;
+import cn.bizzan.ui.home.MainActivity;
 import cn.bizzan.ui.login.LoginActivity;
 import cn.bizzan.utils.SharedPreferenceInstance;
 import cn.bizzan.utils.WonderfulCodeUtils;
@@ -120,8 +121,13 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
     private List<WalletConstract> contract = new ArrayList<>();
     private WalletAdapter adapter;
     private WalletContractAdapter contractAdapter;
+
+    double availbleUsd = 0;
+    double availbleUsd_c = 0;
+
     double sumUsd = 0;
     double sumCny = 0;
+
     double sumUsd_c = 0;
     double sumCny_c = 0;
     private WalletContract.Presenter presenter;
@@ -205,7 +211,7 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
             SharedPreferenceInstance.getInstance().saveMoneyShowtype(2);
         } else {
             tvAmount.setText(WonderfulMathUtils.getRundNumber(sumUsd + sumUsd_c, 4, null));
-            tvCnyAmount.setText("≈" + WonderfulMathUtils.getRundNumber(sumCny + sumCny_c, 2, null) + "CNY");
+            tvCnyAmount.setText("≈" + WonderfulMathUtils.getRundNumber(sumCny + sumCny_c, 2, null) + " " + MainActivity.symbol);
             Drawable drawable = getResources().getDrawable(R.drawable.icon_eye_open);
             ivSee.setImageDrawable(drawable);
             SharedPreferenceInstance.getInstance().saveMoneyShowtype(1);
@@ -375,10 +381,14 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
         if (coins.size() != 0 && contract.size() != 0) {
             sumUsd = 0;
             sumCny = 0;
+            availbleUsd = 0;
+
             for (Coin coin : coins) {
                 // 总额计算包含可用余额与冻结余额的总和
                 sumUsd += ((coin.getBalance() + coin.getFrozenBalance()) * coin.getCoin().getUsdRate());
-                sumCny += ((coin.getBalance() + coin.getFrozenBalance()) * coin.getCoin().getCnyRate());
+                availbleUsd += (coin.getBalance() * coin.getCoin().getUsdRate());
+
+                sumCny += ((coin.getBalance() + coin.getFrozenBalance()) * MainActivity.rate);
             }
 
             for (WalletConstract constract : contract) {
@@ -386,18 +396,22 @@ public class WalletActivity extends BaseActivity implements WalletContract.View,
                 sumUsd_c += (constract.getUsdtBalance() + constract.getUsdtFrozenBalance() + constract.getUsdtBuyPrincipalAmount()
                         + constract.getUsdtSellPrincipalAmount() + constract.getUsdtTotalProfitAndLoss());
 
+                availbleUsd_c += (constract.getUsdtBalance() + constract.getUsdtBuyPrincipalAmount()
+                        + constract.getUsdtSellPrincipalAmount() + constract.getUsdtTotalProfitAndLoss());
+
                 sumCny_c += (constract.getUsdtBalance() + constract.getUsdtFrozenBalance() + constract.getUsdtBuyPrincipalAmount()
-                        + constract.getUsdtSellPrincipalAmount() + constract.getUsdtTotalProfitAndLoss()) * constract.getContractCoin().getUsdtRate();
+                        + constract.getUsdtSellPrincipalAmount() + constract.getUsdtTotalProfitAndLoss()) * MainActivity.rate;
             }
             if (SharedPreferenceInstance.getInstance().getMoneyShowType() == 1) {
                 tvAmount.setText(WonderfulMathUtils.getRundNumber(sumUsd + sumUsd_c, 4, null));
-                tvCnyAmount.setText("≈" + WonderfulMathUtils.getRundNumber(sumCny + sumCny_c, 2, null) + " CNY");
+                tvCnyAmount.setText("≈" + WonderfulMathUtils.getRundNumber(sumCny + sumCny_c, 2, null) + " " + MainActivity.symbol);
             } else if (SharedPreferenceInstance.getInstance().getMoneyShowType() == 2) {
                 tvAmount.setText("********");
                 tvCnyAmount.setText("*****");
             }
         }
     }
+
 
     @Override
     public void myWalletFail(Integer code, String toastMessage) {

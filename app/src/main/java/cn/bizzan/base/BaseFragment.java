@@ -9,8 +9,13 @@ import android.view.ViewGroup;
 
 import com.gyf.barlibrary.ImmersionBar;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.bizzan.events.CurrencyEvent;
 
 /**
  * Created by Administrator on 2017/9/26.
@@ -23,6 +28,7 @@ public abstract class BaseFragment extends Fragment {
     protected boolean isInit = false;
     protected boolean isNeedLoad = true;
     protected boolean isSetTitle = false;
+    protected boolean isSupportEventBus = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +41,11 @@ public abstract class BaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
         isInit = true;
+
+        if (isSupportEventBus && !EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+
         if (isImmersionBarEnabled()) {
             initImmersionBar();
         }
@@ -61,9 +72,11 @@ public abstract class BaseFragment extends Fragment {
         immersionBar = ImmersionBar.with(this);
         //immersionBar.keyboardEnable(false, WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN).statusBarDarkFont(false,0.2f).flymeOSStatusBarFontColor(R.color.help_view).init();
     }
+
     public static String makeFragmentName(int viewId, long id) {
         return "android:switcher:" + viewId + ":" + id;
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -84,9 +97,22 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        if (isSupportEventBus && EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
         if (immersionBar != null) immersionBar.destroy();
         unbinder.unbind();
         super.onDestroyView();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onCurrencyEvent(CurrencyEvent event) {
+        // Do something
+        onCurrencyChangedEvent();
+    }
+
+    public void onCurrencyChangedEvent() {
+
     }
 
     protected void finish() {

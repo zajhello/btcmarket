@@ -88,7 +88,7 @@ public class VolumeFragment extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -100,7 +100,7 @@ public class VolumeFragment extends BaseFragment {
         } else if (type_constract.equals("2")) {
             EventBus.getDefault().post(new SocketMessage(1, ISocket.CMD.UNSUBSCRIBE_EXCHANGE_TRADE_CONTRACT, buildGetBodyJson(symbol).toString().getBytes()));
         }
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
     }
 
     private void startTCP() {

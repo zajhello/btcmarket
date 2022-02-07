@@ -17,6 +17,15 @@ public class Order {
     private double commission;
     private double amount;
     private String avatar;
+    private String currency;
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
     public String getAvatar() {
         return avatar;

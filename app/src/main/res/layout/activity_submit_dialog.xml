@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_background_white"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_dialog_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:minHeight="25dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/lab_submit_title"
+                android:textColor="#ff6600"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_close"
+                android:layout_width="78dp"
+                android:layout_height="36dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="@string/lab_dialog_cancel"
+                android:textColor="#cccccc"
+                android:textSize="12sp" />
+
+        </FrameLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/primaryBackNormal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/lab_submit_phone"
+                android:textColor="#cccccc"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_weight="1"
+                android:background="#27313e"
+                android:inputType="number"
+                android:paddingLeft="5dp"
+                android:textColor="#cccccc"
+                android:textColorHint="@color/primaryTextGray"
+                android:textSize="14sp"
+                tools:text="18888888888" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/lab_submit_phone_code"
+                android:textColor="#cccccc"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_code"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_weight="1"
+                android:background="#27313e"
+                android:inputType="number"
+                android:paddingLeft="5dp"
+                android:textColor="#cccccc"
+                android:textColorHint="@color/primaryTextGray"
+                android:textSize="14sp"
+                android:text="2234" />
+
+            <TextView
+                android:id="@+id/tv_code"
+                android:layout_width="78dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:background="#27313e"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="@string/lab_submit"
+                android:textColor="#cccccc"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvBuy"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginBottom="15dp"
+            android:background="#ff9900"
+            android:gravity="center"
+            android:text="@string/lab_submit2"
+            android:textColor="#fff"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

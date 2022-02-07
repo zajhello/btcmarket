@@ -3,6 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:gyf="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryBackDark"
@@ -73,49 +74,70 @@
             android:background="@color/primaryBackDark"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvAddressText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/rush_address"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
-
             <LinearLayout
-                android:id="@+id/usdt_group"
-                android:layout_width="wrap_content"
+                android:id="@+id/ll_recharge_type1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/usdt_erc"
+                    android:id="@+id/tvAddressText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/text_orange"
-                    android:paddingLeft="@dimen/dp10"
-                    android:paddingTop="3dp"
-                    android:paddingRight="@dimen/dp10"
-                    android:paddingBottom="3dp"
-                    android:text="ERC20"
-                    android:textColor="@color/white" />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/rush_address"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/usdt_trc"
+                <LinearLayout
+                    android:id="@+id/usdt_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/dp10"
-                    android:paddingTop="3dp"
-                    android:paddingRight="@dimen/dp10"
-                    android:paddingBottom="3dp"
-                    android:text="TRC20"
-                    android:textColor="@color/white" />
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/usdt_erc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/text_orange"
+                        android:paddingLeft="@dimen/dp10"
+                        android:paddingTop="3dp"
+                        android:paddingRight="@dimen/dp10"
+                        android:paddingBottom="3dp"
+                        android:text="ERC20"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/usdt_trc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp10"
+                        android:paddingTop="3dp"
+                        android:paddingRight="@dimen/dp10"
+                        android:paddingBottom="3dp"
+                        android:text="TRC20"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
+
+            <!--上部TAB栏-->
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/primaryBackNormal"
+                android:visibility="gone"
+                app:tabBackground="@null"
+                app:tabIndicatorColor="@color/text_orange"
+                app:tabSelectedTextColor="@color/text_orange"
+                app:tabTextColor="@color/colorPrimary" />
 
 
             <ImageView
@@ -159,7 +181,8 @@
                 android:paddingRight="5dp"
                 android:paddingBottom="8dp"
                 android:textColor="@color/colorPrimary"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                tools:text="11111111111111111111" />
 
             <LinearLayout
                 android:id="@+id/llCopy"
@@ -172,11 +195,99 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-
                     android:text="@string/copyAddress"
                     android:textColor="@color/text_orange"
                     android:textSize="14sp" />
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:gravity="left"
+                    android:text="@string/recharge_amount"
+                    android:textColor="#cccccc"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/et_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="@string/recharge_amount_hint"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="5dp"
+                    android:textColor="#cccccc"
+                    android:textColorHint="@color/primaryTextGray"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/upload_img"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="15dp"
+                android:background="#0DFFFFFF"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_add_24" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:gravity="left"
+                    android:text="@string/recharge_my_address"
+                    android:textColor="#cccccc"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="@string/recharge_input_my_address"
+                    android:inputType="text"
+                    android:paddingLeft="5dp"
+                    android:textColor="#cccccc"
+                    android:textColorHint="@color/primaryTextGray"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginBottom="15dp"
+                android:background="#ff9900"
+                android:gravity="center"
+                android:text="@string/lab_submit2"
+                android:textColor="#fff"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/layout_memo"

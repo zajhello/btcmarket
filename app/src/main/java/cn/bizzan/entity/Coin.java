@@ -15,6 +15,16 @@ public class Coin implements Serializable {
     private double frozenBalance;
     private double toReleased;
     private String address;
+    private String[] addr;
+
+    public String[] getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String[] addr) {
+        this.addr = addr;
+    }
+
     private String unit;
 
     public String getMemo() {
@@ -62,9 +72,15 @@ public class Coin implements Serializable {
     public double getBalance() {
         return balance;
     }
-    public double getToReleased(){return toReleased;};
-    public void setToReleased(double toReleased){
-        this.toReleased=toReleased;
+
+    public double getToReleased() {
+        return toReleased;
+    }
+
+    ;
+
+    public void setToReleased(double toReleased) {
+        this.toReleased = toReleased;
     }
 
     public void setBalance(double balance) {
@@ -79,6 +95,7 @@ public class Coin implements Serializable {
         this.frozenBalance = frozenBalance;
     }
 
+    //
     public String getAddress() {
         return address;
     }
@@ -236,16 +253,27 @@ public class Coin implements Serializable {
             this.maxWithdrawAmount = maxWithdrawAmount;
         }
 
-        public String getDepositAddress(){return depositAddress;}
-        public void setDepositAddress(String depositAddress){this.depositAddress = depositAddress;}
+        public String getDepositAddress() {
+            return depositAddress;
+        }
 
-        public int getAccountType(){return accountType;}
-        public void setAccountType(int accountType){
+        public void setDepositAddress(String depositAddress) {
+            this.depositAddress = depositAddress;
+        }
+
+        public int getAccountType() {
+            return accountType;
+        }
+
+        public void setAccountType(int accountType) {
             this.accountType = accountType;
         }
 
-        public double getMinRechargeAmount(){return minRechargeAmount;}
-        public void setMinRechargeAmount(double minRechargeAmount){
+        public double getMinRechargeAmount() {
+            return minRechargeAmount;
+        }
+
+        public void setMinRechargeAmount(double minRechargeAmount) {
             this.minRechargeAmount = minRechargeAmount;
         }
     }

@@ -90,7 +90,7 @@ public class ChatActivity extends BaseActivity implements ISocket.TCPCallback, C
         super.onResume();
         //c2CSocket = MyBindService.getInstance();
         //WonderfulLogUtils.logi("ChatActivity",String.valueOf(c2CSocket.hashCode()));
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
         //JSONObject obj = buildGetBodyJson("");
         //SocketFactory.produceSocket(ISocket.C2C).run();
         //SocketFactory.produceSocket(ISocket.C2C).sendRequest(ISocket.CMD.SUBSCRIBE_CHAT, obj.toString().getBytes(), this);
@@ -103,7 +103,7 @@ public class ChatActivity extends BaseActivity implements ISocket.TCPCallback, C
         //JSONObject obj = buildGetBodyJson("");
         // stopService(intent);
 
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
         //SocketFactory.produceSocket(ISocket.C2C).sendRequest(ISocket.CMD.UNSUBSCRIBE_CHAT, obj.toString().getBytes(), this);
     }
 

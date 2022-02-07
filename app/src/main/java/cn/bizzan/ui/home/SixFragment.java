@@ -1002,7 +1002,7 @@ public class SixFragment extends BaseTransFragment implements MainContract.SixVi
                         2, null) + " CNY"));
             } else {
                 mPanMoney.setText(String.valueOf("≈ " + WonderfulMathUtils.getRundNumber(currency.getClose() * MainActivity.rate,
-                        2, null) + " CNY"));
+                        2, null) + " "+MainActivity.symbol));
             }
         }
     }
@@ -1134,7 +1134,7 @@ public class SixFragment extends BaseTransFragment implements MainContract.SixVi
                         2, null) + "CNY"));
             } else {
                 mPanMoney.setText(String.valueOf("≈" + WonderfulMathUtils.getRundNumber(currency.getClose() * MainActivity.rate,
-                        2, null) + "CNY"));
+                        2, null) + ""+MainActivity.symbol));
             }
             // 代表选择了哪个币种，需要重新订阅 应该先取消原来的再订阅现在的
             if (!TextUtils.isEmpty(oldSymbol)) {
@@ -1235,7 +1235,7 @@ public class SixFragment extends BaseTransFragment implements MainContract.SixVi
                             2, null) + " CNY"));
                 } else {
                     mPanMoney.setText(String.valueOf("≈ " + WonderfulMathUtils.getRundNumber(currency.getClose() * MainActivity.rate,
-                            2, null) + " CNY"));
+                            2, null) + " "+MainActivity.symbol));
                 }
             }
             if (now == 0) { //0 当前持仓  1当前委托
@@ -1683,13 +1683,13 @@ public class SixFragment extends BaseTransFragment implements MainContract.SixVi
     public void onDestroy() {
         super.onDestroy();
         hideDialog();
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
     }
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
     }
 
 

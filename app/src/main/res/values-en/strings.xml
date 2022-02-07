@@ -343,7 +343,7 @@
     <string name="text_fa_bu">Publish</string>
     <string name="text_ad_fu_kuan">Please choose the mode of payment</string>
     <string name="text_ad_entity">Incomplete advertising information！</string>
-    <string name="minLimitTip">The minimum amount shall not be less than 100CNY</string>
+    <string name="minLimitTip">The minimum amount shall not be less than %s</string>
     <string name="maxLimitTip">The maximum quantity shall not be higher than</string>
     <!--安全中心-->
     <string name="gesturesPassword">Gestures password</string>
@@ -937,7 +937,7 @@ BTXEX international Digital encryption asset trading platform overseas operation
     <string name="down_shelf">Unshelve</string>
     <string name="Alipay">Alipay</string>
     <string name="wechat">WeChat</string>
-    <string name="unionpay">UnionPay</string>
+    <string name="unionpay">BankCard</string>
     <string name="cause">Reason</string>
     <string name="up_picture">Please confirm that all information has been filled in and all pictures have been uploaded</string>
     <string name="read_agreement">Please read the agreement and select read</string>
@@ -981,8 +981,8 @@ BTXEX international Digital encryption asset trading platform overseas operation
     <string name="text_use_balance">Avaliable Balance</string>
     <string name="text_current_delivery">Current delivery</string>
     <string name="text_history_delivery">Historical delivery</string>
-    <string name="text_buy_up_total">Buy Reward Pool</string>
-    <string name="text_buy_down_total">Sell Reward Pool</string>
+    <string name="text_buy_up_total">buy up odds</string>
+    <string name="text_buy_down_total">buy or sell odds</string>
     <string name="text_my_storehouse">My Bet Amount</string>
     <string name="text_look_up">Price Up</string>
     <string name="text_look_down">Price Down</string>
@@ -1067,4 +1067,79 @@ BTXEX international Digital encryption asset trading platform overseas operation
     <string name="look_setting">Check the setting method</string>
     <string name="share_posters">Select</string>
     <string name="posters">Please select a poster</string>
+
+    <!--    ====================================================================================   -->
+
+    <string-array name="home_laboratory_tab">
+        <item>all</item>
+        <item>about to start</item>
+        <item>in progress</item>
+        <item>distributing</item>
+        <item>completed</item>
+    </string-array>
+
+    <string-array name="laboratory_tab">
+        <item>about to start</item>
+        <item>in progress</item>
+        <item>distributing</item>
+        <item>completed</item>
+    </string-array>
+
+    <string name="lab_title">Innovation Lab</string>
+    <string name="lab_process">schedule</string>
+    <string name="lab_total">total activity</string>
+    <string name="lab_start_time">Starting time:</string>
+    <string name="lab_end_time">End Time:</string>
+    <string name="lab_check_detail">see details</string>
+    <string name="lab_type1">First launch (snap purchase)</string>
+    <string name="lab_type2">First online (evenly split)</string>
+    <string name="lab_type3">share position</string>
+    <string name="lab_type4">Free subscription</string>
+    <string name="lab_type5">Cloud mining machine subscription</string>
+    <string name="lab_type6">lock release</string>
+    <string name="lab_type_unknow">unknown</string>
+    <string name="lab_detail_baseinfo">Basic Information</string>
+    <string name="lab_detail_status">state</string>
+    <string name="lab_detail_type">Subscription Type</string>
+    <string name="lab_detail_release_type">release type</string>
+    <string name="lab_detail_release_detail">release details</string>
+    <string name="lab_detail_lock_cost">lock-up threshold</string>
+    <string name="lab_detail_release_times">release multiple</string>
+    <string name="lab_detail_my_amount">My current position can be divided up：</string>
+    <string name="lab_detail_tpis">*Participating in the type of activity of [holding and sharing], you need to lock the position until the end of the activity</string>
+    <string name="lab_detail_input_amount">Enter the lock-up amount</string>
+    <string name="lab_detail_available_amount">my available balance</string>
+    <string name="lab_detail_type_instruction">Type description</string>
+    <string name="lab_detail_cost">Subscription price</string>
+    <string name="lab_detail_activity_currency">Active currency</string>
+    <string name="lab_detail_accept_currency">accepted currency</string>
+    <string name="lab_detail_limit_num">Personal purchase limit</string>
+    <string name="lab_detail_limit_amount">Personal purchase limit</string>
+    <string name="lab_detail_join">Get involved now</string>
+    <string name="lab_detail_bought">Purchased quantity</string>
+    <string name="lab_detail_remaining">The remaining amount</string>
+    <string name="lab_detail_cc">my participating positions</string>
+    <string name="lab_detail_tcc">Activity participation total position</string>
+    <string name="lab_detail_equal_release">equal release</string>
+    <string name="lab_detail_proportional_release">proportional release</string>
+    <string name="lab_detail_min_limit_tip">The exchange amount cannot be less than the minimum exchange amount</string>
+    <string name="lab_detail_max_limit_tip">The exchange amount cannot be greater than the maximum purchase amount</string>
+    <string name="lab_detail_period_release">period release</string>
+    <string name="lab_detail_release_multiple">%s times</string>
+    <string name="symbol">times</string>
+
+    <string name="lab_submit_title">safety verification</string>
+    <string name="lab_submit_phone">mobile phone number</string>
+    <string name="lab_submit_phone_code">Mobile verification code</string>
+    <string name="lab_submit">Click to get</string>
+    <string name="lab_submit2">submit</string>
+    <string name="lab_dialog_cancel">closure</string>
+
+    <string name="recharge_amount">Recharge amount</string>
+    <string name="recharge_amount_hint">Please enter quantity</string>
+    <string name="recharge_my_address">my transfer address</string>
+    <string name="recharge_input_my_address">my transfer address</string>
+    <string name="recharge_min_limits">The amount entered is less than the minimum recharge amount</string>
+    <string name="recharge_upload_failed">Image upload failed</string>
+    <string name="recharge_success">successful recharge</string>
 </resources>

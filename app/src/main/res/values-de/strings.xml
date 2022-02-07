@@ -43,7 +43,8 @@
     <string name="Incomplete_information"> Füllen Sie die Informationen nicht vollständig aus</string>
     <string name="xieyi"> Deaktiviert, um der Nutzungsvereinbarung zuzustimmen </string>
     <string name="empty_address"> Die Daten sind falsch, die Adresse ist leer</string>
-    <string name="order_details_failed"> konnte die Bestelldetails nicht abrufen, </string> . wurde erneut abgerufen
+    <string name="order_details_failed"> konnte die Bestelldetails nicht abrufen, </string>
+    . wurde erneut abgerufen
     <string name="No_qrcode"> QR-Code-Adresse ist nicht festgelegt</string>
     <string name="No_ads"> Erfassung von Werbeinformationen fehlgeschlagen, wird erneut erfasst! </string>
     <!--<string name="pwd_no_standard_tip"> mindestens ein Buchstabe und eine Zahl 6-20 Stellen </string>-->
@@ -110,7 +111,7 @@
     <string name="login_assets"> Gesamtvermögen (entspricht USDT)</string>
 
     <!--Zitate-->
-    <string name="input_search">Bitte geben Sie eine Stichwortsuche ein</string>
+    <!--    <string name="input_search">Bitte geben Sie eine Stichwortsuche ein</string>-->
 
     <!--Mein-->
     <string name="not_logged_in"> nicht eingeloggt</string>
@@ -353,7 +354,7 @@
     <string name="text_ad_fu_kuan">Bitte wählen Sie die Zahlungsmethode</string>
 
     <string name="text_ad_entity"> Unvollständige Werbeinformationen! </string>
-    <string name="minLimitTip"> Der Mindestbetrag darf nicht weniger als 100CNY betragen</string>
+    <string name="minLimitTip"> Der Mindestbetrag darf nicht weniger als %s betragen</string>
     <string name="maxLimitTip"> Der Höchstbetrag darf nicht höher sein als </string>
     <!--Sicherheitscenter-->
     <string name="gesturesPassword">Gestenpasswort</string>
@@ -380,7 +381,7 @@
     <string name="gongsijianjie">Unternehmensprofil</string>
     <string name="weixinkefu"> WeChat-Kundenservice</string>
 
-    <string name="kefu">Kundendienst</string>
+    <!--    <string name="kefu">Kundendienst</string>-->
 
     <!--Benutzer wechseln-->
 
@@ -430,7 +431,8 @@
     <string name="unChargeMoneyTip1"> derzeit keine Einzahlungsadresse</string>
     <string name="inputAddAdress"> bitte Adresse eingeben oder auswählen</string>
     <string name="accountNum"> die Anzahl der erhaltenen Konten</string>
-    <string name="addMoneyTip"> Die Bearbeitungsgebühr sollte in </string> . liegen
+    <string name="addMoneyTip"> Die Bearbeitungsgebühr sollte in </string>
+    . liegen
     <string name="addMoneyTip2"> Mindestanzahl an abgehobenen Münzen </string>
 
 
@@ -784,7 +786,8 @@
     <string name="text_history_entrust">Geschichtskommission </string>
     <string name="text_entrust_details"> Details anvertrauen</string>
     <string name="text_clear">Bestellung stornieren</string>
-    <string name="text_entrust_type"> Delegiertertyp</string><string name="text_enter_price_constract">anvertrauter Preis</string>
+    <string name="text_entrust_type"> Delegiertertyp</string>
+    <string name="text_enter_price_constract">anvertrauter Preis</string>
     <string name="text_trigger_price_constract">Auslösepreis</string>
     <string name="text_transaction_price"> Transaktionspreis</string>
     <string name="text_guarantee_money"> Marge </string>
@@ -950,7 +953,7 @@
     <string name="down_shelf">von der Stange</string>
     <string name="Alipay">Alipay</string>
     <string name="wechat"> WeChat</string>
-    <string name="unionpay"> UnionPay</string>
+    <string name="unionpay"> BankCard</string>
     <string name="cause"> Grund</string>
     <string name="up_picture"> Bitte bestätigen Sie, dass alle Informationen ausgefüllt und alle Bilder hochgeladen wurden</string>
     <string name="read_agreement"> Bitte lesen Sie zuerst die Vereinbarung und wählen Sie lesen </string>
@@ -995,8 +998,8 @@
     <string name="text_use_balance"> Verfügbares Guthaben</string>
     <string name="text_current_delivery"> aktuelle Lieferung </string>
     <string name="text_history_delivery"> historische Lieferung </string>
-    <string name="text_buy_up_total">Gesamtkaufpreiserhöhung</string>
-    <string name="text_buy_down_total"> der Gesamtbetrag des Buy-downs </string>
+    <string name="text_buy_up_total">Quoten kaufen</string>
+    <string name="text_buy_down_total"> Quoten kaufen oder verkaufen </string>
     <string name="text_my_storehouse">meine offene Stelle</string>
     <string name="text_look_up"> bullish </string>
     <string name="text_look_down">bärisch </string>
@@ -1081,5 +1084,80 @@
     <string name="look_setting"> Ansichtseinstellungsmethode</string>
     <string name="share_posters">Poster teilen</string>
     <string name="posters">Bitte wählen Sie ein Poster</string>
+
+    <!--    ====================================================================================   -->
+
+    <string-array name="home_laboratory_tab">
+        <item>alle</item>
+        <item>Kurz vor dem Start</item>
+        <item>in Bearbeitung</item>
+        <item>Verteilen</item>
+        <item>vollendet</item>
+    </string-array>
+
+    <string-array name="laboratory_tab">
+        <item>Kurz vor dem Start</item>
+        <item>in Bearbeitung</item>
+        <item>Verteilen</item>
+        <item>vollendet</item>
+    </string-array>
+
+    <string name="lab_title">Innovationslabor</string>
+    <string name="lab_process">Zeitplan</string>
+    <string name="lab_total">Gesamtaktivität</string>
+    <string name="lab_start_time">Anfangszeit:</string>
+    <string name="lab_end_time">Endzeit:</string>
+    <string name="lab_check_detail">siehe Einzelheiten</string>
+    <string name="lab_type1">Erster Start (Schnellkauf)</string>
+    <string name="lab_type2">Zuerst online (gleichmäßig aufgeteilt)</string>
+    <string name="lab_type3">Stelle teilen</string>
+    <string name="lab_type4">Kostenloses Abonnement</string>
+    <string name="lab_type5">Abonnement für Cloud-Mining-Maschinen</string>
+    <string name="lab_type6">Entriegelung</string>
+    <string name="lab_type_unknow">Unbekannt</string>
+    <string name="lab_detail_baseinfo">Grundinformation</string>
+    <string name="lab_detail_status">Zustand</string>
+    <string name="lab_detail_type">Abonnementtyp</string>
+    <string name="lab_detail_release_type">Freigabetyp</string>
+    <string name="lab_detail_release_detail">Freigabedetails</string>
+    <string name="lab_detail_lock_cost">Sperrschwelle</string>
+    <string name="lab_detail_release_times">mehrfach freigeben</string>
+    <string name="lab_detail_my_amount">Meine jetzige Position ist teilbar：</string>
+    <string name="lab_detail_tpis">*Wenn Sie an der Aktivitätsart [Halten und Teilen] teilnehmen, müssen Sie die Position bis zum Ende der Aktivität sperren</string>
+    <string name="lab_detail_input_amount">Geben Sie den Sperrbetrag ein</string>
+    <string name="lab_detail_available_amount">mein verfügbares Guthaben</string>
+    <string name="lab_detail_type_instruction">Typbeschreibung</string>
+    <string name="lab_detail_cost">Einschreibegebühr</string>
+    <string name="lab_detail_activity_currency">Aktive Währung</string>
+    <string name="lab_detail_accept_currency">akzeptierte Währung</string>
+    <string name="lab_detail_limit_num">Persönliches Einkaufslimit</string>
+    <string name="lab_detail_limit_amount">Persönliches Einkaufslimit</string>
+    <string name="lab_detail_join">Machen Sie jetzt mit</string>
+    <string name="lab_detail_bought">Gekaufte Menge</string>
+    <string name="lab_detail_remaining">Der verbleibende Betrag</string>
+    <string name="lab_detail_cc">meine teilnehmenden Positionen</string>
+    <string name="lab_detail_tcc">Gesamtposition der Aktivitätsteilnahme</string>
+    <string name="lab_detail_equal_release">gleiche Freigabe</string>
+    <string name="lab_detail_proportional_release">proportionale Freigabe</string>
+    <string name="lab_detail_min_limit_tip">Der Umtauschbetrag darf nicht unter dem Mindestumtauschbetrag liegen</string>
+    <string name="lab_detail_max_limit_tip">Der Umtauschbetrag darf den maximalen Kaufbetrag nicht überschreiten</string>
+    <string name="lab_detail_period_release">Zeitraum freigeben</string>
+    <string name="lab_detail_release_multiple">%s mal</string>
+    <string name="symbol">mal</string>
+
+    <string name="lab_submit_title">Sicherheitsüberprüfung</string>
+    <string name="lab_submit_phone">Handynummer</string>
+    <string name="lab_submit_phone_code">Mobiler Bestätigungscode</string>
+    <string name="lab_submit">Klicken Sie, um zu erhalten</string>
+    <string name="lab_submit2">einreichen</string>
+    <string name="lab_dialog_cancel">Schließung</string>
+
+    <string name="recharge_amount">Aufladebetrag</string>
+    <string name="recharge_amount_hint">Bitte Menge eingeben</string>
+    <string name="recharge_my_address">meine Überweisungsadresse</string>
+    <string name="recharge_input_my_address">meine Überweisungsadresse</string>
+    <string name="recharge_min_limits">Der eingegebene Betrag liegt unter dem Mindestaufladebetrag</string>
+    <string name="recharge_upload_failed">Bild-Upload fehlgeschlagen</string>
+    <string name="recharge_success">erfolgreiches Aufladen</string>
 
 </resources>

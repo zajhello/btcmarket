@@ -1,5 +1,5 @@
 <resources>
-<!--泰语-->
+    <!--泰语-->
     <string name="app_name">BIZZAN</string>
     <string name="cancle">ยกเลิก</string>
     <string name="confirm">กำหนด</string>
@@ -92,7 +92,7 @@
     <string name="home">บ้าน</string>
     <string name="market">คำคม</string>
     <string name="transaction">ธุรกรรม</string>
-    <string name="fiat">สกุลเงิน Fiat</string>
+    <!--    <string name="fiat">สกุลเงิน Fiat</string>-->
 
     <string name="fabi2">ธุรกรรมสกุลเงิน Fiat</string>
     <string name="account">ของฉัน</string>
@@ -110,15 +110,15 @@
     <string name="login_assets">สินทรัพย์รวม (เทียบเท่า USDT)</string>
 
     <!--行情-->
-    <string name="market_Change">เปลี่ยนใบเสนอราคา</string>
-    <string name="market_name">ชื่อ</string>
-    <string name="market_price">ราคาล่าสุด</string>
-    <string name="input_search">กรุณาใส่คีย์เวิร์ดเพื่อค้นหา</string>
-    <string name="favorites">ไม่จำเป็น</string>
-    <string name="exchanges">จุด</string>
-    <string name="futures">สัญญา</string>
-    <!--我的-->
-    <string name="Wallets">ทรัพย์สิน</string>
+    <!--    <string name="market_Change">เปลี่ยนใบเสนอราคา</string>-->
+    <!--    <string name="market_name">ชื่อ</string>-->
+    <!--    <string name="market_price">ราคาล่าสุด</string>-->
+    <!--    <string name="input_search">กรุณาใส่คีย์เวิร์ดเพื่อค้นหา</string>-->
+    <!--    <string name="favorites">ไม่จำเป็น</string>-->
+    <!--    <string name="exchanges">จุด</string>-->
+    <!--    <string name="futures">สัญญา</string>-->
+    <!--    &lt;!&ndash;我的&ndash;&gt;-->
+    <!--    <string name="Wallets">ทรัพย์สิน</string>-->
     <string name="not_logged_in">ไม่ได้เข้าสู่ระบบ</string>
     <string name="welcome_to">ยินดีต้อนรับสู่ hashcom.com</string>
     <string name="my_order">คำสั่งซื้อของฉัน</string>
@@ -131,20 +131,20 @@
     <string name="my_version">อัพเดทเวอร์ชั่นใหม่</string>
     <string name="has_new_version">พบเวอร์ชันใหม่</string>
     <string name="my_language">ภาษา</string>
-    <string name="my_exchange_rate">อัตราแลกเปลี่ยน</string>
+    <!--    <string name="my_exchange_rate">อัตราแลกเปลี่ยน</string>-->
     <string name="my_setting">ตั้งศูนย์</string>
     <string name="balance">สินทรัพย์รวม (เป็น USDT)</string>
-    <string name="balance_value">การประเมินมูลค่าทรัพย์สิน (USDT)</string>
+    <!--    <string name="balance_value">การประเมินมูลค่าทรัพย์สิน (USDT)</string>-->
     <string name="balance_1">การจัดการสินทรัพย์</string>
     <string name="balance_2">ทรัพย์สินของฉัน</string>
     <string name="balance_3">การหมุนเวียนของสินทรัพย์</string>
     <string name="my_fabi">การจัดการสกุลเงินที่ถูกกฎหมาย</string>
     <string name="logout_confirm">คุณแน่ใจว่าคุณต้องการที่จะออกจากระบบ?</string>
     <string name="logout_current_account">ออกจากระบบบัญชีปัจจุบัน</string>
-    <string name="share_app">แชร์แอพ</string>
-    <string name="appearance">โหมดธีม</string>
-    <string name="darkmode">โหมดกลางคืน</string>
-    <string name="lightmode">โหมดกลางวัน</string>
+    <!--    <string name="share_app">แชร์แอพ</string>-->
+    <!--    <string name="appearance">โหมดธีม</string>-->
+    <!--    <string name="darkmode">โหมดกลางคืน</string>-->
+    <!--    <string name="lightmode">โหมดกลางวัน</string>-->
 
     <!-- C2C交易(承兑商版) -->
     <string name="ctc_title">ธุรกรรมสกุลเงิน Fiat</string>
@@ -365,7 +365,7 @@
     <string name="text_ad_fu_kuan">กรุณาเลือกวิธีการชำระเงิน</string>
 
     <string name="text_ad_entity">ข้อมูลโฆษณาไม่สมบูรณ์!</string>
-    <string name="minLimitTip">จำนวนเงินขั้นต่ำต้องไม่น้อยกว่า 100CNY</string>
+    <string name="minLimitTip">จำนวนเงินขั้นต่ำต้องไม่น้อยกว่า %s</string>
     <string name="maxLimitTip">จำนวนเงินสูงสุดต้องไม่เกิน</string>
     <!--安全中心-->
     <string name="gesturesPassword">รหัสผ่านท่าทาง</string>
@@ -379,7 +379,7 @@
     <string name="language">ตั้งค่าภาษา</string>
     <string name="feed_back">คำติชม</string>
     <string name="about_us">เกี่ยวกับเรา</string>
-    <string name="setting">ติดตั้ง</string>
+    <!--    <string name="setting">ติดตั้ง</string>-->
     <string name="simplifiedChinese">ภาษาจีนตัวย่อ</string>
     <string name="Japanese">ญี่ปุ่น</string>
     <string name="versionUpdateTip">ไม่มีเวอร์ชั่นล่าสุด ไม่ต้องอัพเดท</string>
@@ -449,11 +449,11 @@
     <string name="grounding">ตอนนี้อยู่บนชั้นวาง</string>
     <string name="shelved">ถอดแล้ว</string>
     <string name="limit">ขีดจำกัด</string>
-    <string name="notpaied">ค้างชำระ</string>
-    <string name="paied">จ่าย</string>
-    <string name="done">เสร็จแล้ว</string>
-    <string name="canceled">ยกเลิก</string>
-    <string name="inappeal">น่าสนใจ</string>
+    <!--    <string name="notpaied">ค้างชำระ</string>-->
+    <!--    <string name="paied">จ่าย</string>-->
+    <!--    <string name="done">เสร็จแล้ว</string>-->
+    <!--    <string name="canceled">ยกเลิก</string>-->
+    <!--    <string name="inappeal">น่าสนใจ</string>-->
 
 
     <!--我的信息-->
@@ -499,7 +499,7 @@
     <string name="username_shuru">กรุณากรอกหมายเลขโทรศัพท์/อีเมล</string>
 
     <string name="password">รหัสผ่าน</string>
-    <string name="reset_password">รีเซ็ตรหัสผ่าน</string>
+    <!--    <string name="reset_password">รีเซ็ตรหัสผ่าน</string>-->
     <string name="password_shuru">กรุณาใส่รหัสผ่าน</string>
     <string name="forgot_password">ลืมรหัสผ่าน?</string>
     <string name="goto_regist">จดทะเบียน</string>
@@ -548,11 +548,11 @@
         <item>ผลประโยชน์ทับซ้อน</item>
     </string-array>
 
-    <string-array name="home_two_title_tab">
-        <item>USDT</item>
-        <item>BTC</item>
-        <item>ผลประโยชน์ทับซ้อน</item>
-    </string-array>
+    <!--    <string-array name="home_two_title_tab">-->
+    <!--        <item>USDT</item>-->
+    <!--        <item>BTC</item>-->
+    <!--        <item>ผลประโยชน์ทับซ้อน</item>-->
+    <!--    </string-array>-->
 
     <string-array name="home_six_top_tab">
         <item>เปิดตำแหน่ง</item>
@@ -694,8 +694,8 @@
     <!--    登录-->
     <string name="input_account_password">กรุณาใส่รหัสผ่านบัญชีของคุณ!</string>
     <string name="login_register">เข้าสู่ระบบ ลงทะเบียน</string>
-    <string name="login_fail1">ความยาวรหัสผ่านต้องไม่ต่ำกว่า 6 หลัก</string>
-    <string name="login_fail2">รูปแบบอีเมลไม่ถูกต้อง โปรดป้อนอีกครั้ง</string>
+    <!--    <string name="login_fail1">ความยาวรหัสผ่านต้องไม่ต่ำกว่า 6 หลัก</string>-->
+    <!--    <string name="login_fail2">รูปแบบอีเมลไม่ถูกต้อง โปรดป้อนอีกครั้ง</string>-->
     <!--    手势验证-->
     <string name="hint">พรอมต์</string>
     <string name="forget_pwd">ลืมรหัสผ่านท่าทางคุณต้องเข้าสู่ระบบอีกครั้ง!</string>
@@ -765,7 +765,7 @@
 
     <!-- C2C -->
     <string name="tv_wait_order">คำสั่งซื้อที่รอดำเนินการ</string>
-    <string name="tv_one">โสด</string>
+    <!--    <string name="tv_one">โสด</string>-->
     <string name="tv_already_order">รับออร์เดอร์แล้ว</string>
     <string name="tv_now_payment">ชำระเงินทันที</string>
     <string name="tv_payment">จ่าย</string>
@@ -928,48 +928,48 @@
     <!--登录-->
     <string name="username_shuru_regist">กรุณากรอกหมายเลขโทรศัพท์</string>
     <string name="setting_gather_type">โปรดตั้งค่าวิธีการชำระเงินของคุณ โปรดใช้บัญชีชื่อจริงของคุณ</string>
-    <string name="emaillogin">อีเมล์เข้าสู่ระบบ</string>
-    <string name="phonelogin">เข้าสู่ระบบด้วยโทรศัพท์</string>
+    <!--    <string name="emaillogin">อีเมล์เข้าสู่ระบบ</string>-->
+    <!--    <string name="phonelogin">เข้าสู่ระบบด้วยโทรศัพท์</string>-->
     <!--注册-->
     <string name="email_shuru">กรุณากรอกอีเมล์ของคุณ</string>
-    <string name="input_referrer">ID ผู้อ้างอิง (ไม่บังคับ)</string>
-    <string name="safetyverification">การตรวจสอบความปลอดภัย</string>
-    <string name="send_your_code">จะส่งรหัสยืนยันไปยังท่าน******</string>
+    <!--    <string name="input_referrer">ID ผู้อ้างอิง (ไม่บังคับ)</string>-->
+    <!--    <string name="safetyverification">การตรวจสอบความปลอดภัย</string>-->
+    <!--    <string name="send_your_code">จะส่งรหัสยืนยันไปยังท่าน******</string>-->
     <!--    法币-->
-    <string name="fiat_otc">พื้นที่เลือกเอง</string>
-    <string name="fiat_buy">ฉันต้องการที่จะซื้อ</string>
-    <string name="fiat_sell">อยากขาย</string>
-    <string name="my_want">ฉันต้องการ</string>
-    <string name="sell_online">ขายออนไลน์</string>
-    <string name="buy_online">ซื้อของออนไลน์</string>
-    <string name="become_merchant">มาเป็นธุรกิจ</string>
+    <!--    <string name="fiat_otc">พื้นที่เลือกเอง</string>-->
+    <!--    <string name="fiat_buy">ฉันต้องการที่จะซื้อ</string>-->
+    <!--    <string name="fiat_sell">อยากขาย</string>-->
+    <!--    <string name="my_want">ฉันต้องการ</string>-->
+    <!--    <string name="sell_online">ขายออนไลน์</string>-->
+    <!--    <string name="buy_online">ซื้อของออนไลน์</string>-->
+    <!--    <string name="become_merchant">มาเป็นธุรกิจ</string>-->
     <string name="publish_advertising">ลงโฆษณา</string>
-    <string name="my_advertising">โฆษณาของฉัน</string>
-    <string name="my_Orders">คำสั่งซื้อของฉัน</string>
+    <!--    <string name="my_advertising">โฆษณาของฉัน</string>-->
+    <!--    <string name="my_Orders">คำสั่งซื้อของฉัน</string>-->
 
-    <string name="buy_amount">ซื้อตามจำนวน</string>
-    <string name="buy_quantity">ซื้อตามปริมาณ</string>
-    <string name="enter_money">กรุณากรอกจำนวนเงิน</string>
-    <string name="enter_quantity">กรุณากรอกจำนวน</string>
-    <string name="total_price">ราคารวม</string>
-    <string name="trading_information">ข้อมูลการซื้อขาย</string>
-    <string name="payment_time_limit">กำหนดเวลาการชำระเงิน</string>
-    <string name="buyer_nickname">ชื่อเล่นของผู้ซื้อ</string>
-    <string name="buyer_deposit">เงินฝากของผู้ซื้อ</string>
-    <string name="buyer_payment_method">วิธีการชำระเงินของผู้ซื้อ</string>
-    <string name="apply_for_loan">สมัครมอบตัว</string>
+    <!--    <string name="buy_amount">ซื้อตามจำนวน</string>-->
+    <!--    <string name="buy_quantity">ซื้อตามปริมาณ</string>-->
+    <!--    <string name="enter_money">กรุณากรอกจำนวนเงิน</string>-->
+    <!--    <string name="enter_quantity">กรุณากรอกจำนวน</string>-->
+    <!--    <string name="total_price">ราคารวม</string>-->
+    <!--    <string name="trading_information">ข้อมูลการซื้อขาย</string>-->
+    <!--    <string name="payment_time_limit">กำหนดเวลาการชำระเงิน</string>-->
+    <!--    <string name="buyer_nickname">ชื่อเล่นของผู้ซื้อ</string>-->
+    <!--    <string name="buyer_deposit">เงินฝากของผู้ซื้อ</string>-->
+    <!--    <string name="buyer_payment_method">วิธีการชำระเงินของผู้ซื้อ</string>-->
+    <!--    <string name="apply_for_loan">สมัครมอบตัว</string>-->
 
 
-    <string name="to_logout">คุณกำลังดำเนินการยกเลิกธุรกิจอยู่ในขณะนี้ หลังจากยืนยันการส่งใบสมัครแล้ว จะไม่สามารถยกเลิกได้ คุณแน่ใจหรือไม่ว่าจะดำเนินการนี้</string>
-    <string name="reason">กรุณากรอกเหตุผลในการยกเลิก</string>
+    <!--    <string name="to_logout">คุณกำลังดำเนินการยกเลิกธุรกิจอยู่ในขณะนี้ หลังจากยืนยันการส่งใบสมัครแล้ว จะไม่สามารถยกเลิกได้ คุณแน่ใจหรือไม่ว่าจะดำเนินการนี้</string>-->
+    <!--    <string name="reason">กรุณากรอกเหตุผลในการยกเลิก</string>-->
 
-    <string name="exclusive_booth">บูธพิเศษ</string>
-    <string name="exclusive_booth2">ผู้ค้าเพลิดเพลินกับบูธโฆษณาพิเศษเพื่อเพิ่มอัตราความสำเร็จในการทำธุรกรรม</string>
-    <string name="one_to_one">บริการวีไอพีตัวต่อตัว</string>
-    <string name="one_to_one2">แพลตฟอร์มนี้ให้บริการตอบสนองอย่างทันท่วงทีแก่ผู้ค้าเพื่อช่วยให้ผู้ค้าทำธุรกรรมได้อย่างรวดเร็ว</string>
-    <string name="lower_fees">ค่าธรรมเนียมการจัดการที่ต่ำกว่า</string>
-    <string name="submitted">ส่งใบสมัครแล้วและอยู่ระหว่างดำเนินการ
-\nโปรดรอผล</string>
+    <!--    <string name="exclusive_booth">บูธพิเศษ</string>-->
+    <!--    <string name="exclusive_booth2">ผู้ค้าเพลิดเพลินกับบูธโฆษณาพิเศษเพื่อเพิ่มอัตราความสำเร็จในการทำธุรกรรม</string>-->
+    <!--    <string name="one_to_one">บริการวีไอพีตัวต่อตัว</string>-->
+    <!--    <string name="one_to_one2">แพลตฟอร์มนี้ให้บริการตอบสนองอย่างทันท่วงทีแก่ผู้ค้าเพื่อช่วยให้ผู้ค้าทำธุรกรรมได้อย่างรวดเร็ว</string>-->
+    <!--    <string name="lower_fees">ค่าธรรมเนียมการจัดการที่ต่ำกว่า</string>-->
+    <!--    <string name="submitted">ส่งใบสมัครแล้วและอยู่ระหว่างดำเนินการ-->
+    <!--\nโปรดรอผล</string>-->
 
 
     <string name="status_1">รอคนรับสั่ง...</string>
@@ -988,15 +988,15 @@
     <string name="replicated">คัดลอกแล้ว</string>
     <string name="merchants_certification">ใบรับรองผู้ค้า</string>
     <string name="apply_merchant">สมัครเป็นธุรกิจ</string>
-    <string name="apply_merchant2">ส่งรีวิวธุรกิจของคุณแล้ว</string>
-    <string name="apply_merchant3">ขอแสดงความยินดี! ผ่านการตรวจสอบยืนยันธุรกิจของคุณแล้ว</string>
-    <string name="apply_merchant4">ขอโทษ! การยืนยันการยืนยันธุรกิจของคุณล้มเหลว</string>
-    <string name="apply_merchant5">ส่งใบสมัครยกเลิกธุรกิจของคุณแล้ว</string>
-    <string name="apply_merchant6">การตรวจสอบใบสมัครยกเลิกธุรกิจของคุณล้มเหลว</string>
-    <string name="apply_merchant7">ผ่านการตรวจสอบใบสมัครยกเลิกธุรกิจของคุณแล้ว</string>
+    <!--    <string name="apply_merchant2">ส่งรีวิวธุรกิจของคุณแล้ว</string>-->
+    <!--    <string name="apply_merchant3">ขอแสดงความยินดี! ผ่านการตรวจสอบยืนยันธุรกิจของคุณแล้ว</string>-->
+    <!--    <string name="apply_merchant4">ขอโทษ! การยืนยันการยืนยันธุรกิจของคุณล้มเหลว</string>-->
+    <!--    <string name="apply_merchant5">ส่งใบสมัครยกเลิกธุรกิจของคุณแล้ว</string>-->
+    <!--    <string name="apply_merchant6">การตรวจสอบใบสมัครยกเลิกธุรกิจของคุณล้มเหลว</string>-->
+    <!--    <string name="apply_merchant7">ผ่านการตรวจสอบใบสมัครยกเลิกธุรกิจของคุณแล้ว</string>-->
     <string name="recheck">ทบทวนซ้ำ</string>
-    <string name="reapply">สมัครใหม่</string>
-    <string name="legal_agreement0">เข้าสู่ระบบต่อไปเพื่อตกลง</string>
+    <!--    <string name="reapply">สมัครใหม่</string>-->
+    <!--    <string name="legal_agreement0">เข้าสู่ระบบต่อไปเพื่อตกลง</string>-->
     <string name="legal_agreement1">ฉันได้อ่านและตกลง</string>
     <string name="legal_agreement2">"ข้อตกลงการค้าที่ผ่านการรับรอง"</string>
     <string name="legal_agreement3">ข้อตกลงการใช้</string>
@@ -1008,17 +1008,17 @@
     <string name="my_asset_attest">ใบรับรองทรัพย์สินดิจิทัลส่วนบุคคล</string>
     <string name="number_asset_attest">หลักฐานการทำธุรกรรมสินทรัพย์ดิจิทัล</string>
     <string name="no_upload">ไม่ได้อัปโหลด</string>
-    <string name="put_in_cancel">ส่งไม่สำเร็จ</string>
-    <string name="progress">เตรียมวัตถุดิบ</string>
-    <string name="progress2">ส่งรีวิว</string>
-    <string name="progress3">กลั่นกรอง</string>
-    <string name="progress4">ตรวจสอบแล้ว</string>
-    <string name="progress5">การตรวจสอบล้มเหลว</string>
-    <string name="progress6">การยกเลิกร้านค้า</string>
-    <string name="progress7">สอบผ่าน</string>
-    <string name="progress8">การระงับอยู่ระหว่างการตรวจสอบ</string>
-    <string name="progress9">การตรวจสอบการยกเลิกล้มเหลว</string>
-    <string name="progress10">ผ่านการตรวจสอบการยกเลิกแล้ว</string>
+    <!--    <string name="put_in_cancel">ส่งไม่สำเร็จ</string>-->
+    <!--    <string name="progress">เตรียมวัตถุดิบ</string>-->
+    <!--    <string name="progress2">ส่งรีวิว</string>-->
+    <!--    <string name="progress3">กลั่นกรอง</string>-->
+    <!--    <string name="progress4">ตรวจสอบแล้ว</string>-->
+    <!--    <string name="progress5">การตรวจสอบล้มเหลว</string>-->
+    <!--    <string name="progress6">การยกเลิกร้านค้า</string>-->
+    <!--    <string name="progress7">สอบผ่าน</string>-->
+    <!--    <string name="progress8">การระงับอยู่ระหว่างการตรวจสอบ</string>-->
+    <!--    <string name="progress9">การตรวจสอบการยกเลิกล้มเหลว</string>-->
+    <!--    <string name="progress10">ผ่านการตรวจสอบการยกเลิกแล้ว</string>-->
 
     <!--    web-->
     <string name="help">ช่วยด้วย</string>
@@ -1032,9 +1032,9 @@
     <!--我的广告-->
     <string name="up_shelf">วางบนหิ้ง</string>
     <string name="down_shelf">นอกชั้นวาง</string>
-    <string name="Alipay">อาลีเพย์</string>
-    <string name="wechat">วีแชท</string>
-    <string name="unionpay">ยูเนี่ยนเพย์</string>
+    <string name="Alipay">Alipay</string>
+    <string name="wechat">WeChat</string>
+    <string name="unionpay">BankCard</string>
     <string name="cause">เหตุผล</string>
     <string name="up_picture">โปรดยืนยันว่าได้กรอกข้อมูลทั้งหมดและอัปโหลดรูปภาพทั้งหมดแล้ว</string>
     <string name="read_agreement">โปรดอ่านข้อตกลงก่อนและเลือกอ่าน</string>
@@ -1074,18 +1074,18 @@
         <item>ปริมาณ</item>
     </string-array>
     <!--    账户-->
-    <string-array name="my_account">
-        <item>บัญชีสปอต</item>
-        <item>บัญชีถาวร</item>
-    </string-array>
+    <!--    <string-array name="my_account">-->
+    <!--        <item>บัญชีสปอต</item>-->
+    <!--        <item>บัญชีถาวร</item>-->
+    <!--    </string-array>-->
 
     <!--   期权 -->
     <string name="option">ตัวเลือก</string>
     <string name="text_use_balance">ยอดเงินคงเหลือ</string>
     <string name="text_current_delivery">การจัดส่งปัจจุบัน</string>
     <string name="text_history_delivery">การตั้งถิ่นฐานทางประวัติศาสตร์</string>
-    <string name="text_buy_up_total">ราคาซื้อทั้งหมด</string>
-    <string name="text_buy_down_total">ยอดซื้อดาวน์</string>
+    <string name="text_buy_up_total">ซื้ออัตราต่อรอง</string>
+    <string name="text_buy_down_total">ซื้อหรือขายอัตราต่อรอง</string>
     <string name="text_my_storehouse">ตำแหน่งที่เปิดของฉัน</string>
     <string name="text_look_up">รั้น</string>
     <string name="text_look_down">งุ่มง่าม</string>
@@ -1116,9 +1116,9 @@
     <string name="may_money">อัตรากำไรขั้นต้นที่มีอยู่</string>
     <string name="use_money">ระยะขอบที่ใช้แล้ว</string>
     <string name="freeze_money">ระยะขอบ</string>
-    <string name="may_money_all">มาร์จิ้นที่มีอยู่ทั้งหมด</string>
-    <string name="use_money_all">มาร์จิ้นที่ใช้ทั้งหมด</string>
-    <string name="freeze_money_all">ระยะขอบแช่แข็งทั้งหมด</string>
+    <!--    <string name="may_money_all">มาร์จิ้นที่มีอยู่ทั้งหมด</string>-->
+    <!--    <string name="use_money_all">มาร์จิ้นที่ใช้ทั้งหมด</string>-->
+    <!--    <string name="freeze_money_all">ระยะขอบแช่แข็งทั้งหมด</string>-->
     <string name="Wallet_Overturn">การโอนสินทรัพย์</string>
     <string name="tv_record">การบันทึก</string>
     <string name="tv_from">จาก</string>
@@ -1172,10 +1172,84 @@
     <string name="Permission_ok">อนุญาตให้ LIFE เข้าถึงการอนุญาตสมุดที่อยู่ คุณจะได้รับประสบการณ์ที่ดีขึ้น</string>
     <string name="look_setting">ดูวิธีตั้งค่า</string>
     <string name="share_posters">แบ่งปันโปสเตอร์</string>
-    <string name="history_result">ผลงานที่ผ่านมา</string>
+    <!--    <string name="history_result">ผลงานที่ผ่านมา</string>-->
 
 
     <string name="posters">กรุณาเลือกโปสเตอร์</string>
 
+    <!--    ====================================================================================   -->
+
+    <string-array name="home_laboratory_tab">
+        <item>ทั้งหมด</item>
+        <item>กำลังจะเริ่ม</item>
+        <item>กำลังดำเนินการ</item>
+        <item>จำหน่าย</item>
+        <item>สมบูรณ์</item>
+    </string-array>
+
+    <string-array name="laboratory_tab">
+        <item>กำลังจะเริ่ม</item>
+        <item>กำลังดำเนินการ</item>
+        <item>จำหน่าย</item>
+        <item>สมบูรณ์</item>
+    </string-array>
+
+    <string name="lab_title">ห้องปฏิบัติการนวัตกรรม</string>
+    <string name="lab_process">กำหนดการ</string>
+    <string name="lab_total">กิจกรรมทั้งหมด</string>
+    <string name="lab_start_time">เวลาเริ่มต้น:</string>
+    <string name="lab_end_time">เวลาสิ้นสุด:</string>
+    <string name="lab_check_detail">ดูรายละเอียด</string>
+    <string name="lab_type1">เปิดตัวครั้งแรก (ซื้อสแนป)</string>
+    <string name="lab_type2">ออนไลน์ครั้งแรก (แบ่งเท่าๆ กัน)</string>
+    <string name="lab_type3">แบ่งปันตำแหน่ง</string>
+    <string name="lab_type4">สมัครสมาชิกฟรี</string>
+    <string name="lab_type5">การสมัครสมาชิกเครื่องขุดบนคลาวด์</string>
+    <string name="lab_type6">ปลดล็อค</string>
+    <string name="lab_type_unknow">ไม่รู้จัก</string>
+    <string name="lab_detail_baseinfo">ข้อมูลพื้นฐาน</string>
+    <string name="lab_detail_status">สถานะ</string>
+    <string name="lab_detail_type">ประเภทการสมัครสมาชิก</string>
+    <string name="lab_detail_release_type">ประเภทการเปิดตัว</string>
+    <string name="lab_detail_release_detail">รายละเอียดการเปิดตัว</string>
+    <string name="lab_detail_lock_cost">เกณฑ์การล็อค</string>
+    <string name="lab_detail_release_times">ปล่อยหลายรายการ</string>
+    <string name="lab_detail_my_amount">ตำแหน่งปัจจุบันของฉันสามารถแบ่งออกได้：</string>
+    <string name="lab_detail_tpis">*การเข้าร่วมกิจกรรมประเภท [ถือและแชร์] ต้องล็อกตำแหน่งจนกว่าจะสิ้นสุดกิจกรรม</string>
+    <string name="lab_detail_input_amount">ใส่จำนวนเงินที่ล็อคไว้</string>
+    <string name="lab_detail_available_amount">ยอดเงินคงเหลือของฉัน</string>
+    <string name="lab_detail_type_instruction">พิมพ์คำอธิบาย</string>
+    <string name="lab_detail_cost">ราคาสมัครสมาชิก</string>
+    <string name="lab_detail_activity_currency">สกุลเงินที่ใช้งาน</string>
+    <string name="lab_detail_accept_currency">สกุลเงินที่รับ</string>
+    <string name="lab_detail_limit_num">จำกัดการซื้อส่วนบุคคล</string>
+    <string name="lab_detail_limit_amount">จำกัดการซื้อส่วนบุคคล</string>
+    <string name="lab_detail_join">มีส่วนร่วมตอนนี้</string>
+    <string name="lab_detail_bought">ปริมาณที่ซื้อ</string>
+    <string name="lab_detail_remaining">จำนวนเงินที่เหลือ</string>
+    <string name="lab_detail_cc">ตำแหน่งที่เข้าร่วมของฉัน</string>
+    <string name="lab_detail_tcc">การเข้าร่วมกิจกรรม ตำแหน่งรวม</string>
+    <string name="lab_detail_equal_release">ปล่อยเท่ากัน</string>
+    <string name="lab_detail_proportional_release">การปล่อยตามสัดส่วน</string>
+    <string name="lab_detail_min_limit_tip">จำนวนการแลกเปลี่ยนต้องไม่น้อยกว่าจำนวนเงินที่แลกเปลี่ยนขั้นต่ำ</string>
+    <string name="lab_detail_max_limit_tip">มูลค่าการแลกเปลี่ยนต้องไม่เกินยอดซื้อสูงสุด</string>
+    <string name="lab_detail_period_release">ช่วงเวลาปล่อยตัว</string>
+    <string name="lab_detail_release_multiple">%sครั้ง</string>
+    <string name="symbol">ครั้ง</string>
+
+    <string name="lab_submit_title">การตรวจสอบความปลอดภัย</string>
+    <string name="lab_submit_phone">เบอร์โทรศัพท์</string>
+    <string name="lab_submit_phone_code">รหัสยืนยันมือถือ</string>
+    <string name="lab_submit">คลิกเพื่อรับ</string>
+    <string name="lab_submit2">ส่ง</string>
+    <string name="lab_dialog_cancel">ปิด</string>
+
+    <string name="recharge_amount">จำนวนเติมเงิน</string>
+    <string name="recharge_amount_hint">กรุณากรอกจำนวน</string>
+    <string name="recharge_my_address">ที่อยู่การโอนของฉัน</string>
+    <string name="recharge_input_my_address">ที่อยู่การโอนของฉัน</string>
+    <string name="recharge_min_limits">จำนวนเงินที่ป้อนน้อยกว่าจำนวนเงินที่เติมเงินขั้นต่ำ</string>
+    <string name="recharge_upload_failed">อัพโหลดภาพไม่สำเร็จ</string>
+    <string name="recharge_success">เติมเงินสำเร็จ</string>
 
 </resources>

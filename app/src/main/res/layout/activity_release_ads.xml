@@ -58,7 +58,6 @@
             android:minWidth="48dp"
             android:src="@mipmap/icon_help"
             android:visibility="invisible" />
-
     </LinearLayout>
 
     <ScrollView
@@ -246,12 +245,13 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tvPrice_symbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8dp"
                     android:gravity="right"
-                    android:text="CNY"
+                    tools:text="CNY"
                     android:textColor="@color/primaryText"
                     android:textSize="16sp" />
 
@@ -398,6 +398,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/etjyPrice_symbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -447,6 +448,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/etCount_symbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -497,6 +499,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/etMin_symbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -548,6 +551,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/etMax_symbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

@@ -320,7 +320,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="5dp"
-                                android:text="0.00 USDT"
+                                android:text="0.00 %"
                                 android:textColor="@color/typeGreen"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
@@ -355,7 +355,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="5dp"
-                                android:text="0.00 USDT"
+                                android:text="0.00 %"
                                 android:textColor="@color/typeRed"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />

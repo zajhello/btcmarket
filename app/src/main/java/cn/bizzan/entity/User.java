@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by Administrator on 2018/1/26.
  */
 
-public class User   implements Serializable {
+public class User  implements Serializable {
     private String token;
     private String username;
     private Location location;

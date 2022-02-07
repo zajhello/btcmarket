@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import cn.bizzan.R;
+import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.app.MyApplication;
 import cn.bizzan.entity.ChatEntity;
 import cn.bizzan.utils.WonderfulLogUtils;
@@ -49,14 +50,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             if (MyApplication.app.getCurrentUser().getAvatar() == null) {
 
             } else {
-                Glide.with(context).load(MyApplication.app.getCurrentUser().getAvatar())
+                Glide.with(context).load(GlobalConstant.getGlobalImagePath( MyApplication.app.getCurrentUser().getAvatar()))
                         .placeholder(R.mipmap.icon_default_header).into(holder.ivHeaderRight);
             }
             holder.tvMessageRight.setText(datas.get(position).getContent());
         } else {
             holder.llLeft.setVisibility(View.VISIBLE);
             holder.llRight.setVisibility(View.GONE);
-            Glide.with(context).load(datas.get(position).getFromAvatar())
+            Glide.with(context).load( GlobalConstant.getGlobalImagePath( datas.get(position).getFromAvatar()) )
                     .placeholder(R.mipmap.icon_default_header).into(holder.ivHeaderLeft);
             holder.tvMessageLeft.setText(datas.get(position).getContent());
             //WonderfulLogUtils.logi("ChatActivity","onBindViewHolder()"+holder.tvMessageRight.getText());

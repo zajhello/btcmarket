@@ -18,7 +18,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.gyf.barlibrary.ImmersionBar;
 import com.kyleduo.switchbutton.SwitchButton;
+
 import cn.bizzan.R;
+import cn.bizzan.events.CurrencyEvent;
 import cn.bizzan.ui.account_pwd.AccountPwdActivity;
 import cn.bizzan.ui.account_pwd.EditAccountPwdActivity;
 import cn.bizzan.ui.bind_account.BindAccountActivity;
@@ -27,7 +29,9 @@ import cn.bizzan.ui.bind_email.EmailActivity;
 import cn.bizzan.ui.bind_phone.BindPhoneActivity;
 import cn.bizzan.ui.bind_phone.PhoneActivity;
 import cn.bizzan.ui.credit.CreditInfoActivity;
+import cn.bizzan.ui.currency_list.CurrencyListActivity;
 import cn.bizzan.ui.edit_login_pwd.EditLoginPwdActivity;
+import cn.bizzan.ui.home.MainActivity;
 import cn.bizzan.ui.set_lock.SetLockActivity;
 import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.app.MyApplication;
@@ -43,9 +47,13 @@ import cn.bizzan.utils.WonderfulPermissionUtils;
 import cn.bizzan.utils.WonderfulStringUtils;
 import cn.bizzan.utils.WonderfulToastUtils;
 import cn.bizzan.utils.WonderfulUriUtils;
+
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 import com.yanzhenjie.permission.PermissionListener;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.util.List;
@@ -92,6 +100,12 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
     SwitchButton switchButton;
     @BindView(R.id.view_back)
     View view_back;
+    @BindView(R.id.llCurrency)
+    LinearLayout llCurrency;
+    @BindView(R.id.tvCurrency)
+    TextView tvCurrency;
+
+
     private CompoundButton.OnCheckedChangeListener listener = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -123,10 +137,10 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
         public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
             switch (requestCode) {
                 case GlobalConstant.PERMISSION_CAMERA:
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(MyInfoActivity.this,R.string.camera_permission));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(MyInfoActivity.this, R.string.camera_permission));
                     break;
                 case GlobalConstant.PERMISSION_STORAGE:
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(MyInfoActivity.this,R.string.storage_permission));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(MyInfoActivity.this, R.string.storage_permission));
                     break;
             }
         }
@@ -161,7 +175,10 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
     @Override
     protected void initViews(Bundle savedInstanceState) {
         new MyInfoPresenter(Injection.provideTasksRepository(getApplicationContext()), this);
+
         imageFile = WonderfulFileUtils.getCacheSaveFile(this, filename);
+        tvCurrency.setText(MainActivity.symbol);
+
         ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -220,6 +237,17 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
         });
         switchButton.setChecked(!WonderfulStringUtils.isEmpty(SharedPreferenceInstance.getInstance().getLockPwd()));
         switchButton.setOnCheckedChangeListener(listener);
+
+        llCurrency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currencyClick();
+            }
+        });
+    }
+
+    private void currencyClick() {
+        CurrencyListActivity.actionStart(this);
     }
 
     private void accountClick() {
@@ -227,7 +255,7 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
         if (safeSetting.getRealVerified() == 1 && safeSetting.getFundsVerified() == 1) {
             BindAccountActivity.actionStart(this);
         } else
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.password_realname));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.password_realname));
     }
 
     // 身份认证状态判断   付款完成订阅socket  同时跳转页面  委托市价判断
@@ -235,7 +263,7 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
         try {
             if (safeSetting.getRealVerified() == 0) {
                 if (safeSetting.getRealAuditing() == 1) {//审核中
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.autonym1));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.autonym1));
                 } else {
                     if (safeSetting.getRealNameRejectReason() != null) {//失败
                         CreditInfoActivity.actionStart(this, CreditInfoActivity.AUDITING_FILED, safeSetting.getRealNameRejectReason());
@@ -245,7 +273,7 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
                 }
             } else {
 
-                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.autonym2));
+                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.autonym2));
             }
         } catch (Exception e) {
 
@@ -261,7 +289,7 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
     private void loginPwdClick() {
         if (safeSetting == null) return;
         if (safeSetting.getPhoneVerified() == 0) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.binding_phone_first));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.binding_phone_first));
             return;
         }
         EditLoginPwdActivity.actionStart(this, safeSetting.getMobilePhone());
@@ -298,7 +326,7 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
     @Override
     protected void loadData() {
         if (getToken() == null) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.autonym3));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.autonym3));
             return;
         }
         presenter.safeSetting(getToken());
@@ -328,7 +356,7 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
         if (ivHeader == null) {
             return;
         }
-        Glide.with(getApplicationContext()).load(WonderfulStringUtils.isEmpty(safeSetting.getAvatar()) ? R.mipmap.icon_default_header : safeSetting.getAvatar()).into(ivHeader);
+        Glide.with(getApplicationContext()).load(WonderfulStringUtils.isEmpty(safeSetting.getAvatar()) ? R.mipmap.icon_default_header : GlobalConstant.getGlobalImagePath(safeSetting.getAvatar()) ).into(ivHeader);
         tvPhone.setText(safeSetting.getPhoneVerified() == 0 ? R.string.unbound : R.string.bound);
         tvPhone.setEnabled(safeSetting.getPhoneVerified() == 0);
         tvEmail.setText(safeSetting.getEmailVerified() == 0 ? R.string.unbound : R.string.bound2);
@@ -381,11 +409,11 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
         else
             imageFile = WonderfulUriUtils.getUriBeforeKitKat(this, imageUri);
         if (imageFile == null) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.library_file_exception));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.library_file_exception));
             return;
         }
-        Bitmap bm = WonderfulBitmapUtils.zoomBitmap(BitmapFactory.decodeFile(imageFile.getAbsolutePath()), ivHeader.getWidth(), ivHeader.getHeight());
-        presenter.uploadBase64Pic(MyApplication.getApp().getCurrentUser().getToken(), "data:image/jpeg;base64," + WonderfulBitmapUtils.imgToBase64(bm));
+//        Bitmap bm = WonderfulBitmapUtils.zoomBitmap(BitmapFactory.decodeFile(imageFile.getAbsolutePath()), ivHeader.getWidth(), ivHeader.getHeight());
+        presenter.uploadBase64Pic(MyApplication.getApp().getCurrentUser().getToken(), filename,filename,imageFile);
         //ivHeader.setImageBitmap(bm);
 
     }
@@ -393,13 +421,13 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
     private void takePhotoReturn(int resultCode, Intent data) {
         if (resultCode != RESULT_OK) return;
         //Glide.with(this).load(imageFile).override(ivHeader.getWidth(), ivHeader.getHeight()).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(ivHeader);
-        Bitmap bitmap = WonderfulBitmapUtils.zoomBitmap(BitmapFactory.decodeFile(imageFile.getAbsolutePath()), ivHeader.getWidth(), ivHeader.getHeight());
-        presenter.uploadBase64Pic(getToken(), "data:image/jpeg;base64," + WonderfulBitmapUtils.imgToBase64(bitmap));
+//        Bitmap bitmap = WonderfulBitmapUtils.zoomBitmap(BitmapFactory.decodeFile(imageFile.getAbsolutePath()), ivHeader.getWidth(), ivHeader.getHeight());
+        presenter.uploadBase64Pic(getToken(), filename,filename,imageFile);
     }
 
     private void startCamera() {
         if (imageFile == null) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.unknown_error));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.unknown_error));
             return;
         }
         imageUri = WonderfulFileUtils.getUriForFile(this, imageFile);
@@ -440,7 +468,7 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
     public void avatarSuccess(String obj) {
         MyApplication.getApp().getCurrentUser().setAvatar(url);
         MyApplication.getApp().saveCurrentUser();
-        Glide.with(this).load(url).into(ivHeader);
+        Glide.with(this).load(GlobalConstant.getGlobalImagePath(url) ).into(ivHeader);
     }
 
     @Override
@@ -462,5 +490,8 @@ public class MyInfoActivity extends BaseActivity implements MyInfoContract.View,
         else chooseFromAlbum();
     }
 
-
+    @Override
+    public void onCurrencyChangedEvent() {
+        tvCurrency.setText(MainActivity.symbol);
+    }
 }

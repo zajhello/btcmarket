@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -25,13 +24,13 @@
             android:background="@null"
             android:scaleType="center"
             android:src="@drawable/icon_back_gray"
-            android:visibility="visible"/>
+            android:visibility="visible" />
 
         <View
             android:id="@+id/view_back"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,12 +40,12 @@
             android:layout_marginLeft="16dp"
             android:text="@string/security_settings"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/ibRegist"
@@ -59,14 +58,14 @@
             android:minWidth="48dp"
             android:textColor="#fff"
             android:textSize="14sp"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,10 +79,11 @@
 
             />
     </LinearLayout>
+
     <LinearLayout
-        android:background="@color/primaryBackNormal"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="@color/primaryBackNormal"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
@@ -94,32 +94,33 @@
             android:gravity="center_vertical"
             android:text="@string/photo"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <cn.bizzan.customview.CircleImageView
             android:id="@+id/ivHeader"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginRight="5dp"
-            android:src="@mipmap/icon_default_header"/>
+            android:src="@mipmap/icon_default_header" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_into"/>
+            android:src="@mipmap/icon_into" />
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_marginTop="1dp"
-        android:background="@color/primaryBackNormal"
         android:id="@+id/llIdCard"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/primaryBackNormal"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
@@ -130,12 +131,12 @@
             android:gravity="center_vertical"
             android:text="@string/id_credit"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvIdCard"
@@ -144,22 +145,22 @@
             android:layout_marginRight="8dp"
             android:text=""
             android:textColor="@drawable/selector_tv_color"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_into"/>
+            android:src="@mipmap/icon_into" />
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_marginTop="1dp"
-        android:background="@color/primaryBackNormal"
         android:id="@+id/llPhone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/primaryBackNormal"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
@@ -170,12 +171,12 @@
             android:gravity="center_vertical"
             android:text="@string/username"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvPhone"
@@ -184,12 +185,12 @@
             android:layout_marginRight="8dp"
             android:text=""
             android:textColor="@drawable/selector_tv_color"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_into"/>
+            android:src="@mipmap/icon_into" />
 
     </LinearLayout>
 
@@ -236,14 +237,14 @@
 
 
     <LinearLayout
-        android:layout_marginTop="1dp"
-        android:visibility="gone"
         android:id="@+id/llAccount"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="1dp"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:paddingRight="16dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -251,12 +252,12 @@
             android:gravity="center_vertical"
             android:text="@string/binding_account"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvAccount"
@@ -265,25 +266,24 @@
             android:layout_marginRight="8dp"
             android:text=""
             android:textColor="@drawable/selector_tv_color"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_into"/>
+            android:src="@mipmap/icon_into" />
 
     </LinearLayout>
 
 
-
     <LinearLayout
-        android:layout_marginTop="1dp"
         android:id="@+id/llLoginPwd"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/primaryBackNormal"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
-        android:background="@color/primaryBackNormal"
         android:paddingRight="16dp">
 
         <TextView
@@ -292,12 +292,12 @@
             android:gravity="center_vertical"
             android:text="@string/login_password"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvLoginPwd"
@@ -307,24 +307,24 @@
             android:enabled="false"
             android:text=""
             android:textColor="@drawable/selector_tv_color"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_into"/>
+            android:src="@mipmap/icon_into" />
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_marginTop="1dp"
         android:id="@+id/llAccountPwd"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/primaryBackNormal"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
-        android:background="@color/primaryBackNormal"
         android:paddingRight="16dp">
 
         <TextView
@@ -333,12 +333,12 @@
             android:gravity="center_vertical"
             android:text="@string/capital_password"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvAcountPwd"
@@ -347,20 +347,20 @@
             android:layout_marginRight="8dp"
             android:text=""
             android:textColor="@drawable/selector_tv_color"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_into"/>
+            android:src="@mipmap/icon_into" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:id="@+id/llLockSet"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:background="@color/primaryBackNormal"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
@@ -372,12 +372,12 @@
             android:gravity="center_vertical"
             android:text="@string/gesturesPassword"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <com.kyleduo.switchbutton.SwitchButton
             android:id="@+id/switchButton"
@@ -393,10 +393,50 @@
             app:kswThumbMarginRight="6dp"
             app:kswThumbMarginTop="4dp"
             app:kswThumbRangeRatio="3"
-            app:kswThumbWidth="16dp"/>
+            app:kswThumbWidth="16dp" />
         <!--app:kswThumbDrawable="@drawable/ios_thumb_selector"-->
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/primaryBackNormal"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/select_currency"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvCurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text=""
+            android:textColor="@drawable/selector_tv_color"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_into" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -26,7 +26,6 @@
             android:scaleType="center"
             android:src="@drawable/icon_back_gray"
             android:visibility="visible"/>
-
         <View
             android:id="@+id/view_back"
             android:layout_width="0dp"

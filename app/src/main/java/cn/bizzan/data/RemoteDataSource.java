@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
@@ -14,9 +15,11 @@ import org.json.JSONObject;
 
 import cn.bizzan.R;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import cn.bizzan.app.MyApplication;
 import cn.bizzan.base.Contract;
@@ -619,7 +622,12 @@ public class RemoteDataSource implements DataSource {
     @Override
     public void advertise(int pageNo, int pageSize, String advertiseType, String id, final DataCallback dataCallback) {
         WonderfulOkhttpUtils.post().url(UrlFactory.getAdvertiseUrl())
-                .addParams("pageNo", pageNo + "").addParams("pageSize", pageSize + "").addParams("advertiseType", advertiseType).addParams("id", id).build().execute(new StringCallback() {
+                .addParams("pageNo", pageNo + "")
+                .addParams("pageSize", pageSize + "")
+                .addParams("advertiseType", advertiseType)
+//                .addParams("id", id)
+                .addParams("unit", id)
+                .build().execute(new StringCallback() {
             @Override
             public void onError(Request request, Exception e) {
                 super.onError(request, e);
@@ -677,13 +685,74 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
+    public void currency(final DataCallback dataCallback) {
+        WonderfulOkhttpUtils.post().url(UrlFactory.getCurrencyUrl()).build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("获取所有法币列表出错", "获取所有法币列表出错：" + e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("获取所有法币列表回执：", "获取所有法币列表回执：" + response.toString());
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 0) {
+                        Map<String, CurrencyEntity> objs = gson.fromJson(object.getJSONObject("data").toString(), new TypeToken<Map<String, CurrencyEntity>>() {
+                        }.getType());
+                        dataCallback.onDataLoaded(objs);
+                    } else {
+                        dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void currencyRate(String key, final DataCallback dataCallback) {
+        WonderfulOkhttpUtils.get().url(UrlFactory.getCurrencyRate(key)).build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("获取所有法币rate出错", "获取所有法币rate出错：" + e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("获取所有法币rate回执：", "获取所有法币rate回执：" + response.toString());
+                try {
+                    JsonObject object = new JsonParser().parse(response).getAsJsonObject();
+                    if (object.getAsJsonPrimitive("code").getAsInt() == 0) {
+                        double rate = object.getAsJsonPrimitive("data").getAsDouble();
+                        dataCallback.onDataLoaded(rate);
+                    } else {
+                        dataCallback.onDataNotAvailable(object.getAsJsonPrimitive("code").getAsInt(), object.getAsJsonPrimitive("message").getAsString());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+
+    @Override
     public void create(String token, final String price, String advertiseType, String coinId, String minLimit, String maxLimit,
                        int timeLimit, String countryZhName, String priceType, String premiseRate, String remark,
-                       String number, String pay, String jyPassword, String auto, String autoword, final DataCallback dataCallback) {
+                       String number, String pay, String jyPassword, String auto, String autoword, String currency, double rate, final DataCallback dataCallback) {
         WonderfulOkhttpUtils.post().url(UrlFactory.getReleaseAdUrl()).addHeader("x-auth-token", token)
                 .addParams("price", price).addParams("advertiseType", advertiseType).addParams("coin.id", coinId).addParams("minLimit", minLimit).addParams("maxLimit", maxLimit)
                 .addParams("timeLimit", timeLimit + "").addParams("country.ZhName", countryZhName).addParams("priceType", priceType).addParams("premiseRate", premiseRate).addParams("remark", remark)
                 .addParams("number", number).addParams("pay[]", pay).addParams("jyPassword", jyPassword).addParams("auto", auto).addParams("autoword", autoword)
+                .addParams("currency", currency).addParams("rate", String.valueOf(rate))
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Request request, Exception e) {
@@ -713,30 +782,66 @@ public class RemoteDataSource implements DataSource {
 
     @Override
     public void uploadBase64Pic(String token, String base64Data, final DataCallback dataCallback) {
-        WonderfulOkhttpUtils.post().url(UrlFactory.getUploadPicUrl()).addHeader("x-auth-token", token).addParams("base64Data", base64Data).build().execute(new StringCallback() {
-            @Override
-            public void onError(Request request, Exception e) {
-                super.onError(request, e);
-                WonderfulLogUtils.logi("上传图片出错", "上传图片出错：" + e.getMessage());
-                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
-            }
-
-            @Override
-            public void onResponse(String response) {
-                WonderfulLogUtils.logi("上传图片回执：", "上传图片回执：" + response.toString());
-                try {
-                    JSONObject object = new JSONObject(response);
-                    if (object.optInt("code") == 0) {
-                        dataCallback.onDataLoaded(object.optString("data"));
-                    } else {
-                        dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+        WonderfulOkhttpUtils.post().url(UrlFactory.getUploadPicUrl())
+                .addHeader("x-auth-token", token)
+                .addParams("base64Data", base64Data)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Request request, Exception e) {
+                        super.onError(request, e);
+                        WonderfulLogUtils.logi("上传图片出错", "上传图片出错：" + e.getMessage());
+                        dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
-                }
-            }
-        });
+
+                    @Override
+                    public void onResponse(String response) {
+                        WonderfulLogUtils.logi("上传图片回执：", "上传图片回执：" + response.toString());
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            if (object.optInt("code") == 0) {
+                                dataCallback.onDataLoaded(object.optString("data"));
+                            } else {
+                                dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void uploadBase64Pic(String token, String name, String filename, File file, DataCallback dataCallback) {
+        WonderfulOkhttpUtils.post().url(UrlFactory.getUploadPicUrl())
+                .addHeader("x-auth-token", token)
+                .addFile(name, filename, file)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Request request, Exception e) {
+                        super.onError(request, e);
+                        WonderfulLogUtils.logi("上传图片出错", "上传图片出错：" + e.getMessage());
+                        dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        WonderfulLogUtils.logi("上传图片回执：", "上传图片回执：" + response.toString());
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            if (object.optInt("code") == 0) {
+                                dataCallback.onDataLoaded(object.optString("data"));
+                            } else {
+                                dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                        }
+                    }
+                });
     }
 
     @Override
@@ -945,11 +1050,13 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void updateAd(String token, int id, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, final DataCallback dataCallback) {
+    public void updateAd(String token, int id, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, String currency, double rate, final DataCallback dataCallback) {
         WonderfulOkhttpUtils.post().url(UrlFactory.getUpdateAdUrl()).addHeader("x-auth-token", token).addParams("id", id + "")
                 .addParams("price", price).addParams("advertiseType", advertiseType).addParams("coin.id", coinId).addParams("minLimit", minLimit).addParams("maxLimit", maxLimit)
                 .addParams("timeLimit", timeLimit + "").addParams("country.ZhName", countryZhName).addParams("priceType", priceType).addParams("premiseRate", premiseRate).addParams("remark", remark)
                 .addParams("number", number).addParams("pay[]", pay).addParams("jyPassword", jyPassword).addParams("auto", auto).addParams("autoword", autoword)
+                .addParams("currency", currency).addParams("rate", String.valueOf(rate))
+
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Request request, Exception e) {
@@ -1006,11 +1113,13 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, final DataCallback dataCallback) {
+    public void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, String currency, double rate, final DataCallback dataCallback) {
         WonderfulOkhttpUtils.post().url(UrlFactory.getC2CBuyUrl()).addHeader("x-auth-token", token)
                 .addParams("id", id).addParams("coinId", coinId).addParams("price", price)
                 .addParams("money", money).addParams("amount", amount).addParams("remark", remark)
                 .addParams("mode", mode)
+                .addParams("currency", currency)
+                .addParams("rate", "" + rate)
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Request request, Exception e) {
@@ -1038,11 +1147,13 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, final DataCallback dataCallback) {
+    public void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, String currency, double rate, final DataCallback dataCallback) {
         WonderfulOkhttpUtils.post().url(UrlFactory.getC2CSellUrl()).addHeader("x-auth-token", token)
                 .addParams("id", id).addParams("coinId", coinId).addParams("price", price)
                 .addParams("money", money).addParams("amount", amount).addParams("remark", remark)
                 .addParams("mode", mode)
+                .addParams("currency", currency)
+                .addParams("rate", "" + rate)
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Request request, Exception e) {
@@ -3083,6 +3194,102 @@ public class RemoteDataSource implements DataSource {
                         dataCallback.onDataLoaded(objs);
                     } else {
                         dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void labList(String token, int step, int pageNo, int pageSize, DataCallback dataCallback) {
+        WonderfulOkhttpUtils.post().url(UrlFactory.getLabUrl())
+                .addHeader("x-auth-token", token)
+                .addParams("step", "" + step)
+                .addParams("pageNo", "" + pageNo)
+                .addParams("pageSize", "" + pageSize)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("获取创新实验室失败", e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("获取创新实验室：", response);
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 0) {
+                        List<LabEntity> objs = gson.fromJson(object.getJSONObject("data").getJSONArray("content").toString(), new TypeToken<List<LabEntity>>() {
+                        }.getType());
+                        dataCallback.onDataLoaded(objs);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void activityDetail(String token, int id, DataCallback dataCallback) {
+        WonderfulOkhttpUtils.post().url(UrlFactory.getActivityDetailbUrl())
+                .addHeader("x-auth-token", token)
+                .addParams("id", "" + id)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("获取创新实验室 详情", e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("获取创新实验室详情：", response);
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 0) {
+                        LabDetailEntity objs = gson.fromJson(object.getString("data"), new TypeToken<LabDetailEntity>() {
+                        }.getType());
+                        dataCallback.onDataLoaded(objs);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void activityAttend(String token, String amount, int activityId, String aims, String code, DataCallback dataCallback) {
+        WonderfulOkhttpUtils.post().url(UrlFactory.getActivityAttendUrl())
+                .addHeader("x-auth-token", token)
+                .addParams("amount", amount)
+                .addParams("activityId", "" + activityId)
+                .addParams("aims", aims)
+                .addParams("code", code)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("获取创新实验室 attend", e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("获取创新实验室attend：", response);
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 0) {
+                        dataCallback.onDataLoaded(object.getString("data"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

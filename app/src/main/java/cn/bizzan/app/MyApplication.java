@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import cn.bizzan.R;
 
-import com.umeng.commonsdk.UMConfigure;
+//import com.umeng.commonsdk.UMConfigure;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import org.xutils.x;
@@ -85,7 +85,7 @@ public class MyApplication extends Application {
         getCurrentUserFromFile();
         checkInternet();
         x.Ext.init(this);
-        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "");
+//        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "");
 
 
     }

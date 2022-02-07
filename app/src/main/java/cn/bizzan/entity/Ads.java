@@ -31,6 +31,15 @@ public class Ads implements Serializable {
     private int auto;
     private String autoword;
     private Coin coin;
+    private String currency;
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
     public Coin getCoin() {
         return coin;

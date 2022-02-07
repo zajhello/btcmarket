@@ -43,6 +43,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.bizzan.R;
 import cn.bizzan.adapter.shareApkImageAdapter;
+import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.app.MyApplication;
 import cn.bizzan.app.UrlFactory;
 import cn.bizzan.base.BaseTransFragment;
@@ -58,6 +59,7 @@ import cn.bizzan.ui.login.LoginActivity;
 import cn.bizzan.ui.my_ads.AdsActivity;
 import cn.bizzan.ui.my_order.MyOrderActivity;
 import cn.bizzan.ui.myinfo.MyInfoActivity;
+import cn.bizzan.ui.mylab.MyLibActivity;
 import cn.bizzan.ui.setting.SettingActivity;
 import cn.bizzan.ui.wallet.WalletActivity;
 import cn.bizzan.ui.wallet_detail.WalletDetailActivity;
@@ -99,6 +101,9 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
     LinearLayout line_ctc;
     @BindView(R.id.line_security)
     LinearLayout line_security;
+    @BindView(R.id.llLab)
+    LinearLayout line_lab;
+
     @BindView(R.id.llSafe)
     ImageView llSafe;
     @BindView(R.id.llSettings)
@@ -222,6 +227,15 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
                     startActivityForResult(new Intent(getActivity(), LoginActivity.class), LoginActivity.RETURN_LOGIN);
                 }
 
+            }
+        });
+
+        line_lab.setOnClickListener(v -> {
+            if (MyApplication.getApp().isLogin()) {
+                displayLoadingPopup();
+                MyLibActivity.actionStart(getActivity());
+            } else {
+                startActivityForResult(new Intent(getActivity(), LoginActivity.class), LoginActivity.RETURN_LOGIN);
             }
         });
 
@@ -434,7 +448,7 @@ public class FiveFragment extends BaseTransFragment implements MainContract.Five
             tvCurrentLevel.setText(this.getPartnerNameByCount(user.getFirstLevel()));
             tvEstimatedReward.setText("0");
             if (!WonderfulStringUtils.isEmpty(user.getAvatar())) {
-                Glide.with(getActivity().getApplicationContext()).load(user.getAvatar()).into(ivHeader);
+                Glide.with(getActivity().getApplicationContext()).load(GlobalConstant.getGlobalImagePath(user.getAvatar())).into(ivHeader);
             } else {
                 Glide.with(getActivity().getApplicationContext()).load(R.mipmap.icon_default_header).into(ivHeader);
             }

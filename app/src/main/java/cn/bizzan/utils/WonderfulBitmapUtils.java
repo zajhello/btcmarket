@@ -81,17 +81,15 @@ public class WonderfulBitmapUtils {
             int width = bitmap.getWidth();
             int height = bitmap.getHeight();
             Matrix matrix = new Matrix();
-            float scaleWidth = ((float) w / width);
-            float scaleHeight = ((float) h / height);
-            matrix.postScale(scaleWidth, scaleHeight);
+//            float scaleWidth = ((float) w / width);
+//            float scaleHeight = ((float) h / height);
+//            matrix.postScale(scaleWidth, scaleHeight);
             bitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
             return bitmap;
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
-
     }
-
 
 
     /**

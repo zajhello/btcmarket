@@ -1,5 +1,6 @@
 package cn.bizzan.data;
 
+import java.io.File;
 import java.math.BigDecimal;
 
 /**
@@ -139,19 +140,37 @@ public class DataRepository implements DataSource {
     }
 
     @Override
-    public void create(String token, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, DataCallback dataCallback) {
+    public void currency(DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.currency(dataCallback);
+        else mRemoteDataSource.currency(dataCallback);
+    }
+
+    @Override
+    public void currencyRate(String key, DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.currencyRate(key, dataCallback);
+        else mRemoteDataSource.currencyRate(key, dataCallback);
+    }
+
+    @Override
+    public void create(String token, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, String currency, double rate, DataCallback dataCallback) {
         if (isLocal)
             mLocalDataSource.create(token, price, advertiseType, coinId, minLimit, maxLimit, timeLimit, countryZhName
-                    , priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, dataCallback);
+                    , priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, currency, rate, dataCallback);
         else
             mRemoteDataSource.create(token, price, advertiseType, coinId, minLimit, maxLimit, timeLimit, countryZhName
-                    , priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, dataCallback);
+                    , priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, currency, rate, dataCallback);
     }
 
     @Override
     public void uploadBase64Pic(String token, String base64Data, DataCallback dataCallback) {
         if (isLocal) mLocalDataSource.uploadBase64Pic(token, base64Data, dataCallback);
         else mRemoteDataSource.uploadBase64Pic(token, base64Data, dataCallback);
+    }
+
+    @Override
+    public void uploadBase64Pic(String token, String name, String filename, File file, DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.uploadBase64Pic(token, name, filename, file, dataCallback);
+        else mRemoteDataSource.uploadBase64Pic(token, name, filename, file, dataCallback);
     }
 
     @Override
@@ -199,11 +218,11 @@ public class DataRepository implements DataSource {
     }
 
     @Override
-    public void updateAd(String token, int id, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, DataCallback dataCallback) {
+    public void updateAd(String token, int id, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, String currency, double rate, DataCallback dataCallback) {
         if (isLocal)
-            mLocalDataSource.updateAd(token, id, price, advertiseType, coinId, minLimit, maxLimit, timeLimit, countryZhName, priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, dataCallback);
+            mLocalDataSource.updateAd(token, id, price, advertiseType, coinId, minLimit, maxLimit, timeLimit, countryZhName, priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, currency, rate, dataCallback);
         else
-            mRemoteDataSource.updateAd(token, id, price, advertiseType, coinId, minLimit, maxLimit, timeLimit, countryZhName, priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, dataCallback);
+            mRemoteDataSource.updateAd(token, id, price, advertiseType, coinId, minLimit, maxLimit, timeLimit, countryZhName, priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, currency, rate, dataCallback);
     }
 
     @Override
@@ -213,19 +232,19 @@ public class DataRepository implements DataSource {
     }
 
     @Override
-    public void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, DataCallback dataCallback) {
+    public void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, String currency, double rate, DataCallback dataCallback) {
         if (isLocal)
-            mLocalDataSource.c2cBuy(token, id, coinId, price, money, amount, remark, mode, dataCallback);
+            mLocalDataSource.c2cBuy(token, id, coinId, price, money, amount, remark, mode, currency, rate, dataCallback);
         else
-            mRemoteDataSource.c2cBuy(token, id, coinId, price, money, amount, remark, mode, dataCallback);
+            mRemoteDataSource.c2cBuy(token, id, coinId, price, money, amount, remark, mode, currency, rate, dataCallback);
     }
 
     @Override
-    public void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, DataCallback dataCallback) {
+    public void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, String currency, double rate, DataCallback dataCallback) {
         if (isLocal)
-            mLocalDataSource.c2cSell(token, id, coinId, price, money, amount, remark, mode, dataCallback);
+            mLocalDataSource.c2cSell(token, id, coinId, price, money, amount, remark, mode, currency, rate, dataCallback);
         else
-            mRemoteDataSource.c2cSell(token, id, coinId, price, money, amount, remark, mode, dataCallback);
+            mRemoteDataSource.c2cSell(token, id, coinId, price, money, amount, remark, mode, currency, rate, dataCallback);
 
     }
 
@@ -643,17 +662,35 @@ public class DataRepository implements DataSource {
     }
 
 
-
     @Override
-    public void getUdunConf(String token,DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getUdunConf(token,dataCallback);
-        else mRemoteDataSource.getUdunConf(token,dataCallback);
+    public void getUdunConf(String token, DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.getUdunConf(token, dataCallback);
+        else mRemoteDataSource.getUdunConf(token, dataCallback);
     }
 
     @Override
     public void getSupportCoins(String token, DataCallback dataCallback) {
-        if (isLocal) mLocalDataSource.getSupportCoins(token,dataCallback);
-        else mRemoteDataSource.getSupportCoins(token,dataCallback);
+        if (isLocal) mLocalDataSource.getSupportCoins(token, dataCallback);
+        else mRemoteDataSource.getSupportCoins(token, dataCallback);
+    }
+
+    @Override
+    public void labList(String token, int step, int pageNo, int pageSize, DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.labList(token, step, pageNo, pageSize, dataCallback);
+        else mRemoteDataSource.labList(token, step, pageNo, pageSize, dataCallback);
+    }
+
+    @Override
+    public void activityDetail(String token, int id, DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.activityDetail(token, id, dataCallback);
+        else mRemoteDataSource.activityDetail(token, id, dataCallback);
+    }
+
+    @Override
+    public void activityAttend(String token, String amount, int activityId, String aims, String code, DataCallback dataCallback) {
+        if (isLocal)
+            mLocalDataSource.activityAttend(token, amount, activityId, aims, code, dataCallback);
+        else mRemoteDataSource.activityAttend(token, amount, activityId, aims, code, dataCallback);
     }
 
     @Override

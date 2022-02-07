@@ -87,7 +87,7 @@ public class ChatListActivity extends BaseActivity {
                 finish();
             }
         });
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
 
 //        OrderDetial orderDetial = new OrderDetial();
 //        ChatActivity.actionStart(ChatListActivity.this,orderDetial);

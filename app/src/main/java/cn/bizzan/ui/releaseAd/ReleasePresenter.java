@@ -40,9 +40,9 @@ public class ReleasePresenter implements ReleaseAdContract.Presenter {
     }
 
     @Override
-    public void create(String token, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword) {
+    public void create(String token, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, String currency, double rate) {
         view.displayLoadingPopup();
-        dataRepository.create(token, price, advertiseType, coinId, minLimit, maxLimit, timeLimit, countryZhName, priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, new DataSource.DataCallback() {
+        dataRepository.create(token, price, advertiseType, coinId, minLimit, maxLimit, timeLimit, countryZhName, priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, currency,rate,new DataSource.DataCallback() {
             @Override
             public void onDataLoaded(Object obj) {
                 view.hideLoadingPopup();
@@ -78,22 +78,22 @@ public class ReleasePresenter implements ReleaseAdContract.Presenter {
     }
 
     @Override
-    public void updateAd(String token, int id, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword) {
+    public void updateAd(String token, int id, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, String currency, double rate) {
         view.displayLoadingPopup();
         dataRepository.updateAd(
-                token, id, price, advertiseType, coinId, minLimit, maxLimit, timeLimit, countryZhName, priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, new DataSource.DataCallback() {
-            @Override
-            public void onDataLoaded(Object obj) {
-                view.hideLoadingPopup();
-                view.updateSuccess((String) obj);
-            }
+                token, id, price, advertiseType, coinId, minLimit, maxLimit, timeLimit, countryZhName, priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword, currency, rate, new DataSource.DataCallback() {
+                    @Override
+                    public void onDataLoaded(Object obj) {
+                        view.hideLoadingPopup();
+                        view.updateSuccess((String) obj);
+                    }
 
-            @Override
-            public void onDataNotAvailable(Integer code, String toastMessage) {
-                view.hideLoadingPopup();
-                view.updateFail(code, toastMessage);
+                    @Override
+                    public void onDataNotAvailable(Integer code, String toastMessage) {
+                        view.hideLoadingPopup();
+                        view.updateFail(code, toastMessage);
 
-            }
-        });
+                    }
+                });
     }
 }

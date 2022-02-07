@@ -70,7 +70,6 @@ public class AdsActivity extends BaseActivity implements AdsContract.View, AdsDi
         }else {
             return super.onKeyDown(keyCode, event);
         }
-
     }
 
     @Override

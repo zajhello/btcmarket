@@ -7,6 +7,7 @@ import cn.bizzan.entity.Coin;
 import cn.bizzan.entity.CoinInfo;
 import cn.bizzan.entity.EntrustHistory;
 import cn.bizzan.entity.Favorite;
+import cn.bizzan.entity.LabEntity;
 import cn.bizzan.entity.Plate;
 import cn.bizzan.entity.SafeSetting;
 import cn.bizzan.entity.WalletConstract;
@@ -70,6 +71,19 @@ public interface MainContract {
 
         void myUdunConfFail();
     }
+
+    interface LabPresenter extends Contract.BasePresenter {
+        void getLabList(String token, int step, int pageNo, int pageSize, boolean loadmore);
+
+    }
+
+    interface LabView extends Contract.BaseView<LabPresenter> {
+
+        void labListSuccess(List<LabEntity> labs, boolean loadmore);
+
+        void labListFailed(boolean loadmore);
+    }
+
 
     interface TwoPresenter extends Contract.BasePresenter {
 

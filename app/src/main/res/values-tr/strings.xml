@@ -42,7 +42,8 @@
     <string name="Incomplete_information"> bilgileri doldurun, tamamlanmadı</string>
     <string name="xieyi"> Kullanıcı sözleşmesini kabul etmek için işaretlenmemiş </string>
     <string name="empty_address"> Veri yanlış, adres boş</string>
-    <string name="order_details_failed"> sipariş ayrıntılarını alamadı, </string> yeniden alındı
+    <string name="order_details_failed"> sipariş ayrıntılarını alamadı, </string>
+    yeniden alındı
     <string name="No_qrcode"> QR kodu adresi ayarlanmadı</string>
     <string name="No_ads"> Reklam bilgileri alınamadı, yeniden alınıyor! </string>
     <!--<string name="pwd_no_standard_tip"> en az bir harf ve 6-20 rakam arası </string>-->
@@ -109,7 +110,7 @@
     <string name="login_assets"> toplam varlık (USDT\'ye eşdeğer)</string>
 
     <!--Alıntılar-->
-    <string name="input_search">Lütfen bir anahtar kelime araması girin</string>
+    <!--    <string name="input_search">Lütfen bir anahtar kelime araması girin</string>-->
 
     <!--Benim-->
     <string name="not_logged_in"> giriş yapılmadı</string>
@@ -222,8 +223,10 @@
         <item>Sat</item>
     </string-array>
     <string name="bhb_deduct"> komisyonu kesmek için BHB kullanın </string>
-    <string name="dialog_cancel"> </string> kullanmayın
-    <string name="dialog_confirm"> </string> kullanın
+    <string name="dialog_cancel"> </string>
+    kullanmayın
+    <string name="dialog_confirm"> </string>
+    kullanın
 
     <!-- İptal-->
     <string name="text_repeal"> geri çek </string>
@@ -352,8 +355,9 @@
     <string name="text_ad_fu_kuan"> Lütfen ödeme yöntemini seçin</string>
 
     <string name="text_ad_entity"> Eksik reklam bilgileri! </string>
-    <string name="minLimitTip"> Minimum miktar 100 CNY\'den az olamaz</string>
-    <string name="maxLimitTip"> Maksimum miktar </string> değerinden yüksek olmamalıdır
+    <string name="minLimitTip"> Minimum miktar %s\'den az olamaz</string>
+    <string name="maxLimitTip"> Maksimum miktar </string>
+    değerinden yüksek olmamalıdır
     <!--Güvenlik Merkezi-->
     <string name="gesturesPassword"> hareket şifresi</string>
     <string name="gesturesPassThirdPartTip6"> en az dört noktayı bağlayın, lütfen tekrar girin</string>
@@ -379,7 +383,7 @@
     <string name="gongsijianjie">Şirket profili</string>
     <string name="weixinkefu"> WeChat müşteri hizmetleri</string>
 
-    <string name="kefu"> müşteri hizmetleri</string>
+    <!--    <string name="kefu"> müşteri hizmetleri</string>-->
 
     <!--Kullanıcı değiştir-->
 
@@ -429,7 +433,8 @@
     <string name="unChargeMoneyTip1"> şu anda para yatırma adresi yok</string>
     <string name="inputAddAdress"> lütfen adresi girin veya seçin</string>
     <string name="accountNum"> alınan hesap sayısı</string>
-    <string name="addMoneyTip"> İşlem ücreti </string> cinsinden olmalıdır
+    <string name="addMoneyTip"> İşlem ücreti </string>
+    cinsinden olmalıdır
     <string name="addMoneyTip2"> çekilen minimum jeton sayısı </string>
 
 
@@ -682,7 +687,8 @@ BIZZAN uluslararası dijital kriptolu varlık ticaret platformunun yurtdışı o
     <string name="input_gesture_pwd"> lütfen hareket şifresini girin</string>
     <string name="forget_gesture_pwd"> Hareket parolasını mı unuttunuz? </string>
     <string name="open_gesture">Paranızın güvenliği için, hareket şifresi işlevini açmak için [My]->[Güvenlik Ayarları]->[Hareket Şifresi]\'ne gitmenizi öneririm! </string>
-    <string name="no_hint"> artık </string> istemi yok
+    <string name="no_hint"> artık </string>
+    istemi yok
     <string name="photo_album"> fotoğraf albümü</string>
 
     <!-- Ana sayfa-->
@@ -784,12 +790,14 @@ BIZZAN uluslararası dijital kriptolu varlık ticaret platformunun yurtdışı o
     <string name="text_history_entrust"> geçmiş komisyonu </string>
     <string name="text_entrust_details"> ayrıntıları emanet edin</string>
     <string name="text_clear"> siparişi iptal et</string>
-    <string name="text_entrust_type"> temsilci türü</string><string name="text_enter_price_constract"> emanet edilen fiyat</string>
+    <string name="text_entrust_type"> temsilci türü</string>
+    <string name="text_enter_price_constract"> emanet edilen fiyat</string>
     <string name="text_trigger_price_constract"> fiyatı tetikle</string>
     <string name="text_transaction_price"> işlem fiyatı</string>
     <string name="text_guarantee_money"> kenar boşluğu </string>
     <string name="text_entrust_number"> emanet edilen miktar</string>
-    <string name="text_leverage"> birden çok </string> kaldıraç
+    <string name="text_leverage"> birden çok </string>
+    kaldıraç
     <string name="text_earnings"> gelir </string>
     <string name="text_earnings_rate"> getiri oranı </string>
     <string name="text_inventory"> açık ilgi alanı </string>
@@ -950,7 +958,7 @@ BIZZAN uluslararası dijital kriptolu varlık ticaret platformunun yurtdışı o
     <string name="down_shelf"> kullanıma hazır</string>
     <string name="Alipay"> Alipay</string>
     <string name="wechat"> WeChat</string>
-    <string name="unionpay"> UnionPay</string>
+    <string name="unionpay"> BankCard</string>
     <string name="cause"> sebep</string>
     <string name="up_picture"> Lütfen tüm bilgilerin doldurulduğunu ve tüm resimlerin yüklendiğini onaylayın</string>
     <string name="read_agreement"> Lütfen önce sözleşmeyi okuyun ve oku\'yu seçin </string>
@@ -995,8 +1003,8 @@ BIZZAN uluslararası dijital kriptolu varlık ticaret platformunun yurtdışı o
     <string name="text_use_balance"> Kullanılabilir bakiye</string>
     <string name="text_current_delivery"> mevcut teslimat </string>
     <string name="text_history_delivery"> geçmiş teslim </string>
-    <string name="text_buy_up_total"> toplam satın alma fiyatı artışı</string>
-    <string name="text_buy_down_total"> toplam satın alma miktarı </string>
+    <string name="text_buy_up_total">oranları satın al</string>
+    <string name="text_buy_down_total"> alım veya satım oranları</string>
     <string name="text_my_storehouse"> açık pozisyonum</string>
     <string name="text_look_up"> yükseliş </string>
     <string name="text_look_down"> düşüş </string>
@@ -1081,4 +1089,80 @@ BIZZAN uluslararası dijital kriptolu varlık ticaret platformunun yurtdışı o
     <string name="look_setting"> ayar yöntemini görüntüle</string>
     <string name="share_posters"> poster paylaşma</string>
     <string name="posters">Lütfen bir poster seçin</string>
+
+
+    <!--    ====================================================================================   -->
+
+    <string-array name="home_laboratory_tab">
+        <item>Tümü</item>
+        <item>başlamak üzere</item>
+        <item>devam etmekte</item>
+        <item>dağıtım</item>
+        <item>Tamamlandı</item>
+    </string-array>
+
+    <string-array name="laboratory_tab">
+        <item>başlamak üzere</item>
+        <item>devam etmekte</item>
+        <item>dağıtım</item>
+        <item>Tamamlandı</item>
+    </string-array>
+
+    <string name="lab_title">İnovasyon Laboratuvarı</string>
+    <string name="lab_process">Takvim</string>
+    <string name="lab_total">toplam aktivite</string>
+    <string name="lab_start_time">Başlangıç ​​zamanı:</string>
+    <string name="lab_end_time">Bitiş zamanı:</string>
+    <string name="lab_check_detail">ayrıntılara bakınız</string>
+    <string name="lab_type1">İlk lansman (anında satın alma)</string>
+    <string name="lab_type2">İlk çevrimiçi (eşit bölünmüş)</string>
+    <string name="lab_type3">pozisyonu paylaş</string>
+    <string name="lab_type4">Ücretsiz abonelik</string>
+    <string name="lab_type5">Bulut madenciliği makine aboneliği</string>
+    <string name="lab_type6">kilit açma</string>
+    <string name="lab_type_unknow">Bilinmeyen</string>
+    <string name="lab_detail_baseinfo">Temel Bilgiler</string>
+    <string name="lab_detail_status">belirtmek, bildirmek</string>
+    <string name="lab_detail_type">Abonelik Türü</string>
+    <string name="lab_detail_release_type">serbest bırakma türü</string>
+    <string name="lab_detail_release_detail">sürüm ayrıntıları</string>
+    <string name="lab_detail_lock_cost">kilitleme eşiği</string>
+    <string name="lab_detail_release_times">çoklu serbest bırakmak</string>
+    <string name="lab_detail_my_amount">Mevcut pozisyonum bölünebilir：</string>
+    <string name="lab_detail_tpis">*[Tutma ve paylaşma] faaliyet türüne katılarak, faaliyetin sonuna kadar pozisyonu kilitlemeniz gerekir.</string>
+    <string name="lab_detail_input_amount">Kilitleme tutarını girin</string>
+    <string name="lab_detail_available_amount">kullanılabilir bakiyem</string>
+    <string name="lab_detail_type_instruction">Tip açıklaması</string>
+    <string name="lab_detail_cost">Abonelik ücreti</string>
+    <string name="lab_detail_activity_currency">Aktif para birimi</string>
+    <string name="lab_detail_accept_currency">kabul edilen para birimi</string>
+    <string name="lab_detail_limit_num">Kişisel satın alma limiti</string>
+    <string name="lab_detail_limit_amount">Kişisel satın alma limiti</string>
+    <string name="lab_detail_join">Şimdi dahil ol</string>
+    <string name="lab_detail_bought">satın alınan miktar</string>
+    <string name="lab_detail_remaining">Kalan miktar</string>
+    <string name="lab_detail_cc">katılan pozisyonlarım</string>
+    <string name="lab_detail_tcc">Aktivite katılımı toplam pozisyonu</string>
+    <string name="lab_detail_equal_release">eşit yayın</string>
+    <string name="lab_detail_proportional_release">orantılı salıverme</string>
+    <string name="lab_detail_min_limit_tip">Takas tutarı, minimum takas tutarından az olamaz</string>
+    <string name="lab_detail_max_limit_tip">Değişim tutarı, maksimum satın alma tutarından fazla olamaz</string>
+    <string name="lab_detail_period_release">dönem sürümü</string>
+    <string name="lab_detail_release_multiple">%s zamanlar</string>
+    <string name="symbol">zamanlar</string>
+
+    <string name="lab_submit_title">güvenlik doğrulaması</string>
+    <string name="lab_submit_phone">cep telefonu numarası</string>
+    <string name="lab_submit_phone_code">Mobil doğrulama kodu</string>
+    <string name="lab_submit">almak için tıklayın</string>
+    <string name="lab_submit2">Sunmak</string>
+    <string name="lab_dialog_cancel">kapatma</string>
+
+    <string name="recharge_amount">şarj miktarı</string>
+    <string name="recharge_amount_hint">Lütfen miktar girin</string>
+    <string name="recharge_my_address">transfer adresim</string>
+    <string name="recharge_input_my_address">transfer adresim</string>
+    <string name="recharge_min_limits">Girilen miktar, minimum yeniden yükleme tutarından az</string>
+    <string name="recharge_upload_failed">Resim yüklenemedi</string>
+    <string name="recharge_success">başarılı şarj</string>
 </resources>

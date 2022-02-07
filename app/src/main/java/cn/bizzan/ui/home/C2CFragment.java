@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+
 import cn.bizzan.R;
 import cn.bizzan.ui.buy_or_sell.C2CBuyOrSellActivity;
 import cn.bizzan.ui.home.presenter.C2CPresenter;
@@ -74,21 +75,20 @@ public class C2CFragment extends BaseLazyFragment implements MainContract.C2CVie
 
     private void refresh() {
         if (coinInfo != null) {
-            presenter.advertise(pageNo, pageSize, advertiseType, coinInfo.getId());
+//            presenter.advertise(pageNo, pageSize, advertiseType, coinInfo.getId());
+            presenter.advertise(pageNo, pageSize, advertiseType, coinInfo.getUnit());
             adapter.setEnableLoadMore(false);
             adapter.loadMoreEnd(false);
             adapter.notifyDataSetChanged();
-           // pageNo++;
+            // pageNo++;
         }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (coinInfo != null) {
-           // presenter.advertise(pageNo, pageSize, advertiseType, coinInfo.getId());
-           // pageNo++;
-        }
+        if (coinInfo != null)
+            presenter.advertise(pageNo, pageSize, advertiseType, coinInfo.getUnit());
     }
 
     @Override
@@ -115,12 +115,12 @@ public class C2CFragment extends BaseLazyFragment implements MainContract.C2CVie
 //                    if (currency != null) {
                     if (MyApplication.realVerified == 1) {
                         C2CBuyOrSellActivity.actionStart(getActivity(), c2cs.get(position));
-                    }else {
-                        WonderfulToastUtils.showToast(getActivity().getResources().getText(R.string.realname)+"");
+                    } else {
+                        WonderfulToastUtils.showToast(getActivity().getResources().getText(R.string.realname) + "");
                     }
 //                    }
                 } else {
-                    WonderfulToastUtils.showToast(getActivity().getResources().getText(R.string.text_xian_login)+"");
+                    WonderfulToastUtils.showToast(getActivity().getResources().getText(R.string.text_xian_login) + "");
                 }
 
             }
@@ -136,13 +136,12 @@ public class C2CFragment extends BaseLazyFragment implements MainContract.C2CVie
 
     private void loadMore() {
         refreshLayout.setEnabled(false);
-        presenter.advertise(pageNo, pageSize, advertiseType, coinInfo.getId());
+        presenter.advertise(pageNo, pageSize, advertiseType, coinInfo.getUnit());
     }
 
     @Override
     protected void loadData() {
-        if (coinInfo != null)
-            presenter.advertise(pageNo, pageSize, advertiseType, coinInfo.getId());
+
     }
 
     @Override

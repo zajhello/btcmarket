@@ -114,6 +114,7 @@ public class MyOrderActivity extends BaseActivity {
         fragments.add(OrderFragment.getInstance(OrderFragment.Status.DONE));
         fragments.add(OrderFragment.getInstance(OrderFragment.Status.CANC));
         fragments.add(OrderFragment.getInstance(OrderFragment.Status.COMPLAINING));
+
     }
 
     @Override

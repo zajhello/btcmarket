@@ -1,6 +1,8 @@
 package cn.bizzan.ui.myinfo;
 
 
+import java.io.File;
+
 import cn.bizzan.data.DataSource;
 import cn.bizzan.entity.SafeSetting;
 
@@ -38,9 +40,9 @@ public class MyInfoPresenter implements MyInfoContract.Presenter {
     }
 
     @Override
-    public void uploadBase64Pic(String token, String base64Data) {
+    public void uploadBase64Pic(String token, String name, String filename, File file) {
         view.displayLoadingPopup();
-        dataRepository.uploadBase64Pic(token, base64Data, new DataSource.DataCallback() {
+        dataRepository.uploadBase64Pic(token, name, filename, file, new DataSource.DataCallback() {
             @Override
             public void onDataLoaded(Object obj) {
                 view.hideLoadingPopup();

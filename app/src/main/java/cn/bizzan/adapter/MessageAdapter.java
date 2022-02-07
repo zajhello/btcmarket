@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import cn.bizzan.R;
+import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.entity.Message;
 import cn.bizzan.utils.WonderfulStringUtils;
 
@@ -32,6 +33,6 @@ public class MessageAdapter extends BaseQuickAdapter<Message, BaseViewHolder> {
         helper.setText(R.id.tvTitle, item.getTitle()).setText(R.id.tvContent, Html.fromHtml(item.getContent())).setText(R.id.tvTime, item.getCreateTime());
         if (WonderfulStringUtils.isEmpty(item.getImgUrl()))
             Glide.with(context).load(R.mipmap.icon_banner).into((ImageView) helper.getView(R.id.ivHeader));
-        else Glide.with(context).load(item.getImgUrl()).into((ImageView) helper.getView(R.id.ivHeader));
+        else Glide.with(context).load(GlobalConstant.getGlobalImagePath( item.getImgUrl())).into((ImageView) helper.getView(R.id.ivHeader));
     }
 }

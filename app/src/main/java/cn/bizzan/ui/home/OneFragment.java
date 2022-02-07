@@ -157,6 +157,10 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
 
     private List<Coin> coins = new ArrayList<>();
     private List<WalletConstract> contract = new ArrayList<>();
+
+    public static double available_amount = 0;
+    double availbleUsd = 0;
+    double availbleUsd_c = 0;
     double sumUsd = 0;
     double sumCny = 0;
     double sumUsd_c = 0;
@@ -406,6 +410,7 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
+
             View inflate = LayoutInflater.from(getActivity()).inflate(R.layout.adapter_home_viewpage, null, false);
             LinearLayout line = inflate.findViewById(R.id.line);
             //第一组
@@ -459,7 +464,9 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
 
                     tvClose.setText(newClose);
                     tvAddPercent.setText((currency.getChg() >= 0 ? "+" : "") + WonderfulMathUtils.getRundNumber(currency.getChg() * 100, 2, "########0.") + "%");
-                    tvVol.setText("≈" + WonderfulMathUtils.getRundNumber(currency.getClose() * currency.getBaseUsdRate() * MainActivity.rate, 2, null) + "CNY");
+
+                    tvVol.setText("≈" + WonderfulMathUtils.getRundNumber(currency.getClose() * currency.getBaseUsdRate() * MainActivity.rate, 2, null) + " " + MainActivity.symbol);
+
                     tvClose.setTextColor(currency.getChg() >= 0 ? ContextCompat.getColor(MyApplication.getApp(), R.color.typeGreen) : ContextCompat.getColor(MyApplication.getApp(), R.color.typeRed));
                     tvAddPercent.setTextColor(currency.getChg() >= 0 ? ContextCompat.getColor(MyApplication.getApp(), R.color.typeGreen) : ContextCompat.getColor(MyApplication.getApp(), R.color.typeRed));
                     line_one.setOnClickListener(new View.OnClickListener() {
@@ -486,7 +493,7 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
 
                     tvClose1.setText(newClose);
                     tvAddPercent1.setText((currency.getChg() >= 0 ? "+" : "") + WonderfulMathUtils.getRundNumber(currency.getChg() * 100, 2, "########0.") + "%");
-                    tvVol1.setText("≈" + WonderfulMathUtils.getRundNumber(currency.getClose() * currency.getBaseUsdRate() * MainActivity.rate, 2, null) + "CNY");
+                    tvVol1.setText("≈" + WonderfulMathUtils.getRundNumber(currency.getClose() * currency.getBaseUsdRate() * MainActivity.rate, 2, null) + " " + MainActivity.symbol);
                     tvClose1.setTextColor(currency.getChg() >= 0 ? ContextCompat.getColor(MyApplication.getApp(), R.color.typeGreen) : ContextCompat.getColor(MyApplication.getApp(), R.color.typeRed));
                     tvAddPercent1.setTextColor(currency.getChg() >= 0 ? ContextCompat.getColor(MyApplication.getApp(), R.color.typeGreen) : ContextCompat.getColor(MyApplication.getApp(), R.color.typeRed));
                     line_two.setOnClickListener(new View.OnClickListener() {
@@ -513,7 +520,7 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
 
                     tvClose2.setText(newClose);
                     tvAddPercent2.setText((currency.getChg() >= 0 ? "+" : "") + WonderfulMathUtils.getRundNumber(currency.getChg() * 100, 2, "########0.") + "%");
-                    tvVol2.setText("≈" + WonderfulMathUtils.getRundNumber(currency.getClose() * currency.getBaseUsdRate() * MainActivity.rate, 2, null) + "CNY");
+                    tvVol2.setText("≈" + WonderfulMathUtils.getRundNumber(currency.getClose() * currency.getBaseUsdRate() * MainActivity.rate, 2, null) + " " + MainActivity.symbol);
                     tvClose2.setTextColor(currency.getChg() >= 0 ? ContextCompat.getColor(MyApplication.getApp(), R.color.typeGreen) : ContextCompat.getColor(MyApplication.getApp(), R.color.typeRed));
                     tvAddPercent2.setTextColor(currency.getChg() >= 0 ? ContextCompat.getColor(MyApplication.getApp(), R.color.typeGreen) : ContextCompat.getColor(MyApplication.getApp(), R.color.typeRed));
                     line_three.setOnClickListener(new View.OnClickListener() {
@@ -615,14 +622,22 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
 
     private void calcuTotal() {
         if (coins.size() != 0 && contract.size() != 0) {
+            available_amount = 0;
             sumUsd = 0;
             sumCny = 0;
             sumUsd_c = 0;
             sumCny_c = 0;
+            availbleUsd = 0;
+            availbleUsd_c = 0;
+
             for (Coin coin : coins) {
                 // 总额计算包含可用余额与冻结余额的总和
                 sumUsd += ((coin.getBalance() + coin.getFrozenBalance()) * coin.getCoin().getUsdRate());
                 sumCny += ((coin.getBalance() + coin.getFrozenBalance()) * coin.getCoin().getCnyRate());
+
+                if (TextUtils.equals("USDT", coin.getCoin().getUnit())) {
+                    availbleUsd += (coin.getBalance() * coin.getCoin().getUsdRate());
+                }
             }
             for (WalletConstract constract : contract) {
                 // 总额计算包含可用余额与冻结余额的总和
@@ -631,7 +646,13 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
 
                 sumCny_c += (constract.getUsdtBalance() + constract.getUsdtFrozenBalance() + constract.getUsdtBuyPrincipalAmount()
                         + constract.getUsdtSellPrincipalAmount() + constract.getUsdtTotalProfitAndLoss()) * constract.getContractCoin().getUsdtRate();
+
+//                availbleUsd_c += (constract.getUsdtBalance() + constract.getUsdtBuyPrincipalAmount()
+//                        + constract.getUsdtSellPrincipalAmount() + constract.getUsdtTotalProfitAndLoss()) * constract.getContractCoin().getUsdtRate();
             }
+
+            available_amount = availbleUsd_c + availbleUsd;
+
             loginingViewText();
         }
     }
@@ -815,7 +836,7 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
             return;
         }
         for (BannerEntity bannerEntity : obj) {
-            imageUrls.add(bannerEntity.getUrl());
+            imageUrls.add(GlobalConstant.getGlobalImagePath(bannerEntity.getUrl()));
         }
         if (imageUrls.size() == 0) {
             banner = banner.setImages(localImageUrls);

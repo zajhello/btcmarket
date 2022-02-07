@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 <!--法语-->
     <string name="app_name">BIZZAN</string>
     <string name="cancle">Annuler</string>
@@ -92,7 +92,7 @@
     <string name="home">Domicile</string>
     <string name="market">Devis</string>
     <string name="transaction">transaction</string>
-    <string name="fiat">Monnaie Fiat</string>
+<!--    <string name="fiat" tools:ignore="ExtraTranslation">Monnaie Fiat</string>-->
 
     <string name="fabi2">Transaction en devise Fiat</string>
     <string name="account">mien</string>
@@ -110,15 +110,15 @@
     <string name="login_assets">Actif total (équivalent à USDT)</string>
 
     <!--行情-->
-    <string name="market_Change">Changement de devis</string>
-    <string name="market_name">Nom</string>
-    <string name="market_price">Dernier prix</string>
-    <string name="input_search">Veuillez saisir des mots-clés pour rechercher</string>
-    <string name="favorites">Optionnel</string>
-    <string name="exchanges">Endroit</string>
-    <string name="futures">Contrat</string>
-    <!--我的-->
-    <string name="Wallets">les atouts</string>
+<!--    <string name="market_Change" tools:ignore="ExtraTranslation">Changement de devis</string>-->
+<!--    <string name="market_name" tools:ignore="ExtraTranslation">Nom</string>-->
+<!--    <string name="market_price" tools:ignore="ExtraTranslation">Dernier prix</string>-->
+<!--    <string name="input_search" tools:ignore="ExtraTranslation">Veuillez saisir des mots-clés pour rechercher</string>-->
+<!--    <string name="favorites" tools:ignore="ExtraTranslation">Optionnel</string>-->
+<!--    <string name="exchanges" tools:ignore="ExtraTranslation">Endroit</string>-->
+<!--    <string name="futures" tools:ignore="ExtraTranslation">Contrat</string>-->
+<!--    &lt;!&ndash;我的&ndash;&gt;-->
+<!--    <string name="Wallets" tools:ignore="ExtraTranslation">les atouts</string>-->
     <string name="not_logged_in">Pas connecté</string>
     <string name="welcome_to">Bienvenue sur bizzan.com</string>
     <string name="my_order">Ma commande</string>
@@ -131,20 +131,20 @@
     <string name="my_version">mise à jour de la nouvelle version</string>
     <string name="has_new_version">Nouvelle version trouvée</string>
     <string name="my_language">Langue</string>
-    <string name="my_exchange_rate">taux de change</string>
+<!--    <string name="my_exchange_rate">taux de change</string>-->
     <string name="my_setting">Définir le centre</string>
     <string name="balance">Total des actifs (en USDT)</string>
-    <string name="balance_value">Évaluation des actifs (USDT)</string>
+<!--    <string name="balance_value">Évaluation des actifs (USDT)</string>-->
     <string name="balance_1">la gestion d\'actifs</string>
     <string name="balance_2">Mes atouts</string>
     <string name="balance_3">Rotation de l\'actif</string>
     <string name="my_fabi">Gestion des devises légales</string>
     <string name="logout_confirm">Êtes-vous sûr de vouloir vous déconnecter?</string>
     <string name="logout_current_account">Se déconnecter du compte courant</string>
-    <string name="share_app">Partager l\'application</string>
-    <string name="appearance">Mode thème</string>
-    <string name="darkmode">Mode nuit</string>
-    <string name="lightmode">Mode jour</string>
+<!--    <string name="share_app">Partager l\'application</string>-->
+<!--    <string name="appearance">Mode thème</string>-->
+<!--    <string name="darkmode">Mode nuit</string>-->
+<!--    <string name="lightmode">Mode jour</string>-->
 
     <!-- C2C交易(承兑商版) -->
     <string name="ctc_title">Transaction en devise Fiat</string>
@@ -365,7 +365,7 @@
     <string name="text_ad_fu_kuan">Veuillez choisir un mode de paiement</string>
 
     <string name="text_ad_entity">Informations publicitaires incomplètes !</string>
-    <string name="minLimitTip">Le montant minimum ne doit pas être inférieur à 100CNY</string>
+    <string name="minLimitTip">Le montant minimum ne doit pas être inférieur à %s</string>
     <string name="maxLimitTip">Le montant maximum ne doit pas être supérieur à</string>
     <!--安全中心-->
     <string name="gesturesPassword">Mot de passe gestuel</string>
@@ -379,7 +379,7 @@
     <string name="language">paramètres de langue</string>
     <string name="feed_back">Retour</string>
     <string name="about_us">à propos de nous</string>
-    <string name="setting">Mettre en place</string>
+<!--    <string name="setting">Mettre en place</string>-->
     <string name="simplifiedChinese">Chinois simplifié</string>
     <string name="Japanese">Japonais</string>
     <string name="versionUpdateTip">Pas de dernière version, pas besoin de mettre à jour</string>
@@ -449,11 +449,11 @@
     <string name="grounding">Maintenant sur étagère</string>
     <string name="shelved">A été retiré</string>
     <string name="limit">Limite</string>
-    <string name="notpaied">Non payé</string>
-    <string name="paied">Payé</string>
-    <string name="done">complété</string>
-    <string name="canceled">Annulé</string>
-    <string name="inappeal">Attirant</string>
+<!--    <string name="notpaied">Non payé</string>-->
+<!--    <string name="paied">Payé</string>-->
+<!--    <string name="done">complété</string>-->
+<!--    <string name="canceled">Annulé</string>-->
+<!--    <string name="inappeal">Attirant</string>-->
 
 
     <!--我的信息-->
@@ -499,7 +499,7 @@
     <string name="username_shuru">Veuillez entrer votre numéro de téléphone/e-mail</string>
 
     <string name="password">le mot de passe</string>
-    <string name="reset_password">réinitialiser le mot de passe</string>
+<!--    <string name="reset_password">réinitialiser le mot de passe</string>-->
     <string name="password_shuru">S\'il vous plaît entrer le mot de passe</string>
     <string name="forgot_password">mot de passe oublié?</string>
     <string name="goto_regist">inscrit</string>
@@ -548,11 +548,11 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
         <item>ETH</item>
     </string-array>
 
-    <string-array name="home_two_title_tab">
-        <item>USDT</item>
-        <item>BTC</item>
-        <item>ETH</item>
-    </string-array>
+<!--    <string-array name="home_two_title_tab">-->
+<!--        <item>USDT</item>-->
+<!--        <item>BTC</item>-->
+<!--        <item>ETH</item>-->
+<!--    </string-array>-->
 
     <string-array name="home_six_top_tab">
         <item>Ouvrir un poste</item>
@@ -694,8 +694,8 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
     <!--    登录-->
     <string name="input_account_password">Veuillez saisir le mot de passe de votre compte !</string>
     <string name="login_register">S\'identifier S\'enregistrer</string>
-    <string name="login_fail1">La longueur du mot de passe ne peut pas être inférieure à 6 chiffres</string>
-    <string name="login_fail2">Le format de l\'e-mail est incorrect, veuillez le ressaisir</string>
+<!--    <string name="login_fail1">La longueur du mot de passe ne peut pas être inférieure à 6 chiffres</string>-->
+<!--    <string name="login_fail2">Le format de l\'e-mail est incorrect, veuillez le ressaisir</string>-->
     <!--    手势验证-->
     <string name="hint">rapide</string>
     <string name="forget_pwd">Mot de passe gestuel oublié, vous devez vous reconnecter !</string>
@@ -765,7 +765,7 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
 
     <!-- C2C -->
     <string name="tv_wait_order">Commande en cours</string>
-    <string name="tv_one">Célibataire</string>
+<!--    <string name="tv_one">Célibataire</string>-->
     <string name="tv_already_order">Ordre reçu</string>
     <string name="tv_now_payment">Paiement immédiat</string>
     <string name="tv_payment">Payé</string>
@@ -928,48 +928,48 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
     <!--登录-->
     <string name="username_shuru_regist">Veuillez entrer le numéro de téléphone</string>
     <string name="setting_gather_type">Veuillez configurer votre mode de paiement, assurez-vous d\'utiliser votre compte réel</string>
-    <string name="emaillogin">Connexion par e-mail</string>
-    <string name="phonelogin">Connectez-vous avec le téléphone</string>
+<!--    <string name="emaillogin">Connexion par e-mail</string>-->
+<!--    <string name="phonelogin">Connectez-vous avec le téléphone</string>-->
     <!--注册-->
     <string name="email_shuru">veuillez saisir votre email</string>
-    <string name="input_referrer">ID du référent (facultatif)</string>
-    <string name="safetyverification">vérification de la sécurité</string>
-    <string name="send_your_code">Enverra un code de vérification à votre ******</string>
+<!--    <string name="input_referrer">ID du référent (facultatif)</string>-->
+<!--    <string name="safetyverification">vérification de la sécurité</string>-->
+<!--    <string name="send_your_code">Enverra un code de vérification à votre ******</string>-->
     <!--    法币-->
-    <string name="fiat_otc">Zone d\'auto-sélection</string>
-    <string name="fiat_buy">je veux acheter</string>
-    <string name="fiat_sell">je veux vendre</string>
-    <string name="my_want">je veux</string>
-    <string name="sell_online">Vente en ligne</string>
-    <string name="buy_online">acheter en ligne</string>
-    <string name="become_merchant">Devenir une entreprise</string>
+<!--    <string name="fiat_otc">Zone d\'auto-sélection</string>-->
+<!--    <string name="fiat_buy">je veux acheter</string>-->
+<!--    <string name="fiat_sell">je veux vendre</string>-->
+<!--    <string name="my_want">je veux</string>-->
+<!--    <string name="sell_online">Vente en ligne</string>-->
+<!--    <string name="buy_online">acheter en ligne</string>-->
+<!--    <string name="become_merchant">Devenir une entreprise</string>-->
     <string name="publish_advertising">Passer une annonce</string>
-    <string name="my_advertising">Mon annonce</string>
-    <string name="my_Orders">Ma commande</string>
+<!--    <string name="my_advertising">Mon annonce</string>-->
+<!--    <string name="my_Orders">Ma commande</string>-->
 
-    <string name="buy_amount">Acheter par montant</string>
-    <string name="buy_quantity">Acheter par quantité</string>
-    <string name="enter_money">Veuillez saisir le montant</string>
-    <string name="enter_quantity">Veuillez saisir la quantité</string>
-    <string name="total_price">Prix ​​total</string>
-    <string name="trading_information">Informations commerciales</string>
-    <string name="payment_time_limit">Délai de paiement</string>
-    <string name="buyer_nickname">Pseudo de l\'acheteur</string>
-    <string name="buyer_deposit">Caution de l\'acheteur</string>
-    <string name="buyer_payment_method">Mode de paiement de l\'acheteur</string>
-    <string name="apply_for_loan">Faire une demande de rachat</string>
+<!--    <string name="buy_amount">Acheter par montant</string>-->
+<!--    <string name="buy_quantity">Acheter par quantité</string>-->
+<!--    <string name="enter_money">Veuillez saisir le montant</string>-->
+<!--    <string name="enter_quantity">Veuillez saisir la quantité</string>-->
+<!--    <string name="total_price">Prix ​​total</string>-->
+<!--    <string name="trading_information">Informations commerciales</string>-->
+<!--    <string name="payment_time_limit">Délai de paiement</string>-->
+<!--    <string name="buyer_nickname">Pseudo de l\'acheteur</string>-->
+<!--    <string name="buyer_deposit">Caution de l\'acheteur</string>-->
+<!--    <string name="buyer_payment_method">Mode de paiement de l\'acheteur</string>-->
+<!--    <string name="apply_for_loan">Faire une demande de rachat</string>-->
 
 
-    <string name="to_logout">Vous êtes maintenant en train d\'effectuer l\'opération d\'annulation de l\'entreprise. Après avoir confirmé la soumission de l\'opération de candidature, celle-ci ne peut pas être annulée. Êtes-vous sûr d\'effectuer cette opération ?</string>
-    <string name="reason">Veuillez indiquer le motif de l\'annulation</string>
+<!--    <string name="to_logout">Vous êtes maintenant en train d\'effectuer l\'opération d\'annulation de l\'entreprise. Après avoir confirmé la soumission de l\'opération de candidature, celle-ci ne peut pas être annulée. Êtes-vous sûr d\'effectuer cette opération ?</string>-->
+<!--    <string name="reason">Veuillez indiquer le motif de l\'annulation</string>-->
 
-    <string name="exclusive_booth">Stand exclusif</string>
-    <string name="exclusive_booth2">Les commerçants profitent de kiosques publicitaires exclusifs pour augmenter le taux de réussite des transactions</string>
-    <string name="one_to_one">Service VIP personnalisé</string>
-    <string name="one_to_one2">La plate-forme fournit aux commerçants des services de réponse personnalisés en temps opportun pour les aider à effectuer des transactions rapides.</string>
-    <string name="lower_fees">Frais de traitement inférieurs</string>
-    <string name="submitted">La demande a été soumise et est en cours de traitement
-\nVeuillez attendre le résultat</string>
+<!--    <string name="exclusive_booth">Stand exclusif</string>-->
+<!--    <string name="exclusive_booth2">Les commerçants profitent de kiosques publicitaires exclusifs pour augmenter le taux de réussite des transactions</string>-->
+<!--    <string name="one_to_one">Service VIP personnalisé</string>-->
+<!--    <string name="one_to_one2">La plate-forme fournit aux commerçants des services de réponse personnalisés en temps opportun pour les aider à effectuer des transactions rapides.</string>-->
+<!--    <string name="lower_fees">Frais de traitement inférieurs</string>-->
+<!--    <string name="submitted">La demande a été soumise et est en cours de traitement-->
+<!--\nVeuillez attendre le résultat</string>-->
 
 
     <string name="status_1">En attendant que l\'accepteur prenne la commande...</string>
@@ -988,15 +988,15 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
     <string name="replicated">Copié</string>
     <string name="merchants_certification">Attestation de commerçant</string>
     <string name="apply_merchant">Postuler pour devenir une entreprise</string>
-    <string name="apply_merchant2">Votre avis sur l\'entreprise a été soumis</string>
-    <string name="apply_merchant3">Toutes nos félicitations! Votre examen de validation d\'entreprise a été réussi</string>
-    <string name="apply_merchant4">Pardon! La vérification de votre entreprise a échoué</string>
-    <string name="apply_merchant5">Votre demande d\'annulation d\'entreprise a été soumise</string>
-    <string name="apply_merchant6">Échec de l\'examen de votre demande d\'annulation d\'entreprise</string>
-    <string name="apply_merchant7">L\'examen de votre demande d\'annulation d\'entreprise a été validé</string>
+<!--    <string name="apply_merchant2">Votre avis sur l\'entreprise a été soumis</string>-->
+<!--    <string name="apply_merchant3">Toutes nos félicitations! Votre examen de validation d\'entreprise a été réussi</string>-->
+<!--    <string name="apply_merchant4">Pardon! La vérification de votre entreprise a échoué</string>-->
+<!--    <string name="apply_merchant5">Votre demande d\'annulation d\'entreprise a été soumise</string>-->
+<!--    <string name="apply_merchant6">Échec de l\'examen de votre demande d\'annulation d\'entreprise</string>-->
+<!--    <string name="apply_merchant7">L\'examen de votre demande d\'annulation d\'entreprise a été validé</string>-->
     <string name="recheck">Réexaminer</string>
-    <string name="reapply">Réappliquer</string>
-    <string name="legal_agreement0">Continuez à vous connecter pour accepter</string>
+<!--    <string name="reapply">Réappliquer</string>-->
+<!--    <string name="legal_agreement0">Continuez à vous connecter pour accepter</string>-->
     <string name="legal_agreement1">J\'ai lu et accepté</string>
     <string name="legal_agreement2">« Contrat de marchand certifié »</string>
     <string name="legal_agreement3">Accord de l\'utilisateur</string>
@@ -1008,17 +1008,17 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
     <string name="my_asset_attest">Certification des actifs numériques personnels</string>
     <string name="number_asset_attest">Preuve de transaction d\'actifs numériques</string>
     <string name="no_upload">Non téléchargé</string>
-    <string name="put_in_cancel">Échec de la soumission</string>
-    <string name="progress">préparer le matériel</string>
-    <string name="progress2">Poster le commentaire</string>
-    <string name="progress3">Modéré</string>
-    <string name="progress4">vérifié</string>
-    <string name="progress5">Échec de l\'audit</string>
-    <string name="progress6">Annulation du marchand</string>
-    <string name="progress7">examen réussi</string>
-    <string name="progress8">Suspension en attente d\'examen</string>
-    <string name="progress9">Échec de l\'examen de l\'annulation</string>
-    <string name="progress10">Examen d\'annulation réussi</string>
+<!--    <string name="put_in_cancel">Échec de la soumission</string>-->
+<!--    <string name="progress">préparer le matériel</string>-->
+<!--    <string name="progress2">Poster le commentaire</string>-->
+<!--    <string name="progress3">Modéré</string>-->
+<!--    <string name="progress4">vérifié</string>-->
+<!--    <string name="progress5">Échec de l\'audit</string>-->
+<!--    <string name="progress6">Annulation du marchand</string>-->
+<!--    <string name="progress7">examen réussi</string>-->
+<!--    <string name="progress8">Suspension en attente d\'examen</string>-->
+<!--    <string name="progress9">Échec de l\'examen de l\'annulation</string>-->
+<!--    <string name="progress10">Examen d\'annulation réussi</string>-->
 
     <!--    web-->
     <string name="help">aider</string>
@@ -1034,7 +1034,7 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
     <string name="down_shelf">Étagère</string>
     <string name="Alipay">Alipay</string>
     <string name="wechat">Wechat</string>
-    <string name="unionpay">UnionPay</string>
+    <string name="unionpay">BankCard</string>
     <string name="cause">la raison</string>
     <string name="up_picture">Veuillez confirmer que toutes les informations ont été remplies et que toutes les photos ont été téléchargées</string>
     <string name="read_agreement">Veuillez d\'abord lire l\'accord et sélectionnez lire</string>
@@ -1074,18 +1074,18 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
         <item>Le volume</item>
     </string-array>
     <!--    账户-->
-    <string-array name="my_account">
-        <item>Compte spot</item>
-        <item>Compte perpétuel</item>
-    </string-array>
+<!--    <string-array name="my_account">-->
+<!--        <item>Compte spot</item>-->
+<!--        <item>Compte perpétuel</item>-->
+<!--    </string-array>-->
 
     <!--   期权 -->
     <string name="option">Option</string>
     <string name="text_use_balance">Solde disponible</string>
     <string name="text_current_delivery">Livraison actuelle</string>
     <string name="text_history_delivery">Établissement historique</string>
-    <string name="text_buy_up_total">Prix ​​d\'achat total</string>
-    <string name="text_buy_down_total">Rachat total</string>
+    <string name="text_buy_up_total">acheter des cotes</string>
+    <string name="text_buy_down_total">acheter ou vendre des cotes</string>
     <string name="text_my_storehouse">Ma position ouverte</string>
     <string name="text_look_up">Haussier</string>
     <string name="text_look_down">Baissier</string>
@@ -1116,9 +1116,9 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
     <string name="may_money">Marge disponible</string>
     <string name="use_money">Marge utilisée</string>
     <string name="freeze_money">Geler la marge</string>
-    <string name="may_money_all">Marge totale disponible</string>
-    <string name="use_money_all">Marge totale utilisée</string>
-    <string name="freeze_money_all">Marge gelée totale</string>
+<!--    <string name="may_money_all">Marge totale disponible</string>-->
+<!--    <string name="use_money_all">Marge totale utilisée</string>-->
+<!--    <string name="freeze_money_all">Marge gelée totale</string>-->
     <string name="Wallet_Overturn">Transfert d\'actifs</string>
     <string name="tv_record">enregistrement</string>
     <string name="tv_from">De</string>
@@ -1172,10 +1172,86 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
     <string name="Permission_ok">Autorisez LIFE à accéder aux autorisations du carnet d\'adresses, vous pouvez obtenir une meilleure expérience.</string>
     <string name="look_setting">Voir comment le configurer</string>
     <string name="share_posters">Partager l\'affiche</string>
-    <string name="history_result">Résultats passés</string>
+<!--    <string name="history_result">Résultats passés</string>-->
 
 
     <string name="posters">Veuillez sélectionner une affiche</string>
 
+
+
+    <!--    ====================================================================================   -->
+
+    <string-array name="home_laboratory_tab">
+        <item>tout</item>
+        <item>Sur le point de commencer</item>
+        <item>en cours</item>
+        <item>Distribuer</item>
+        <item>complété</item>
+    </string-array>
+
+    <string-array name="laboratory_tab">
+        <item>Sur le point de commencer</item>
+        <item>en cours</item>
+        <item>Distribuer</item>
+        <item>complété</item>
+    </string-array>
+
+    <string name="lab_title">Laboratoire dinnovation</string>
+    <string name="lab_process">programme</string>
+    <string name="lab_total">activité totale</string>
+    <string name="lab_start_time">Heure de départ:</string>
+    <string name="lab_end_time">Heure de fin:</string>
+    <string name="lab_check_detail">voir les détails</string>
+    <string name="lab_type1">Premier lancement (achat instantané)</string>
+    <string name="lab_type2">Premier en ligne (partagé équitablement)</string>
+    <string name="lab_type3">partager le poste</string>
+    <string name="lab_type4">Abonnement gratuit</string>
+    <string name="lab_type5">Abonnement à la machine de cloud mining</string>
+    <string name="lab_type6">déverrouillage</string>
+    <string name="lab_type_unknow">inconnue</string>
+    <string name="lab_detail_baseinfo">Informations de base</string>
+    <string name="lab_detail_status">Etat</string>
+    <string name="lab_detail_type">Type dabonnement</string>
+    <string name="lab_detail_release_type">type de version</string>
+    <string name="lab_detail_release_detail">détails de la version</string>
+    <string name="lab_detail_lock_cost">seuil de blocage</string>
+    <string name="lab_detail_release_times">libérer plusieurs</string>
+    <string name="lab_detail_my_amount">Mon poste actuel peut être divisé：</string>
+    <string name="lab_detail_tpis">*Participant au type dactivité de [tenue et partage], vous devez verrouiller la position jusquà la fin de lactivité</string>
+    <string name="lab_detail_input_amount">Entrez le montant de blocage</string>
+    <string name="lab_detail_available_amount">mon solde disponible</string>
+    <string name="lab_detail_type_instruction">Description du type</string>
+    <string name="lab_detail_cost">Prix ​​de labonnement</string>
+    <string name="lab_detail_activity_currency">Devise active</string>
+    <string name="lab_detail_accept_currency">devise acceptée</string>
+    <string name="lab_detail_limit_num">Limite dachat personnelle</string>
+    <string name="lab_detail_limit_amount">Limite dachat personnelle</string>
+    <string name="lab_detail_join">Impliquez-vous maintenant</string>
+    <string name="lab_detail_bought">Quantité achetée</string>
+    <string name="lab_detail_remaining">Le montant restant</string>
+    <string name="lab_detail_cc">mes postes participants</string>
+    <string name="lab_detail_tcc">Position totale de la participation aux activités</string>
+    <string name="lab_detail_equal_release">libération égale</string>
+    <string name="lab_detail_proportional_release">libération proportionnelle</string>
+    <string name="lab_detail_min_limit_tip">Le montant déchange ne peut être inférieur au montant déchange minimum</string>
+    <string name="lab_detail_max_limit_tip">Le montant de léchange ne peut pas être supérieur au montant maximum dachat</string>
+    <string name="lab_detail_period_release">période de libération</string>
+    <string name="lab_detail_release_multiple">%s fois</string>
+    <string name="symbol">fois</string>
+
+    <string name="lab_submit_title">vérification de la sécurité</string>
+    <string name="lab_submit_phone">numéro de téléphone portable</string>
+    <string name="lab_submit_phone_code">Code de vérification mobile</string>
+    <string name="lab_submit">Cliquez pour obtenir</string>
+    <string name="lab_submit2">nous faire parvenir</string>
+    <string name="lab_dialog_cancel">fermeture</string>
+
+    <string name="recharge_amount">Montant de la recharge</string>
+    <string name="recharge_amount_hint">Veuillez entrer la quantité</string>
+    <string name="recharge_my_address">mon adresse de transfert</string>
+    <string name="recharge_input_my_address">mon adresse de transfert</string>
+    <string name="recharge_min_limits">Le montant saisi est inférieur au montant minimum de recharge</string>
+    <string name="recharge_upload_failed">Le téléchargement de limage a échoué</string>
+    <string name="recharge_success">recharge réussie</string>
 
 </resources>

@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.gyf.barlibrary.ImmersionBar;
+
 import cn.bizzan.R;
 import cn.bizzan.ui.appeal.AppealActivity;
 import cn.bizzan.ui.chat.ChatActivity;
@@ -51,6 +52,7 @@ import cn.bizzan.utils.WonderfulLogUtils;
 import cn.bizzan.utils.WonderfulPermissionUtils;
 import cn.bizzan.utils.WonderfulStringUtils;
 import cn.bizzan.utils.WonderfulToastUtils;
+
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 import com.yanzhenjie.permission.PermissionListener;
@@ -157,11 +159,11 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
         public boolean handleMessage(Message msg) {
             switch (msg.what) {
                 case 1:
-                    Toast.makeText(OrderDetailActivity.this, WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.Download_failed), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OrderDetailActivity.this, WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.Download_failed), Toast.LENGTH_SHORT).show();
                     break;
                 case 2:
                     popWnd.dismiss();
-                    Toast.makeText(OrderDetailActivity.this, WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.success), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OrderDetailActivity.this, WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.success), Toast.LENGTH_SHORT).show();
                     break;
             }
             return true;
@@ -240,7 +242,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
             @Override
             public void onClick(View v) {
                 if (orderDetial == null) {
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.order_details_failed));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.order_details_failed));
                     presenter.orderDetail(getToken(), orderSn);
                     return;
                 }
@@ -278,7 +280,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
         if (currentTime - payTimeMillis > 30 * 60 * 1000) {
             AppealActivity.actionStart(this, orderSn);
         } else {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.up_appeal));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.up_appeal));
         }
     }
 
@@ -299,7 +301,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
             public void onClick(View v) {
                 String jyPassword = etPassword.getText().toString();
                 if (WonderfulStringUtils.isEmpty(jyPassword)) {
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.paymentTip6));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.paymentTip6));
                     return;
                 }
                 presenter.release(getToken(), orderSn, jyPassword);
@@ -310,7 +312,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
 
     private void cancle() {
         if (orderDetial != null) {
-            WonderfulDialogUtils.showDefaultDialog(this, WonderfulToastUtils.getString(this,R.string.Warm_prompt), WonderfulToastUtils.getString(this,R.string.paymentTip7), WonderfulToastUtils.getString(this,R.string.cancle), WonderfulToastUtils.getString(this,R.string.confirm), null, new DialogInterface.OnClickListener() {
+            WonderfulDialogUtils.showDefaultDialog(this, WonderfulToastUtils.getString(this, R.string.Warm_prompt), WonderfulToastUtils.getString(this, R.string.paymentTip7), WonderfulToastUtils.getString(this, R.string.cancle), WonderfulToastUtils.getString(this, R.string.confirm), null, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     presenter.cancle(getToken(), orderSn);
@@ -321,7 +323,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
 
     private void payDone() {
         if (orderDetial != null) {
-            WonderfulDialogUtils.showDefaultDialog(this, WonderfulToastUtils.getString(this,R.string.Warm_prompt), WonderfulToastUtils.getString(this,R.string.paymentTip8), WonderfulToastUtils.getString(this,R.string.cancle), WonderfulToastUtils.getString(this,R.string.confirm), null, new DialogInterface.OnClickListener() {
+            WonderfulDialogUtils.showDefaultDialog(this, WonderfulToastUtils.getString(this, R.string.Warm_prompt), WonderfulToastUtils.getString(this, R.string.paymentTip8), WonderfulToastUtils.getString(this, R.string.cancle), WonderfulToastUtils.getString(this, R.string.confirm), null, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     presenter.payDone(getToken(), orderSn);
@@ -399,9 +401,9 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
     private void setViews() {
         tvOtherSide.setText(orderDetial.getOtherSide());
         tvOrderSn.setText(orderDetial.getOrderSn());
-        tvPrice.setText(orderDetial.getPrice() + " CNY");
+        tvPrice.setText(orderDetial.getPrice() + " " + orderDetial.getCurrency());
         tvCount.setText(orderDetial.getAmount() + " " + orderDetial.getUnit());
-        tvTotal.setText(orderDetial.getMoney() + " CNY");
+        tvTotal.setText(orderDetial.getMoney() + " " + orderDetial.getCurrency());
         tvTime.setText(orderDetial.getCreateTime());
         tvrealName.setText(orderDetial.getPayInfo().getRealName() + "");
         OrderDetial.PayInfoBean payInfoBean1 = orderDetial.getPayInfo();
@@ -423,7 +425,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
                 ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 // 将文本内容放到系统剪贴板里。
                 cm.setText(tvrealName.getText());
-                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.replicated));
+                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.replicated));
             }
         });
         tvBranch.setOnClickListener(new View.OnClickListener() {
@@ -435,7 +437,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
                 ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 // 将文本内容放到系统剪贴板里。
                 cm.setText(tvBranch.getText());
-                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.replicated));
+                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.replicated));
             }
         });
 
@@ -448,7 +450,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
                 ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 // 将文本内容放到系统剪贴板里。
                 cm.setText(tvBankNo.getText());
-                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.replicated));
+                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.replicated));
             }
         });
         if (orderDetial.getType() == 0) {
@@ -468,7 +470,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
                             ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                             // 将文本内容放到系统剪贴板里。
                             cm.setText(tvZhifubao.getText());
-                            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.replicated));
+                            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.replicated));
                         }
                     });
                     ivZhifubaoQR.setVisibility(View.VISIBLE);
@@ -479,7 +481,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
                             if (payInfoBean.getAlipay().getQrCodeUrl() != null && !("".equals(payInfoBean.getAlipay().getQrCodeUrl()))) {
                                 showPopWindow(payInfoBean.getAlipay().getQrCodeUrl());
                             } else {
-                                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.No_qrcode));
+                                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.No_qrcode));
                             }
                             //showPopWindow("");
                         }
@@ -499,7 +501,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
                             ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                             // 将文本内容放到系统剪贴板里。
                             cm.setText(tvWeChat.getText());
-                            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.replicated));
+                            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.replicated));
                         }
                     });
                     ivWeChatQR.setVisibility(View.VISIBLE);
@@ -510,7 +512,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
 
                                 showPopWindow2(payInfoBean.getWechatPay().getQrCodeUrl());
                             } else
-                                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.No_qrcode));
+                                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.No_qrcode));
                         }
                     });
                 }
@@ -552,14 +554,14 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
         darkenBackground(0.4f);
         ImageView ivQR = contentView.findViewById(R.id.ivQR);
 
-        Glide.with(this).load(url).into(ivQR);
+        Glide.with(this).load(GlobalConstant.getGlobalImagePath(url) ).into(ivQR);
         ivQR.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 if (!WonderfulPermissionUtils.isCanUseStorage(OrderDetailActivity.this))
                     checkPermission(GlobalConstant.PERMISSION_STORAGE, Permission.STORAGE);
                 else {
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.Start_downloading));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.Start_downloading));
                     download(downloadUrl);
                 }
                 return true;
@@ -597,14 +599,14 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
         darkenBackground(0.4f);
         ImageView ivQR = contentView.findViewById(R.id.ivQR);
 
-        Glide.with(this).load(url).into(ivQR);
+        Glide.with(this).load(GlobalConstant.getGlobalImagePath(url) ).into(ivQR);
         ivQR.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 if (!WonderfulPermissionUtils.isCanUseStorage(OrderDetailActivity.this))
                     checkPermission(GlobalConstant.PERMISSION_STORAGE, Permission.STORAGE);
                 else {
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.Start_downloading));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.Start_downloading));
                     download(downloadUrl);
                 }
                 return true;
@@ -650,7 +652,7 @@ public class OrderDetailActivity extends BaseActivity implements OrderDetailCont
         public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
             switch (requestCode) {
                 case GlobalConstant.PERMISSION_STORAGE:
-                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this,R.string.storage_permission));
+                    WonderfulToastUtils.showToast(WonderfulToastUtils.getString(OrderDetailActivity.this, R.string.storage_permission));
                     break;
             }
         }

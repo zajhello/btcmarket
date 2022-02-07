@@ -27,8 +27,8 @@ public interface C2CBuyOrSellContract {
     interface Presenter extends Contract.BasePresenter {
         void c2cInfo( int advertiseId);
 
-        void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark,String mode);
+        void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark,String mode,String currency,double rate);
 
-        void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark,String mode);
+        void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark,String mode,String currency,double rate);
     }
 }

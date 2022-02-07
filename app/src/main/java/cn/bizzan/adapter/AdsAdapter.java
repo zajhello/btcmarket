@@ -13,6 +13,7 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import cn.bizzan.R;
+import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.entity.Ads;
 import cn.bizzan.utils.WonderfulToastUtils;
 
@@ -43,12 +44,12 @@ public class AdsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
                 .setText(R.id.tvType, item.getAdvertiseType() == 0 ? mContext.getResources().getText(R.string.text_buy_one) : mContext.getResources().getText(R.string.text_sell_one))
                 .setText(R.id.tvPrice,new BigDecimal(item.getNumber()-item.getRemainAmount()).setScale(8,BigDecimal.ROUND_DOWN).toPlainString() + item.getCoin().getUnit())
                 .setText(R.id.tvNumber,mContext.getResources().getText(R.string.number)+" "+new BigDecimal(item.getRemainAmount()).setScale(8,BigDecimal.ROUND_DOWN).toPlainString()+item.getCoin().getUnit())
-                .setText(R.id.tvLimit, mContext.getResources().getText(R.string.limit) +""+ item.getMinLimit() + "~" + item.getMaxLimit() + "CNY");
+                .setText(R.id.tvLimit, mContext.getResources().getText(R.string.limit) +""+ item.getMinLimit() + "~" + item.getMaxLimit() + ""+item.getCurrency());
 //        helper.setBackgroundColor(R.id.tvType, item.getAdvertiseType() ==  0 ?
 //                ContextCompat.getColor(context,
 //                R.color.typeGreen) : ContextCompat.getColor(context, R.color.typeRed));
 //        WonderfulLogUtils.logi("miao",new BigDecimal(item.getNumber()).setScale(8,BigDecimal.ROUND_DOWN).toPlainString()+"科学");
-        Glide.with(context).load(avatar).asBitmap().placeholder(R.mipmap.icon_default_header).centerCrop().into
+        Glide.with(context).load(GlobalConstant.getGlobalImagePath(avatar)).asBitmap().placeholder(R.drawable.check_xu).centerCrop().into
                 (new BitmapImageViewTarget((ImageView) helper.getView(R.id.ivHeader)) {
             @Override
             protected void setResource(Bitmap resource) {

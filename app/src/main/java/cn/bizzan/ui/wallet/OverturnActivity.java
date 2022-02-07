@@ -96,7 +96,7 @@ public class OverturnActivity extends BaseActivity implements OverturnContract.V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -278,7 +278,7 @@ public class OverturnActivity extends BaseActivity implements OverturnContract.V
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
     }
 
     /**

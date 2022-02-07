@@ -12,9 +12,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.gyf.barlibrary.ImmersionBar;
 
 import cn.bizzan.R;
+import cn.bizzan.app.GlobalConstant;
+import cn.bizzan.app.UrlFactory;
+import cn.bizzan.ui.home.MainActivity;
 import cn.bizzan.ui.login.LoginActivity;
 import cn.bizzan.ui.my_order.MyOrderActivity;
 import cn.bizzan.adapter.TextWatcher;
@@ -33,6 +38,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import cn.bizzan.app.Injection;
+import cn.bizzan.utils.okhttp.StringCallback;
+import cn.bizzan.utils.okhttp.WonderfulOkhttpUtils;
+import okhttp3.Request;
 
 public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellContract.View, OrderConfirmDialogFragment.OperateCallback {
 
@@ -118,6 +126,8 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
     @Override
     protected void initViews(Bundle savedInstanceState) {
         new C2CBuyOrSellPresenter(Injection.provideTasksRepository(getApplicationContext()), this);
+
+        tvLocalCoinText.setText(MainActivity.symbol);
         ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,6 +158,7 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
 
 
     private void showConfirmDialog() {
+
         WonderfulLogUtils.logi("C2CBuyOrSellActivity", "   mode    =   " + mode);
         if (!MyApplication.getApp().isLogin()) {
             startActivityForResult(new Intent(this, LoginActivity.class), LoginActivity.RETURN_LOGIN);
@@ -155,16 +166,17 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
         }
         String countStr = etOtherCoin.getText().toString();
         if (WonderfulStringUtils.isEmpty(countStr)) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.tv_fill_number));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.tv_fill_number));
             return;
         }
         double count = Double.parseDouble(countStr);
         String totalStr = etLocalCoin.getText().toString();
         if (WonderfulStringUtils.isEmpty(totalStr)) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.tv_fill_number));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.tv_fill_number));
             return;
         }
         double total = Double.parseDouble(totalStr);
+
         OrderConfirmDialogFragment orderConfirmDialogFragment = OrderConfirmDialogFragment.getInstance(c2cBean.getAdvertiseType(), c2CExchangeInfo.getUnit(), c2CExchangeInfo.getPrice(), count, total);
         orderConfirmDialogFragment.show(getSupportFragmentManager(), "orderConfirm");
     }
@@ -172,15 +184,33 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
     @Override
     public void buyOrSell() {
         if (c2cBean == null || c2CExchangeInfo == null) return;
-        String id = c2cBean.getAdvertiseId() + "";
-        String coinId = c2CExchangeInfo.getOtcCoinId() + "";
-        String price = c2CExchangeInfo.getPrice() + "";
-        String money = etLocalCoin.getText().toString();
-        String amount = etOtherCoin.getText().toString();
-        String remark = "";
-        if ("0".equals(c2cBean.getAdvertiseType()))
-            presenter.c2cSell(getToken(), id, coinId, price, money, amount, remark, mode);
-        else presenter.c2cBuy(getToken(), id, coinId, price, money, amount, remark, mode);
+
+
+        WonderfulOkhttpUtils.get().url(UrlFactory.getCurrencyRate(MainActivity.symbol)).build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Request request, Exception e) {
+                        super.onError(request, e);
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        JsonObject object = new JsonParser().parse(response).getAsJsonObject();
+                        MainActivity.rate = object.getAsJsonPrimitive("data").getAsDouble();
+                        WonderfulLogUtils.logi("miao", MainActivity.rate + "汇率");
+
+                        String id = c2cBean.getAdvertiseId() + "";
+                        String coinId = c2CExchangeInfo.getOtcCoinId() + "";
+                        String price = c2CExchangeInfo.getPrice() + "";
+                        String money = etLocalCoin.getText().toString();
+                        String amount = etOtherCoin.getText().toString();
+                        String remark = "";
+                        if ("0".equals(c2cBean.getAdvertiseType()))
+                            presenter.c2cSell(getToken(), id, coinId, price, money, amount, remark, mode, MainActivity.symbol, MainActivity.rate);
+                        else
+                            presenter.c2cBuy(getToken(), id, coinId, price, money, amount, remark, mode, MainActivity.symbol, MainActivity.rate);
+                    }
+                });
     }
 
     private void otherCoinChange() {
@@ -196,7 +226,7 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
 
     private void localCoinChange() {
         if (c2CExchangeInfo == null) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.No_ads));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.No_ads));
             presenter.c2cInfo(c2cBean.getAdvertiseId());
             return;
         }
@@ -206,7 +236,7 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
         if (WonderfulStringUtils.isEmpty(localStr) || c2cBean.getPrice() == 0)
             etOtherCoin.setText("0");
         else
-            etOtherCoin.setText(WonderfulMathUtils.getRundNumber(Double.parseDouble(localStr) / c2CExchangeInfo.getPrice(), 8, null));
+            etOtherCoin.setText(WonderfulMathUtils.getRundNumber(Double.parseDouble(localStr) / (MainActivity.rate * c2CExchangeInfo.getPrice()), 8, null));
         etOtherCoin.addTextChangedListener(otherChangeWatcher);
     }
 
@@ -218,11 +248,11 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
     @Override
     protected void fillWidget() {
         if ("0".equals(c2cBean.getAdvertiseType())) {
-            tvTitle.setText(WonderfulToastUtils.getString(this,R.string.text_chu_sho) + c2cBean.getUnit());
-            tvInfo.setText(WonderfulToastUtils.getString(this,R.string.text_much_sale));
+            tvTitle.setText(WonderfulToastUtils.getString(this, R.string.text_chu_sho) + c2cBean.getUnit());
+            tvInfo.setText(WonderfulToastUtils.getString(this, R.string.text_much_sale));
         } else {
-            tvTitle.setText(WonderfulToastUtils.getString(this,R.string.text_gou_mai) + c2cBean.getUnit());
-            tvInfo.setText(WonderfulToastUtils.getString(this,R.string.text_much_buy));
+            tvTitle.setText(WonderfulToastUtils.getString(this, R.string.text_gou_mai) + c2cBean.getUnit());
+            tvInfo.setText(WonderfulToastUtils.getString(this, R.string.text_much_buy));
         }
         setButtonText();
     }
@@ -231,18 +261,18 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
         if ("0".equals(c2cBean.getAdvertiseType())) {
             if (MyApplication.getApp().isLogin()) {
                 //tvContact.setVisibility(View.VISIBLE);
-                tvBuy.setText(WonderfulToastUtils.getString(this,R.string.text_chu_sho));
+                tvBuy.setText(WonderfulToastUtils.getString(this, R.string.text_chu_sho));
             } else {
                 //tvContact.setVisibility(View.GONE);
-                tvBuy.setText(WonderfulToastUtils.getString(this,R.string.text_to_login));
+                tvBuy.setText(WonderfulToastUtils.getString(this, R.string.text_to_login));
             }
         } else {
             if (MyApplication.getApp().isLogin()) {
                 //tvContact.setVisibility(View.VISIBLE);
-                tvBuy.setText(WonderfulToastUtils.getString(this,R.string.text_gou_mai));
+                tvBuy.setText(WonderfulToastUtils.getString(this, R.string.text_gou_mai));
             } else {
                 //tvContact.setVisibility(View.GONE);
-                tvBuy.setText(WonderfulToastUtils.getString(this,R.string.text_to_login));
+                tvBuy.setText(WonderfulToastUtils.getString(this, R.string.text_to_login));
             }
         }
 
@@ -285,10 +315,12 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
     }
 
     private void fillViews() {
-        tvLimit.setText(WonderfulToastUtils.getString(this,R.string.text_quota) + "" + c2CExchangeInfo.getMinLimit() + "~" + c2CExchangeInfo.getMaxLimit() + "CNY");
+        tvLimit.setText(WonderfulToastUtils.getString(this, R.string.text_quota) + "" + WonderfulMathUtils.getRundNumber(c2CExchangeInfo.getMinLimit() * MainActivity.rate, 2, null) + "~" + WonderfulMathUtils.getRundNumber(c2CExchangeInfo.getMaxLimit() * MainActivity.rate, 2, null) + "" + MainActivity.symbol);
         tvOtherCoinText.setText(c2CExchangeInfo.getUnit());
         if (!WonderfulStringUtils.isEmpty(c2cBean.getAvatar()))
-            Glide.with(this).load(c2cBean.getAvatar()).into(ivHeader);
+
+
+            Glide.with(this).load(GlobalConstant.getGlobalImagePath(c2cBean.getAvatar())).into(ivHeader);
         else Glide.with(this).load(R.mipmap.icon_default_header).into(ivHeader);
         tvName.setText(c2CExchangeInfo.getUsername());
         tvTradeAmount.setText(c2CExchangeInfo.getTransactions() + "");
@@ -300,11 +332,11 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
         else ivWeChat.setVisibility(View.GONE);
         if (pays.contains("银联") || (pays.contains("银行卡"))) ivUnionPay.setVisibility(View.VISIBLE);
         else ivUnionPay.setVisibility(View.GONE);
-        tvPrice.setText(c2CExchangeInfo.getPrice() + "CNY");
+        tvPrice.setText(WonderfulMathUtils.getRundNumber(c2CExchangeInfo.getPrice() * MainActivity.rate, 2, null) + "" + MainActivity.symbol);
         tvMessage.setText(c2CExchangeInfo.getRemark());
-        tvExchangeCount.setText(WonderfulToastUtils.getString(this,R.string.text_deal_num) + c2CExchangeInfo.getTransactions());
+        tvExchangeCount.setText(WonderfulToastUtils.getString(this, R.string.text_deal_num) + c2CExchangeInfo.getTransactions());
 //        tvRemainAmount.setText(WonderfulToastUtils.getString(this,R.string.text_surplus_num)+new BigDecimal(c2CExchangeInfo.getMaxTradableAmount()));
-        tvRemainAmount.setText(WonderfulToastUtils.getString(this,R.string.text_surplus_num) + "" + c2CExchangeInfo.getNumber());
+        tvRemainAmount.setText(WonderfulToastUtils.getString(this, R.string.text_surplus_num) + "" + c2CExchangeInfo.getNumber());
     }
 
     @Override
@@ -337,5 +369,15 @@ public class C2CBuyOrSellActivity extends BaseActivity implements C2CBuyOrSellCo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getRateViaCurrencyKey();
+    }
+
+    private void getRateViaCurrencyKey() {
+
     }
 }

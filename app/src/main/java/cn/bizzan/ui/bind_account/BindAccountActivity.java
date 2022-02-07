@@ -3,15 +3,18 @@ package cn.bizzan.ui.bind_account;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
+
 import cn.bizzan.R;
 import cn.bizzan.base.BaseActivity;
 import cn.bizzan.entity.AccountSetting;
+import cn.bizzan.ui.home.MainActivity;
 import cn.bizzan.utils.WonderfulCodeUtils;
 import cn.bizzan.utils.WonderfulToastUtils;
 
@@ -71,18 +74,27 @@ public class BindAccountActivity extends BaseActivity implements BindAccountCont
                 finish();
             }
         });
-        llAliAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                aliClick();
-            }
-        });
-        llWeiChatAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                weichatClick();
-            }
-        });
+
+        if (TextUtils.equals(MainActivity.symbol, "CNY")) {
+
+            llAliAccount.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    aliClick();
+                }
+            });
+            llWeiChatAccount.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    weichatClick();
+                }
+            });
+        } else {
+            llAliAccount.setVisibility(View.INVISIBLE);
+            llWeiChatAccount.setVisibility(View.INVISIBLE);
+        }
+
+
         llUnionPayAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,17 +105,17 @@ public class BindAccountActivity extends BaseActivity implements BindAccountCont
 
     private void weichatClick() {
         if (accountSetting == null) return;
-        BindWeiChatActivity.actionStart(this,accountSetting);
+        BindWeiChatActivity.actionStart(this, accountSetting);
     }
 
     private void bankClick() {
         if (accountSetting == null) return;
-        BindBankActivity.actionStart(this,accountSetting);
+        BindBankActivity.actionStart(this, accountSetting);
     }
 
     private void aliClick() {
         if (accountSetting == null) return;
-        BindAliActivity.actionStart(this,accountSetting);
+        BindAliActivity.actionStart(this, accountSetting);
     }
 
     @Override
@@ -142,26 +154,26 @@ public class BindAccountActivity extends BaseActivity implements BindAccountCont
     public void getAccountSettingSuccess(AccountSetting obj) {
         this.accountSetting = obj;
         if (accountSetting.getAliVerified() == 0) {
-            tvAli.setText(WonderfulToastUtils.getString(this,R.string.unbound));
+            tvAli.setText(WonderfulToastUtils.getString(this, R.string.unbound));
 
         } else {
-            tvAli.setText(WonderfulToastUtils.getString(this,R.string.bound));
+            tvAli.setText(WonderfulToastUtils.getString(this, R.string.bound));
 
         }
 
         if (accountSetting.getWechatVerified() == 0) {
-            tvWeiChat.setText(WonderfulToastUtils.getString(this,R.string.unbound));
+            tvWeiChat.setText(WonderfulToastUtils.getString(this, R.string.unbound));
 
         } else {
-            tvWeiChat.setText(WonderfulToastUtils.getString(this,R.string.bound));
+            tvWeiChat.setText(WonderfulToastUtils.getString(this, R.string.bound));
 
         }
 
         if (accountSetting.getBankVerified() == 0) {
-            tvUnionPay.setText(WonderfulToastUtils.getString(this,R.string.unbound));
+            tvUnionPay.setText(WonderfulToastUtils.getString(this, R.string.unbound));
 
         } else {
-            tvUnionPay.setText(WonderfulToastUtils.getString(this,R.string.bound));
+            tvUnionPay.setText(WonderfulToastUtils.getString(this, R.string.bound));
 
         }
     }

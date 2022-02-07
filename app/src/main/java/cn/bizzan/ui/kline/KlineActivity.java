@@ -236,9 +236,9 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
     @Override
     public void onStart() {
         super.onStart();
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
+//        if (!EventBus.getDefault().isRegistered(this)) {
+//            EventBus.getDefault().register(this);
+//        }
     }
 
     @Override
@@ -250,9 +250,9 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
             EventBus.getDefault().post(new SocketMessage(1, ISocket.CMD.CONTRACT_UNSUBSCRIBE_SYMBOL_THUMB, null)); //  取消订阅
         }
 
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this);
-        }
+//        if (EventBus.getDefault().isRegistered(this)) {
+//            EventBus.getDefault().unregister(this);
+//        }
     }
 
 
@@ -842,7 +842,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
             Double douChg = mCurrency.getChg();
             String strRang = WonderfulMathUtils.getRundNumber(mCurrency.getChg() * 100, 2, "########0.") + "%";
             String strDataText = "≈ " + WonderfulMathUtils.getRundNumber(mCurrency.getClose() * MainActivity.rate,
-                    2, null) + " CNY";
+                    2, null) + " "+MainActivity.symbol;
             String strDataOne = String.valueOf(mCurrency.getClose());
 
 

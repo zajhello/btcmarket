@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.gyf.barlibrary.ImmersionBar;
 
 import cn.bizzan.R;
+import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.ui.login.LoginActivity;
 import cn.bizzan.app.MyApplication;
 import cn.bizzan.base.ActivityManage;
@@ -149,7 +150,7 @@ public class LockActivity extends BaseActivity {
         String username = user.getUsername();
         if (WonderfulStringUtils.isEmpty(url))
             Glide.with(getApplicationContext()).load(R.mipmap.icon_default_header).into(ivHeader);
-        else Glide.with(getApplicationContext()).load(url).into(ivHeader);
+        else Glide.with(getApplicationContext()).load(GlobalConstant.getGlobalImagePath( url)).into(ivHeader);
         tvNickName.setText(WonderfulStringUtils.isEmpty(username) ? getResources().getString(R.string.app_name) : username);
     }
 

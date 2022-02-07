@@ -121,6 +121,16 @@ public class ChongBiBean implements Serializable {
         private long id;
         private int memberId;
         private double amount;
+        private double actualAmount;
+
+        public double getActualAmount() {
+            return actualAmount;
+        }
+
+        public void setActualAmount(double actualAmount) {
+            this.actualAmount = actualAmount;
+        }
+
         private String createTime;
         private int type;
         private String symbol;

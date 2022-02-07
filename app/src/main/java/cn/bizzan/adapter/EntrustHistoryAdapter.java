@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import cn.bizzan.R;
+import cn.bizzan.app.MyApplication;
 import cn.bizzan.ui.entrust.TrustDetailActivity;
 import cn.bizzan.entity.EntrustHistory;
 import cn.bizzan.utils.WonderfulMathUtils;
@@ -19,7 +20,7 @@ import cn.bizzan.utils.WonderfulToastUtils;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static com.umeng.commonsdk.stateless.UMSLEnvelopeBuild.mContext;
+
 
 /**
  * Created by Administrator on 2018/4/18 0018.
@@ -88,15 +89,15 @@ public class EntrustHistoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) holder;
 
             if (historyList.get(i).getDirection().equals("BUY")) {
-                recyclerViewHolder.tvChildType.setText(mContext.getResources().getText(R.string.text_buy));
+                recyclerViewHolder.tvChildType.setText(MyApplication.getApp().getResources().getText(R.string.text_buy));
                 recyclerViewHolder.tvChildType.setTextColor(context.getResources().getColor(R.color.typeGreen));
             }else {
-                recyclerViewHolder.tvChildType.setText(mContext.getResources().getText(R.string.text_sale));
+                recyclerViewHolder.tvChildType.setText(MyApplication.getApp().getResources().getText(R.string.text_sale));
                 recyclerViewHolder.tvChildType.setTextColor(context.getResources().getColor(R.color.typeRed));
             }
 
             if (historyList.get(i).getStatus().equals("COMPLETED")) {
-                recyclerViewHolder.tvChildState.setText(mContext.getResources().getText(R.string.traded_trade));
+                recyclerViewHolder.tvChildState.setText(context.getResources().getText(R.string.traded_trade));
                 recyclerViewHolder.ivChildGo.setVisibility(View.VISIBLE);
                 recyclerViewHolder.tvChildState.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -105,10 +106,10 @@ public class EntrustHistoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     }
                 });
             }else if (historyList.get(i).getStatus().equals("CANCELED")){
-                recyclerViewHolder.tvChildState.setText(mContext.getResources().getText(R.string.undone));
+                recyclerViewHolder.tvChildState.setText(context.getResources().getText(R.string.undone));
                 recyclerViewHolder.ivChildGo.setVisibility(View.INVISIBLE);
             }else {
-                recyclerViewHolder.tvChildState.setText(mContext.getResources().getText(R.string.trading));
+                recyclerViewHolder.tvChildState.setText(context.getResources().getText(R.string.trading));
                 recyclerViewHolder.ivChildGo.setVisibility(View.INVISIBLE);
             }
 
@@ -120,7 +121,7 @@ public class EntrustHistoryAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             recyclerViewHolder.tvChildTime.setText(data);
 
             if (historyList.get(i).getType().equals("MARKET_PRICE")) {
-                recyclerViewHolder.tvChildPrice.setText(mContext.getResources().getText(R.string.marketPrice));
+                recyclerViewHolder.tvChildPrice.setText(context.getResources().getText(R.string.marketPrice));
             }else recyclerViewHolder.tvChildPrice.setText(new BigDecimal(String.valueOf(historyList.get(i).getPrice())).toPlainString());
 
 

@@ -63,11 +63,11 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="10dp"
         android:id="@+id/rvAds"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/llTitle"/>
+        android:layout_below="@id/llTitle"
+        android:layout_marginTop="10dp" />
 
     <LinearLayout
         android:id="@+id/llEmpty"

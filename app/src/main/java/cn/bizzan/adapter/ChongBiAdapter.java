@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class ChongBiAdapter extends LinAdapter<ChongBiBean.ContentBean> {
     private List<ChongBiBean.ContentBean> beanss;
+
     /**
      * LinAdapter通用的构造方法
      *
@@ -25,7 +26,7 @@ public class ChongBiAdapter extends LinAdapter<ChongBiBean.ContentBean> {
      */
     public ChongBiAdapter(Activity context, List<ChongBiBean.ContentBean> beans) {
         super(context, beans);
-        beanss=beans;
+        beanss = beans;
     }
 
     @Override
@@ -34,17 +35,18 @@ public class ChongBiAdapter extends LinAdapter<ChongBiBean.ContentBean> {
             convertView = LayoutInflater.from(context).inflate(R.layout.adapter_chongbi, parent, false);
         }
         ChongBiBean.ContentBean bean = beanss.get(position);
-        TextView text_coin=ViewHolders.get(convertView,R.id.text_coin);
+        TextView text_coin = ViewHolders.get(convertView, R.id.text_coin);
         text_coin.setText(bean.getSymbol());
 
-        TextView text_time=ViewHolders.get(convertView,R.id.text_time);
+        TextView text_time = ViewHolders.get(convertView, R.id.text_time);
         text_time.setText(bean.getCreateTime());
 
-        TextView text_dizhi=ViewHolders.get(convertView,R.id.text_dizhi);
+        TextView text_dizhi = ViewHolders.get(convertView, R.id.text_dizhi);
         text_dizhi.setText(bean.getAddress());
 
-        TextView text_number=ViewHolders.get(convertView,R.id.text_number);
-        text_number.setText(bean.getAmount()+"");
+        TextView text_number = ViewHolders.get(convertView, R.id.text_number);
+
+        text_number.setText((bean.getActualAmount() == 0 ? bean.getAmount() : bean.getActualAmount()) + "");
 
 
         return convertView;

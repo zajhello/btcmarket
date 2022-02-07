@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,8 +18,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.gyf.barlibrary.ImmersionBar;
+
 import cn.bizzan.R;
+import cn.bizzan.app.UrlFactory;
 import cn.bizzan.ui.country.CountryActivity;
 import cn.bizzan.ui.my_ads.AdsActivity;
 import cn.bizzan.adapter.DialogCoinInfoAdapter;
@@ -43,6 +48,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import cn.bizzan.app.Injection;
+import cn.bizzan.utils.okhttp.StringCallback;
+import cn.bizzan.utils.okhttp.WonderfulOkhttpUtils;
+import okhttp3.Request;
 
 public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContract.View {
     public static final int REQUEST_COUNTRY = 0;
@@ -110,6 +118,22 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
     EditText etReplyContent;
     @BindView(R.id.etjyPrice)
     EditText etjyPrice;
+
+    @BindView(R.id.tvPrice_symbol)
+    TextView tvPriceSymbol;
+    @BindView(R.id.etjyPrice_symbol)
+    TextView tvJyPriceSymbol;
+    @BindView(R.id.etCount_symbol)
+    TextView tvCountSymbol;
+    @BindView(R.id.etMin_symbol)
+    TextView tvMinSymbol;
+    @BindView(R.id.etMax_symbol)
+    TextView tvMaxSymbol;
+
+
+    private String symbol;
+    private double rate;
+
     private String advertiseType = "";
     private CoinInfo coinInfo;
     private double minSellCount;
@@ -159,14 +183,30 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
         return R.layout.activity_release_ads;
     }
 
+
     @Override
     protected void initViews(Bundle savedInstanceState) {
         new ReleasePresenter(Injection.provideTasksRepository(getApplicationContext()), this);
         payWays = new ArrayList<PayWay>() {{
-        add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this,R.string.Alipay)));
-        add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this,R.string.wechat)));
-        add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this,R.string.unionpay)));
+            add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this, R.string.Alipay)));
+            add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this, R.string.wechat)));
+            add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this, R.string.unionpay)));
         }};
+
+        if (TextUtils.equals(symbol, "CNY")) {
+            payWays = new ArrayList<PayWay>() {{
+                add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this, R.string.Alipay)));
+                add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this, R.string.wechat)));
+                add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this, R.string.unionpay)));
+            }};
+        } else {
+            payWays = new ArrayList<PayWay>() {{
+//                add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this, R.string.Alipay)));
+//                add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this, R.string.wechat)));
+                add(new PayWay(WonderfulToastUtils.getString(ReleaseAdsActivity.this, R.string.unionpay)));
+            }};
+        }
+
         ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -259,7 +299,7 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
         if (!WonderfulStringUtils.isEmpty(maxLimit, price, number)) {
             Double max = Double.valueOf(price) * Double.valueOf(number);
             if (Double.valueOf(maxLimit) > max) {
-                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.maxLimitTip) + max + "CNY");
+                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.maxLimitTip) + max + "CNY");
             }
         }
     }
@@ -268,7 +308,7 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
         String minLimit = etMin.getText().toString();
         if (!WonderfulStringUtils.isEmpty(minLimit)) {
             if (Double.valueOf(minLimit) < 100) {
-                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.minLimitTip));
+                WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.minLimitTip));
             }
         }
 
@@ -289,13 +329,13 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
                 }
             });
             rvTimeList.setAdapter(timeadapter);
-            timedialog = new AlertDialog.Builder(this, R.style.custom_dialog).setTitle(WonderfulToastUtils.getString(this,R.string.text_ad_fu_time)).setView(timeLimitView)
-                    .setPositiveButton(WonderfulToastUtils.getString(this,R.string.dialog_sure), new DialogInterface.OnClickListener() {
+            timedialog = new AlertDialog.Builder(this, R.style.custom_dialog).setTitle(WonderfulToastUtils.getString(this, R.string.text_ad_fu_time)).setView(timeLimitView)
+                    .setPositiveButton(WonderfulToastUtils.getString(this, R.string.dialog_sure), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             timeConfirm();
                         }
-                    }).setNegativeButton(WonderfulToastUtils.getString(this,R.string.dialog_one_cancel), null).create();
+                    }).setNegativeButton(WonderfulToastUtils.getString(this, R.string.dialog_one_cancel), null).create();
         }
         timedialog.show();
     }
@@ -339,6 +379,7 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
         double price = Double.parseDouble(priceStr);
         double over = Double.parseDouble(overStr);
         double finalPrice = price * (1 + 0.01 * over);
+
         etjyPrice.setText(WonderfulMathUtils.getRundNumber(finalPrice, 2, null));
     }
 
@@ -356,64 +397,83 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
 
     private void change() {
         tvOverflow.setEnabled(true);
-        tvOverflow.setHint(WonderfulToastUtils.getString(this,R.string.text_ad_yi_two));
+        tvOverflow.setHint(WonderfulToastUtils.getString(this, R.string.text_ad_yi_two));
         etjyPrice.setText("");
-        etjyPrice.setHint(WonderfulToastUtils.getString(this,R.string.text_ad_jiao_two));
+        etjyPrice.setHint(WonderfulToastUtils.getString(this, R.string.text_ad_jiao_two));
         etjyPrice.setEnabled(false);
     }
 
     private void fix() {
         tvOverflow.setText("");
-        tvOverflow.setHint(WonderfulToastUtils.getString(this,R.string.text_ad_yi_one));
+        tvOverflow.setHint(WonderfulToastUtils.getString(this, R.string.text_ad_yi_one));
         tvOverflow.setEnabled(false);
         etjyPrice.setText("");
-        etjyPrice.setHint(WonderfulToastUtils.getString(this,R.string.text_ad_jiao_one));
+        etjyPrice.setHint(WonderfulToastUtils.getString(this, R.string.text_ad_jiao_one));
         etjyPrice.setEnabled(true);
     }
 
     private void releaseOrEditAd() {
-        String price = etjyPrice.getText().toString();
+        final String price = etjyPrice.getText().toString();
         String coinId = "";
         if (coinInfo == null && ads == null) return;
         if (coinInfo != null) coinId = coinInfo.getId();
         else coinId = ads.getCoinId() + "";
-        String minLimit = etMin.getText().toString();
-        String maxLimit = etMax.getText().toString();
-        String timeLimit = tvPayTime.getText().toString().split(" ")[0];
-        String countryZhName = country.getZhName();
-        String priceType = rbFixed.isChecked() ? "0" : "1";
+        final String minLimit = etMin.getText().toString();
+        final String maxLimit = etMax.getText().toString();
+        final String timeLimit = tvPayTime.getText().toString().split(" ")[0];
+        final String countryZhName = country.getZhName();
+        final String priceType = rbFixed.isChecked() ? "0" : "1";
         String premiseRate = "0";
         if (priceType.equals("1")) premiseRate = tvOverflow.getText().toString();
-        String remark = etMessage.getText().toString();
-        String number = etCount.getText().toString();
-        String pay = tvPayWay.getText().toString();
-        String jyPassword = etPassword.getText().toString();
-        String auto = rbYes.isChecked() ? "1" : "0";
-        String autoword = etReplyContent.getText().toString();
+        final String remark = etMessage.getText().toString();
+        final String number = etCount.getText().toString();
+        final String pay = tvPayWay.getText().toString();
+        final String jyPassword = etPassword.getText().toString();
+        final String auto = rbYes.isChecked() ? "1" : "0";
+        final String autoword = etReplyContent.getText().toString();
         if (WonderfulStringUtils.isEmpty(price, coinId, minLimit, maxLimit, timeLimit, countryZhName,
                 priceType, premiseRate, number, pay, jyPassword)) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.text_ad_entity));
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.text_ad_entity));
 //            WonderfulToastUtils.showToast("advertiseType=" + advertiseType + "  auto=" + auto + "  autoword=" + autoword);
             return;
         }
 
         if (Double.valueOf(maxLimit) < 100) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.minLimitTip));
+            WonderfulToastUtils.showToast(String.format(WonderfulToastUtils.getString(this, R.string.minLimitTip), "100" + symbol));
             return;
         }
 
         Double max = Double.valueOf(price) * Double.valueOf(number);
         if (Double.valueOf(maxLimit) > max) {
-            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.maxLimitTip) + max + "CNY");
+            WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this, R.string.maxLimitTip) + max + "" + symbol);
             return;
         }
-        if (ads == null) {
-            WonderfulLogUtils.logi("releaseOrEditAd", "timeLimit   " + timeLimit);
-            presenter.create(getToken(), price, advertiseType, coinId, minLimit, maxLimit, Integer.valueOf(timeLimit), countryZhName
-                    , priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword);
-        } else
-            presenter.updateAd(getToken(), ads.getId(), price, advertiseType, coinId, minLimit, maxLimit, Integer.valueOf(timeLimit), countryZhName
-                    , priceType, premiseRate, remark, number, pay, jyPassword, auto, autoword);
+
+        final String finalCoinId = coinId;
+        final String finalPremiseRate = premiseRate;
+        WonderfulOkhttpUtils.get().url(UrlFactory.getCurrencyRate(symbol)).build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Request request, Exception e) {
+                        super.onError(request, e);
+                        rate = 0;
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        JsonObject object = new JsonParser().parse(response).getAsJsonObject();
+                        rate = object.getAsJsonPrimitive("data").getAsDouble();
+                        WonderfulLogUtils.logi("miao", rate + "汇率");
+
+                        if (ads == null) {
+                            WonderfulLogUtils.logi("releaseOrEditAd", "timeLimit   " + timeLimit);
+                            presenter.create(getToken(), price, advertiseType, finalCoinId, minLimit, maxLimit, Integer.valueOf(timeLimit), countryZhName
+                                    , priceType, finalPremiseRate, remark, number, pay, jyPassword, auto, autoword, symbol, rate);
+                        } else
+                            presenter.updateAd(getToken(), ads.getId(), price, advertiseType, finalCoinId, minLimit, maxLimit, Integer.valueOf(timeLimit), countryZhName
+                                    , priceType, finalPremiseRate, remark, number, pay, jyPassword, auto, autoword, symbol, rate);
+                    }
+                });
     }
 
     private void showPayWayDialog() {
@@ -430,13 +490,13 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
                 }
             });
             rvpayWay.setAdapter(payWayAdapter);
-            payWayDialog = new AlertDialog.Builder(this, R.style.custom_dialog).setTitle(WonderfulToastUtils.getString(this,R.string.text_ad_fu_kuan)).setView(payWayView)
-                    .setPositiveButton(WonderfulToastUtils.getString(this,R.string.dialog_sure), new DialogInterface.OnClickListener() {
+            payWayDialog = new AlertDialog.Builder(this, R.style.custom_dialog).setTitle(WonderfulToastUtils.getString(this, R.string.text_ad_fu_kuan)).setView(payWayView)
+                    .setPositiveButton(WonderfulToastUtils.getString(this, R.string.dialog_sure), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             payWayConfirm();
                         }
-                    }).setNegativeButton(WonderfulToastUtils.getString(this,R.string.dialog_one_cancel), null).create();
+                    }).setNegativeButton(WonderfulToastUtils.getString(this, R.string.dialog_one_cancel), null).create();
         }
         payWayDialog.show();
     }
@@ -470,13 +530,13 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
                 }
             });
             rvCoinInfo.setAdapter(adapter);
-            dialog = new AlertDialog.Builder(this, R.style.custom_dialog).setTitle(WonderfulToastUtils.getString(this,R.string.text_ad_bi)).setView(coinInfoView)
-                    .setPositiveButton(WonderfulToastUtils.getString(this,R.string.dialog_sure), new DialogInterface.OnClickListener() {
+            dialog = new AlertDialog.Builder(this, R.style.custom_dialog).setTitle(WonderfulToastUtils.getString(this, R.string.text_ad_bi)).setView(coinInfoView)
+                    .setPositiveButton(WonderfulToastUtils.getString(this, R.string.dialog_sure), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             coinInfoConfirm();
                         }
-                    }).setNegativeButton(WonderfulToastUtils.getString(this,R.string.dialog_one_cancel), null).create();
+                    }).setNegativeButton(WonderfulToastUtils.getString(this, R.string.dialog_one_cancel), null).create();
         }
         dialog.show();
     }
@@ -509,25 +569,36 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
     @Override
     protected void fillWidget() {
         if (advertiseType.equals("BUY")) {
-            tvTitle.setText(WonderfulToastUtils.getString(this,R.string.text_ad_title));
-            tvCountText.setText(WonderfulToastUtils.getString(this,R.string.text_ad_buy_num));
+            tvTitle.setText(WonderfulToastUtils.getString(this, R.string.text_ad_title));
+            tvCountText.setText(WonderfulToastUtils.getString(this, R.string.text_ad_buy_num));
         } else if (advertiseType.equals("SELL")) {
-            tvTitle.setText(WonderfulToastUtils.getString(this,R.string.text_ad_titles));
-            tvCountText.setText(WonderfulToastUtils.getString(this,R.string.text_ad_sell_num));
+            tvTitle.setText(WonderfulToastUtils.getString(this, R.string.text_ad_titles));
+            tvCountText.setText(WonderfulToastUtils.getString(this, R.string.text_ad_sell_num));
         }
         if (ads == null) {
-            tvRelease.setText(WonderfulToastUtils.getString(this,R.string.text_fa_bu));
+            tvRelease.setText(WonderfulToastUtils.getString(this, R.string.text_fa_bu));
         } else {
-            tvTitle.setText(WonderfulToastUtils.getString(this,R.string.text_ad_change));
-            tvRelease.setText(WonderfulToastUtils.getString(this,R.string.text_change));
+            tvTitle.setText(WonderfulToastUtils.getString(this, R.string.text_ad_change));
+            tvRelease.setText(WonderfulToastUtils.getString(this, R.string.text_change));
         }
+    }
+
+    private void fillCurrency() {
+        tvPriceSymbol.setText(symbol);
+        tvJyPriceSymbol.setText(symbol);
+        tvCountSymbol.setText(symbol);
+        tvMinSymbol.setText(symbol);
+        tvMaxSymbol.setText(symbol);
     }
 
     private void fillViews(Ads ads) {
         tvCoin.setText(ads.getCoinUnit());
         country = ads.getCountry();
+        symbol = country.getLocalCurrency();
         tvCountry.setText(country.getZhName());
         tvCoinKind.setText(country.getLocalCurrency());
+
+
         tvPrice.setText(ads.getMarketPrice() + "");
         rbFixed.setChecked(ads.getPriceType() == 0);
         rbChange.setChecked(ads.getPriceType() != 0);
@@ -537,7 +608,7 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
         etMax.setText(ads.getMaxLimit() + "");
         etCount.setText(ads.getNumber() + "");
         tvPayWay.setText(ads.getPayMode());
-        tvPayTime.setText(ads.getTimeLimit() + " " + WonderfulToastUtils.getString(this,R.string.text_ad_minu));
+        tvPayTime.setText(ads.getTimeLimit() + " " + WonderfulToastUtils.getString(this, R.string.text_ad_minu));
         rbYes.setChecked(ads.getAuto() == 0);
         rbNo.setChecked(ads.getAuto() != 0);
         etReplyContent.setText(WonderfulStringUtils.isEmpty(ads.getAutoword()) ? "" : ads.getAutoword());
@@ -566,6 +637,8 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
                 this.country = country;
                 tvCountry.setText(country.getZhName());
                 tvCoinKind.setText(country.getLocalCurrency());
+                symbol = country.getLocalCurrency();
+                fillCurrency();
             }
         }
     }
@@ -604,6 +677,7 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
         if (obj == null) return;
         this.ads = obj;
         fillViews(ads);
+        fillCurrency();
     }
 
     @Override
@@ -622,6 +696,4 @@ public class ReleaseAdsActivity extends BaseActivity implements ReleaseAdContrac
     public void updateFail(Integer code, String toastMessage) {
         WonderfulCodeUtils.checkedErrorCode(this, code, toastMessage);
     }
-
-
 }

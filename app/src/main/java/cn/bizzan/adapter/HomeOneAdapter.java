@@ -41,7 +41,7 @@ private int width;
         helper.addOnClickListener(R.id.ivCollect);
         helper.setText(R.id.tvCurrencyName, item.getSymbol()).setText(R.id.tvClose, WonderfulMathUtils.getRundNumber(item.getClose(), 2, null))
                 .setText(R.id.tvAddPercent, (item.getChg() >= 0 ? "+" : "") + WonderfulMathUtils.getRundNumber(item.getChg() * 100, 2, "########0.") + "%")
-                .setText(R.id.tvVol,"≈" + WonderfulMathUtils.getRundNumber(item.getClose()*item.getBaseUsdRate() * MainActivity.rate ,2,null)+"CNY")
+                .setText(R.id.tvVol,"≈" + WonderfulMathUtils.getRundNumber(item.getClose()*item.getBaseUsdRate() * MainActivity.rate ,2,null)+""+MainActivity.symbol)
                 .setTextColor(R.id.tvAddPercent, item.getChg() >= 0 ? ContextCompat.getColor(MyApplication.getApp(), R.color.typeGreen) : ContextCompat.getColor(MyApplication.getApp(), R.color.typeRed))
                 //.setTextColor(R.id.tvVol, item.getChg() >= 0 ? ContextCompat.getColor(MyApplication.getApp(), R.color.kgreen) : ContextCompat.getColor(MyApplication.getApp(), R.color.kred))
                 .setTextColor(R.id.tvClose, item.getChg() >= 0 ? ContextCompat.getColor(MyApplication.getApp(), R.color.typeGreen) : ContextCompat.getColor(MyApplication.getApp(), R.color.typeRed));

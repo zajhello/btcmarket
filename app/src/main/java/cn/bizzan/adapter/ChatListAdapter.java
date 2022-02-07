@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import cn.bizzan.R;
+import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.entity.ChatTable;
 import cn.bizzan.customview.CircleImageView;
 import cn.bizzan.utils.WonderfulDateUtils;
@@ -31,7 +32,7 @@ public class ChatListAdapter extends BaseQuickAdapter<ChatTable, BaseViewHolder>
     @Override
     protected void convert(BaseViewHolder helper, ChatTable item) {
         helper.setText(R.id.tvName,item.getNameFrom()).setText(R.id.tvMessage,item.getContent());
-        Glide.with(context.getApplicationContext()).load(item.getFromAvatar()).placeholder(R.mipmap.icon_default_header).into((CircleImageView) helper.getView(R.id.ivHeader));
+        Glide.with(context.getApplicationContext()).load(GlobalConstant.getGlobalImagePath(item.getFromAvatar()) ).placeholder(R.mipmap.icon_default_header).into((CircleImageView) helper.getView(R.id.ivHeader));
         if (!item.isRead) helper.setVisible(R.id.ivChatTip,true);
         else helper.setVisible(R.id.ivChatTip,false);
         long currentTime = System.currentTimeMillis();

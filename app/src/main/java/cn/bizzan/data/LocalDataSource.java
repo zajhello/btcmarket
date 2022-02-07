@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
+import java.io.File;
 import java.math.BigDecimal;
 
 
@@ -118,12 +119,28 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
-    public void create(String token, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, DataCallback dataCallback) {
+    public void currency(DataCallback dataCallback) {
 
     }
 
     @Override
+    public void currencyRate(String key, DataCallback dataCallback) {
+
+    }
+
+    @Override
+    public void create(String token, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, String currency, double rate, DataCallback dataCallback) {
+
+    }
+
+
+    @Override
     public void uploadBase64Pic(String token, String base64Data, DataCallback dataCallback) {
+
+    }
+
+    @Override
+    public void uploadBase64Pic(String token, String name, String filename, File file, DataCallback dataCallback) {
 
     }
 
@@ -163,9 +180,10 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
-    public void updateAd(String token, int id, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, DataCallback dataCallback) {
+    public void updateAd(String token, int id, String price, String advertiseType, String coinId, String minLimit, String maxLimit, int timeLimit, String countryZhName, String priceType, String premiseRate, String remark, String number, String pay, String jyPassword, String auto, String autoword, String currency, double rate, DataCallback dataCallback) {
 
     }
+
 
     @Override
     public void c2cInfo(int id, DataCallback dataCallback) {
@@ -173,12 +191,12 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
-    public void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, DataCallback dataCallback) {
+    public void c2cBuy(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, String currency,double rate,DataCallback dataCallback) {
 
     }
 
     @Override
-    public void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, DataCallback dataCallback) {
+    public void c2cSell(String token, String id, String coinId, String price, String money, String amount, String remark, String mode, String currency,double rate,DataCallback dataCallback) {
 
     }
 
@@ -213,7 +231,7 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
-    public void extractViaUdun(String token, String symbol, String address, String amount, String memberId, String memberName, String memo,DataCallback dataCallback) {
+    public void extractViaUdun(String token, String symbol, String address, String amount, String memberId, String memberName, String memo, DataCallback dataCallback) {
 
     }
 
@@ -504,12 +522,27 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
-    public void getUdunConf(String token,final DataCallback dataCallback) {
+    public void getUdunConf(String token, final DataCallback dataCallback) {
 
     }
 
     @Override
     public void getSupportCoins(String token, DataCallback dataCallback) {
+
+    }
+
+    @Override
+    public void labList(String token, int step, int pageNo, int pageSize, DataCallback dataCallback) {
+
+    }
+
+    @Override
+    public void activityDetail(String token, int id, DataCallback dataCallback) {
+
+    }
+
+    @Override
+    public void activityAttend(String token, String amount, int activityId, String aims, String code, DataCallback dataCallback) {
 
     }
 

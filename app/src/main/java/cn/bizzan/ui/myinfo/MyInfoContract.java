@@ -1,7 +1,10 @@
 package cn.bizzan.ui.myinfo;
 
 
+import java.io.File;
+
 import cn.bizzan.base.Contract;
+import cn.bizzan.data.DataSource;
 import cn.bizzan.entity.SafeSetting;
 
 /**
@@ -28,7 +31,7 @@ public interface MyInfoContract {
 
         void safeSetting(String token);
 
-        void uploadBase64Pic(String token, String s);
+        void uploadBase64Pic( String token, String name, String filename, File file);
 
         void avatar(String token, String url);
     }

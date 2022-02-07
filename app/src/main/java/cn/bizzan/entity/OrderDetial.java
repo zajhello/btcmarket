@@ -23,6 +23,15 @@ public class OrderDetial implements Serializable {
     private String otherSide;
     private String myId;
     private String hisId;
+    private String currency;
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
     public String getOrderSn() {
         return orderSn;

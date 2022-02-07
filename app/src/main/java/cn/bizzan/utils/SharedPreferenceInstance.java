@@ -22,6 +22,7 @@ public class SharedPreferenceInstance {
     private static final String SP_KEY_LOCK_PWD = "SP_KEY_LOCK_PWD";
     private static final String SP_KEY_IS_NEED_SHOW_LOCK = "SP_KEY_IS_NEED_SHOW_LOCK";
     private static final String SP_KEY_IS_UDUN = "SP_KEY_IS_UDUN";
+    private static final String SP_KEY_SET_SYMBOL = "SP_KEY_SET_SYMBOL";
     private static final String SP_KEY_TOKEN = "SP_KEY_TOKEN";
     private static final String HAS_NEW_MESSAGE = "HAS_NEW_MESSAGE";
     private static final String VERSION_CODE = "VERSION_CODE";
@@ -146,18 +147,35 @@ public class SharedPreferenceInstance {
     }
 
     /**
-     * 获取用户token
+     * 获取isUdun
      */
     public boolean getUdun() {
         return mPreferences == null ? false : mPreferences.getBoolean(SP_KEY_IS_UDUN, false);
     }
 
+
     /**
-     * 获取用户token
+     * 获取isUdun
      */
     public void setUdun(boolean isUdun) {
         if (mPreferences == null) return;
         mPreferences.edit().putBoolean(SP_KEY_IS_UDUN, isUdun).apply();
+    }
+
+
+    /**
+     * 获取isUdun
+     */
+    public void setSymbol(String symbol) {
+        if (mPreferences == null) return;
+        mPreferences.edit().putString(SP_KEY_SET_SYMBOL, symbol).apply();
+    }
+
+    /**
+     * 获取isUdun
+     */
+    public String getSymbol() {
+        return mPreferences == null ? "CNY" : mPreferences.getString(SP_KEY_SET_SYMBOL, "CNY");
     }
 
     /**

@@ -516,13 +516,13 @@ public class SevenFragment extends BaseTransFragment implements MainContract.Sev
     @Override
     public void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
     }
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
     }
 
 
@@ -940,8 +940,8 @@ public class SevenFragment extends BaseTransFragment implements MainContract.Sev
         tvTime.setText(getActivity().getResources().getText(R.string.forecast_cycle) +
                 WonderfulDateUtils.getFormatTime("yyyy-MM-dd HH:mm", new Date(objs.get(0).getCreateTime() + optionBeans.get(0).getOpenTimeGap() * 1000)) +
                 " ~ " + WonderfulDateUtils.getFormatTime("yyyy-MM-dd HH:mm", new Date(objs.get(0).getCreateTime() + optionBeans.get(0).getOpenTimeGap() * 1000 + optionBeans.get(0).getCloseTimeGap() * 1000)));
-        tvBuy.setText(processAmount(objs.get(0).getTotalBuy(), "2") + " USDT");
-        tvSell.setText(processAmount(objs.get(0).getTotalSell(), "2") + " USDT");
+        tvBuy.setText(processAmount(objs.get(0).getTotalBuy(), "2") + " %");
+        tvSell.setText(processAmount(objs.get(0).getTotalSell(), "2") + " %");
 
         String amount = optionBean.getAmount();
         String[] split = amount.split(",");
@@ -967,8 +967,8 @@ public class SevenFragment extends BaseTransFragment implements MainContract.Sev
         Opening = objs;
 
         tvExpect2.setText(getActivity().getResources().getText(R.string.nos) + "" + objs.get(0).getOptionNo() + "" + getActivity().getResources().getText(R.string.expect));
-        tvBuy2.setText(processAmount(objs.get(0).getTotalBuy(), "2") + " USDT");
-        tvSell2.setText(processAmount(objs.get(0).getTotalSell(), "2") + " USDT");
+        tvBuy2.setText(processAmount(objs.get(0).getTotalBuy(), "2") + " %");
+        tvSell2.setText(processAmount(objs.get(0).getTotalSell(), "2") + " %");
         tvOpenPrice.setText(processAmount(objs.get(0).getOpenPrice(), "2") + " USDT");
         tvTimeCurrent.setText(getActivity().getResources().getText(R.string.forecast_cycle) +
                 WonderfulDateUtils.getFormatTime("yyyy-MM-dd HH:mm", new Date(objs.get(0).getCreateTime() + optionBeans.get(0).getOpenTimeGap() * 1000)) +

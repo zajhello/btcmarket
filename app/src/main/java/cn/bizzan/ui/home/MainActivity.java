@@ -67,6 +67,7 @@ import cn.bizzan.serivce.SocketResponse;
 import cn.bizzan.socket.ISocket;
 import cn.bizzan.ui.home.presenter.FivePresenter;
 import cn.bizzan.ui.home.presenter.FourPresenter;
+import cn.bizzan.ui.home.presenter.LabPresenter;
 import cn.bizzan.ui.home.presenter.MainPresenter;
 import cn.bizzan.ui.home.presenter.OnePresenter;
 import cn.bizzan.ui.home.presenter.SixPresenter;
@@ -147,6 +148,8 @@ public class MainActivity extends BaseTransFragmentActivity implements MainContr
     private List<BaseFragment> menusFragments2 = new ArrayList<>();
     private List<BaseFragment> menusFragments_constract = new ArrayList<>();
     private List<BaseFragment> menusFragments_option = new ArrayList<>();
+
+//    private LabFragment labFragment;
 
     private OneFragment oneFragment;
     private TwoFragment twoFragment;
@@ -547,6 +550,8 @@ public class MainActivity extends BaseTransFragmentActivity implements MainContr
         tab.getTabAt(1).select();
         new OnePresenter(Injection.provideTasksRepository(getApplicationContext()), oneFragment);
         new TwoPresenter(Injection.provideTasksRepository(getApplicationContext()), twoFragment);
+
+
         new ThreePresenter(Injection.provideTasksRepository(getApplicationContext()), threeFragment);
         new FourPresenter(Injection.provideTasksRepository(getApplicationContext()), fourFragment);
         new FivePresenter(Injection.provideTasksRepository(getApplicationContext()), fiveFragment);
@@ -638,7 +643,7 @@ public class MainActivity extends BaseTransFragmentActivity implements MainContr
 
     @Override
     protected void obtainData() {
-        getRate();
+//        getRate();
         getHttpCode();
         //获取合约币种
         getHttpCode_constract();
@@ -653,6 +658,7 @@ public class MainActivity extends BaseTransFragmentActivity implements MainContr
 
     @Override
     protected void loadData() {
+        getRateViaCurrencyKey();
         presenter.allCurrency();
         presenter.allCurrencyall();
     }
@@ -818,9 +824,9 @@ public class MainActivity extends BaseTransFragmentActivity implements MainContr
     @Override
     protected void onStart() {
         super.onStart();
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
+//        if (!EventBus.getDefault().isRegistered(this)) {
+//            EventBus.getDefault().register(this);
+//        }
     }
 
     @Override
@@ -838,9 +844,9 @@ public class MainActivity extends BaseTransFragmentActivity implements MainContr
         super.onStop();
         // 取消订阅
         EventBus.getDefault().post(new SocketMessage(0, ISocket.CMD.UNSUBSCRIBE_SYMBOL_THUMB, null));
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this);
-        }
+//        if (EventBus.getDefault().isRegistered(this)) {
+//            EventBus.getDefault().unregister(this);
+//        }
     }
 
     private JSONObject buildGetBodyJson(String content) {
@@ -937,7 +943,7 @@ public class MainActivity extends BaseTransFragmentActivity implements MainContr
     public void allCurrencySuccess(Object obj) {
         try {
             JsonObject object = new JsonParser().parse((String) obj).getAsJsonObject();
-             JsonArray array1 = object.getAsJsonArray("recommend").getAsJsonArray();
+            JsonArray array1 = object.getAsJsonArray("recommend").getAsJsonArray();
             List<Currency> currency1 = gson.fromJson(array1, new TypeToken<List<Currency>>() {
             }.getType());
             this.currenciesTwo.clear();
@@ -1107,6 +1113,27 @@ public class MainActivity extends BaseTransFragmentActivity implements MainContr
      * 获取汇率的接口
      */
     public static double rate = 1.0;
+    public static String symbol = "CNY";
+
+    private void getRateViaCurrencyKey() {
+
+        symbol = SharedPreferenceInstance.getInstance().getSymbol();
+        WonderfulOkhttpUtils.get().url(UrlFactory.getCurrencyRate(symbol)).build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Request request, Exception e) {
+                        super.onError(request, e);
+                        rate = 0;
+                    }
+
+                    @Override
+                    public void onResponse(String response) {
+                        JsonObject object = new JsonParser().parse(response).getAsJsonObject();
+                        rate = object.getAsJsonPrimitive("data").getAsDouble();
+                        WonderfulLogUtils.logi("miao", rate + "汇率");
+                    }
+                });
+    }
 
     private void getRate() {
         WonderfulOkhttpUtils.post().url(UrlFactory.getRateUrl()).build()
@@ -1320,6 +1347,7 @@ public class MainActivity extends BaseTransFragmentActivity implements MainContr
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
+
 
     public static void reStart(Context context) {
         Intent intent = new Intent(context, MainActivity.class);

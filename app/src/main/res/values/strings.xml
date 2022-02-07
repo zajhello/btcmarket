@@ -55,7 +55,12 @@
 
     <!--地区选择-->
     <string name="egional_selection">地区选择</string>
-    <string name="select_region">请选择地区</string>
+    <string name="select_region" translatable="false">请选择地区</string>
+
+    <!--法币选择-->
+    <!--    <string name="currency_selection" translatable="false">币种选择</string>-->
+    <string name="select_currency">选择币种</string>
+    <!--    <string name="currency_list" translatable="false">法币列表</string>-->
 
     <!--修改手机号-->
     <string name="change_phone_num">修改手机号</string>
@@ -351,7 +356,7 @@
     <string name="text_ad_fu_kuan">请选择付款方式</string>
 
     <string name="text_ad_entity">广告信息填写不完整！</string>
-    <string name="minLimitTip">最小量不得低于100CNY</string>
+    <string name="minLimitTip">最小量不得低于%s</string>
     <string name="maxLimitTip">最大量不得高于</string>
     <!--安全中心-->
     <string name="gesturesPassword">手势密码</string>
@@ -444,6 +449,8 @@
     <string name="binding_account">收款账户</string>
     <string name="login_password">登录密码</string>
     <string name="capital_password">资金密码</string>
+
+
     <string name="capital_passwordTip">请输入资金密码</string>
     <string name="id_credit">实名认证</string>
     <string name="bound">修改</string>
@@ -666,10 +673,10 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
     </string-array>
     <!-- TODO: 以下是新加的 -->
 
-<!--    登录-->
+    <!--    登录-->
     <string name="input_account_password">请输入账号密码！</string>
     <string name="login_register">登录/注册</string>
-<!--    手势验证-->
+    <!--    手势验证-->
     <string name="hint">提示</string>
     <string name="forget_pwd">忘记手势密码，需要您重新登录！</string>
     <string name="go_login">去登录</string>
@@ -756,7 +763,7 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
     <string name="sell_type">收款方式：</string>
     <string name="deal_notice">交易须知</string>
 
-<!--    订单-->
+    <!--    订单-->
     <string name="order_time">下单时间</string>
     <string name="settlement_amount">结算总额</string>
     <string name="Payment_receipt_account">付款/收款账号</string>
@@ -850,7 +857,6 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
     <string name="select_multiple">选择倍数</string>
 
 
-
     <!--钱包管理-->
     <string name="tv_bi">选择币种</string>
     <string name="notChargeMoneyTip">平台暂不支持充币</string>
@@ -934,7 +940,7 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
     <string name="number_asset_attest">数字资产交易证明</string>
     <string name="no_upload">未上传</string>
 
-<!--    web-->
+    <!--    web-->
     <string name="help">帮助</string>
     <string name="details">详情</string>
     <string name="web_url">bizzan.com</string>
@@ -943,20 +949,19 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
     <string name="web_share">分享</string>
 
 
-
     <!--我的广告-->
     <string name="up_shelf">上架</string>
     <string name="down_shelf">下架</string>
     <string name="Alipay">支付宝</string>
     <string name="wechat">微信</string>
-    <string name="unionpay">银联</string>
+    <string name="unionpay">银行卡</string>
     <string name="cause">原因</string>
     <string name="up_picture">请确认已填写所有信息且已上传所有图片</string>
     <string name="read_agreement">请先阅读协议并选择已读</string>
     <string name="message_list">消息列表</string>
 
-<!--app升级提示-->
-<string name="up_app">\n哎呦！APP升级啦！\n建议您尽快升级最新版本，不升级将可能会影响您的使用体验以及资金安全！</string>
+    <!--app升级提示-->
+    <string name="up_app">\n哎呦！APP升级啦！\n建议您尽快升级最新版本，不升级将可能会影响您的使用体验以及资金安全！</string>
 
     <!--关于我们-->
     <string name="about_title1">\n关于BIZZAN\n</string>
@@ -966,11 +971,11 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
     <string name="about_email">邮箱：service@bizzan.com</string>
     <string name="about_gang">BIZZAN官方社群</string>
 
-<!--    身份认证-->
+    <!--    身份认证-->
     <string name="up_you_picture">拍摄上传您的身份证照片</string>
     <string name="look_sample_graph">点击查看示例图</string>
 
-<!--    k线-->
+    <!--    k线-->
     <string name="high">高</string>
     <string name="low">低</string>
 
@@ -989,13 +994,13 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
         <item>成交量</item>
     </string-array>
 
-<!--   期权 -->
+    <!--   期权 -->
     <string name="option">期权</string>
     <string name="text_use_balance">可用余额</string>
     <string name="text_current_delivery">当前交割</string>
     <string name="text_history_delivery">历史交割</string>
-    <string name="text_buy_up_total">买涨总额</string>
-    <string name="text_buy_down_total">买跌总额</string>
+    <string name="text_buy_up_total">买涨赔率</string>
+    <string name="text_buy_down_total">买跌赔率</string>
     <string name="text_my_storehouse">我的开仓</string>
     <string name="text_look_up">看涨</string>
     <string name="text_look_down">看跌</string>
@@ -1019,9 +1024,6 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
     <string name="tv_receive_time">收盘时间:</string>
     <string name="tv_receive_price">收盘价格:</string>
     <string name="tv_buy_down_total">买跌总额:</string>
-
-
-
 
 
     <string name="submit_ok">提交成功</string>
@@ -1069,7 +1071,7 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
     <string name="shouldfee">应付手续费</string>
     <string name="discountfee">抵扣手续费</string>
     <string name="realfee">实付手续费</string>
-    <string name="select_currency">请选择币种</string>
+
     <string name="discharged">放行</string>
     <string name="affirm_submit">确认提交</string>
     <string name="no_free">暂无自选</string>
@@ -1083,4 +1085,79 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
     <string name="look_setting">查看设置方法</string>
     <string name="share_posters">分享海报</string>
     <string name="posters">请选择一张海报</string>
+
+    <!--    ====================================================================================   -->
+
+    <string-array name="home_laboratory_tab">
+        <item>全部</item>
+        <item>即将开始</item>
+        <item>进行中</item>
+        <item>派发中</item>
+        <item>已完成</item>
+    </string-array>
+
+    <string-array name="laboratory_tab">
+        <item>即将开始</item>
+        <item>进行中</item>
+        <item>派发中</item>
+        <item>已完成</item>
+    </string-array>
+
+    <string name="lab_title">创新实验室</string>
+    <string name="lab_process">进度</string>
+    <string name="lab_total">活动总量</string>
+    <string name="lab_start_time">开始时间:</string>
+    <string name="lab_end_time">结束时间:</string>
+    <string name="lab_check_detail">查看详情</string>
+    <string name="lab_type1">首次上线（抢购）</string>
+    <string name="lab_type2">首次上线（平分）</string>
+    <string name="lab_type3">持仓瓜分</string>
+    <string name="lab_type4">自由认购</string>
+    <string name="lab_type5">云矿机认购</string>
+    <string name="lab_type6">锁仓释放</string>
+    <string name="lab_type_unknow">未知</string>
+    <string name="lab_detail_baseinfo">基本信息</string>
+    <string name="lab_detail_status">状态</string>
+    <string name="lab_detail_type">认购类型</string>
+    <string name="lab_detail_release_type">释放类型</string>
+    <string name="lab_detail_release_detail">释放详情</string>
+    <string name="lab_detail_lock_cost">锁仓门槛</string>
+    <string name="lab_detail_release_times">释放倍数</string>
+    <string name="lab_detail_my_amount">当前我的持仓可瓜分约：</string>
+    <string name="lab_detail_tpis">*参与【持仓瓜分】类型活动需锁仓至活动结束</string>
+    <string name="lab_detail_input_amount">输入锁仓数量</string>
+    <string name="lab_detail_available_amount">我的可用余额</string>
+    <string name="lab_detail_type_instruction">类型说明</string>
+    <string name="lab_detail_cost">认购价格</string>
+    <string name="lab_detail_activity_currency">活动币种</string>
+    <string name="lab_detail_accept_currency">接受币种</string>
+    <string name="lab_detail_limit_num">个人限购次数</string>
+    <string name="lab_detail_limit_amount">个人限购数量</string>
+    <string name="lab_detail_join">立即参与</string>
+    <string name="lab_detail_bought">已购数量</string>
+    <string name="lab_detail_remaining">剩余数量</string>
+    <string name="lab_detail_cc">我的参与持仓</string>
+    <string name="lab_detail_tcc">活动参与总持仓</string>
+    <string name="lab_detail_equal_release">等额释放</string>
+    <string name="lab_detail_proportional_release">等比释放</string>
+    <string name="lab_detail_min_limit_tip">兑换数量不能小于最低兑换量</string>
+    <string name="lab_detail_max_limit_tip">兑换数量不能大于最高限购量</string>
+    <string name="lab_detail_period_release">期释放</string>
+    <string name="lab_detail_release_multiple">%s 倍</string>
+    <string name="symbol">次</string>
+
+    <string name="lab_submit_title">安全验证</string>
+    <string name="lab_submit_phone">手机号码</string>
+    <string name="lab_submit_phone_code">手机验证码</string>
+    <string name="lab_submit">点击获取</string>
+    <string name="lab_submit2">提交</string>
+    <string name="lab_dialog_cancel">关闭</string>
+
+    <string name="recharge_amount">充值数量</string>
+    <string name="recharge_amount_hint">请输入数量</string>
+    <string name="recharge_my_address">我的转账地址</string>
+    <string name="recharge_input_my_address">我的转账地址</string>
+    <string name="recharge_min_limits">输入金额小于最低充值金额</string>
+    <string name="recharge_upload_failed">图片上传失败</string>
+    <string name="recharge_success">充值成功</string>
 </resources>

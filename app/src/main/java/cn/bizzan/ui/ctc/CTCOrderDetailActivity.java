@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 
 import butterknife.BindView;
 import cn.bizzan.R;
+import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.app.Injection;
 import cn.bizzan.app.MyApplication;
 import cn.bizzan.base.BaseActivity;
@@ -196,7 +197,7 @@ public class CTCOrderDetailActivity extends BaseActivity implements CTCContract.
                 Glide.with(getApplicationContext()).load(R.mipmap.pay_zfb_default).into(ivCodeImageAli);
             } else {
                 tvAliNo.setText(detailOrder.getAlipay().getAliNo());
-                Glide.with(getApplicationContext()).load(WonderfulStringUtils.isEmpty(detailOrder.getAlipay().getQrCodeUrl()) ? R.mipmap.pay_zfb_default : detailOrder.getAlipay().getQrCodeUrl()).into(ivCodeImageAli);
+                Glide.with(getApplicationContext()).load(WonderfulStringUtils.isEmpty(detailOrder.getAlipay().getQrCodeUrl()) ? R.mipmap.pay_zfb_default : GlobalConstant.getGlobalImagePath(detailOrder.getAlipay().getQrCodeUrl()) ).into(ivCodeImageAli);
             }
         }
         if (detailOrder.getPayMode().equals("wechatpay")) {
@@ -208,7 +209,7 @@ public class CTCOrderDetailActivity extends BaseActivity implements CTCContract.
                 Glide.with(getApplicationContext()).load(R.mipmap.pay_wechat_default).into(ivCodeImageWechat);
             } else {
                 tvWechatNo.setText(detailOrder.getWechatPay().getWechatNo());
-                Glide.with(getApplicationContext()).load(WonderfulStringUtils.isEmpty(detailOrder.getWechatPay().getQrCodeUrl()) ? R.mipmap.pay_wechat_default : detailOrder.getWechatPay().getQrCodeUrl()).into(ivCodeImageWechat);
+                Glide.with(getApplicationContext()).load(WonderfulStringUtils.isEmpty(detailOrder.getWechatPay().getQrCodeUrl()) ? R.mipmap.pay_wechat_default : GlobalConstant.getGlobalImagePath(detailOrder.getWechatPay().getQrCodeUrl())  ).into(ivCodeImageWechat);
             }
         }
         if (detailOrder.getDirection() == 0 && detailOrder.getStatus() == 0) {

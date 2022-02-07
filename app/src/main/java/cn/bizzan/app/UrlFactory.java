@@ -155,12 +155,28 @@ public class UrlFactory {
         return host + "/exchange/favor/add";
     }
 
+    public static String getLabUrl() {
+        return host + "uc/activity/page-query";
+    }
+
+    public static String getActivityDetailbUrl() {
+        return host + "uc/activity/detail";
+    }
+
+    public static String getActivityAttendUrl() {
+        return host + "uc/activity/attend";
+    }
+
     public static String getExChangeUrl() {
         return host + "/exchange/order/add";
     }
 
     public static String getWalletUrl() {
         return host + "/uc/asset/wallet/";
+    }
+
+    public static String getmemberDepositAddUrl() {
+        return host + "/uc/memberDeposit/add";
     }
 
     public static String createAddress() {
@@ -171,20 +187,37 @@ public class UrlFactory {
         return host + "/otc/coin/all";
     }
 
+//    public static String getAdvertiseUrl() {
+//        return host + "/otc/advertise/page";
+//    }
+
     public static String getAdvertiseUrl() {
-        return host + "/otc/advertise/page";
+        return host + "otc/advertise/page-by-unit";
     }
+
 
     public static String getCountryUrl() {
         return host + "/uc/support/country";
+    }
+
+    public static String getCurrencyUrl() {
+        return host + "/market/exchange-rate/currencyAll2";
+    }
+
+    public static String getCurrencyRate(String key) {
+        return host + "/market/exchange-rate/currency/" + key;
     }
 
     public static String getReleaseAdUrl() {
         return host + "/otc/advertise/create";
     }
 
+//    public static String getUploadPicUrl() {
+//        return host + "/uc/upload/oss/base64";
+//    }
+
     public static String getUploadPicUrl() {
-        return host + "/uc/upload/oss/base64";
+        return host + "uc/upload/oss/image";
     }
 
     public static String getNameUrl() {

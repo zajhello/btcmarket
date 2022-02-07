@@ -66,7 +66,7 @@ public class BindBankActivity extends BaseActivity implements BindAccountContact
     @BindView(R.id.llTitle)
     LinearLayout llTitle;
     @BindView(R.id.tvBank)
-    TextView tvBank;
+    EditText tvBank;
     @BindView(R.id.view_back)
     View view_back;
 
@@ -88,6 +88,7 @@ public class BindBankActivity extends BaseActivity implements BindAccountContact
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
+
 
     @Override
     protected int getActivityLayoutId() {
@@ -125,12 +126,12 @@ public class BindBankActivity extends BaseActivity implements BindAccountContact
             name.setBankName(bankNames[i]);
             nameList.add(name.getBankName());
         }
-        llBank.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog();
-            }
-        });
+//        llBank.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showDialog();
+//            }
+//        });
         tvConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

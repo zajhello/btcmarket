@@ -362,7 +362,7 @@ public class ThreeTextFragment extends BaseTransFragment implements cn.bizzan.ui
                     } else {
                         mOneMyText = mOneText * mOneTextPrice * MainActivity.rate;
                         mOneBuy.setText(String.valueOf("≈" + WonderfulMathUtils.getRundNumber(mOneTextPrice * 1 * MainActivity.rate * currency.getBaseUsdRate(),
-                                2, null) + "CNY"));
+                                2, null) + ""+MainActivity.symbol));
                     }
                     if (!TextUtils.isEmpty(mOneTcpEdit.getText())) {
                         mOneDeal.setText(String.valueOf(WonderfulMathUtils.getRundNumber(mul(mOneTextPrice * mOneText, 1), 5, null)
@@ -397,7 +397,7 @@ public class ThreeTextFragment extends BaseTransFragment implements cn.bizzan.ui
                         mTwoMyText = mTwoText * mTwoTextPrice;
                     } else {
                         mTwoBuy.setText(String.valueOf("≈" + WonderfulMathUtils.getRundNumber(mTwoTextPrice * 1 * MainActivity.rate * currency.getBaseUsdRate(),
-                                2, null) + "CNY"));
+                                2, null) + ""+MainActivity.symbol));
                         mTwoMyText = mTwoText * mTwoTextPrice * MainActivity.rate;
                     }
                     if (!TextUtils.isEmpty(mTwoTcpEdit.getText())) {
@@ -1042,7 +1042,7 @@ public class ThreeTextFragment extends BaseTransFragment implements cn.bizzan.ui
                         2, null) + " CNY"));
             } else {
                 mPanMoney.setText(String.valueOf("≈ " + WonderfulMathUtils.getRundNumber(currency.getClose() * MainActivity.rate * currency.getBaseUsdRate(),
-                        2, null) + " CNY"));
+                        2, null) + " "+MainActivity.symbol));
             }
         }
     }
@@ -1196,7 +1196,7 @@ public class ThreeTextFragment extends BaseTransFragment implements cn.bizzan.ui
                         2, null) + "CNY"));
             } else {
                 mPanMoney.setText(String.valueOf("≈" + WonderfulMathUtils.getRundNumber(currency.getClose() * MainActivity.rate * currency.getBaseUsdRate(),
-                        2, null) + "CNY"));
+                        2, null) + ""+MainActivity.symbol));
             }
             // 代表选择了哪个币种，需要重新订阅 应该先取消原来的再订阅现在的
             if (!TextUtils.isEmpty(oldSymbol)) {
@@ -1300,7 +1300,7 @@ public class ThreeTextFragment extends BaseTransFragment implements cn.bizzan.ui
                             2, null) + " CNY"));
                 } else {
                     mPanMoney.setText(String.valueOf("≈ " + WonderfulMathUtils.getRundNumber(currency.getClose() * MainActivity.rate * currency.getBaseUsdRate(),
-                            2, null) + " CNY"));
+                            2, null) + " "+MainActivity.symbol));
                 }
             }
         }
@@ -1423,13 +1423,13 @@ public class ThreeTextFragment extends BaseTransFragment implements cn.bizzan.ui
     public void onDestroy() {
         super.onDestroy();
         hideDialog();
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
     }
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
     }
 
 

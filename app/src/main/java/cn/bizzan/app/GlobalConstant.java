@@ -1,5 +1,12 @@
 package cn.bizzan.app;
 
+import android.text.TextUtils;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import cn.bizzan.config.UrlConfig;
+import cn.bizzan.entity.CurrencyEntity;
 import cn.bizzan.utils.SharedPreferenceInstance;
 
 /**
@@ -47,9 +54,46 @@ public class GlobalConstant {
     // C2C交易须知
     public static final String CTC_TRADEARTICLE_ID = "40";
 
-
     public static boolean isUdun() {
         return SharedPreferenceInstance.getInstance().getUdun();
     }
 
+
+    public static String getGlobalImagePath(String url) {
+        return UrlConfig.BASE_URL +"uc/readImage?basePath=" + url;
+    }
+
+
+//    // 选中法币 key
+//    public static String SELECT_CURRENCY_KEY = "USD";
+//
+//    private static CurrencyEntity SELECT_CURRENCY_VALUE;
+//
+//    public static CurrencyEntity getCurrencyEntity(String key) {
+//
+//        if (!TextUtils.isEmpty(key)) {
+//            SELECT_CURRENCY_KEY = key;
+//        }
+//
+//        if (CURRENCYENTITYMAP.containsKey(SELECT_CURRENCY_KEY)) {
+//            SELECT_CURRENCY_VALUE = CURRENCYENTITYMAP.get(SELECT_CURRENCY_KEY);
+//        } else {
+//            SELECT_CURRENCY_VALUE = new CurrencyEntity();
+//            SELECT_CURRENCY_VALUE.setRate(1.d);
+//            SELECT_CURRENCY_VALUE.setSymbol("$");
+//            SELECT_CURRENCY_VALUE.setName("USD");
+//            SELECT_CURRENCY_VALUE.setZhName("美元");
+//        }
+//        return SELECT_CURRENCY_VALUE;
+//    }
+//
+//    private static Map<String, CurrencyEntity> CURRENCYENTITYMAP = new HashMap<>();
+//
+//    public static void setGlobalCurrencyMap(Map<String, CurrencyEntity> currencyEntity) {
+//        if (CURRENCYENTITYMAP == null) {
+//            CURRENCYENTITYMAP = new HashMap<>();
+//        }
+//        CURRENCYENTITYMAP.clear();
+//        CURRENCYENTITYMAP.putAll(currencyEntity);
+//    }
 }

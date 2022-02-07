@@ -5,6 +5,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+
+import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.ui.home.GlideRoundTransform;
 import com.youth.banner.loader.ImageLoader;
 
@@ -35,6 +37,8 @@ public class BannerImageLoader extends ImageLoader {
         if (h<=0){
             h = 100;
         }
+
+
 
         Glide.with(context).load(path).transform(new CenterCrop(context),new GlideRoundTransform(context,5)).override(w, h).into(imageView);
     }

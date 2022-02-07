@@ -20,9 +20,14 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
-import com.umeng.analytics.MobclickAgent;
+//import com.umeng.analytics.MobclickAgent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import cn.bizzan.R;
+import cn.bizzan.events.CurrencyEvent;
 import cn.bizzan.ui.common.PermissionActivity;
 import cn.bizzan.ui.lock.LockActivity;
 import cn.bizzan.ui.login.LoginActivity;
@@ -52,6 +57,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected boolean isNeedChecke = true;// 解锁界面 是不需要判断的 用此变量控制
     protected boolean isNeedhide = true;
 
+    protected boolean isSupportEventBus = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +85,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         BaseActivity.PreferenceUtil.init(this);
         //根据上次的语言设置，重新设置语言
         switchLanguage(BaseActivity.PreferenceUtil.getString("language", "zh"));
+
+        if (isSupportEventBus && !EventBus.getDefault().isRegistered(this))
+            EventBus.getDefault().register(this);
     }
 
     protected void switchLanguage(String language) {
@@ -87,20 +97,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         DisplayMetrics dm = resources.getDisplayMetrics();
         if (language.equals("en")) {
             config.locale = Locale.ENGLISH;
-        } else if (language.equals("ch")){
+        } else if (language.equals("ch")) {
             config.locale = Locale.SIMPLIFIED_CHINESE;
-        } else if (language.equals("de")){
+        } else if (language.equals("de")) {
             config.locale = Locale.GERMAN;
-        } else if (language.equals("fa")){
+        } else if (language.equals("fa")) {
             config.locale = Locale.FRENCH;
-        } else if (language.equals("ja")){
+        } else if (language.equals("ja")) {
             config.locale = Locale.JAPANESE;
-        } else if (language.equals("ko")){
+        } else if (language.equals("ko")) {
             config.locale = Locale.KOREAN;
-        } else if (language.equals("tr")){
-            config.locale = new Locale("tr","");
-        } else if (language.equals("th")){
-            config.locale = new Locale("th","");
+        } else if (language.equals("tr")) {
+            config.locale = new Locale("tr", "");
+        } else if (language.equals("th")) {
+            config.locale = new Locale("th", "");
         }
         resources.updateConfiguration(config, dm);
 
@@ -108,18 +118,21 @@ public abstract class BaseActivity extends AppCompatActivity {
         BaseActivity.PreferenceUtil.commitString("language", language);
     }
 
-    public static class PreferenceUtil{
-        protected static SharedPreferences mSharedPreferences=null;
+    public static class PreferenceUtil {
+        protected static SharedPreferences mSharedPreferences = null;
         private static SharedPreferences.Editor mEditor = null;
-        public static void init(Context context){
+
+        public static void init(Context context) {
             if (null == mSharedPreferences) {
-                mSharedPreferences = android.preference.PreferenceManager.getDefaultSharedPreferences(context) ;
+                mSharedPreferences = android.preference.PreferenceManager.getDefaultSharedPreferences(context);
             }
         }
-        public static String getString(String key, String faillValue){
+
+        public static String getString(String key, String faillValue) {
             return mSharedPreferences.getString(key, faillValue);
         }
-        public static void commitString(String key, String value){
+
+        public static void commitString(String key, String value) {
             mEditor = mSharedPreferences.edit();
             mEditor.putString(key, value);
             mEditor.commit();
@@ -135,6 +148,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onStart();
         WonderfulLogUtils.loge("当前Activity", this.getLocalClassName());
         if (isNeedShowLockActivity()) LockActivity.actionStart(this);
+
+
     }
 
     protected boolean isNeedShowLockActivity() {
@@ -225,7 +240,10 @@ public abstract class BaseActivity extends AppCompatActivity {
             else
                 SharedPreferenceInstance.getInstance().saveIsNeedShowLock(false);
         }
+
+
     }
+
     /**
      * 程序是否在前台运行
      */
@@ -249,6 +267,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityManage.removeActivity(this);
         hideLoadingPopup();
         if (immersionBar != null) immersionBar.destroy();
+
+        if (isSupportEventBus && !EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     /**
@@ -349,14 +371,22 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
+//        MobclickAgent.onResume(this);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
+//        MobclickAgent.onPause(this);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onCurrencyEvent(CurrencyEvent event) {
+        // Do something
+        onCurrencyChangedEvent();
+    }
 
+    public void onCurrencyChangedEvent() {
 
+    }
 }
