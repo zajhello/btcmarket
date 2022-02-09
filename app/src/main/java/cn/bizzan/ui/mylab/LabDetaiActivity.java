@@ -96,6 +96,8 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
     TextView tv_activity_currency_title;
 
 
+    @BindView(R.id.tv_accept_currency_title)
+    TextView tv_accept_currency_title;
     @BindView(R.id.tv_accept_currency)
     TextView tv_accept_currency;
     @BindView(R.id.tv_limit_num)
@@ -106,6 +108,9 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
     TextView tv_start_time;
     @BindView(R.id.tv_end_time)
     TextView tv_end_time;
+
+    @BindView(R.id.cc_status_bottom)
+    LinearLayout ll_status_bottom;
 
 
     @BindView(R.id.release_type_title)
@@ -378,6 +383,9 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
         } else if (entity.getStep() == 2) {
             ll_input.setVisibility(View.GONE);
             buy_status.setVisibility(View.GONE);
+            tv_accept_currency_title.setText(getResources().getString(R.string.lab_detail_hold_currency));
+            ll_status_bottom.setVisibility(View.GONE);
+
         } else if (entity.getStep() == 1) {
 
             if (entity.getType() == 2) {
@@ -386,12 +394,14 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
                 ll_input.setVisibility(View.GONE);
                 cc_status.setVisibility(View.GONE);
                 buy_status.setVisibility(View.GONE);
-                tvBuy.setEnabled(false);
             } else if (entity.getType() == 6) {
                 ll_input.setVisibility(View.VISIBLE);
                 cc_status.setVisibility(View.GONE);
                 buy_status.setVisibility(View.GONE);
-
+            } else if (entity.getType() == 1) {
+                ll_input.setVisibility(View.GONE);
+                cc_status.setVisibility(View.GONE);
+                buy_status.setVisibility(View.GONE);
             }
         }
     }
@@ -418,157 +428,192 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
     @Override
     public void activityDetailSucess(LabDetailEntity entity) {
 
-//        detailEntity = entity;
-//
-//        tvTitle.setText(entity.getTitle());
-//        title.setText(entity.getTitle());
-//        subtitle.setText(entity.getDetail());
-//        showJustText(content, entity.getContent());
-//        Glide.with(this).load(GlobalConstant.getGlobalImagePath(entity.getSmallImageUrl())).into(ivAverage);
-//        int process = 0;
-//        if (entity.getType() == 3) {
-//            if (entity.getStep() == 1) {
-//                process = 50;
-//            } else if (entity.getStep() == 2) {
-//                process = 75;
-//            } else if (entity.getStep() == 3) {
-//                process = 100;
-//            } else {
-//                process = 0;
-//            }
-//        } else {
-//            process = entity.getProgress();
-//        }
-//
-//        mProcess.setProgress(process);
-//        String format = new DecimalFormat("#0.00").format(process);
-//        tvPercent.setText(format + "%");
-//        String format2 = new DecimalFormat("#0.00").format(entity.getTotalSupply());
-//        amount.setText(format2 + "  " + entity.getUnit());
-//        tv_amount2.setText(format2 + "  " + entity.getUnit());
-//        status.setText(tabs[entity.getStep()]);
-//
-//        String type;
-//        if (entity.getType() == 1) {
-//            type = getResources().getString(R.string.lab_type1);
-//            tv_cost.setVisibility(View.VISIBLE);
-//            tv_cost_top.setVisibility(View.VISIBLE);
-//            buy_status.setVisibility(View.GONE);
-////            ll_input.setVisibility(View.GONE);
-//
-//        } else if (entity.getType() == 2) {
-//            type = getResources().getString(R.string.lab_type2);
-//            tv_cost.setVisibility(View.VISIBLE);
-//            tv_cost_top.setVisibility(View.VISIBLE);
-////            ll_input.setVisibility(View.GONE);
-//
-//        } else if (entity.getType() == 3) {
-//            type = getResources().getString(R.string.lab_type3);
-//        } else if (entity.getType() == 4) {
-//            type = getResources().getString(R.string.lab_type4);
-//            tv_cost.setVisibility(View.VISIBLE);
-//            tv_cost_top.setVisibility(View.VISIBLE);
-//            buy_status.setVisibility(View.VISIBLE);
-//        } else if (entity.getType() == 5) {
-//            type = getResources().getString(R.string.lab_type5);
-//            tv_cost.setVisibility(View.VISIBLE);
-//            tv_cost_top.setVisibility(View.VISIBLE);
-//            buy_status.setVisibility(View.VISIBLE);
-//            tv_activity_currency_title.setVisibility(View.GONE);
-//            tv_activity_currency.setVisibility(View.GONE);
-//
-//        } else if (entity.getType() == 6) {
-//            type = getResources().getString(R.string.lab_type6);
-//            tv_release_type.setVisibility(View.VISIBLE);
-//            release_type_title.setVisibility(View.VISIBLE);
-//            tv_release_detail.setVisibility(View.VISIBLE);
-//            release_detail_title.setVisibility(View.VISIBLE);
-//            tv_lock_cost.setVisibility(View.VISIBLE);
-//            lock_cost_title.setVisibility(View.VISIBLE);
-//            tv_release_times.setVisibility(View.VISIBLE);
-//            release_times_title.setVisibility(View.VISIBLE);
-//            tv_activity_currency_title.setVisibility(View.GONE);
-//            tv_activity_currency.setVisibility(View.GONE);
-//
-//            if (entity.getReleaseType() == 1) {
-//                tv_release_type.setText(getResources().getString(R.string.lab_detail_proportional_release));
-//            } else {
-//                tv_release_type.setText(getResources().getString(R.string.lab_detail_equal_release));
-//            }
-//            tv_release_detail.setText(entity.getLockedDays() + " " + getResources().getString(R.string.lab_detail_period_release));
-//
-//            String format6 = new DecimalFormat("#0.00").format(entity.getLockedFee());
-//            tv_lock_cost.setText(format6);
-//            tv_release_times.setText(String.format(getResources().getString(R.string.lab_detail_release_multiple), "" + entity.getPriceScale()));
-//
-//        } else {
-//            type = getResources().getString(R.string.lab_type_unknow);
-//        }
-//        purchaseType.setText(type);
-//
-//        String ff = "#0.";
-//        for (int i = 0; i < entity.getPriceScale(); i++) {
-//            ff += "0";
-//        }
-//        String format3 = new DecimalFormat(ff).format(entity.getPrice() == null ? 0 : entity.getPrice());
-//
-//        tv_cost.setText(format3 + "  " + entity.getAcceptUnit());
-//
-//        tv_activity_currency.setText(entity.getUnit());
-//        tv_accept_currency.setText(entity.getAcceptUnit());
-//
-//        tv_limit_num.setText(entity.getLimitTimes() == 0 ? "不限" : entity.getLimitTimes() + "" + getResources().getString(R.string.symbol));
-//
-//
-//        String limitamoubt;
-//        if (entity.getMinLimitAmout() == 0 && entity.getMaxLimitAmout() == 0) {
-//            limitamoubt = "不限";
-//        } else {
-//            String format4 = new DecimalFormat("#0.00").format(entity.getMinLimitAmout());
-//            String format5 = new DecimalFormat("#0.00").format(entity.getMaxLimitAmout());
-//            limitamoubt = format4 + " ~ " + format5;
-//        }
-//        tv_limit_amount.setText(limitamoubt);
-//
-//        tv_start_time.setText(entity.getStartTime());
-//        tv_end_time.setText(entity.getEndTime());
-//
-//
-//        // ===================================================
-//
-//        BigDecimal trade = new BigDecimal(entity.getTradedAmount());
-//        BigDecimal total = new BigDecimal(entity.getTotalSupply());
-//
-////        if (entity.getStep() == 0) {
-//        tv_bought_amount.setText(new DecimalFormat("#0.00").format(entity.getTradedAmount()) + " " + entity.getUnit());
-//        tv_remaining_amount.setText(new DecimalFormat("#0.00").format(total.subtract(trade)) + " " + entity.getUnit());
-////        } else {
-////            buy_status.setVisibility(View.GONE);
-////        }
-//
-//        // =====================================================
-//
-//
-//        if (entity.getStep() == 2) {
-//            tv_cc_amount.setText(new DecimalFormat("#0.00").format(trade) + " " + entity.getUnit());
-//            tv_tcc_amount.setText(new DecimalFormat("#0.00").format(total.subtract(trade)) + " " + entity.getUnit());
-//        } else {
-//            cc_status.setVisibility(View.GONE);
-//        }
-//
-//        if (entity.getFreezeAmount() == 0) {
-//            tv_my_amount.setText("0 " + entity.getUnit());
-//        } else {
-//            BigDecimal a = new BigDecimal(entity.getTotalSupply());
-//            BigDecimal b = new BigDecimal(entity.getFreezeAmount());
-//            BigDecimal divide = b.divide(a);
-//            BigDecimal multiply = divide.multiply(a);
-//            tv_my_amount.setText(WonderfulMathUtils.getRundNumber(multiply.doubleValue(), 2, null) + " " + entity.getUnit());
-//        }
-//
-//        input_amount_unit.setText(entity.getUnit());
-//        my_available_amount.setText(WonderfulMathUtils.getRundNumber(OneFragment.available_amount, 2, null) + " USDT");
+        detailEntity = entity;
+        tvTitle.setText(entity.getTitle());
+        title.setText(entity.getTitle());
+        subtitle.setText(entity.getDetail());
+        showJustText(content, entity.getContent());
+        Glide.with(this).load(GlobalConstant.getGlobalImagePath(entity.getSmallImageUrl())).into(ivAverage);
+        int process = 0;
+        if (entity.getType() == 3) {
+            if (entity.getStep() == 1) {
+                process = 50;
+            } else if (entity.getStep() == 2) {
+                process = 75;
+            } else if (entity.getStep() == 3) {
+                process = 100;
+            } else {
+                process = 0;
+            }
+        } else {
+            process = entity.getProgress();
+        }
 
+        mProcess.setProgress(process);
+        String format = new DecimalFormat("#0.00").format(process);
+        tvPercent.setText(format + "%");
+        String format2 = new DecimalFormat("#0.00").format(entity.getTotalSupply());
+        amount.setText(format2 + "  " + entity.getUnit());
+        tv_amount2.setText(format2 + "  " + entity.getUnit());
+        status.setText(tabs[entity.getStep()]);
+
+        String type;
+        if (entity.getType() == 1) {
+            type = getResources().getString(R.string.lab_type1);
+            tv_cost.setVisibility(View.VISIBLE);
+            tv_cost_top.setVisibility(View.VISIBLE);
+            buy_status.setVisibility(View.GONE);
+//            ll_input.setVisibility(View.GONE);
+
+        } else if (entity.getType() == 2) {
+            type = getResources().getString(R.string.lab_type2);
+            tv_cost.setVisibility(View.VISIBLE);
+            tv_cost_top.setVisibility(View.VISIBLE);
+//            ll_input.setVisibility(View.GONE);
+
+        } else if (entity.getType() == 3) {
+            type = getResources().getString(R.string.lab_type3);
+        } else if (entity.getType() == 4) {
+            type = getResources().getString(R.string.lab_type4);
+            tv_cost.setVisibility(View.VISIBLE);
+            tv_cost_top.setVisibility(View.VISIBLE);
+            buy_status.setVisibility(View.VISIBLE);
+        } else if (entity.getType() == 5) {
+            type = getResources().getString(R.string.lab_type5);
+            tv_cost.setVisibility(View.VISIBLE);
+            tv_cost_top.setVisibility(View.VISIBLE);
+            buy_status.setVisibility(View.VISIBLE);
+            tv_activity_currency_title.setVisibility(View.GONE);
+            tv_activity_currency.setVisibility(View.GONE);
+
+        } else if (entity.getType() == 6) {
+            type = getResources().getString(R.string.lab_type6);
+            tv_release_type.setVisibility(View.VISIBLE);
+            release_type_title.setVisibility(View.VISIBLE);
+            tv_release_detail.setVisibility(View.VISIBLE);
+            release_detail_title.setVisibility(View.VISIBLE);
+            tv_lock_cost.setVisibility(View.VISIBLE);
+            lock_cost_title.setVisibility(View.VISIBLE);
+            tv_release_times.setVisibility(View.VISIBLE);
+            release_times_title.setVisibility(View.VISIBLE);
+            tv_activity_currency_title.setVisibility(View.GONE);
+            tv_activity_currency.setVisibility(View.GONE);
+
+            if (entity.getReleaseType() == 1) {
+                tv_release_type.setText(getResources().getString(R.string.lab_detail_proportional_release));
+            } else {
+                tv_release_type.setText(getResources().getString(R.string.lab_detail_equal_release));
+            }
+            tv_release_detail.setText(entity.getLockedDays() + " " + getResources().getString(R.string.lab_detail_period_release));
+
+            String format6 = new DecimalFormat("#0.00").format(entity.getLockedFee());
+            tv_lock_cost.setText(format6);
+            tv_release_times.setText(String.format(getResources().getString(R.string.lab_detail_release_multiple), "" + entity.getPriceScale()));
+
+        } else {
+            type = getResources().getString(R.string.lab_type_unknow);
+        }
+        purchaseType.setText(type);
+
+        String ff = "#0.";
+        for (int i = 0; i < entity.getPriceScale(); i++) {
+            ff += "0";
+        }
+        String format3 = new DecimalFormat(ff).format(entity.getPrice() == null ? 0 : entity.getPrice());
+
+        tv_cost.setText(format3 + "  " + entity.getAcceptUnit());
+
+        tv_activity_currency.setText(entity.getUnit());
+        tv_accept_currency.setText(entity.getAcceptUnit());
+
+        tv_limit_num.setText(entity.getLimitTimes() == 0 ? "不限" : entity.getLimitTimes() + "" + getResources().getString(R.string.symbol));
+
+
+        String limitamoubt;
+        if (entity.getMinLimitAmout() == 0 && entity.getMaxLimitAmout() == 0) {
+            limitamoubt = "不限";
+        } else {
+            String format4 = new DecimalFormat("#0.00").format(entity.getMinLimitAmout());
+            String format5 = new DecimalFormat("#0.00").format(entity.getMaxLimitAmout());
+            limitamoubt = format4 + " ~ " + format5;
+        }
+        tv_limit_amount.setText(limitamoubt);
+
+        tv_start_time.setText(entity.getStartTime());
+        tv_end_time.setText(entity.getEndTime());
+
+
+        // ===================================================
+
+        BigDecimal trade = new BigDecimal(entity.getTradedAmount());
+        BigDecimal total = new BigDecimal(entity.getTotalSupply());
+
+//        if (entity.getStep() == 0) {
+        tv_bought_amount.setText(new DecimalFormat("#0.00").format(entity.getTradedAmount()) + " " + entity.getUnit());
+        tv_remaining_amount.setText(new DecimalFormat("#0.00").format(total.subtract(trade)) + " " + entity.getUnit());
+//        } else {
+//            buy_status.setVisibility(View.GONE);
+//        }
+
+        // =====================================================
+
+
+        if (entity.getStep() == 2) {
+            tv_cc_amount.setText(new DecimalFormat("#0.00").format(trade) + " " + entity.getUnit());
+            tv_tcc_amount.setText(new DecimalFormat("#0.00").format(total.subtract(trade)) + " " + entity.getUnit());
+        } else {
+            cc_status.setVisibility(View.GONE);
+        }
+
+        if (entity.getFreezeAmount() == 0) {
+            tv_my_amount.setText("0 " + entity.getUnit());
+        } else {
+            BigDecimal a = new BigDecimal(entity.getTotalSupply());
+            BigDecimal b = new BigDecimal(entity.getFreezeAmount());
+            BigDecimal divide = b.divide(a);
+            BigDecimal multiply = divide.multiply(a);
+            tv_my_amount.setText(WonderfulMathUtils.getRundNumber(multiply.doubleValue(), 2, null) + " " + entity.getUnit());
+        }
+
+        input_amount_unit.setText(entity.getUnit());
+        my_available_amount.setText(WonderfulMathUtils.getRundNumber(OneFragment.available_amount, 2, null) + " USDT");
+
+        Date endDate = WonderfulDateUtils.getDateTransformString(entity.getEndTime(), "yyyy-MM-dd HH:mm:ss");
+        long endtime = endDate.getTime();
+        long currenttime = System.currentTimeMillis();
+        if (entity.getStep() == 1 && endtime > currenttime) {
+            tvBuy.setEnabled(true);
+        } else {
+            tvBuy.setEnabled(false);
+        }
+
+        if (entity.getStep() == 0) {
+            ll_input.setVisibility(View.GONE);
+            cc_status.setVisibility(View.GONE);
+        } else if (entity.getStep() == 2) {
+            ll_input.setVisibility(View.GONE);
+            buy_status.setVisibility(View.GONE);
+            tv_accept_currency_title.setText(getResources().getString(R.string.lab_detail_hold_currency));
+            ll_status_bottom.setVisibility(View.GONE);
+
+        } else if (entity.getStep() == 1) {
+
+            if (entity.getType() == 2) {
+                tv_cost.setVisibility(View.VISIBLE);
+                tv_cost_top.setVisibility(View.VISIBLE);
+                ll_input.setVisibility(View.GONE);
+                cc_status.setVisibility(View.GONE);
+                buy_status.setVisibility(View.GONE);
+            } else if (entity.getType() == 6) {
+                ll_input.setVisibility(View.VISIBLE);
+                cc_status.setVisibility(View.GONE);
+                buy_status.setVisibility(View.GONE);
+            } else if (entity.getType() == 1) {
+                ll_input.setVisibility(View.GONE);
+                cc_status.setVisibility(View.GONE);
+                buy_status.setVisibility(View.GONE);
+            }
+        }
     }
 
     @Override
@@ -578,7 +623,7 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
 
     @Override
     public void activityAttendSucess() {
-
+        presenter.activityDetail(getToken(), detailEntity.getId());
     }
 
     @Override

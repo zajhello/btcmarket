@@ -1253,5 +1253,6 @@ centres d\'opérations à l\'étranger de la plate-forme internationale de négo
     <string name="recharge_min_limits">Le montant saisi est inférieur au montant minimum de recharge</string>
     <string name="recharge_upload_failed">Le téléchargement de limage a échoué</string>
     <string name="recharge_success">recharge réussie</string>
+    <string name="lab_detail_hold_currency">Position devise requise</string>
 
 </resources>

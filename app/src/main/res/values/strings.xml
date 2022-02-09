@@ -1131,6 +1131,7 @@ BIZZAN国际数字加密资产交易平台海外运营中心分别设立在新�
     <string name="lab_detail_cost">认购价格</string>
     <string name="lab_detail_activity_currency">活动币种</string>
     <string name="lab_detail_accept_currency">接受币种</string>
+    <string name="lab_detail_hold_currency">持仓要求币种</string>
     <string name="lab_detail_limit_num">个人限购次数</string>
     <string name="lab_detail_limit_amount">个人限购数量</string>
     <string name="lab_detail_join">立即参与</string>

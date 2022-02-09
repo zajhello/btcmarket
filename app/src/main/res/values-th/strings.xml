@@ -1251,5 +1251,6 @@
     <string name="recharge_min_limits">จำนวนเงินที่ป้อนน้อยกว่าจำนวนเงินที่เติมเงินขั้นต่ำ</string>
     <string name="recharge_upload_failed">อัพโหลดภาพไม่สำเร็จ</string>
     <string name="recharge_success">เติมเงินสำเร็จ</string>
+    <string name="lab_detail_hold_currency">ตำแหน่งที่ต้องการ สกุลเงิน</string>
 
 </resources>

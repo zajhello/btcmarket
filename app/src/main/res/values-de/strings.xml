@@ -1159,5 +1159,6 @@
     <string name="recharge_min_limits">Der eingegebene Betrag liegt unter dem Mindestaufladebetrag</string>
     <string name="recharge_upload_failed">Bild-Upload fehlgeschlagen</string>
     <string name="recharge_success">erfolgreiches Aufladen</string>
+    <string name="lab_detail_hold_currency">Position benötigte Währung</string>
 
 </resources>

@@ -1165,4 +1165,5 @@ BIZZAN uluslararası dijital kriptolu varlık ticaret platformunun yurtdışı o
     <string name="recharge_min_limits">Girilen miktar, minimum yeniden yükleme tutarından az</string>
     <string name="recharge_upload_failed">Resim yüklenemedi</string>
     <string name="recharge_success">başarılı şarj</string>
+    <string name="lab_detail_hold_currency">Pozisyon gerekli para birimi</string>
 </resources>

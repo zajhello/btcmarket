@@ -1251,5 +1251,6 @@
     <string name="recharge_min_limits">입력한 금액이 최소 충전 금액보다 적습니다.</string>
     <string name="recharge_upload_failed">이미지 업로드 실패</string>
     <string name="recharge_success">성공적인 재충전</string>
+    <string name="lab_detail_hold_currency">포지션 필수 통화</string>
 
 </resources>

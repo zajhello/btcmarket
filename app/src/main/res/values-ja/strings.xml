@@ -1280,5 +1280,6 @@
     <string name="recharge_min_limits">入力した金額が最小リチャージ金額より少ない</string>
     <string name="recharge_upload_failed">画像のアップロードに失敗しました</string>
     <string name="recharge_success">正常な再充電</string>
+    <string name="lab_detail_hold_currency">必要な通貨を配置する</string>
 
 </resources>

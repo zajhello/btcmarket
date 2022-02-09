@@ -1142,4 +1142,5 @@ BTXEX international Digital encryption asset trading platform overseas operation
     <string name="recharge_min_limits">The amount entered is less than the minimum recharge amount</string>
     <string name="recharge_upload_failed">Image upload failed</string>
     <string name="recharge_success">successful recharge</string>
+    <string name="lab_detail_hold_currency">Position required currency</string>
 </resources>
