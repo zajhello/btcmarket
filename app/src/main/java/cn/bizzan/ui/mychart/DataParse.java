@@ -128,7 +128,8 @@ public class DataParse implements Serializable {
         //K线实体类
         kDatas.add(kLineData);
         volmax = Math.max(kLineData.vol, volmax);
-
+        xValuesLabel.put(0, kLineData.date);
+        minutesLine.add(new Entry((float) kLineData.close, 0));
     }
 
 
