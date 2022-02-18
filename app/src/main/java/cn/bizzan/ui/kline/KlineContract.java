@@ -37,7 +37,7 @@ public interface KlineContract {
         void KData_Constract(String symbol, Long from, Long to, String resolution,String type);
 
         //k线数据
-        void KData_Constract(String type,String pushmsg);
+        void KData_Constract(String pushmsg,String type);
 
         void allCurrency();
 

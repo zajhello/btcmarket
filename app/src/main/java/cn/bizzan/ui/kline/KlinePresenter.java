@@ -69,7 +69,7 @@ public class KlinePresenter implements KlineContract.Presenter {
     }
 
     @Override
-    public void KData_Constract(String type, String pushmsg) {
+    public void KData_Constract(String pushmsg,String type) {
         WonderfulLogUtils.logi("期权历史K线数据回执：", "期权历史K线数据回执：" + pushmsg);
         if (view == null) return;
         try {
