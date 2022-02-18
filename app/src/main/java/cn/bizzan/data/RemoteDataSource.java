@@ -324,30 +324,30 @@ public class RemoteDataSource implements DataSource {
                 .addParams("username", username)
                 .build()
                 .execute(new StringCallback() {
-            @Override
-            public void onError(Request request, Exception e) {
-                super.onError(request, e);
-                WonderfulLogUtils.logi("登录出错", "登录出错：" + e.getMessage());
-                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
-            }
-
-            @Override
-            public void onResponse(String response) {
-                WonderfulLogUtils.logi("登录回执：", "登录回执：" + response.toString());
-                try {
-                    JSONObject object = new JSONObject(response);
-                    if (object.optInt("code") == 0) {
-                        User obj = gson.fromJson(object.getJSONObject("data").toString(), User.class);
-                        dataCallback.onDataLoaded(obj);
-                    } else {
-                        dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                    @Override
+                    public void onError(Request request, Exception e) {
+                        super.onError(request, e);
+                        WonderfulLogUtils.logi("登录出错", "登录出错：" + e.getMessage());
+                        dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
-                }
-            }
-        });
+
+                    @Override
+                    public void onResponse(String response) {
+                        WonderfulLogUtils.logi("登录回执：", "登录回执：" + response.toString());
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            if (object.optInt("code") == 0) {
+                                User obj = gson.fromJson(object.getJSONObject("data").toString(), User.class);
+                                dataCallback.onDataLoaded(obj);
+                            } else {
+                                dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                        }
+                    }
+                });
     }
 
 
@@ -3421,7 +3421,10 @@ public class RemoteDataSource implements DataSource {
                 try {
                     JSONObject object = new JSONObject(response);
                     if (object.optInt("code") == 0) {
-                        dataCallback.onDataLoaded(object.getString("data"));
+
+
+//                        dataCallback.onDataLoaded(object.getString("data"));
+                        dataCallback.onDataLoaded(object.has("data") ? object.getString("data") : object.getString("message"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

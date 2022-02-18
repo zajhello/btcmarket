@@ -160,6 +160,7 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
     TextView my_available_amount;
 
     private TextView tvGetCode;
+    private AlertDialog dialog;
 
     private LabEntity entity;
     private LabDetailEntity detailEntity;
@@ -211,7 +212,10 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
                 return;
             }
 
-            getInstance(this);
+            if (dialog != null) {
+                dialog.cancel();
+            }
+            dialog = getInstance(this);
         });
     }
 
@@ -430,7 +434,6 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
 
     @Override
     public void activityDetailSucess(LabDetailEntity entity) {
-
         detailEntity = entity;
         tvTitle.setText(entity.getTitle());
         title.setText(entity.getTitle());
@@ -626,11 +629,17 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
 
     @Override
     public void activityAttendSucess() {
+        if (dialog != null) {
+            dialog.dismiss();
+        }
         presenter.activityDetail(getToken(), detailEntity.getId());
     }
 
     @Override
     public void activityAttendlFailed(int code, String toastMessage) {
+        if (dialog != null) {
+            dialog.dismiss();
+        }
         WonderfulCodeUtils.checkedErrorCode(this, code, toastMessage);
     }
 
@@ -683,26 +692,26 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
         // 溢出滚动
         textView.setMovementMethod(ScrollingMovementMethod.getInstance());
         CharSequence charSequence;
-        charSequence = Html.fromHtml(source, imageGetter, null);
+        charSequence = Html.fromHtml(source);
         textView.setText(charSequence);
     }
 
-    final Html.ImageGetter imageGetter = new Html.ImageGetter() {
-
-        public Drawable getDrawable(String source) {
-            Drawable drawable = null;
-            URL url;
-            try {
-                url = new URL(source);
-                drawable = Drawable.createFromStream(url.openStream(), "");
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-            return drawable;
-        }
-    };
+//    final Html.ImageGetter imageGetter = new Html.ImageGetter() {
+//
+//        public Drawable getDrawable(String source) {
+//            Drawable drawable = null;
+//            URL url;
+//            try {
+//                url = new URL(source);
+//                drawable = Drawable.createFromStream(url.openStream(), "");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                return null;
+//            }
+//            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+//            return drawable;
+//        }
+//    };
 
     public AlertDialog getInstance(Activity activity) {
         View contentView = View.inflate(activity, R.layout.activity_submit_dialog, null);
