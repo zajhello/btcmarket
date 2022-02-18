@@ -92,48 +92,48 @@ public class PhoneSignUpFragment extends BaseTransFragment implements SignUpCont
     private Country country;
     private CountDownTimer timer;
     private SignUpContract.PhonePresenter presenter;
-    private GT3GeetestUtilsBind gt3GeetestUtils;
+//    private GT3GeetestUtilsBind gt3GeetestUtils;
 
-    private String challenge;
-    private String validate;
-    private String seccode;
+//    private String challenge;
+//    private String validate;
+//    private String seccode;
 
-    private TCaptchaDialog dialog;
-    private TCaptchaVerifyListener listener = new TCaptchaVerifyListener() {
-        @Override
-        public void onVerifyCallback(JSONObject jsonObject) {
-            int ret = 0;
-            try {
-                ret = jsonObject.getInt("ret");
-                if (ret == 0) {
-                    //验证成功回调
-                    //jsonObject.getInt("ticket")为验证码票据
-                    //jsonObject.getString("appid")为appid
-                    //jsonObject.getString("randstr")为随机串
-                    WonderfulLogUtils.logi("miao", countryStr + "----" + phone);
-                    presenter.phoneCode(phone, countryStr);
-                    challenge = jsonObject.getString("ticket");
-                    validate = jsonObject.getString("randstr");
-                    seccode = "";
-                    tvGetCode.setEnabled(false);
-                } else if (ret == -1001) {
-                    //验证码首个TCaptcha.js加载错误，业务可以根据需要重试
-                    //jsonObject.getString("info")为错误信息
-                    if (dialog != null) {
-                        dialog.dismiss();
-                    }
-                } else {
-                    //验证失败回调，一般为用户关闭验证码弹框
-                    if (dialog != null) {
-                        dialog.dismiss();
-                    }
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-    };
+//    private TCaptchaDialog dialog;
+//    private TCaptchaVerifyListener listener = new TCaptchaVerifyListener() {
+//        @Override
+//        public void onVerifyCallback(JSONObject jsonObject) {
+//            int ret = 0;
+//            try {
+//                ret = jsonObject.getInt("ret");
+//                if (ret == 0) {
+//                    //验证成功回调
+//                    //jsonObject.getInt("ticket")为验证码票据
+//                    //jsonObject.getString("appid")为appid
+//                    //jsonObject.getString("randstr")为随机串
+//                    WonderfulLogUtils.logi("miao", countryStr + "----" + phone);
+//                    presenter.phoneCode(phone, countryStr);
+////                    challenge = jsonObject.getString("ticket");
+////                    validate = jsonObject.getString("randstr");
+////                    seccode = "";
+//                    tvGetCode.setEnabled(false);
+//                } else if (ret == -1001) {
+//                    //验证码首个TCaptcha.js加载错误，业务可以根据需要重试
+//                    //jsonObject.getString("info")为错误信息
+//                    if (dialog != null) {
+//                        dialog.dismiss();
+//                    }
+//                } else {
+//                    //验证失败回调，一般为用户关闭验证码弹框
+//                    if (dialog != null) {
+//                        dialog.dismiss();
+//                    }
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
+//    };
 
 
     @Override
@@ -151,7 +151,7 @@ public class PhoneSignUpFragment extends BaseTransFragment implements SignUpCont
             timer.cancel();
             timer = null;
         }
-        gt3GeetestUtils.cancelUtils();
+//        gt3GeetestUtils.cancelUtils();
         unbinder.unbind();
     }
 
@@ -167,7 +167,7 @@ public class PhoneSignUpFragment extends BaseTransFragment implements SignUpCont
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        gt3GeetestUtils = new GT3GeetestUtilsBind(getActivity());
+//        gt3GeetestUtils = new GT3GeetestUtilsBind(getActivity());
         new PhoneSignUpPresenter(Injection.provideTasksRepository(getActivity().getApplicationContext()), this);
         ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,7 +270,7 @@ public class PhoneSignUpFragment extends BaseTransFragment implements SignUpCont
             country = this.country.getZhName();
         }
 
-        if (WonderfulStringUtils.isEmpty(phone, code, username, password, rePassword, country, challenge, validate)) {
+        if (WonderfulStringUtils.isEmpty(phone, code, username, password, rePassword, country)) {
             WonderfulToastUtils.showToast(WonderfulToastUtils.getString(getActivity(), R.string.Incomplete_information));
             return;
         }
@@ -282,8 +282,8 @@ public class PhoneSignUpFragment extends BaseTransFragment implements SignUpCont
             WonderfulToastUtils.showToast(R.string.pwd_diff);
             return;
         }
-        WonderfulLogUtils.logi("miao", challenge + "-----" + validate);
-        presenter.signUpByPhone(phone, username, password, country, code, tuijianma, challenge, validate, seccode);
+
+        presenter.signUpByPhone(phone, username, password, country, code, tuijianma);
 //        presenter.signUpByPhone(phone, username, password, country, code,tuijianma,challenge,validate,seccode);
         /*if (WonderfulStringUtils.isStandard(password,rePassword)) {
             presenter.signUpByPhone(phone, username, password, country, code);
@@ -325,8 +325,11 @@ public class PhoneSignUpFragment extends BaseTransFragment implements SignUpCont
          @param listener，验证码验证结果回调
          @param jsonString，业务自定义参数
          */
-        dialog = new TCaptchaDialog(getmActivity(), "2031827463", listener, null);
-        dialog.show();
+//        dialog = new TCaptchaDialog(getmActivity(), "2031827463", listener, null);
+//        dialog.show();
+
+        tvGetCode.setEnabled(false);
+        presenter.phoneCode(phone, countryStr);
     }
 
     @Override
@@ -370,7 +373,8 @@ public class PhoneSignUpFragment extends BaseTransFragment implements SignUpCont
 
     @Override
     public void phoneCodeSuccess(String obj) {
-        gt3GeetestUtils.gt3TestFinish();
+//        gt3GeetestUtils.gt3TestFinish();
+        tvGetCode.setEnabled(true);
         WonderfulToastUtils.showToast(obj);
         fillCodeView(90 * 1000);
     }
@@ -399,7 +403,7 @@ public class PhoneSignUpFragment extends BaseTransFragment implements SignUpCont
 
     @Override
     public void phoneCodeFail(Integer code, String toastMessage) {
-        gt3GeetestUtils.gt3Dismiss();
+//        gt3GeetestUtils.gt3Dismiss();
         tvGetCode.setEnabled(true);
         WonderfulCodeUtils.checkedErrorCode(getmActivity(), code, toastMessage);
     }
@@ -416,40 +420,40 @@ public class PhoneSignUpFragment extends BaseTransFragment implements SignUpCont
         WonderfulCodeUtils.checkedErrorCode(getmActivity(), code, toastMessage);
     }
 
-    @Override
-    public void captchSuccess(JSONObject obj) {
-
-//        gt3GeetestUtils.gtSetApi1Json(obj);
-//        gt3GeetestUtils.getGeetest(getActivity(), UrlFactory.getCaptchaUrl(), null, null, new GT3GeetestBindListener() {
-//            @Override
-//            public boolean gt3SetIsCustom() {
-//                return true;
-//            }
+//    @Override
+//    public void captchSuccess(JSONObject obj) {
 //
-//            @Override
-//            public void gt3GetDialogResult(boolean status, String result) {
+////        gt3GeetestUtils.gtSetApi1Json(obj);
+////        gt3GeetestUtils.getGeetest(getActivity(), UrlFactory.getCaptchaUrl(), null, null, new GT3GeetestBindListener() {
+////            @Override
+////            public boolean gt3SetIsCustom() {
+////                return true;
+////            }
+////
+////            @Override
+////            public void gt3GetDialogResult(boolean status, String result) {
+////
+////                if (status) {
+////                    Captcha captcha = new Gson().fromJson(result, Captcha.class);
+////                    if (captcha == null) return;
+////                     challenge = captcha.getchallenge();
+////                     validate = captcha.getvalidate();
+////                     seccode = captcha.getseccode();
+////                    presenter.phoneCode(phone, countryStr, challenge, validate, seccode);
+////                    tvGetCode.setEnabled(false);
+////
+////                }
+////            }
+////        });
+////        gt3GeetestUtils.setDialogTouch(true);
 //
-//                if (status) {
-//                    Captcha captcha = new Gson().fromJson(result, Captcha.class);
-//                    if (captcha == null) return;
-//                     challenge = captcha.getchallenge();
-//                     validate = captcha.getvalidate();
-//                     seccode = captcha.getseccode();
-//                    presenter.phoneCode(phone, countryStr, challenge, validate, seccode);
-//                    tvGetCode.setEnabled(false);
+//    }
+
+//    @Override
+//    public void captchFail(Integer code, String toastMessage) {
+//        // do nothing
 //
-//                }
-//            }
-//        });
-//        gt3GeetestUtils.setDialogTouch(true);
-
-    }
-
-    @Override
-    public void captchFail(Integer code, String toastMessage) {
-        // do nothing
-
-    }
+//    }
 
     @Override
     protected String getmTag() {

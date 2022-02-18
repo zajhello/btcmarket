@@ -35,9 +35,9 @@ public class PhoneSignUpPresenter implements SignUpContract.PhonePresenter {
     }
 
     @Override
-    public void signUpByPhone(String phone, String username, String password, String country, String code,String tuijianma,String challenge, String validate, String seccode) {
+    public void signUpByPhone(String phone, String username, String password, String country, String code,String tuijianma) {
         view.displayLoadingPopup();
-        dataRepository.signUpByPhone(phone, username, password, country, code,tuijianma, challenge,validate,seccode,new DataSource.DataCallback() {
+        dataRepository.signUpByPhone(phone, username, password, country, code,tuijianma,new DataSource.DataCallback() {
             @Override
             public void onDataLoaded(Object obj) {
                 view.hideLoadingPopup();
@@ -52,22 +52,22 @@ public class PhoneSignUpPresenter implements SignUpContract.PhonePresenter {
         });
     }
 
-    @Override
-    public void captch() {
-        view.displayLoadingPopup();
-        dataRepository.captch(new DataSource.DataCallback() {
-            @Override
-            public void onDataLoaded(Object obj) {
-                view.hideLoadingPopup();
-                view.captchSuccess((JSONObject) obj);
-            }
-
-            @Override
-            public void onDataNotAvailable(Integer code, String toastMessage) {
-                view.hideLoadingPopup();
-                view.captchFail(code, toastMessage);
-            }
-        });
-    }
+//    @Override
+//    public void captch() {
+//        view.displayLoadingPopup();
+//        dataRepository.captch(new DataSource.DataCallback() {
+//            @Override
+//            public void onDataLoaded(Object obj) {
+//                view.hideLoadingPopup();
+//                view.captchSuccess((JSONObject) obj);
+//            }
+//
+//            @Override
+//            public void onDataNotAvailable(Integer code, String toastMessage) {
+//                view.hideLoadingPopup();
+//                view.captchFail(code, toastMessage);
+//            }
+//        });
+//    }
 
 }

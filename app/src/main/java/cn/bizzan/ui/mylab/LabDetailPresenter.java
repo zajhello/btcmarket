@@ -16,6 +16,21 @@ public class LabDetailPresenter implements LabDetailContract.Presenter {
     }
 
     @Override
+    public void phoneCode(String phone, String country) {
+        dataRepository.phoneCodeLab(phone, country, new DataSource.DataCallback() {
+            @Override
+            public void onDataLoaded(Object obj) {
+                view.phoneCodeSuccess((String) obj);
+            }
+
+            @Override
+            public void onDataNotAvailable(Integer code, String toastMessage) {
+                view.phoneCodeFail(code, toastMessage);
+            }
+        });
+    }
+
+    @Override
     public void activityDetail(String token, int id) {
         view.displayLoadingPopup();
         dataRepository.activityDetail(token, id, new DataSource.DataCallback() {

@@ -89,6 +89,36 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
+    public void phoneCodeLab(String phone, String country, DataCallback dataCallback) {
+        post().url(UrlFactory.getPhoneCodeLabUrl())
+                .addParams("phone", phone).addParams("country", country)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("获取手机验证码出错", "获取手机验证码出错：" + e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("获取手机验证码回执：", "获取手机验证码回执：" + response.toString());
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 0) {
+                        dataCallback.onDataLoaded("获取成功");
+                    } else {
+                        dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
     public void emailCode(String email, final DataCallback dataCallback) {
         post().url(UrlFactory.getEmailCodeUrl())
                 .addParams("email", email)
@@ -188,10 +218,112 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
+    public void signUpByPhone(String phone, String username, String password, String country, String code, String tuijianma, DataCallback dataCallback) {
+        if (country == null || "".equals(country)) {
+            WonderfulToastUtils.showToast("请填写完整信息");
+            return;
+        }
+        post().url(UrlFactory.getSignUpByPhone()).addParams("phone", phone).addParams("code", code).addParams("promotion", tuijianma + "")
+                .addParams("username", username).addParams("password", password).addParams("country", country)
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("手机号码注册出错", "手机号码注册出错：" + e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("手机号码注册回执：", "手机号码注册回执：" + response.toString());
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 0) {
+                        dataCallback.onDataLoaded("注册成功");
+                    } else {
+                        dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void signUpByEmail(String email, String password, String tuijian2, String country, DataCallback dataCallback) {
+        post().url(UrlFactory.getSignUpByEmail())
+                .addParams("email", email)
+                .addParams("promotion", tuijian2)
+                .addParams("username", email)
+                .addParams("password", password)
+                .addParams("country", country)
+                .addParams("superPartner", "")
+                .build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("邮箱注册出错", "邮箱注册出错：" + e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("邮箱注册回执：", "邮箱注册回执：" + response.toString());
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 0) {
+                        dataCallback.onDataLoaded(object.optString("message"));
+                    } else {
+                        dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
     public void login(String username, String password, String challenge, String validate,
                       String seccode, final DataCallback dataCallback) {
         post().url(UrlFactory.getLoginUrl()).addParams("password", password).addParams("username", username).addParams("challenge", challenge)
                 .addParams("validate", validate).addParams("seccode", seccode).build().execute(new StringCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+                super.onError(request, e);
+                WonderfulLogUtils.logi("登录出错", "登录出错：" + e.getMessage());
+                dataCallback.onDataNotAvailable(OKHTTP_ERROR, null);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                WonderfulLogUtils.logi("登录回执：", "登录回执：" + response.toString());
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.optInt("code") == 0) {
+                        User obj = gson.fromJson(object.getJSONObject("data").toString(), User.class);
+                        dataCallback.onDataLoaded(obj);
+                    } else {
+                        dataCallback.onDataNotAvailable(object.getInt("code"), object.optString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    dataCallback.onDataNotAvailable(JSON_ERROR, null);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void login(String username, String password, DataCallback dataCallback) {
+        post().url(UrlFactory.getLoginUrl())
+                .addParams("password", password)
+                .addParams("username", username)
+                .build()
+                .execute(new StringCallback() {
             @Override
             public void onError(Request request, Exception e) {
                 super.onError(request, e);

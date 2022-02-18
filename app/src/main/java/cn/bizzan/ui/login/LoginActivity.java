@@ -143,8 +143,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             WonderfulToastUtils.showToast(WonderfulToastUtils.getString(this,R.string.input_account_password));
             return;
         }
-        presenter.captch();
+        presenter.login(username,password);
+//        presenter.captch();
     }
+
 
     @Override
     protected void obtainData() {
@@ -225,35 +227,35 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         }
     }
 
-    @Override
-    public void captchSuccess(JSONObject obj) {
-        gt3GeetestUtils.gtSetApi1Json(obj);
-        gt3GeetestUtils.getGeetest(this, null, null, null, new GT3GeetestBindListener() {
-            @Override
-            public boolean gt3SetIsCustom() {
-                return true;
-            }
+//    @Override
+//    public void captchSuccess(JSONObject obj) {
+//        gt3GeetestUtils.gtSetApi1Json(obj);
+//        gt3GeetestUtils.getGeetest(this, null, null, null, new GT3GeetestBindListener() {
+//            @Override
+//            public boolean gt3SetIsCustom() {
+//                return true;
+//            }
+//
+//            @Override
+//            public void gt3GetDialogResult(boolean status, String result) {
+//                if (status) {
+//                    Captcha captcha = new Gson().fromJson(result, Captcha.class);
+//                    if (captcha == null) return;
+//                    String challenge = captcha.getGeetest_challenge();
+//                    String validate = captcha.getGeetest_validate();
+//                    String seccode = captcha.getGeetest_seccode();
+//                    WonderfulLogUtils.logi("LoginActivity","challenge  "+challenge+"   validate   "+validate+"   seccode   "+seccode);
+//                    String username = etUsername.getText().toString();
+//                    String password = etPassword.getText().toString();
+//                    presenter.login(username, password);
+//                }
+//            }
+//        });
+//        gt3GeetestUtils.setDialogTouch(true);
+//    }
 
-            @Override
-            public void gt3GetDialogResult(boolean status, String result) {
-                if (status) {
-                    Captcha captcha = new Gson().fromJson(result, Captcha.class);
-                    if (captcha == null) return;
-                    String challenge = captcha.getGeetest_challenge();
-                    String validate = captcha.getGeetest_validate();
-                    String seccode = captcha.getGeetest_seccode();
-                    WonderfulLogUtils.logi("LoginActivity","challenge  "+challenge+"   validate   "+validate+"   seccode   "+seccode);
-                    String username = etUsername.getText().toString();
-                    String password = etPassword.getText().toString();
-                    presenter.login(username, password, challenge, validate, seccode);
-                }
-            }
-        });
-        gt3GeetestUtils.setDialogTouch(true);
-    }
-
-    @Override
-    public void captchFail(Integer code, String toastMessage) {
-        //do nothing
-    }
+//    @Override
+//    public void captchFail(Integer code, String toastMessage) {
+//        //do nothing
+//    }
 }

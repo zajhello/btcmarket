@@ -3,6 +3,7 @@ package cn.bizzan.ui.kline;
 
 import cn.bizzan.base.Contract;
 import cn.bizzan.entity.Currency;
+import cn.bizzan.ui.mychart.KLineBean;
 
 import org.json.JSONArray;
 
@@ -21,6 +22,9 @@ public interface KlineContract {
         void KDataSuccess(JSONArray obj);
         void KDataSuccess2(JSONArray obj);
 
+        void KDataSuccess(KLineBean data);
+        void KDataSuccess2(KLineBean data);
+
         void allCurrencySuccess(List<Currency> obj);
 
         void allCurrencyFail(Integer code, String toastMessage);
@@ -31,6 +35,9 @@ public interface KlineContract {
         void KData(String symbol, Long from, Long to, String resolution,String type);
 
         void KData_Constract(String symbol, Long from, Long to, String resolution,String type);
+
+        //k线数据
+        void KData_Constract(String type,String pushmsg);
 
         void allCurrency();
 

@@ -85,9 +85,9 @@ public class EmailSignUpFragment extends BaseTransFragment implements SignUpCont
     private Country country;
     private CountDownTimer timer;
 
-    private String challenge;
-    private String validate;
-    private String seccode;
+//    private String challenge;
+//    private String validate;
+//    private String seccode;
 
     private TCaptchaDialog dialog;
     private TCaptchaVerifyListener listener = new TCaptchaVerifyListener() {
@@ -103,9 +103,9 @@ public class EmailSignUpFragment extends BaseTransFragment implements SignUpCont
                     //jsonObject.getString("randstr")为随机串
                     WonderfulLogUtils.logi("miao", countryStr + "----" + email);
                     presenter.EmailCode(email);
-                    challenge = jsonObject.getString("ticket");
-                    validate = jsonObject.getString("randstr");
-                    seccode = "";
+//                    challenge = jsonObject.getString("ticket");
+//                    validate = jsonObject.getString("randstr");
+//                    seccode = "";
                     tvGetCode.setEnabled(false);
                 } else if (ret == -1001) {
                     //验证码首个TCaptcha.js加载错误，业务可以根据需要重试
@@ -366,46 +366,46 @@ public class EmailSignUpFragment extends BaseTransFragment implements SignUpCont
         gt3GeetestUtils.gt3Dismiss();
         WonderfulCodeUtils.checkedErrorCode(getmActivity(), code, toastMessage);
     }
-
-    @Override
-    public void captchSuccess(JSONObject obj) {
-//        gt3GeetestUtils.gtSetApi1Json(obj);
-//        gt3GeetestUtils.getGeetest(getActivity(), null, null, null, new GT3GeetestBindListener() {
-//            @Override
-//            public boolean gt3SetIsCustom() {
-//                return true;
-//            }
 //
-//            @Override
-//            public void gt3GetDialogResult(boolean status, String result) {
-//                if (status) {
-//                    Captcha captcha = new Gson().fromJson(result, Captcha.class);
-//                    if (captcha == null) return;
-//                    String challenge = captcha.getGeetest_challenge();
-//                    String validate = captcha.getGeetest_validate();
-//                    String seccode = captcha.getGeetest_seccode();
-//                    String email = etEmail.getText().toString();
-//                    String password = etPassword.getText().toString();
-//                    String rePassword = etRePassword.getText().toString();
-//                    String tuijian2 = tuijian.getText().toString();
-//                    String country = String.valueOf(R.string.china);
-//                    if (password.equals(rePassword)) {
-//                        presenter.signUpByEmail(email, password, tuijian2, country, challenge, validate, seccode);
-//                    } else {
-//                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(getActivity(), R.string.pwd_diff));
-//                        return;
-//                    }
-//
-//                }
-//            }
-//        });
-//        gt3GeetestUtils.setDialogTouch(true);
-    }
+//    @Override
+//    public void captchSuccess(JSONObject obj) {
+////        gt3GeetestUtils.gtSetApi1Json(obj);
+////        gt3GeetestUtils.getGeetest(getActivity(), null, null, null, new GT3GeetestBindListener() {
+////            @Override
+////            public boolean gt3SetIsCustom() {
+////                return true;
+////            }
+////
+////            @Override
+////            public void gt3GetDialogResult(boolean status, String result) {
+////                if (status) {
+////                    Captcha captcha = new Gson().fromJson(result, Captcha.class);
+////                    if (captcha == null) return;
+////                    String challenge = captcha.getGeetest_challenge();
+////                    String validate = captcha.getGeetest_validate();
+////                    String seccode = captcha.getGeetest_seccode();
+////                    String email = etEmail.getText().toString();
+////                    String password = etPassword.getText().toString();
+////                    String rePassword = etRePassword.getText().toString();
+////                    String tuijian2 = tuijian.getText().toString();
+////                    String country = String.valueOf(R.string.china);
+////                    if (password.equals(rePassword)) {
+////                        presenter.signUpByEmail(email, password, tuijian2, country, challenge, validate, seccode);
+////                    } else {
+////                        WonderfulToastUtils.showToast(WonderfulToastUtils.getString(getActivity(), R.string.pwd_diff));
+////                        return;
+////                    }
+////
+////                }
+////            }
+////        });
+////        gt3GeetestUtils.setDialogTouch(true);
+//    }
 
-    @Override
-    public void captchFail(Integer code, String toastMessage) {
-        gt3GeetestUtils.gt3Dismiss();
-    }
+//    @Override
+//    public void captchFail(Integer code, String toastMessage) {
+//        gt3GeetestUtils.gt3Dismiss();
+//    }
 
     @Override
     protected String getmTag() {

@@ -13,9 +13,11 @@ import cn.bizzan.entity.Money;
 import cn.bizzan.entity.OptionAddBean;
 import cn.bizzan.entity.OptionIconBean;
 import cn.bizzan.entity.OptionOrderHistoryBean;
+import cn.bizzan.entity.PushKData;
 import cn.bizzan.entity.SixInfo;
 import cn.bizzan.entity.modifyleverage;
 import cn.bizzan.entity.switchpattern;
+import cn.bizzan.ui.mychart.KLineBean;
 
 /**
  * author: wuzongjie
@@ -50,6 +52,10 @@ public interface ISevenContract {
         void KDataSuccess(JSONArray jsonArray);
 
         void KDataSuccess2(JSONArray jsonArray);
+
+        void KDataSuccess(KLineBean data);
+
+        void KDataSuccess2(KLineBean data);
     }
 
     interface Presenter {
@@ -67,6 +73,8 @@ public interface ISevenContract {
         void OptionCurrent(String symbol, String optionId, String token,String type);
         //获取我的开仓数据
         void getWallet(String token,String coinName);
+        //k线数据
+        void KData(String type,String pushmsg);
         //k线数据
         void KData(String symbol, Long from, Long to, String resolution,String type);
         //看涨或看跌

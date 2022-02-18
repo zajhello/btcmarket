@@ -672,7 +672,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
                             if (type_constract.equals("1")) {
                                 presenter.KData(symbol, from, time, resolution, "1");
                             } else if (type_constract.equals("2")) {
-                                presenter.KData_Constract(symbol, from, time, resolution, "1");
+                                presenter.KData_Constract(response.getResponse(), "1");
                             }
                         }
                         break;
@@ -681,7 +681,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
                             if (type_constract.equals("1")) {
                                 presenter.KData(symbol, from, time, resolution, "1");
                             } else if (type_constract.equals("2")) {
-                                presenter.KData_Constract(symbol, from, time, resolution, "1");
+                                presenter.KData_Constract(response.getResponse(), "1");
                             }
                         }
                         break;
@@ -690,7 +690,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
                             if (type_constract.equals("1")) {
                                 presenter.KData(symbol, from, time, resolution, "1");
                             } else if (type_constract.equals("2")) {
-                                presenter.KData_Constract(symbol, from, time, resolution, "1");
+                                presenter.KData_Constract(response.getResponse(), "1");
                             }
                         }
                         break;
@@ -699,7 +699,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
                             if (type_constract.equals("1")) {
                                 presenter.KData(symbol, from, time, resolution, "1");
                             } else if (type_constract.equals("2")) {
-                                presenter.KData_Constract(symbol, from, time, resolution, "1");
+                                presenter.KData_Constract(response.getResponse(), "1");
                             }
                         }
                         break;
@@ -708,7 +708,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
                             if (type_constract.equals("1")) {
                                 presenter.KData(symbol, from, time, resolution, "1");
                             } else if (type_constract.equals("2")) {
-                                presenter.KData_Constract(symbol, from, time, resolution, "1");
+                                presenter.KData_Constract(response.getResponse(), "1");
                             }
                         }
                         break;
@@ -717,7 +717,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
                             if (type_constract.equals("1")) {
                                 presenter.KData(symbol, from, time, resolution, "1");
                             } else if (type_constract.equals("2")) {
-                                presenter.KData_Constract(symbol, from, time, resolution, "1");
+                                presenter.KData_Constract(response.getResponse(), "1");
                             }
                         }
                         break;
@@ -726,7 +726,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
                             if (type_constract.equals("1")) {
                                 presenter.KData(symbol, from, time, resolution, "1");
                             } else if (type_constract.equals("2")) {
-                                presenter.KData_Constract(symbol, from, time, resolution, "1");
+                                presenter.KData_Constract(response.getResponse(), "1");
                             }
                         }
                         break;
@@ -735,7 +735,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
                             if (type_constract.equals("1")) {
                                 presenter.KData(symbol, from, time, resolution, "1");
                             } else if (type_constract.equals("2")) {
-                                presenter.KData_Constract(symbol, from, time, resolution, "1");
+                                presenter.KData_Constract(response.getResponse(), "1");
                             }
                         }
                         break;
@@ -842,7 +842,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
             Double douChg = mCurrency.getChg();
             String strRang = WonderfulMathUtils.getRundNumber(mCurrency.getChg() * 100, 2, "########0.") + "%";
             String strDataText = "≈ " + WonderfulMathUtils.getRundNumber(mCurrency.getClose() * MainActivity.rate,
-                    2, null) + " "+MainActivity.symbol;
+                    2, null) + " " + MainActivity.symbol;
             String strDataOne = String.valueOf(mCurrency.getClose());
 
 
@@ -1050,7 +1050,7 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
 
                 WonderfulLogUtils.logi("miao", kLineDatas.get(0).getClose() + "--" + kLineDatas.get(0).getHigh() + "--" + kLineDatas.get(0).getLow() + "--" + kLineDatas.get(0).getOpen() + "--" + kLineDatas.get(0).getVol());
                 WonderfulLogUtils.logi("miao", kLineEntities.size() + "--");
-                if (klineView == null){
+                if (klineView == null) {
                     return;
                 }
                 if (klineView.getTotalDataList().size() != 0) {
@@ -1132,6 +1132,144 @@ public class KlineActivity extends BaseActivity implements KlineContract.View, V
         DataParse kData = new DataParse();
         try {
             kData.parseKLine(obj, type);
+            kLineDatas = kData.getKLineDatas();
+            if (kLineDatas != null && kLineDatas.size() > 0) {
+                kLineEntities = new ArrayList<>();
+                kLineEntities.clear();
+                for (int i = 0; i < kLineDatas.size(); i++) {
+                    KData lineEntity = new KData();
+                    KLineBean kLineBean = kLineDatas.get(i);
+                    lineEntity.setTime(Long.parseLong(kLineBean.getDate()));
+                    lineEntity.setOpenPrice(kLineBean.getOpen());
+                    lineEntity.setClosePrice(kLineBean.getClose());
+                    lineEntity.setMaxPrice(kLineBean.getHigh());
+                    lineEntity.setMinPrice(kLineBean.getLow());
+                    lineEntity.setVolume(kLineBean.getVol());
+                    kLineEntities.add(lineEntity);
+                }
+                WonderfulLogUtils.logi("miao", kLineDatas.get(0).getClose() + "--" + kLineDatas.get(0).getHigh() + "--" + kLineDatas.get(0).getLow() + "--" + kLineDatas.get(0).getOpen() + "--" + kLineDatas.get(0).getVol());
+                WonderfulLogUtils.logi("miao", kLineEntities.size() + "--");
+                klineView.addPreDataList(kLineEntities, true);
+            } else {
+            }
+        } catch (Exception e) {
+//            WonderfulToastUtils.showToast(getString(R.string.parse_error));
+        }
+    }
+
+    @Override
+    public void KDataSuccess(KLineBean data) {
+        DataParse kData = new DataParse();
+        try {
+            kData.parseKLine(data);
+            kLineDatas = kData.getKLineDatas();
+            if (kLineDatas != null && kLineDatas.size() > 0) {
+                kLineEntities = new ArrayList<>();
+                kLineEntities.clear();
+                for (int i = 0; i < kLineDatas.size(); i++) {
+                    KData lineEntity = new KData();
+                    KLineBean kLineBean = kLineDatas.get(i);
+                    lineEntity.setTime(Long.parseLong(kLineBean.getDate()));
+                    lineEntity.setOpenPrice(kLineBean.getOpen());
+                    lineEntity.setClosePrice(kLineBean.getClose());
+                    lineEntity.setMaxPrice(kLineBean.getHigh());
+                    lineEntity.setMinPrice(kLineBean.getLow());
+                    lineEntity.setVolume(kLineBean.getVol());
+                    kLineEntities.add(lineEntity);
+                    if (i == kLineDatas.size() - 1) {
+                        this.lastKline.setTime(Long.parseLong(kLineBean.getDate()));
+                        this.lastKline.setOpenPrice(kLineBean.getOpen());
+                        this.lastKline.setClosePrice(kLineBean.getClose());
+                        this.lastKline.setMaxPrice(kLineBean.getHigh());
+                        this.lastKline.setMinPrice(kLineBean.getLow());
+                        this.lastKline.setVolume(kLineBean.getVol());
+                    }
+                }
+
+                WonderfulLogUtils.logi("miao", kLineDatas.get(0).getClose() + "--" + kLineDatas.get(0).getHigh() + "--" + kLineDatas.get(0).getLow() + "--" + kLineDatas.get(0).getOpen() + "--" + kLineDatas.get(0).getVol());
+                WonderfulLogUtils.logi("miao", kLineEntities.size() + "--");
+                if (klineView == null) {
+                    return;
+                }
+                if (klineView.getTotalDataList().size() != 0) {
+                    klineView.resetDataList(kLineEntities);
+                } else {
+                    klineView.initKDataList(kLineEntities);
+                }
+                klineView.setOnRequestDataListListener(new KLineView.OnRequestDataListListener() {
+                    @Override
+                    public void requestData() {
+                        to = from;
+                        switch (type) {
+                            case GlobalConstant.TAG_DIVIDE_TIME:
+                                Calendar c = Calendar.getInstance();
+                                int hour = c.get(Calendar.HOUR_OF_DAY) - 1;
+                                c.set(Calendar.HOUR_OF_DAY, hour);
+                                String strDate = WonderfulDateUtils.getFormatTime("HH:mm", c.getTime());
+                                startDate = WonderfulDateUtils.getDateTransformString(strDate, "HH:mm");
+                                resolution = 1 + "";
+                                String str = WonderfulDateUtils.getFormatTime(null, c.getTime());
+                                from = WonderfulDateUtils.getTimeMillis(null, str);
+                                klineView.setTime_Type(GlobalConstant.TAG_DIVIDE_TIME);
+                                break;
+                            case GlobalConstant.TAG_ONE_MINUTE:
+                                from = to - 24L * 60 * 60 * 1000;//前一天数据
+                                resolution = 1 + "";
+                                klineView.setTime_Type(GlobalConstant.TAG_ONE_MINUTE);
+                                break;
+                            case GlobalConstant.TAG_FIVE_MINUTE:
+                                from = to - 2 * 24L * 60 * 60 * 1000;//前两天数据
+                                resolution = 5 + "";
+                                klineView.setTime_Type(GlobalConstant.TAG_FIVE_MINUTE);
+                                break;
+                            case GlobalConstant.TAG_THIRTY_MINUTE:
+                                from = to - 12 * 24L * 60 * 60 * 1000; //前12天数据
+                                resolution = 30 + "";
+                                klineView.setTime_Type(GlobalConstant.TAG_THIRTY_MINUTE);
+                                break;
+                            case GlobalConstant.TAG_AN_HOUR:
+                                from = to - 24 * 24L * 60 * 60 * 1000;//前 24天数据
+                                resolution = 60 + "";
+                                klineView.setTime_Type(GlobalConstant.TAG_AN_HOUR);
+                                break;
+                            case GlobalConstant.TAG_DAY:
+                                from = to - 60 * 24L * 60 * 60 * 1000; //前60天数据
+                                resolution = 1 + "D";
+                                klineView.setTime_Type(GlobalConstant.TAG_DAY);
+                                break;
+                            case GlobalConstant.TAG_WEEK:
+                                from = to - 730 * 24L * 60 * 60 * 1000; //前两年数据
+                                resolution = 1 + "W";
+                                klineView.setTime_Type(GlobalConstant.TAG_WEEK);
+                                break;
+                            case GlobalConstant.TAG_MONTH:
+                                from = to - 1095 * 24L * 60 * 60 * 1000; //前三年数据
+                                resolution = 1 + "M";
+                                klineView.setTime_Type(GlobalConstant.TAG_MONTH);
+                                break;
+                            default:
+                        }
+                        if (type_constract.equals("1")) {
+                            presenter.KData(symbol, from, to, resolution, "2");
+                        } else if (type_constract.equals("2")) {
+                            presenter.KData_Constract(symbol, from, to, resolution, "2");
+                        }
+                    }
+                });
+            } else {
+            }
+
+
+        } catch (Exception e) {
+            WonderfulToastUtils.showToast(getString(R.string.parse_error));
+        }
+    }
+
+    @Override
+    public void KDataSuccess2(KLineBean data) {
+        DataParse kData = new DataParse();
+        try {
+            kData.parseKLine(data);
             kLineDatas = kData.getKLineDatas();
             if (kLineDatas != null && kLineDatas.size() > 0) {
                 kLineEntities = new ArrayList<>();

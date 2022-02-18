@@ -28,18 +28,18 @@ public interface SignUpContract {
 
         void signUpByPhoneFail(Integer code, String toastMessage);
 
-        void captchSuccess(JSONObject obj);
-
-        void captchFail(Integer code, String toastMessage);
+//        void captchSuccess(JSONObject obj);
+//
+//        void captchFail(Integer code, String toastMessage);
     }
 
     interface PhonePresenter extends Contract.BasePresenter {
 
         void phoneCode(String phone, String country);
 
-        void signUpByPhone(String phone, String username, String password, String country, String code,String tuijianma,String challenge, String validate, String seccode);
-
-        void captch();
+//        void signUpByPhone(String phone, String username, String password, String country, String code,String tuijianma,String challenge, String validate, String seccode);
+        void signUpByPhone(String phone, String username, String password, String country, String code,String tuijianma);
+//        void captch();
     }
 
 
@@ -49,9 +49,9 @@ public interface SignUpContract {
 
         void signUpByEmailFail(Integer code, String toastMessage);
 
-        void captchSuccess(JSONObject obj);
-
-        void captchFail(Integer code, String toastMessage);
+//        void captchSuccess(JSONObject obj);
+//
+//        void captchFail(Integer code, String toastMessage);
 
         void emailCodeSuccess(String obj);
 
@@ -62,7 +62,7 @@ public interface SignUpContract {
 
         void signUpByEmail(String email, String password,String tuijian2,String country, String code, String validate, String seccode);
 
-        void captch();
+//        void captch();
 
         void EmailCode(String email);
     }

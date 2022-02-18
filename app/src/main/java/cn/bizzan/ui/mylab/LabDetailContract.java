@@ -17,13 +17,17 @@ public interface LabDetailContract {
 
         void activityAttendlFailed(int code, String toastMessage);
 
+        void phoneCodeSuccess(String obj);
+
+        void phoneCodeFail(Integer code, String toastMessage);
     }
 
     interface Presenter extends Contract.BasePresenter {
 
+        void phoneCode(String phone, String country);
+
         void activityDetail(String token, int id);
 
         void activityAttend(String token, String amount, int activityId, String aims, String code);
-
     }
 }

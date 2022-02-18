@@ -17,15 +17,15 @@ public interface LoginContract {
 
         void loginSuccess(User obj);
 
-        void captchSuccess(JSONObject obj);
-
-        void captchFail(Integer code, String toastMessage);
+//        void captchSuccess(JSONObject obj);
+//
+//        void captchFail(Integer code, String toastMessage);
     }
         
     interface Presenter extends Contract.BasePresenter {
         //void login(String token,String username, String password, String challenge, String validate, String seccode);
-        void login(String username, String password, String challenge, String validate, String seccode);
+        void login(String username, String password);
 
-        void captch();
+//        void captch();
     }
 }

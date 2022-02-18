@@ -19,11 +19,11 @@ public class LoginPresenter implements LoginContract.Presenter {
         this.view = view;
         view.setPresenter(this);
     }
-    
+
     @Override
-    public void login(String username, String password, String challenge, String validate, String seccode) {
+    public void login(String username, String password) {
         view.displayLoadingPopup();
-        dataRepository.login(username, password, challenge, validate, seccode, new DataSource.DataCallback() {
+        dataRepository.login(username, password, new DataSource.DataCallback() {
             @Override
             public void onDataLoaded(Object obj) {
                 view.hideLoadingPopup();
@@ -38,21 +38,21 @@ public class LoginPresenter implements LoginContract.Presenter {
         });
     }
 
-    @Override
-    public void captch() {
-        view.displayLoadingPopup();
-        dataRepository.captch(new DataSource.DataCallback() {
-            @Override
-            public void onDataLoaded(Object obj) {
-                view.hideLoadingPopup();
-                view.captchSuccess((JSONObject) obj);
-            }
-
-            @Override
-            public void onDataNotAvailable(Integer code, String toastMessage) {
-                view.hideLoadingPopup();
-                view.captchFail(code, toastMessage);
-            }
-        });
-    }
+//    @Override
+//    public void captch() {
+//        view.displayLoadingPopup();
+//        dataRepository.captch(new DataSource.DataCallback() {
+//            @Override
+//            public void onDataLoaded(Object obj) {
+//                view.hideLoadingPopup();
+//                view.captchSuccess((JSONObject) obj);
+//            }
+//
+//            @Override
+//            public void onDataNotAvailable(Integer code, String toastMessage) {
+//                view.hideLoadingPopup();
+//                view.captchFail(code, toastMessage);
+//            }
+//        });
+//    }
 }

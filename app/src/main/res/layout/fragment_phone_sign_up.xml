@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryBackNormal"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
     <!--标题-->
     <LinearLayout
@@ -123,7 +124,7 @@
                             android:gravity="center"
                             android:paddingLeft="6dp"
                             android:paddingRight="6dp"
-                            android:text="+86"
+                            tools:text="+86"
                             android:textColor="#fff"
                             android:textSize="14sp" />
 

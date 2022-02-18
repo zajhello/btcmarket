@@ -1,10 +1,16 @@
 package cn.bizzan.ui.kline;
 
 
+import static cn.bizzan.app.GlobalConstant.JSON_ERROR;
+
 import cn.bizzan.data.DataSource;
 import cn.bizzan.entity.Currency;
+import cn.bizzan.ui.mychart.KLineBean;
+import cn.bizzan.utils.WonderfulLogUtils;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -42,6 +48,7 @@ public class KlinePresenter implements KlineContract.Presenter {
         });
     }
 
+
     @Override
     public void KData_Constract(String symbol, Long from, Long to, String resolution, final String type) {
         dataRepository.KData_Constract(symbol, from, to, resolution, new DataSource.DataCallback() {
@@ -59,6 +66,29 @@ public class KlinePresenter implements KlineContract.Presenter {
                 view.KDataFail(code, toastMessage);
             }
         });
+    }
+
+    @Override
+    public void KData_Constract(String type, String pushmsg) {
+        WonderfulLogUtils.logi("期权历史K线数据回执：", "期权历史K线数据回执：" + pushmsg);
+        if (view == null) return;
+        try {
+            JSONObject jsonArray = new JSONObject(pushmsg);
+            KLineBean kline = new KLineBean(jsonArray.getString("time"),
+                    Float.valueOf(jsonArray.getString("openPrice")),
+                    Float.valueOf(jsonArray.getString("closePrice")),
+                    Float.valueOf(jsonArray.getString("highestPrice")),
+                    Float.valueOf(jsonArray.getString("lowestPrice")),
+                    Float.valueOf(jsonArray.getString("volume")));
+
+            if (type.equals("1")) {
+                view.KDataSuccess(kline);
+            } else if (type.equals("2")) {
+                view.KDataSuccess2(kline);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

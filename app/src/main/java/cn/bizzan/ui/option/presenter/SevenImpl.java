@@ -16,6 +16,7 @@ import cn.bizzan.entity.Money;
 import cn.bizzan.entity.OptionAddBean;
 import cn.bizzan.entity.OptionIconBean;
 import cn.bizzan.entity.OptionOrderHistoryBean;
+import cn.bizzan.ui.mychart.KLineBean;
 import cn.bizzan.ui.option.ISevenContract;
 import cn.bizzan.utils.WonderfulLogUtils;
 import cn.bizzan.utils.okhttp.StringCallback;
@@ -218,7 +219,7 @@ public class SevenImpl implements ISevenContract.Presenter {
                         }.getType());
                         if (type.equals("1")) {
                             view.option_Current(bean);
-                        }else if (type.equals("2")) {
+                        } else if (type.equals("2")) {
                             view.option_Current2(bean);
                         }
                     } else {
@@ -265,6 +266,33 @@ public class SevenImpl implements ISevenContract.Presenter {
     //type  1 表示第一次请求  2表示加载数据
     //获取k线数据
     @Override
+    public void KData(final String type, String pushmsg) {
+
+        WonderfulLogUtils.logi("期权历史K线数据回执：", "期权历史K线数据回执：" + pushmsg);
+        if (view == null) return;
+        try {
+            JSONObject jsonArray = new JSONObject(pushmsg);
+            KLineBean kline = new KLineBean(jsonArray.getString("time"),
+                    Float.valueOf(jsonArray.getString("openPrice")),
+                    Float.valueOf(jsonArray.getString("closePrice")),
+                    Float.valueOf(jsonArray.getString("highestPrice")),
+                    Float.valueOf(jsonArray.getString("lowestPrice")),
+                    Float.valueOf(jsonArray.getString("volume")));
+
+            if (type.equals("1")) {
+                view.KDataSuccess(kline);
+            } else if (type.equals("2")) {
+                view.KDataSuccess2(kline);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            view.errorMes(JSON_ERROR, null);
+        }
+    }
+
+    //type  1 表示第一次请求  2表示加载数据
+    //获取k线数据
+    @Override
     public void KData(String symbol, Long from, Long to, String resolution, final String type) {
         post().url(UrlFactory.getKDataUrl_Constract())
                 .addParams("symbol", symbol)
@@ -298,7 +326,6 @@ public class SevenImpl implements ISevenContract.Presenter {
                 }
             }
         });
-
     }
 //看涨或者看跌
 

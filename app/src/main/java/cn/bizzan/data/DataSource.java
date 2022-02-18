@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 public interface DataSource {
 
     void phoneCode(String phone, String country, DataCallback dataCallback);
+    void phoneCodeLab(String phone, String country, DataCallback dataCallback);
 
     void emailCode(String email, DataCallback dataCallback);
 
@@ -17,7 +18,13 @@ public interface DataSource {
 
     void signUpByEmail(String email, String password, String tuijian2, String country, String challenge, String validate, String seccode, DataCallback dataCallback);
 
+    void signUpByPhone(String phone, String username, String password, String country, String code, String tuijianma,  DataCallback dataCallback);
+
+    void signUpByEmail(String email, String password, String tuijian2, String country, DataCallback dataCallback);
+
     void login(String username, String password, String challenge, String validate, String seccode, DataCallback dataCallback);
+
+    void login(String username, String password, DataCallback dataCallback);
 
     void KData(String symbol, Long from, Long to, String resolution, DataCallback dataCallback);
 

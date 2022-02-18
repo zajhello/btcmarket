@@ -131,9 +131,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:focusable="true"
-                android:focusableInTouchMode="true" >
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/ll_k"
@@ -408,41 +408,65 @@
 
                     </LinearLayout>
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="15dp"
+
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
-                        android:background="@drawable/shape_six_multiples_circle"
-                        android:padding="1dp">
+                        android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/icon_back" />
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/rv_amount"
+                        <RelativeLayout
                             android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_six_multiples_circle"
+                            android:padding="1dp">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/icon_back" />
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/rv_amount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_weight="1"
+                                android:paddingLeft="17dp"
+                                android:paddingRight="17dp" />
+
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/icon_into" />
+
+                        </RelativeLayout>
+
+
+                        <EditText
+                            android:id="@+id/et_amount"
+                            android:layout_width="75dp"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="2dp"
-                            android:paddingLeft="17dp"
-                            android:paddingRight="17dp">
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:background="#99000000"
+                            android:gravity="center"
+                            android:hint="@string/tv_else"
+                            android:inputType="numberDecimal"
+                            android:textColor="#cccccc"
+                            android:textColorHint="@color/primaryTextGray"
+                            android:textSize="14sp" />
+                    </LinearLayout>
 
-                        </android.support.v7.widget.RecyclerView>
-
-                        <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/icon_into" />
-
-                    </RelativeLayout>
 
                     <TextView
                         android:id="@+id/tv_use_money"
@@ -511,6 +535,7 @@
 
 
                     </RelativeLayout>
+
                     <TextView
                         android:id="@+id/tv_time_current"
                         android:layout_width="wrap_content"
@@ -693,6 +718,7 @@
                             android:layout_weight="1"
                             android:background="@color/bg_kline_bottom" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/ll_one_current"
                         android:layout_width="match_parent"
@@ -769,9 +795,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="start"
+                                android:text=""
                                 android:textColor="@color/item_text_color"
-                                android:textSize="12sp"
-                                android:text=""/>
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/now_two"
@@ -779,9 +805,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:text=""
                                 android:textColor="@color/typeGreen"
-                                android:textSize="12sp"
-                                android:text=""/>
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/now_three"
@@ -789,9 +815,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="end"
+                                android:text=""
                                 android:textColor="@color/item_text_color"
-                                android:textSize="12sp"
-                                android:text=""/>
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -885,9 +911,9 @@
                     android:id="@+id/ll_history"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" >
+                    android:focusableInTouchMode="true"
+                    android:visibility="gone">
 
                     <com.scwang.smart.refresh.layout.SmartRefreshLayout
                         android:id="@+id/smartrefreshLayout"

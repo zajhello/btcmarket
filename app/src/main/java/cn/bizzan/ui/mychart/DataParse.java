@@ -5,6 +5,7 @@ import android.util.SparseArray;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.CandleEntry;
 import com.github.mikephil.charting.data.Entry;
+
 import cn.bizzan.app.GlobalConstant;
 import cn.bizzan.utils.WonderfulDateUtils;
 
@@ -116,6 +117,18 @@ public class DataParse implements Serializable {
             xValuesLabel.put(i, kLineData.date);
             minutesLine.add(new Entry((float) data.optDouble(4), i));
         }
+    }
+
+    /**
+     * 将返回的k线数据转化成 自定义实体类
+     */
+    public void parseKLine(KLineBean kLineData) {
+        //Entry高低 开收           //开高低收
+
+        //K线实体类
+        kDatas.add(kLineData);
+        volmax = Math.max(kLineData.vol, volmax);
+
     }
 
 

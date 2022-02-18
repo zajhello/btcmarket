@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -153,6 +154,9 @@ public class SevenFragment extends BaseTransFragment implements MainContract.Sev
     TextView tvAmount;
     @BindView(R.id.rv_amount)
     RecyclerView rvAmount;
+    @BindView(R.id.et_amount)
+    EditText etAmount;
+
     @BindView(R.id.tv_use_money)
     TextView tvUseMoney;
     @BindView(R.id.bu_rise)
@@ -457,7 +461,7 @@ public class SevenFragment extends BaseTransFragment implements MainContract.Sev
             WonderfulToastUtils.showToast(getActivity().getResources().getText(R.string.text_login_disabled) + "");
             return;
         }
-        if (optionBean == null){
+        if (optionBean == null) {
             return;
         }
         // 获取往期行情信息
@@ -617,11 +621,13 @@ public class SevenFragment extends BaseTransFragment implements MainContract.Sev
 
     //点击  1看涨  2看跌
     private void look(int type) {
+
         if (!MyApplication.getApp().isLogin()) {
             WonderfulToastUtils.showToast(getActivity().getResources().getText(R.string.text_xian_login) + "");
             return;
         }
-        if (currentPosition == -1) {
+        String amount = etAmount.getText().toString();
+        if (currentPosition == -1 && TextUtils.isEmpty(amount)) {
             WonderfulToastUtils.showToast(getActivity().getResources().getText(R.string.please_select_number) + "");
             return;
         }
@@ -629,13 +635,15 @@ public class SevenFragment extends BaseTransFragment implements MainContract.Sev
             WonderfulToastUtils.showToast(getActivity().getResources().getText(R.string.use_money_dissatisfy) + "");
             return;
         }
+        if (TextUtils.isEmpty(amount)) {
+            amount = amountlist.get(currentPosition);
+        }
         if (type == 1) {
-            mPresenter.Add(optionBean.getSymbol(), "0", Starting.get(0).getId() + "", amountlist.get(currentPosition), SharedPreferenceInstance.getInstance().getTOKEN());
+            mPresenter.Add(optionBean.getSymbol(), "0", Starting.get(0).getId() + "", amount, SharedPreferenceInstance.getInstance().getTOKEN());
         } else if (type == 2) {
-            mPresenter.Add(optionBean.getSymbol(), "1", Starting.get(0).getId() + "", amountlist.get(currentPosition), SharedPreferenceInstance.getInstance().getTOKEN());
+            mPresenter.Add(optionBean.getSymbol(), "1", Starting.get(0).getId() + "", amount, SharedPreferenceInstance.getInstance().getTOKEN());
         }
     }
-
 
     /**
      * socket 推送过来的信息
@@ -678,42 +686,42 @@ public class SevenFragment extends BaseTransFragment implements MainContract.Sev
                 switch (type) {
                     case GlobalConstant.TAG_DIVIDE_TIME:
                         if (time >= (lastKline.getTime() + (1000 * 60 + 1000))) {
-                            mPresenter.KData(optionBean.getSymbol(), from, time, resolution, "1");
+                            mPresenter.KData("1", response.getResponse());
                         }
                         break;
                     case GlobalConstant.TAG_ONE_MINUTE:
                         if (time >= (lastKline.getTime() + (1000 * 60 + 1000))) {
-                            mPresenter.KData(optionBean.getSymbol(), from, time, resolution, "1");
+                            mPresenter.KData("1", response.getResponse());
                         }
                         break;
                     case GlobalConstant.TAG_FIVE_MINUTE:
                         if (time >= (lastKline.getTime() + (1000 * 60 * 5 + 1000))) {
-                            mPresenter.KData(optionBean.getSymbol(), from, time, resolution, "1");
+                            mPresenter.KData("1", response.getResponse());
                         }
                         break;
                     case GlobalConstant.TAG_THIRTY_MINUTE:
                         if (time >= (lastKline.getTime() + (1000 * 60 * 30 + 1000))) {
-                            mPresenter.KData(optionBean.getSymbol(), from, time, resolution, "1");
+                            mPresenter.KData("1", response.getResponse());
                         }
                         break;
                     case GlobalConstant.TAG_AN_HOUR:
                         if (time >= (lastKline.getTime() + (1000 * 60 * 60 + 1000))) {
-                            mPresenter.KData(optionBean.getSymbol(), from, time, resolution, "1");
+                            mPresenter.KData("1", response.getResponse());
                         }
                         break;
                     case GlobalConstant.TAG_DAY:
                         if (time >= (lastKline.getTime() + (1000 * 60 * 60 * 24 + 1000))) {
-                            mPresenter.KData(optionBean.getSymbol(), from, time, resolution, "1");
+                            mPresenter.KData("1", response.getResponse());
                         }
                         break;
                     case GlobalConstant.TAG_WEEK:
                         if (time >= (lastKline.getTime() + (1000 * 60 * 60 * 24 * 7 + 1000))) {
-                            mPresenter.KData(optionBean.getSymbol(), from, time, resolution, "1");
+                            mPresenter.KData("1", response.getResponse());
                         }
                         break;
                     case GlobalConstant.TAG_MONTH:
                         if (time >= (lastKline.getTime() + (1000 * 60 * 60 * 24 * 30 + 1000))) {
-                            mPresenter.KData(optionBean.getSymbol(), from, time, resolution, "1");
+                            mPresenter.KData("1", response.getResponse());
                         }
                         break;
                     default:
@@ -861,7 +869,7 @@ public class SevenFragment extends BaseTransFragment implements MainContract.Sev
                 break;
             default:
         }
-        if (optionBean == null){
+        if (optionBean == null) {
             return;
         }
         mPresenter.KData(optionBean.getSymbol(), from, to, resolution, "1");
@@ -1190,6 +1198,138 @@ public class SevenFragment extends BaseTransFragment implements MainContract.Sev
         DataParse kData = new DataParse();
         try {
             kData.parseKLine(obj, type);
+            kLineDatas = kData.getKLineDatas();
+            if (kLineDatas != null && kLineDatas.size() > 0) {
+                kLineEntities = new ArrayList<>();
+                kLineEntities.clear();
+                for (int i = 0; i < kLineDatas.size(); i++) {
+                    KData lineEntity = new KData();
+                    KLineBean kLineBean = kLineDatas.get(i);
+                    lineEntity.setTime(Long.parseLong(kLineBean.getDate()));
+                    lineEntity.setOpenPrice(kLineBean.getOpen());
+                    lineEntity.setClosePrice(kLineBean.getClose());
+                    lineEntity.setMaxPrice(kLineBean.getHigh());
+                    lineEntity.setMinPrice(kLineBean.getLow());
+                    lineEntity.setVolume(kLineBean.getVol());
+                    kLineEntities.add(lineEntity);
+                }
+                WonderfulLogUtils.logi("miao", kLineDatas.get(0).getClose() + "--" + kLineDatas.get(0).getHigh() + "--" + kLineDatas.get(0).getLow() + "--" + kLineDatas.get(0).getOpen() + "--" + kLineDatas.get(0).getVol());
+                WonderfulLogUtils.logi("miao", kLineEntities.size() + "--");
+                klineView.addPreDataList(kLineEntities, true);
+            } else {
+            }
+        } catch (Exception e) {
+            WonderfulToastUtils.showToast(getString(R.string.parse_error));
+        }
+    }
+
+    @Override
+    public void KDataSuccess(KLineBean data) {
+        DataParse kData = new DataParse();
+        try {
+            kData.parseKLine(data);
+            kLineDatas = kData.getKLineDatas();
+            if (kLineDatas != null && kLineDatas.size() > 0) {
+                klineView.setVisibility(View.VISIBLE);
+                kLineEntities = new ArrayList<>();
+                kLineEntities.clear();
+                for (int i = 0; i < kLineDatas.size(); i++) {
+                    KData lineEntity = new KData();
+                    KLineBean kLineBean = kLineDatas.get(i);
+                    lineEntity.setTime(Long.parseLong(kLineBean.getDate()));
+                    lineEntity.setOpenPrice(kLineBean.getOpen());
+                    lineEntity.setClosePrice(kLineBean.getClose());
+                    lineEntity.setMaxPrice(kLineBean.getHigh());
+                    lineEntity.setMinPrice(kLineBean.getLow());
+                    lineEntity.setVolume(kLineBean.getVol());
+                    kLineEntities.add(lineEntity);
+                    if (i == kLineDatas.size() - 1) {
+                        this.lastKline.setTime(Long.parseLong(kLineBean.getDate()));
+                        this.lastKline.setOpenPrice(kLineBean.getOpen());
+                        this.lastKline.setClosePrice(kLineBean.getClose());
+                        this.lastKline.setMaxPrice(kLineBean.getHigh());
+                        this.lastKline.setMinPrice(kLineBean.getLow());
+                        this.lastKline.setVolume(kLineBean.getVol());
+                    }
+                }
+
+                WonderfulLogUtils.logi("miao", kLineDatas.get(0).getClose() + "--" + kLineDatas.get(0).getHigh() + "--" + kLineDatas.get(0).getLow() + "--" + kLineDatas.get(0).getOpen() + "--" + kLineDatas.get(0).getVol());
+                WonderfulLogUtils.logi("miao", kLineEntities.size() + "--");
+                if (klineView.getTotalDataList().size() != 0) {
+                    klineView.resetDataList(kLineEntities);
+                } else {
+                    klineView.initKDataList(kLineEntities);
+                }
+            } else {
+                klineView.setVisibility(View.INVISIBLE);
+            }
+
+            klineView.setOnRequestDataListListener(new KLineView.OnRequestDataListListener() {
+                @Override
+                public void requestData() {
+                    to = from;
+                    switch (type) {
+                        case GlobalConstant.TAG_DIVIDE_TIME:
+                            Calendar c = Calendar.getInstance();
+                            int hour = c.get(Calendar.HOUR_OF_DAY) - 1;
+                            c.set(Calendar.HOUR_OF_DAY, hour);
+                            String strDate = WonderfulDateUtils.getFormatTime("HH:mm", c.getTime());
+                            startDate = WonderfulDateUtils.getDateTransformString(strDate, "HH:mm");
+                            resolution = 1 + "";
+                            String str = WonderfulDateUtils.getFormatTime(null, c.getTime());
+                            from = WonderfulDateUtils.getTimeMillis(null, str);
+                            klineView.setTime_Type(GlobalConstant.TAG_DIVIDE_TIME);
+                            break;
+                        case GlobalConstant.TAG_ONE_MINUTE:
+                            from = to - 24L * 60 * 60 * 1000;//前一天数据
+                            resolution = 1 + "";
+                            klineView.setTime_Type(GlobalConstant.TAG_ONE_MINUTE);
+                            break;
+                        case GlobalConstant.TAG_FIVE_MINUTE:
+                            from = to - 2 * 24L * 60 * 60 * 1000;//前两天数据
+                            resolution = 5 + "";
+                            klineView.setTime_Type(GlobalConstant.TAG_FIVE_MINUTE);
+                            break;
+                        case GlobalConstant.TAG_THIRTY_MINUTE:
+                            from = to - 12 * 24L * 60 * 60 * 1000; //前12天数据
+                            resolution = 30 + "";
+                            klineView.setTime_Type(GlobalConstant.TAG_THIRTY_MINUTE);
+                            break;
+                        case GlobalConstant.TAG_AN_HOUR:
+                            from = to - 24 * 24L * 60 * 60 * 1000;//前 24天数据
+                            resolution = 60 + "";
+                            klineView.setTime_Type(GlobalConstant.TAG_AN_HOUR);
+                            break;
+                        case GlobalConstant.TAG_DAY:
+                            from = to - 60 * 24L * 60 * 60 * 1000; //前60天数据
+                            resolution = 1 + "D";
+                            klineView.setTime_Type(GlobalConstant.TAG_DAY);
+                            break;
+                        case GlobalConstant.TAG_WEEK:
+                            from = to - 730 * 24L * 60 * 60 * 1000; //前两年数据
+                            resolution = 1 + "W";
+                            klineView.setTime_Type(GlobalConstant.TAG_WEEK);
+                            break;
+                        case GlobalConstant.TAG_MONTH:
+                            from = to - 1095 * 24L * 60 * 60 * 1000; //前三年数据
+                            resolution = 1 + "M";
+                            klineView.setTime_Type(GlobalConstant.TAG_MONTH);
+                            break;
+                        default:
+                    }
+                    mPresenter.KData(optionBean.getSymbol(), from, to, resolution, "2");
+                }
+            });
+        } catch (Exception e) {
+            WonderfulToastUtils.showToast(getString(R.string.parse_error));
+        }
+    }
+
+    @Override
+    public void KDataSuccess2(KLineBean data) {
+        DataParse kData = new DataParse();
+        try {
+            kData.parseKLine(data);
             kLineDatas = kData.getKLineDatas();
             if (kLineDatas != null && kLineDatas.size() > 0) {
                 kLineEntities = new ArrayList<>();

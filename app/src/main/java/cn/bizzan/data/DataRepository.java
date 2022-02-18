@@ -29,6 +29,12 @@ public class DataRepository implements DataSource {
     }
 
     @Override
+    public void phoneCodeLab(String phone, String country, DataCallback dataCallback) {
+        if (isLocal) mLocalDataSource.phoneCodeLab(phone, country, dataCallback);
+        else mRemoteDataSource.phoneCodeLab(phone, country, dataCallback);
+    }
+
+    @Override
     public void emailCode(String email, DataCallback dataCallback) {
         if (isLocal) mLocalDataSource.emailCode(email, dataCallback);
         else mRemoteDataSource.emailCode(email, dataCallback);
@@ -51,11 +57,35 @@ public class DataRepository implements DataSource {
     }
 
     @Override
+    public void signUpByPhone(String phone, String username, String password, String country, String code, String tuijianma, DataCallback dataCallback) {
+        if (isLocal)
+            mLocalDataSource.signUpByPhone(phone, username, password, country, code, tuijianma, dataCallback);
+        else
+            mRemoteDataSource.signUpByPhone(phone, username, password, country, code, tuijianma, dataCallback);
+    }
+
+    @Override
+    public void signUpByEmail(String email, String password, String tuijian2, String country, DataCallback dataCallback) {
+        if (isLocal)
+            mLocalDataSource.signUpByEmail(email, password, tuijian2, country, dataCallback);
+        else
+            mRemoteDataSource.signUpByEmail(email, password, tuijian2, country, dataCallback);
+    }
+
+    @Override
     public void login(String username, String password, String challenge, String validate, String seccode, DataCallback dataCallback) {
         if (isLocal)
             mLocalDataSource.login(username, password, challenge, validate, seccode, dataCallback);
         else
             mRemoteDataSource.login(username, password, challenge, validate, seccode, dataCallback);
+    }
+
+    @Override
+    public void login(String username, String password, DataCallback dataCallback) {
+        if (isLocal)
+            mLocalDataSource.login(username, password, dataCallback);
+        else
+            mRemoteDataSource.login(username, password, dataCallback);
     }
 
 
@@ -391,6 +421,7 @@ public class DataRepository implements DataSource {
         else
             mRemoteDataSource.emailForgotCode(email, challenge, validate, seccode, dataCallback);
     }
+
 
     @Override
     public void captch(DataCallback dataCallback) {

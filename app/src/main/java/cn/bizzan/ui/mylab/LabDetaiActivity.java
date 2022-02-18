@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.text.Html;
@@ -158,9 +159,11 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
     @BindView(R.id.my_available_amount)
     TextView my_available_amount;
 
+    private TextView tvGetCode;
 
     private LabEntity entity;
     private LabDetailEntity detailEntity;
+    private CountDownTimer timer;
 
 
     public static void actionStart(Context context, LabEntity entity) {
@@ -631,6 +634,48 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
         WonderfulCodeUtils.checkedErrorCode(this, code, toastMessage);
     }
 
+    @Override
+    public void phoneCodeSuccess(String obj) {
+        if (tvGetCode != null) {
+            tvGetCode.setEnabled(true);
+        }
+        WonderfulToastUtils.showToast(obj);
+        fillCodeView(90 * 1000);
+    }
+
+    private void fillCodeView(long time) {
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+        }
+        timer = new CountDownTimer(time, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                if (tvGetCode != null)
+                    tvGetCode.setText(getResources().getString(R.string.re_send) + "（" + millisUntilFinished / 1000 + "）");
+            }
+
+            @Override
+            public void onFinish() {
+                if (tvGetCode != null) {
+                    tvGetCode.setText(R.string.send_code);
+                    tvGetCode.setEnabled(true);
+                }
+                timer.cancel();
+                timer = null;
+            }
+        };
+        timer.start();
+    }
+
+    @Override
+    public void phoneCodeFail(Integer code, String toastMessage) {
+        if (tvGetCode != null) {
+            tvGetCode.setEnabled(true);
+        }
+        WonderfulCodeUtils.checkedErrorCode(this, code, toastMessage);
+    }
+
     private void showJustText(TextView textView, String source) {
         if (textView == null) {
             return;
@@ -667,7 +712,7 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
         EditText etphone = contentView.findViewById(R.id.et_phone);
         EditText etcode = contentView.findViewById(R.id.et_code);
         TextView tvclose = contentView.findViewById(R.id.tv_close);
-        TextView tvCode = contentView.findViewById(R.id.tv_code);
+        tvGetCode = contentView.findViewById(R.id.tv_code);
         TextView tvsubmit = contentView.findViewById(R.id.tvBuy);
 
         User user = MyApplication.getApp().getCurrentUser();
@@ -679,10 +724,11 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
                 dialog.cancel();
             }
         });
-        tvCode.setOnClickListener(new View.OnClickListener() {
+        tvGetCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etcode.setText("3234");
+                tvGetCode.setEnabled(false);
+                presenter.phoneCode(user.getUsername(), user.getCountry().getZhName());
             }
         });
 
@@ -698,5 +744,14 @@ public class LabDetaiActivity extends BaseActivity implements LabDetailContract.
         layoutParams.width = (int) (display.getWidth() * 0.7);
         dialog.getWindow().setAttributes(layoutParams);
         return dialog;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+        }
     }
 }

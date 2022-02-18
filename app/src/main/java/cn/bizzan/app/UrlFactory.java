@@ -94,14 +94,18 @@ public class UrlFactory {
         return host + "/uc/mobile/code";
     }
 
+    public static String getPhoneCodeLabUrl() {
+        return host + "/uc/mobile/activity/code";
+    }
+
     //注册
     public static String getSignUpByPhone() {
-        return host + "/uc/register/for_phone";
+        return host + "uc/register/for_phone";
     }
 
     //注册邮箱code
     public static String getEmailCodeUrl() {
-        return host + "/uc/reg/email/code";
+        return host + "uc/reg/email/code";
     }
 
     public static String getSignUpByEmail() {

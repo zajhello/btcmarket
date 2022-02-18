@@ -34,6 +34,11 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
+    public void phoneCodeLab(String phone, String country, DataCallback dataCallback) {
+
+    }
+
+    @Override
     public void emailCode(String email, DataCallback dataCallback) {
 
     }
@@ -49,7 +54,22 @@ public class LocalDataSource implements DataSource {
     }
 
     @Override
+    public void signUpByPhone(String phone, String username, String password, String country, String code, String tuijianma, DataCallback dataCallback) {
+
+    }
+
+    @Override
+    public void signUpByEmail(String email, String password, String tuijian2, String country, DataCallback dataCallback) {
+
+    }
+
+    @Override
     public void login(String username, String password, String challenge, String validate, String seccode, DataCallback dataCallback) {
+
+    }
+
+    @Override
+    public void login(String username, String password, DataCallback dataCallback) {
 
     }
 
@@ -310,7 +330,7 @@ public class LocalDataSource implements DataSource {
     public void emailForgotCode(String phone, String challenge, String validate, String seccode, DataCallback dataCallback) {
 
     }
-
+//
     @Override
     public void captch(DataCallback dataCallback) {
 
