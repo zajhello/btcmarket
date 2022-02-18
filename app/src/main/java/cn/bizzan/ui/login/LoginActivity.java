@@ -64,7 +64,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     ImageView yan;
     private boolean isYan=false;
     private LoginContract.Presenter presenter;
-    private GT3GeetestUtilsBind gt3GeetestUtils;
+//    private GT3GeetestUtilsBind gt3GeetestUtils;
     private Handler handler = new Handler();
 
     public static void actionStart(Context context) {
@@ -74,7 +74,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     protected void onDestroy() {
-        gt3GeetestUtils.cancelUtils();
+//        gt3GeetestUtils.cancelUtils();
         super.onDestroy();
     }
 
@@ -85,7 +85,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        gt3GeetestUtils = new GT3GeetestUtilsBind(this);
+//        gt3GeetestUtils = new GT3GeetestUtilsBind(this);
         new LoginPresenter(Injection.provideTasksRepository(getApplicationContext()), this);
 
         ibBack.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +179,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void loginFail(Integer code, String toastMessage) {
-        gt3GeetestUtils.gt3Dismiss();
+//        gt3GeetestUtils.gt3Dismiss();
         WonderfulCodeUtils.checkedErrorCode(this, code, toastMessage);
     }
 
@@ -191,7 +191,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         String md5Key = getMD5(key);
         SharedPreferenceInstance.getInstance().saveToken(EncryUtils.getInstance().encryptString(md5Key, MyApplication.getApp().getPackageName()));
         MyApplication.getApp().setLoginStatusChange(true);
-        gt3GeetestUtils.gt3TestFinish();
+//        gt3GeetestUtils.gt3TestFinish();
         SharedPreferenceInstance.getInstance().saveLockPwd("");
         MyApplication.getApp().setCurrentUser(obj);
         SharedPreferenceInstance.getInstance().saveID(obj.getId());

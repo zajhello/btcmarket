@@ -77,7 +77,7 @@ public class FivePresenter implements MainContract.FivePresenter {
                 boolean isUdun = (boolean) obj;
                 view.myUdunConfSuccess(isUdun);
             }
-
+//40406
             @Override
             public void onDataNotAvailable(Integer code, String toastMessage) {
                 view.myUdunConfFail();
