@@ -31,8 +31,12 @@ import java.util.List;
 public class HomeAdapter extends BaseQuickAdapter<Currency, BaseViewHolder> {
 
     private boolean isLoad;
-    private int colorA = Color.parseColor("#1F2833");
-    private int colorC = Color.parseColor("#1A212A");
+//    private int colorA = Color.parseColor("#1F2833");
+//    private int colorC = Color.parseColor("#1A212A");
+
+    private int colorA = Color.parseColor("#001F2833");
+    private int colorC = Color.parseColor("#001A212A");
+
     public boolean isLoad() {
         return isLoad;
     }

@@ -15,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -376,8 +377,11 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
     class MyAdapter extends PagerAdapter {
         private List<Currency> lists = new ArrayList<>();
 
-        private int colorA = Color.parseColor("#1F2833");
-        private int colorC = Color.parseColor("#1A212A");
+//        private int colorA = Color.parseColor("#1F2833");
+//        private int colorC = Color.parseColor("#1A212A");
+
+        private int colorA = Color.parseColor("#001F2833");
+        private int colorC = Color.parseColor("#001A212A");
 
         @Override
         public int getCount() {
@@ -541,6 +545,7 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
     private void initRvContent() {
         // 涨幅榜的适配器
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        ((SimpleItemAnimator) mRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         System.out.println("currencies" + currencies.toString());
         mHomeAdapter = new HomeAdapter(currencies);
         mHomeAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
@@ -557,6 +562,7 @@ public class OneFragment extends BaseTransFragment implements MainContract.OneVi
         });
         // 跌幅榜的适配器
         mRecyclerViewdown.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        ((SimpleItemAnimator) mRecyclerViewdown.getItemAnimator()).setSupportsChangeAnimations(false);
         System.out.println("currencies" + currenciesdown.toString());
         mHomeAdapterdown = new HomeAdapter(currenciesdown);
         mHomeAdapterdown.openLoadAnimation(BaseQuickAdapter.SCALEIN);
